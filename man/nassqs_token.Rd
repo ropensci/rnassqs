@@ -10,7 +10,7 @@ nassqs_token(force = FALSE)
 \item{force}{a boolean to force asking in the console.}
 }
 \value{
-the api key
+the api key.
 }
 \description{
 First checks if the NASSQS_TOKEN environmental variable is set, and if so,

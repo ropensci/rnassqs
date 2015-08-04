@@ -2,9 +2,11 @@
 % Please edit documentation in R/nassqs.R
 \name{nassqs_GET}
 \alias{nassqs_GET}
-\title{Issue a GET request to the NASS API}
+\title{Issue a GET request to the NASS API
+http://quickstats.nass.usda.gov/api
+This is the core function, which several other nassqs functions use to request data.}
 \usage{
-nassqs_GET(params, ..., path = "api_GET",
+nassqs_GET(params, path = "api_GET",
   base_url = "http://quickstats.nass.usda.gov/api/", key = nassqs_auth(),
   format = "JSON")
 }
@@ -13,9 +15,18 @@ nassqs_GET(params, ..., path = "api_GET",
 
 \item{path}{the api path. Can be "api_GET", "get_param_values", or "get_counts"}
 
+\item{base_url}{the base api url. This should probably never be changed.}
+
+\item{key}{your api key. If not provided the function will check for an env var and if not found, will prompt for your api key.}
+
 \item{format}{format of returned data. JSON by default, but can also be XML or CSV.}
+}
+\value{
+data returned in the format specified.
 }
 \description{
 Issue a GET request to the NASS API
+http://quickstats.nass.usda.gov/api
+This is the core function, which several other nassqs functions use to request data.
 }
 

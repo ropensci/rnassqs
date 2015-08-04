@@ -23,9 +23,10 @@ NULL
 #' @param base_url the base api url. This should probably never be changed.
 #' @param key your api key. If not provided the function will check for an env var and if not found, will prompt for your api key.
 #' @param format format of returned data. JSON by default, but can also be XML or CSV.
-#' @return data returned in the format specified
+#' @return data returned in the format specified.
+#' @importFrom httr GET
+#' @export
 nassqs_GET <- function(params, # a named list of queries
-                       ...,
                        path="api_GET", # specific sub api call
                        base_url="http://quickstats.nass.usda.gov/api/",
                        key=nassqs_auth(), #api key
@@ -71,12 +72,16 @@ nassqs_check <- function(req) {
   stop("HTTP Failure: ", req$status_code, "\n", message, call. = FALSE)
 }
 
-#' Parse the returned request
+#' Parse the returned request.
 #'
 #' Returns a data frame. All values are strings.
 #'
-#' @param req the GET request
-#' @return a data frame of the content from the request
+#' @param req the GET request.
+#' @param ... additional parameters passed to \code{\link{nass_parse.json}}
+#' @param as indicates type of data returned. Can be one of "list", "js", or "dataframe".
+#' @return a data frame of the content from the request.
+#' @importFrom httr content
+#' @export
 nassqs_parse <- function(req, ..., as="dataframe") {
   text <- content(req, as = "text")
   if (identical(text, "")) {
@@ -105,9 +110,12 @@ nassqs_parse <- function(req, ..., as="dataframe") {
 #' Parse a request returned as JSON
 #'
 #'
-#' @param text the text returned from content()
-#' @returns a data frame or a list depending on the input.
-nass_parse.json <- function(text, as, ...) {
+#' @param text the text returned from content.
+#' @param as indicator of output format. One of "raw" or "list", otherwise a
+#' data frame is returned.
+#' @param ... additional parameters passed to \code{jsonlite}.
+#' @return a data frame or a list depending on the input.
+nass_parse.json <- function(text, ..., as) {
   js = jsonlite::fromJSON(text,...)
 
   # return based on specified by user
@@ -134,7 +142,7 @@ nass_parse.json <- function(text, as, ...) {
 #' (3) by entering it into the console when asked (it will be stored for the rest of the session.)
 #'
 #' @param key api key. If not specified, looks for an env variable named NASSQS_TOKEN and if not available, asks at the console.
-#' @return authentication token
+#' @return authentication token.
 nassqs_auth <- function(key = nassqs_token()) {
   key
 }
@@ -146,7 +154,7 @@ nassqs_auth <- function(key = nassqs_token()) {
 #' fails with error msg.
 #'
 #' @param force a boolean to force asking in the console.
-#' @return the api key
+#' @return the api key.
 #'
 nassqs_token <- function(force = FALSE) {
   env <- Sys.getenv('NASSQS_TOKEN')
@@ -181,8 +189,17 @@ nassqs_token <- function(force = FALSE) {
 #' Calls nassqs_GET and nassqs_parse and returns a data frame by default.
 #'
 #' @param params a named list of parameters to pass to quick stats
-#' @param as a string indicating the desired format. Default is "dataframe". Can also be "json" or "list".
+#' @param ... additional parameters passed to low level functions \code{\link{get_nass.single}}
+#' and \code{\link{get_nass.multi}}.
+#' @param as a string indicating the desired format. Default is "dataframe".
+#' Can also be "json" or "list".
 #' @return a data frame of requested data.
+#' @export
+#' @examples
+#' \dontrun{
+#' params = list(COMMODITY_NAME="Corn", YEAR=2012, STATE_ALPHA="WA")
+#' get_nass(params)
+#' }
 get_nass <- function(params, ..., as="dataframe") {
   params_are_single = TRUE
   for (p in params) {
@@ -206,10 +223,12 @@ get_nass <- function(params, ..., as="dataframe") {
 #' Calls nassqs_GET and nassqs_parse to return a data frame
 #'
 #' @param params a named list of parameters to pass to quick stats. One value per parameter.
-#' @as a string naming the format the data should be returned as. Default is dataframe.
+#' @param ... additional parameters passed to \code{\link{nassqs_parse}}.
+#' @param as a string naming the format the data should be returned as. Default is dataframe.
 #' @return a data frame of requested data.
+#' @export
 get_nass.single <- function(params, ..., as="dataframe") {
-  nassqs_parse(nassqs_GET(params, ...), as)
+  nassqs_parse(nassqs_GET(params, ...), as=as)
 }
 
 #' Get data and return a data frame, can handle multiple values for parameters.
@@ -220,7 +239,10 @@ get_nass.single <- function(params, ..., as="dataframe") {
 #' results into a single data frame. As a result, this can take some time to run...
 #'
 #' @param params a named list of parameters and the query values.
+#' @param ... additional parameters passed to \code{\link{get_nass.single}}.
+#' @param as determines the output. Can be "js", "list", or "dataframe".
 #' @return a dataframe of data
+#' @export
 get_nass.multi <- function(params, ..., as="dataframe") {
   #get a list of each parameter combination
   #TODO
@@ -240,9 +262,10 @@ get_nass.multi <- function(params, ..., as="dataframe") {
 #'
 #' Equivalent to \code{nassqs_GET(list('param'=param_name))}
 #'
-#' @param param the name of a NASS quickstats parameterc = transform(c, Value=as.numeric(Value))
+#' @param param the name of a NASS quickstats parameter.
+#' @param ... additional parameters passed to \code{\link{nassqs_parse}}.
 #' @return single column data frame containing values for that parameter.
-#'
+#' @export
 get_param_values <- function(param, ...) {
   params = list("param"=param)
   nassqs_parse(nassqs_GET(params, ..., path="get_param_values"), as="list")
@@ -254,13 +277,23 @@ get_param_values <- function(param, ...) {
 #' current parameter set returns more than the 50,000 record limit.
 #'
 #' @param params a named list of parameters and values.
+#' @param ... additional parameters passed to \code{\link{nassqs_GET}}.
 #' @return integer that is the number of records that fits those parameter values.
+#' @export
 get_record_count <- function(params, ...) {
   nassqs_GET(params, ..., path="get_counts")
 }
 
+#' Wrapper to get NASS yields for a given crop
 #'
+#' Takes a list of parameters and adds a parameter to specify yield.
+#' This is just a convenience function so that you don't have to add
+#' a yield parameter every time you want to fetch yields.
 #'
+#' @param params a named list of parameters
+#' @param ... additional parameters passed to \code{\link{get_nass}}
+#' @return a dataset of NASSQS data.
+#' @export
 #'
 get_nass_yield <- function(params, ...) {
   q = list('statisticcat_desc'='YIELD')

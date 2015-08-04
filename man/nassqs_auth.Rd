@@ -4,13 +4,13 @@
 \alias{nassqs_auth}
 \title{Authenticate the user}
 \usage{
-nassqs_auth(key = nassqs_pat())
+nassqs_auth(key = nassqs_token())
 }
 \arguments{
 \item{key}{api key. If not specified, looks for an env variable named NASSQS_TOKEN and if not available, asks at the console.}
 }
 \value{
-authentication token
+authentication token.
 }
 \description{
 the NASS API uses a basic html API key authorization, where the key is included in the

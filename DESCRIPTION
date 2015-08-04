@@ -3,7 +3,7 @@ Type: Package
 Title: R package to pull data from NASS Quickstats
 Version: 0.1
 Date: 2015-06-12
-Authors: person('Nicholas', 'Potter', email='potter.nicholas@gmail.com', role = c('aut', 'cre'))
+Authors@R: person('Nicholas', 'Potter', email='potter.nicholas@gmail.com', role = c('aut', 'cre'))
 Maintainer: Nicholas Potter <potter.nicholas@gmail.com>
 Description: R package that allows the user to access data from the NASS Quickstats web API.
 License: MIT + file LICENSE
@@ -11,6 +11,5 @@ LazyData: TRUE
 Imports:
   httr,
   jsonlite,
-  XML
 Suggests:
   testthat

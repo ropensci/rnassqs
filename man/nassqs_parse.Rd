@@ -2,17 +2,21 @@
 % Please edit documentation in R/nassqs.R
 \name{nassqs_parse}
 \alias{nassqs_parse}
-\title{Parse the returned request}
+\title{Parse the returned request.}
 \usage{
-nassqs_parse(req)
+nassqs_parse(req, ..., as = "dataframe")
 }
 \arguments{
-\item{req}{the GET request}
+\item{req}{the GET request.}
+
+\item{...}{additional parameters passed to \code{\link{nass_parse.json}}}
+
+\item{as}{indicates type of data returned. Can be one of "list", "js", or "dataframe".}
 }
 \value{
-an object formatted as desired
+a data frame of the content from the request.
 }
 \description{
-Parse the returned request
+Returns a data frame. All values are strings.
 }
 
