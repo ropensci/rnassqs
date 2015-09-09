@@ -4,14 +4,14 @@
 \alias{nassqs.single}
 \title{Get data and return a data frame, in which each parameter selected has only one value.}
 \usage{
-nassqs.single(params, ..., as = "dataframe")
+nassqs.single(params, as = c("data.frame", "list", "raw"), ...)
 }
 \arguments{
 \item{params}{a named list of parameters to pass to quick stats. One value per parameter.}
 
-\item{...}{additional parameters passed to \code{\link{nassqs_parse}}.}
-
 \item{as}{a string naming the format the data should be returned as. Default is dataframe.}
+
+\item{...}{additional parameters passed to \code{\link{nassqs_GET}}.}
 }
 \value{
 a data frame of requested data.

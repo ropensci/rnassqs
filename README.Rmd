@@ -45,19 +45,19 @@ For example, to request corn yields for all years since 2000, you would use some
                   "year__GE"=2000, 
                   "state_alpha"="VA", 
                   "statisticcat_desc"="YIELD")
-    df = get_nass(params=params) #returns data as a data frame.
+    df = nassqs(params=params) #returns data as a data frame.
 
-You could also use the helper function ```get_nass_yield()```:
+You could also use the helper function `nassqs_yield()`:
 
-    get_nass_yield(list("commodity_desc"="CORN", "agg_level_desc"="NATIONAL")) #gets US yields
+    nassqs_yield(list("commodity_desc"="CORN", "agg_level_desc"="NATIONAL")) #gets US yields
 
 
 ##Issues to Resolve
 
 1. NASS codes a few different types of missing data:
-* `(NA)` for not available
-* `(Z)`
-* `(D)`
+  * `(NA)` for not available
+  * `(Z)`
+  * `(D)` not disclosed
 
 2. Current numerical values are returned as strings, but we would like to return numeric values as floats. First we must make decisions about how to code the missing values
 
@@ -70,4 +70,4 @@ NASS also provides a daily tarred and gzipped file of their entire dataset. At t
 
 [ftp://ftp.nass.usda.gov/quickstats](ftp://ftp.nass.usda.gov/quickstats)
 
-The FTP link also contains builds for: NASS' census (every 5 years, the next is 2017), or data for one of their specific sectors (CROPS, ECONOMICS, ANIMALS & PRODUCTS). At the time of this writing, files for the ENVIRONMENTAL and DEMOGRAPHICS sectors are not available.
+The FTP link also contains builds for: NASS' census (every 5 years, the next is 2017), or data for one of their specific sectors (CROPS, ECONOMICS, ANIMALS & PRODUCTS). At the time of this writing, specific files for the ENVIRONMENTAL and DEMOGRAPHICS sectors are not available.

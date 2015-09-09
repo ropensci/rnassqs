@@ -4,14 +4,14 @@
 \alias{nassqs_parse}
 \title{Parse the returned request.}
 \usage{
-nassqs_parse(req, ..., as = "dataframe")
+nassqs_parse(req, as = c("data.frame", "list", "raw"), ...)
 }
 \arguments{
 \item{req}{the GET request.}
 
-\item{...}{additional parameters passed to \code{\link{nass_parse.json}}}
-
 \item{as}{indicates type of data returned. Can be one of "list", "js", or "dataframe".}
+
+\item{...}{additional parameters passed to \code{\link{nass_parse.json}}}
 }
 \value{
 a data frame of the content from the request.

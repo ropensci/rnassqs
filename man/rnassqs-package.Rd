@@ -21,6 +21,9 @@ It handles the API key checking and storage, authorization, and fetching of data
 \author{
 Nicholas Potter
 }
+\references{
+\url{http://quickstats.nass.usda.gov}
+}
 \seealso{
 \url{http://quickstats.nass.usda.gov/api}
 }

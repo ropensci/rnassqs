@@ -17,4 +17,12 @@ single column data frame containing values for that parameter.
 \description{
 Equivalent to \code{nassqs_GET(list('param'=param_name))}
 }
+\examples{
+\dontrun{
+  #See all values available for the statisticcat_desc field.
+  #Note that this does not provide any filtering, so for a specific
+  #set of parameters, not all of the values may be available.
+  nassqs_param_values("statisticcat_desc")
+}
+}
 

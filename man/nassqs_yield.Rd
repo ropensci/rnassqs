@@ -2,21 +2,27 @@
 % Please edit documentation in R/helpers.R
 \name{nassqs_yield}
 \alias{nassqs_yield}
-\title{Wrapper to get NASS yields for a given crop}
+\title{Get yield records for a specified crop.}
 \usage{
 nassqs_yield(params, ...)
 }
 \arguments{
 \item{params}{a named list of parameters}
 
-\item{...}{additional parameters passed to \code{\link{get_nass}}}
+\item{...}{additional parameters passed to \code{\link{nassqs}}}
 }
 \value{
 a dataset of NASSQS data.
 }
 \description{
-Takes a list of parameters and adds a parameter to specify yield.
-This is just a convenience function so that you don't have to add
-a yield parameter every time you want to fetch yields.
+Convenience function to take a list of parameters and add a parameter to
+specify yield. Equivalent to \code{nassqs(list(..., "statisticcat_desc" = "YIELD"))}
+}
+\examples{
+\dontrun{
+  #get yields for wheat in 2012, all geographies
+  params = list(commodity_desc="WHEAT", year="2012")
+  nassqs_yield(params)
+}
 }
 

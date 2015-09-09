@@ -2,7 +2,7 @@
 % Please edit documentation in R/nassqs.R
 \name{nassqs_check}
 \alias{nassqs_check}
-\title{Check the request}
+\title{Check the request.}
 \usage{
 nassqs_check(req)
 }
@@ -13,6 +13,6 @@ nassqs_check(req)
 parsed request result as json
 }
 \description{
-Check the request
+Check the request.
 }
 

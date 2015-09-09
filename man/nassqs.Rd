@@ -4,16 +4,13 @@
 \alias{nassqs}
 \title{Get data and return a data frame}
 \usage{
-nassqs(params, ..., as = "data.frame")
+nassqs(params, ...)
 }
 \arguments{
 \item{params}{a named list of parameters to pass to quick stats}
 
 \item{...}{additional parameters passed to low level functions \code{\link{get_nass.single}}
 and \code{\link{get_nass.multi}}.}
-
-\item{as}{a string indicating the desired format. Default is "dataframe".
-Can also be "json" or "list".}
 }
 \value{
 a data frame of requested data.

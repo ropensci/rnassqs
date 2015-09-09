@@ -4,14 +4,14 @@
 \alias{nassqs.multi}
 \title{Get data and return a data frame, can handle multiple values for parameters.}
 \usage{
-nassqs.multi(params, ..., as = "dataframe")
+nassqs.multi(params, as = c("data.frame", "list", "raw"), ...)
 }
 \arguments{
 \item{params}{a named list of parameters and the query values.}
 
-\item{...}{additional parameters passed to \code{\link{get_nass.single}}.}
-
 \item{as}{determines the output. Can be "js", "list", or "dataframe".}
+
+\item{...}{additional parameters passed to \code{\link{get_nass.single}}.}
 }
 \value{
 a dataframe of data

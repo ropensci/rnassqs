@@ -18,4 +18,17 @@ integer that is the number of records that fits those parameter values.
 Returns the number of records that fit a set of parameters. Useful if your
 current parameter set returns more than the 50,000 record limit.
 }
+\examples{
+\dontrun{
+  #Check the number of records returned for corn in 1995, washington state
+  params = list(
+    commodity_desc = "CORN",
+    year = "2005",
+    agg_level_desc = "STATE",
+    state_name = "WASHINGTON"
+  )
+  nassqs_record_count(params) #returns 17.
+
+}
+}
 

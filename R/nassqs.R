@@ -10,6 +10,7 @@
 #' @docType package
 #' @title rnassqs-package: Use the NASS Quickstats API from R
 #' @keywords package rnassqs-package
+#' @references \url{http://quickstats.nass.usda.gov}
 #' @examples \dontrun{
 #'
 #' }
@@ -55,7 +56,7 @@ nassqs_GET <- function(params, # a named list of queries
 
 #' Check the request.
 #'
-#' @importFROM jsonlite fromJSON
+#' @importFrom jsonlite fromJSON
 #'
 #' @param req request result returned from quickstats
 #' @return parsed request result as json
