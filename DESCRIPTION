@@ -1,11 +1,13 @@
 Package: rnassqs
 Type: Package
 Title: R package to pull data from NASS Quickstats
-Version: 0.1
+Version: 0.1.1
 Date: 2015-06-12
 Authors@R: person('Nicholas', 'Potter', email='potter.nicholas@gmail.com', role = c('aut', 'cre'))
 Maintainer: Nicholas Potter <potter.nicholas@gmail.com>
 Description: R package that allows the user to access data from the NASS Quickstats web API.
+URL: https://github.com/potterzot/rnassqs
+BugReports: http://www.github.com/potterzot/rnassqs/issues
 License: MIT + file LICENSE
 LazyData: TRUE
 Imports:

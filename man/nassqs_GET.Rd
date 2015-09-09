@@ -6,14 +6,14 @@
 http://quickstats.nass.usda.gov/api
 This is the core function, which several other nassqs functions use to request data.}
 \usage{
-nassqs_GET(params, path = "api_GET",
+nassqs_GET(params, api_path = c("api_GET", "get_param_values", "get_counts"),
   base_url = "http://quickstats.nass.usda.gov/api/", key = nassqs_auth(),
-  format = "JSON")
+  format = c("JSON", "XML", "CSV"))
 }
 \arguments{
 \item{params}{a named list of values to be queried.}
 
-\item{path}{the api path. Can be "api_GET", "get_param_values", or "get_counts"}
+\item{api_path}{the api path. Can be "api_GET", "get_param_values", or "get_counts"}
 
 \item{base_url}{the base api url. This should probably never be changed.}
 
