@@ -1,52 +1,43 @@
----
-output:
-  md_document:
-    variant: markdown_github
----
-
 <!-- README.md is generated from README.Rmd. Please edit that file -->
-
-
 [![Build Status](https://travis-ci.org/potterzot/rnassqs.svg?branch=master)](https://travis-ci.org/potterzot/rnassqs)
 
-##rnassqs (R NASS QuickStats)
+rnassqs (R NASS QuickStats)
+---------------------------
 
 This is a package that allows users to access the NASS quickstats data through their API. It is in a very early stage, but should be usable enough. Some aspects may change. You have been warned.
 
-##Installing
+Installing
+----------
 
 Install like any R package from github:
 
     library(devtools)
     install_github('potterzot/rnassqs')
 
-##API Key
+API Key
+-------
+
 To use the NASS Quickstats API you first have to [request an API key](http://quickstats.nass.usda.gov/api). You can either set a variable to this key in your files (though you run the risk of making it public, which is not a huge deal here), or you can set it in the console or in your environmental variables. To set the API key in the environment, create or edit a file in your home directory named `.Renviron`. Add a line like this:
 
     NASSQS_TOKEN="your_api_key"
 
 If you do not set the key and you are running the session interactively, R will ask you for the key at the console and then store it for the rest of the session.
 
-##Usage
+Usage
+-----
 
-The most basic level of access is with ```nassqs_GET()```, with which you can make any query of variables. For example, to mirror the request that is on the [NASS API documentation](http://quickstats.nass.usda.gov/api), you can do:
+The most basic level of access is with `nassqs_GET()`, with which you can make any query of variables. For example, to mirror the request that is on the [NASS API documentation](http://quickstats.nass.usda.gov/api), you can do:
 
     library(nassqs)
     params = list("commodity_desc"="CORN", "year__GE"=2012, "state_alpha"="VA")
     req = nassqs_GET(params=params, key=your_api_key)
     qsJSON = nassqs_parse(req)
-    
+
 NASS does not allow GET requests that pull more than 50,000 records in one request. The function will inform you if you try to do that. It will also inform you if you've requested a set of parameters for which there are no records.
 
-###Handling inequalities and operators other than "="
-The NASS API handles other operators by modifying the variable name. The API can accept the following modifications:
-* __LE = <= 
-* __LT = < 
-* __GT = > 
-* __GE = >= 
-* __LIKE = like 
-* __NOT_LIKE = not like 
-* __NE = not equal __LE = <= 
+### Handling inequalities and operators other than "="
+
+The NASS API handles other operators by modifying the variable name. The API can accept the following modifications: \* \_\_LE = &lt;= \* \_\_LT = &lt; \* \_\_GT = &gt; \* \_\_GE = &gt;= \* \_\_LIKE = like \* \_\_NOT\_LIKE = not like \* \_\_NE = not equal \_\_LE = &lt;=
 
 For example, to request corn yields for all years since 2000, you would use something like:
 
@@ -60,31 +51,26 @@ You could also use the helper function `nassqs_yield()`:
 
     nassqs_yield(list("commodity_desc"="CORN", "agg_level_desc"="NATIONAL")) #gets US yields
 
+Issues to Resolve
+-----------------
 
-##Issues to Resolve
+1.  NASS codes a few different types of missing data:
 
-1. NASS codes a few different types of missing data:
-  * `(NA)` for not available
-  * `(Z)`
-  * `(D)` not disclosed
+-   `(NA)` for not available
+-   `(Z)`
+-   `(D)` not disclosed
 
-2. Current numerical values are returned as strings, but we would like to return numeric values as floats. First we must make decisions about how to code the missing values
+1.  Current numerical values are returned as strings, but we would like to return numeric values as floats. First we must make decisions about how to code the missing values
 
-3. The NASS API only accepts a single value for each specified parameter. As a result if we want to allow users to pass arrays of values instead of a single value, we have to create a list of each unique combination of submitted parameter values and then make a separate GET request for each unique list of parameters, and then concatenate. This may take so long that its not actually worth implementing.
+2.  The NASS API only accepts a single value for each specified parameter. As a result if we want to allow users to pass arrays of values instead of a single value, we have to create a list of each unique combination of submitted parameter values and then make a separate GET request for each unique list of parameters, and then concatenate. This may take so long that its not actually worth implementing.
 
-4. Is there a better way to allow inequality (<, >, <=, >=, LIKE, NOT) queries than the NASS QS API default?
+3.  Is there a better way to allow inequality (&lt;, &gt;, &lt;=, &gt;=, LIKE, NOT) queries than the NASS QS API default?
 
-##Alternatives
+Alternatives
+------------
+
 NASS also provides a daily tarred and gzipped file of their entire dataset. At the time of writing it is approaching 1 GB. You can download that file from their FTP:
 
-[ftp://ftp.nass.usda.gov/quickstats](ftp://ftp.nass.usda.gov/quickstats)
+<ftp://ftp.nass.usda.gov/quickstats>
 
 The FTP link also contains builds for: NASS' census (every 5 years, the next is 2017), or data for one of their specific sectors (CROPS, ECONOMICS, ANIMALS & PRODUCTS). At the time of this writing, specific files for the ENVIRONMENTAL and DEMOGRAPHICS sectors are not available.
-
-```{r, echo = FALSE}
-knitr::opts_chunk$set(
-  collapse = TRUE,
-  comment = "#>",
-  fig.path = "README-"
-)
-```
