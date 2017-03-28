@@ -16,7 +16,7 @@ test:
 #DOCUMENTATION
 #document the package
 doc:
-	cd rpkg; R -e 'devtools::document()'
+	R -e 'devtools::document()'
 
 
 #Project README
@@ -27,6 +27,6 @@ readme: README.Rmd
 #R PACKAGE
 #build and install the package
 install: doc
-	R CMD check .
+	R -e 'devtools::check()'
 	R CMD INSTALL .
 
