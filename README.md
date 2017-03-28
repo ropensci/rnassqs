@@ -33,6 +33,12 @@ The most basic level of access is with `nassqs_GET()`, with which you can make a
     req = nassqs_GET(params=params, key=your_api_key)
     qsJSON = nassqs_parse(req)
 
+Note that you can request data for multiple values of the same parameter by as follows:
+
+    params = list("commodity_desc"="CORN", "year__GE"=2012, "state_alpha"="VA", "state_alpha"="WA")
+    req = nassqs_GET(params=params, key=your_api_key)
+    qsJSON = nassqs_parse(req)
+
 NASS does not allow GET requests that pull more than 50,000 records in one request. The function will inform you if you try to do that. It will also inform you if you've requested a set of parameters for which there are no records.
 
 ### Handling inequalities and operators other than "="

@@ -26,7 +26,7 @@ readme: README.Rmd
 
 #R PACKAGE
 #build and install the package
-install: doc
+install: doc readme
 	R -e 'devtools::check()'
 	R CMD INSTALL .
 
