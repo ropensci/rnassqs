@@ -1,2 +1,2 @@
 library(testthat)
-test_check("nassqs")
+test_check("rnassqs")
