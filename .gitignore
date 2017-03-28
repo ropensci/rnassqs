@@ -3,3 +3,4 @@
 .RData
 *.Rproj
 .NASSQS_apikey
+man/*

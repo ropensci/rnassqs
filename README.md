@@ -51,21 +51,6 @@ You could also use the helper function `nassqs_yield()`:
 
     nassqs_yield(list("commodity_desc"="CORN", "agg_level_desc"="NATIONAL")) #gets US yields
 
-Issues to Resolve
------------------
-
-1.  NASS codes a few different types of missing data:
-
--   `(NA)` for not available
--   `(Z)`
--   `(D)` not disclosed
-
-1.  Current numerical values are returned as strings, but we would like to return numeric values as floats. First we must make decisions about how to code the missing values
-
-2.  The NASS API only accepts a single value for each specified parameter. As a result if we want to allow users to pass arrays of values instead of a single value, we have to create a list of each unique combination of submitted parameter values and then make a separate GET request for each unique list of parameters, and then concatenate. This may take so long that its not actually worth implementing.
-
-3.  Is there a better way to allow inequality (&lt;, &gt;, &lt;=, &gt;=, LIKE, NOT) queries than the NASS QS API default?
-
 Alternatives
 ------------
 
