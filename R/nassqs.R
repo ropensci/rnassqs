@@ -41,7 +41,7 @@ nassqs_GET <- function(params, # a named list of queries
 
   #get the full param list
   query = list("key"=key)
-  for (name in names(params)) { query[name] = params[name]}
+  query = append(query, params)
   query["format"] = format
 
   # full url
