@@ -18,6 +18,11 @@ test:
 doc:
 	R -e 'devtools::document()'
 
+check:
+	R -e 'devtools::check()'
+
+build:
+	R -e 'devtools::build()'
 
 #Project README
 readme: README.Rmd
@@ -28,5 +33,4 @@ readme: README.Rmd
 #build and install the package
 install: doc readme
 	R -e 'devtools::check()'
-	R CMD INSTALL .
-
+	R -e 'devtools::install()'

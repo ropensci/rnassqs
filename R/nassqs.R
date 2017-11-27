@@ -79,7 +79,7 @@ nassqs_check <- function(req) {
 #'
 #' @param req the GET request.
 #' @param as indicates type of data returned. Can be one of "list", "js", or "dataframe".
-#' @param ... additional parameters passed to \code{\link{nass_parse.json}}
+#' @param ... additional parameters passed to \code{\link{nassqs_parse.json}}
 #' @return a data frame of the content from the request.
 nassqs_parse <- function(req, as = c("data.frame", "list", "raw"), ...) {
   as = match.arg(as)
@@ -223,13 +223,13 @@ nassqs_token <- function(force = FALSE) {
 #' @export
 #'
 #' @param params a named list of parameters to pass to quick stats
-#' @param ... additional parameters passed to low level functions \code{\link{get_nass.single}}
-#' and \code{\link{get_nass.multi}}.
+#' @param ... additional parameters passed to low level functions \code{\link{nassqs.single}}
+#' and \code{\link{nassqs.multi}}.
 #' @return a data frame of requested data.
 #' @examples
 #' \dontrun{
 #' params = list(COMMODITY_NAME="Corn", YEAR=2012, STATE_ALPHA="WA")
-#' get_nass(params)
+#' nassqs(params)
 #' }
 nassqs <- function(params, ...) {
   params_are_single = TRUE
@@ -278,7 +278,7 @@ nassqs.single <- function(params,
 #'
 #' @param params a named list of parameters and the query values.
 #' @param as determines the output. Can be "js", "list", or "dataframe".
-#' @param ... additional parameters passed to \code{\link{get_nass.single}}.
+#' @param ... additional parameters passed to \code{\link{nassqs.single}}.
 #' @return a dataframe of data
 nassqs.multi <- function(params,
                          as = c("data.frame", "list", "raw"),
