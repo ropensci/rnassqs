@@ -1,2 +1,11 @@
-language: r
-sudo: required
+language: R
+sudo: false
+cache: packages
+warnings_are_errors: false
+
+r_binary_packages:
+ - testthat
+ - knitr
+
+after_success:
+ - Rscript -e 'library(covr); coveralls()'
