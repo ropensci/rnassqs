@@ -28,6 +28,8 @@ If you do not set the key and you are running the session interactively, R will 
 Usage
 -----
 
+See the examples in [inst/examples](inst/examples) for quick recipes to download data.
+
 The most basic level of access is with `nassqs_GET()`, with which you can make any query of variables. For example, to mirror the request that is on the [NASS API documentation](http://quickstats.nass.usda.gov/api), you can do:
 
     library(nassqs)
