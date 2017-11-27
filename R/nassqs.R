@@ -277,8 +277,8 @@ nassqs.single <- function(params,
 #' @export
 #'
 #' @param params a named list of parameters and the query values.
-#' @param ... additional parameters passed to \code{\link{get_nass.single}}.
 #' @param as determines the output. Can be "js", "list", or "dataframe".
+#' @param ... additional parameters passed to \code{\link{get_nass.single}}.
 #' @return a dataframe of data
 nassqs.multi <- function(params,
                          as = c("data.frame", "list", "raw"),
@@ -290,7 +290,7 @@ nassqs.multi <- function(params,
   #run the request for each parameter combination and add the result to a data frame
   df = data.frame()
   for (params in param_set) {
-    d = get_nass.single(params, ...)
+    d = nassqs.single(params, ...)
     #TODO: concatenate the new df to the aggregate one
   }
   df
