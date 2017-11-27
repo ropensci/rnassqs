@@ -15,10 +15,9 @@ output:
 
 [![DOI](https://zenodo.org/badge/37335585.svg)](https://zenodo.org/badge/latestdoi/37335585)
 
-
 ##rnassqs (R NASS QuickStats)
 
-This is a package that allows users to access the NASS quickstats data through their API. It is in a very early stage, but should be usable enough. Some aspects may change. You have been warned.
+This is a package that allows users to access the NASS quickstats data through their API. It is fairly low level and does not include a lot of scaffolding or setup. Some things may change, but at this point it is relatively stable.
 
 ##Installing
 
@@ -28,11 +27,17 @@ Install like any R package from github:
     install_github('potterzot/rnassqs')
 
 ##API Key
-To use the NASS Quickstats API you first have to [request an API key](http://quickstats.nass.usda.gov/api). You can either set a variable to this key in your files (though you run the risk of making it public, which is not a huge deal here), or you can set it in the console or in your environmental variables. To set the API key in the environment, create or edit a file in your home directory named `.Renviron`. Add a line like this:
+To use the NASS Quickstats API you need an [API key](http://quickstats.nass.usda.gov/api). There are several ways of clueing the rnassqs package in to your api key. You can set the variable explicitly and pass it to functions, like so
 
-    NASSQS_TOKEN="your_api_key"
+    params <- list(...)                    # parameters for query 
+    api_key <- "<your api key here>"       # api key
+    data <- nassqs(params, key = api_key)  # query and return data
 
-If you do not set the key and you are running the session interactively, R will ask you for the key at the console and then store it for the rest of the session.
+Alternatively, you can set the api key as an environmental variable either by adding it to your `.Renviron` like so:
+
+    NASSQS_TOKEN="<your api key here>"
+
+or by setting it explicitly in the console by calling `rnassqs::nassqs_token()`. This will prompt you to enter the api key if not set, and return the value of the api key if it is set. If you do not set the key and you are running the session interactively, R will ask you for the key when you try to issue a query.
 
 ##Usage
 
