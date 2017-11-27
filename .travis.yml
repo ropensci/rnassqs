@@ -7,5 +7,8 @@ r_binary_packages:
  - testthat
  - knitr
 
+r_github_packages:
+ - r-lib/covr
+
 after_success:
  - Rscript -e 'library(covr); coveralls()'
