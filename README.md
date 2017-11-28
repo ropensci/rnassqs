@@ -1,9 +1,7 @@
 <!-- README.md is generated from README.Rmd. Please edit that file -->
-[![ORCiD](https://img.shields.io/badge/ORCiD-0000--0002--3410--3732-green.svg)](http://orcid.org/0000-0002-3410-3732) [![Licence](https://img.shields.io/github/license/mashape/apistatus.svg)](http://choosealicense.com/licenses/mit/)
+[![ORCiD](https://img.shields.io/badge/ORCiD-0000--0002--3410--3732-green.svg)](http://orcid.org/0000-0002-3410-3732) [![DOI](https://zenodo.org/badge/37335585.svg)](https://zenodo.org/badge/latestdoi/37335585) [![Licence](https://img.shields.io/github/license/mashape/apistatus.svg)](http://choosealicense.com/licenses/mit/)
 
-[![Build Status](https://travis-ci.org/potterzot/rnassqs.svg?branch=master)](https://travis-ci.org/potterzot/rnassqs) [![Last-changedate](https://img.shields.io/badge/last%20change-2017--11--27-brightgreen.svg)](https://github.com/potterzot/rnassqs/commits/master) [![Coverage Status](https://coveralls.io/repos/github/potterzot/climateImpact/badge.svg?branch=master)](https://coveralls.io/github/potterzot/rnassqs?branch=master)
-
-[![DOI](https://zenodo.org/badge/37335585.svg)](https://zenodo.org/badge/latestdoi/37335585)
+[![Build Status](https://travis-ci.org/potterzot/rnassqs.svg?branch=master)](https://travis-ci.org/potterzot/rnassqs) [![Last-changedate](https://img.shields.io/badge/last%20change-2017--11--28-brightgreen.svg)](https://github.com/potterzot/rnassqs/commits/master) [![Coverage Status](https://coveralls.io/repos/github/potterzot/rnassqs/badge.svg?branch=master)](https://coveralls.io/github/potterzot/rnassqs?branch=master)
 
 rnassqs (R NASS QuickStats)
 ---------------------------
