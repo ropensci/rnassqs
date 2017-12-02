@@ -7,14 +7,16 @@ clean:
 
 clean_all: clean
 
-#TESTS
+
+#Project README
+readme: README.Rmd
+	#R -e "knitr::knit('README.Rmd')"
+	R -e "rmarkdown::render('$(<F)')"
+
+#R PACKAGE
 test:
+	R -e 'devtools::test()'
 
-
-
-
-#DOCUMENTATION
-#document the package
 doc:
 	R -e 'devtools::document()'
 
@@ -24,13 +26,6 @@ check:
 build:
 	R -e 'devtools::build()'
 
-#Project README
-readme: README.Rmd
-	#R -e "knitr::knit('README.Rmd')"
-	R -e "rmarkdown::render('$(<F)')"
-
-#R PACKAGE
-#build and install the package
 install: doc readme
 	R -e 'devtools::check()'
 	R -e 'devtools::install()'
