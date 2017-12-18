@@ -7,7 +7,7 @@ output:
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
 [![ORCiD](https://img.shields.io/badge/ORCiD-0000--0002--3410--3732-green.svg)](http://orcid.org/0000-0002-3410-3732) 
-[![DOI](https://zenodo.org/badge/37335585.svg)](https://zenodo.org/badge/latestdoi/37335585)
+[![DOI](https://zenodo.org/badge/1117419.svg)](https://zenodo.org/badge/latestdoi/1117419)
 [![Licence](https://img.shields.io/github/license/mashape/apistatus.svg)](http://choosealicense.com/licenses/mit/) 
 
 [![Build Status](https://travis-ci.org/potterzot/rnassqs.svg?branch=master)](https://travis-ci.org/potterzot/rnassqs)
@@ -62,13 +62,14 @@ NASS does not allow GET requests that pull more than 50,000 records in one reque
 
 ###Handling inequalities and operators other than "="
 The NASS API handles other operators by modifying the variable name. The API can accept the following modifications:
-* __LE = <= 
-* __LT = < 
-* __GT = > 
-* __GE = >= 
-* __LIKE = like 
-* __NOT_LIKE = not like 
-* __NE = not equal __LE = <= 
+
+* __LE: <= 
+* __LT: < 
+* __GT: > 
+* __GE: >= 
+* __LIKE: like 
+* __NOT_LIKE: not like 
+* __NE: not equal 
 
 For example, to request corn yields for all years since 2000, you would use something like:
 

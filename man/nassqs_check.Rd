@@ -13,5 +13,5 @@ nassqs_check(req)
 parsed request result as json
 }
 \description{
-Check the request.
+Check that the request is valid, i.e. that it doesn't exceed 50,000 records and that all the parameter values are valid. This is helpful for checking a query before submitting it so that you don't have to wait for the query to fail.
 }

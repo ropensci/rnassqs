@@ -2,10 +2,10 @@
 % Please edit documentation in R/data.R
 \name{nassqs_fields}
 \alias{nassqs_fields}
-\title{Return list of NASS QS fields.}
+\title{Depreciated: Return list of NASS QS parameters.}
 \usage{
 nassqs_fields()
 }
 \description{
-Return list of NASS QS fields.
+Depreciated. Use \code{nassqs_params()} instead.
 }

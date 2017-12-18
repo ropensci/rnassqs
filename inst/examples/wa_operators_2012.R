@@ -1,4 +1,5 @@
 # Get NASS farm operators in the state of WA for 2012
+library(rnassqs)
 
 # Set the api key
 api_key = "<put your api key here>"

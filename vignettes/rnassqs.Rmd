@@ -1,0 +1,131 @@
+---
+title: "Using rnassqs"
+author: "Nicholas A Potter"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Using rnassqs}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+`rnassqs` is a package to access the QuickStats API from national agricultural statistics service (NASS) at the USDA. There are at least two good reasons to do this:
+
+1. **Reproducability**. donwloading the data via an R script creates a trail that you can revisit later to see exactly what you downloaded. It also makes it much easier for people seeking to replicate your results to ensure they have the same data that you do.
+
+2. **DRY**. Don't repeat yourself. Downloading data via API makes it easier to download new data as it is released, and to fetch multiple variables, geographies, or time frames without having to manually click through the QuickStats tool for each data request.
+
+In the beginning it can be more confusing, and potentially take more time, but as you become familiar with the variables and calls of the `rnassqs` package and the QuickStats database, you'll be able to quickly and easily download new data. In this document I hope to make that process easier.
+
+## Step 1: Authentication
+
+the QuickStats API requires authentication. You can get an API Key [here](https://quickstats.nass.usda.gov/api). Once you have a key, you can use it in any of the following ways:
+
+#### Put it in a file
+
+You can add a file to your project directory called `.secret` that contains any necessary API keys, and ignore it via `.gitignore` if you're using github. The advantage of this method is that you don't have to think about the API key for the rest of the project. Once the api key is in a file, you can use it like this:
+
+    # Load the api key
+    api_key <- readLines(".secret")
+
+#### Add it to your .Renviron file
+
+In your home directory create or edit the `.Renviron` file, and add `NASSQS_TOKEN=<your api key>` to the file. `R` sessions will have the variable set automatically, and `rnassqs` will detect this when querying data.
+
+#### Add it interactively
+
+If you don't want to add the API key to a file, you can enter it in the console in a session as follows
+
+    library(rnassqs)
+    
+    # Checks if the api key is set and prints it. 
+    # If it is not set, asks the user to set the value in the console.
+    nassqs_token()
+
+## Step 2: Building Queries
+
+The QuickStats API offers a bewildering array of fields on which to query. `rnassqs` tries to help navigate query building with some functions that return field names and valid values for those fields. `rnassqs::nassqs_fields()` provides the field names, which at the time of this writing are
+
+```{r}
+# returns a list of fields that you can query
+rnassqs::nassqs_fields()
+```
+
+A list of the valid values for a given field is available via `rnassqs::nassqs_field_values(field = <field name>)`. For example, 
+
+    rnassqs::nassqs_field_values(field = 'unit_desc')
+
+returns a list of valid values.to see valid units in the `unit_desc` field. There are 327 valid values at the time of this writing, with values including "STEMS", "TON / TON", "GALLONS / TANK", etc...
+
+To build a query usually requires some trial and error. One way of developing the query is to use the [QuickStats web interface](https://quickstats.nass.usda.gov/). This is often the fastest method and provides quick feedback on the subset of values for a given query. Alternatively, you can query values for each field as above and iteratively build your query. The query in the end takes the form of a list of parameters that looks like
+
+    params <- list("commodity_desc"="CORN", "year__GE"=2012, "state_alpha"="VA")
+    
+
+It's worth spending some time on the selection of values. Most queries will probably be for specific values, but you may also want to query ranges or similar values. For those queries, append one of the following to the field you'd like to modify:
+
+* __LE: less than or equal
+* __LT: less than
+* __GE: greater than or equal
+* __GT: greater than
+* __LIKE: like 
+* __NOT_LIKE: not like 
+* __NE: not equal
+
+In the above parameter list, `year__GE` is the `year` field with the `__GE` modifier attached to it. The returned data includes all records with year greater than or equal to 2012.
+
+The query above selects all the data available on Corn since 2012 in the state of Virginia. The API only returns queries that return 50,000 or less records, so it's a good idea to check that before running a query, perhaps as an assert:
+
+    # Check that the number of returned records will be less than 50000
+    records <- rnassqs::nassqs_record_count(params)
+    assertthat::assert_that(as.integer(records$count) <= 50000)
+    
+## Step 3: Running Queries
+
+Once you've built a query, running it is easy:
+
+    # Run a query given a set of parameters and an API key
+    rnassqs::nassqs(params = params, key = api_key)
+
+`nassqs` is just a wrapper around GET and PARSE functions, which you can use independently if you want to see the raw data before parsing:
+
+    # Get the data but but parse into a data.frame separately
+    raw <- rnassqs::nassqs_GET(params = params, key = api_key)
+    parsed <- rnassqs::nassqs_parse(raw, as = 'data.frame')
+
+## All together
+
+Putting all of the above together, we have a script that looks like:
+
+    library(rnassqs)
+    library(assertthat) #for checking the size of the query
+    
+    # Load the api key
+    api_key <- readLines(".secret")
+    
+    # Get a list of available fields
+    fields <- nassq_fields()
+    
+    # Get valid values for 'commodity_desc'
+    nassqs_field_values(field = 'commodity_desc')
+    
+    # Set a list of parameters to query on
+    params <- list("commodity_desc"="CORN", "year__GE"=2012, "state_alpha"="VA")
+    
+    # Check that the number of returned records will be less than 50000
+    records <- nassqs_record_count(params)
+    assert_that(as.integer(records$count) <= 50000)
+    
+    # Run a query given a set of parameters and an API key
+    nassqs(params = params, key = api_key)
+    
+    # Run the same query but parse into a data.frame separately
+    raw <- nassqs_GET(params = params, key = api_key)
+    parsed <- nassqs_parse(raw, as = 'data.frame')

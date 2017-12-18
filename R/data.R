@@ -1,6 +1,6 @@
-#' Return list of NASS QS fields.
+#' Return list of NASS QS parameters.
 #' @export
-nassqs_fields <- function() {
+nassqs_params <- function() {
   c(
     "agg_level_desc",
     "asd_code",
@@ -42,3 +42,10 @@ nassqs_fields <- function() {
     "year",
     "zip_5")
 }
+
+#' Depreciated: Return list of NASS QS parameters.
+#' 
+#' Depreciated. Use \code{nassqs_params()} instead.
+#' @export
+nassqs_fields <- function() { nassqs_params() }
+  
