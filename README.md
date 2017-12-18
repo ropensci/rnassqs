@@ -9,21 +9,26 @@ Status](https://travis-ci.org/potterzot/rnassqs.svg?branch=master)](https://trav
 [![Coverage
 Status](https://coveralls.io/repos/github/potterzot/rnassqs/badge.svg?branch=master)](https://coveralls.io/github/potterzot/rnassqs?branch=master)
 
-\#\#rnassqs (R NASS QuickStats)
+rnassqs (R NASS QuickStats)
+---------------------------
 
 This is a package that allows users to access the NASS quickstats data
 through their API. It is fairly low level and does not include a lot of
 scaffolding or setup. Some things may change, but at this point it is
 relatively stable.
 
-\#\#Installing
+Installing
+----------
 
 Install like any R package from github:
 
     library(devtools)
     install_github('potterzot/rnassqs')
 
-\#\#API Key To use the NASS Quickstats API you need an [API
+API Key
+-------
+
+To use the NASS Quickstats API you need an [API
 key](http://quickstats.nass.usda.gov/api). There are several ways of
 clueing the rnassqs package in to your api key. You can set the variable
 explicitly and pass it to functions, like so
@@ -43,7 +48,8 @@ not set, and return the value of the api key if it is set. If you do not
 set the key and you are running the session interactively, R will ask
 you for the key when you try to issue a query.
 
-\#\#Usage
+Usage
+-----
 
 See the examples in [inst/examples](inst/examples) for quick recipes to
 download data.
@@ -70,9 +76,10 @@ one request. The function will inform you if you try to do that. It will
 also inform you if you’ve requested a set of parameters for which there
 are no records.
 
-\#\#\#Handling inequalities and operators other than “=” The NASS API
-handles other operators by modifying the variable name. The API can
-accept the following modifications:
+### Handling inequalities and operators other than “=”
+
+The NASS API handles other operators by modifying the variable name. The
+API can accept the following modifications:
 
 -   \_\_LE: &lt;=
 -   \_\_LT: &lt;
@@ -95,9 +102,12 @@ You could also use the helper function `nassqs_yield()`:
 
     nassqs_yield(list("commodity_desc"="CORN", "agg_level_desc"="NATIONAL")) #gets US yields
 
-\#\#Alternatives NASS also provides a daily tarred and gzipped file of
-their entire dataset. At the time of writing it is approaching 1 GB. You
-can download that file from their FTP:
+Alternatives
+------------
+
+NASS also provides a daily tarred and gzipped file of their entire
+dataset. At the time of writing it is approaching 1 GB. You can download
+that file from their FTP:
 
 <ftp://ftp.nass.usda.gov/quickstats>
 
