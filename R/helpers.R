@@ -21,10 +21,11 @@ nassqs_field_values <- function(field) {
 #'
 #' Use \code{nassqs_field_values()} instead.
 #' 
+#' @param param the name of a NASS quickstats field.
 #' @export
-nassqs_param_values <- function(param, ...) {
+nassqs_param_values <- function(param) {
   params = list("param"=param)
-  nassqs_parse(nassqs_GET(params, ..., api_path="get_param_values"), as="list")
+  nassqs_parse(nassqs_GET(params, api_path="get_param_values"), as="list")
 }
 
 #' Get a count of number of records for given parameters.

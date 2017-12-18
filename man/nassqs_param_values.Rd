@@ -4,7 +4,10 @@
 \alias{nassqs_param_values}
 \title{Depreciated: Get all values for a specific parameter.}
 \usage{
-nassqs_param_values(param, ...)
+nassqs_param_values(param)
+}
+\arguments{
+\item{param}{the name of a NASS quickstats field.}
 }
 \description{
 Use \code{nassqs_field_values()} instead.
