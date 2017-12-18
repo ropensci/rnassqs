@@ -1,6 +1,6 @@
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 [![ORCiD](https://img.shields.io/badge/ORCiD-0000--0002--3410--3732-green.svg)](http://orcid.org/0000-0002-3410-3732)
-[![DOI](https://zenodo.org/badge/1117419.svg)](https://zenodo.org/badge/latestdoi/1117419)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.1117419.svg)](https://doi.org/10.5281/zenodo.1117419)
 [![Licence](https://img.shields.io/github/license/mashape/apistatus.svg)](http://choosealicense.com/licenses/mit/)
 
 [![Build
