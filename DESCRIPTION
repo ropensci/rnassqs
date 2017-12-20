@@ -1,7 +1,7 @@
 Package: rnassqs
 Type: Package
 Title: R package to pull data from NASS Quickstats
-Version: 0.2.0
+Version: 0.2.1
 Date: 2015-06-12
 Authors@R: person('Nicholas', 'Potter', email='potter.nicholas@gmail.com', role = c('aut', 'cre'))
 Maintainer: Nicholas Potter <potter.nicholas@gmail.com>
