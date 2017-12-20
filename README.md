@@ -5,7 +5,7 @@
 
 [![Build
 Status](https://travis-ci.org/potterzot/rnassqs.svg?branch=master)](https://travis-ci.org/potterzot/rnassqs)
-[![Last-changedate](https://img.shields.io/badge/last%20change-2017--12--17-brightgreen.svg)](https://github.com/potterzot/rnassqs/commits/master)
+[![Last-changedate](https://img.shields.io/badge/last%20change-2017--12--20-brightgreen.svg)](https://github.com/potterzot/rnassqs/commits/master)
 [![Coverage
 Status](https://coveralls.io/repos/github/potterzot/rnassqs/badge.svg?branch=master)](https://coveralls.io/github/potterzot/rnassqs?branch=master)
 

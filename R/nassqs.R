@@ -8,7 +8,7 @@
 #' @name rnassqs-package
 #' @aliases rnassqs
 #' @docType package
-#' @title rnassqs-package: Use the NASS Quickstats API from R
+#' @title rnassqs-package: Use the NASS Quickstats API from R.
 #' @keywords package rnassqs-package
 #' @references \url{http://quickstats.nass.usda.gov}
 #' @examples \dontrun{
@@ -69,7 +69,9 @@ nassqs_check <- function(req) {
   else if (req$status_code == 413) {
     stop("Request was too large. NASS requires that an API call returns a maximum of 50k records.", call. = FALSE)
   }
-  stop("HTTP Failure: ", req$status_code, "\n", fromJSON(content(req, as="text")), call. = FALSE)
+  else {
+    stop("HTTP Failure: ", req$status_code, "\n", fromJSON(content(req, as="text", type="text/json")), call. = FALSE)
+  }
 }
 
 #' Parse the returned request.
@@ -86,7 +88,7 @@ nassqs_check <- function(req) {
 nassqs_parse <- function(req, as = c("data.frame", "list", "raw"), ...) {
   as = match.arg(as)
 
-  text <- content(req, as = "text")
+  text <- content(req, as = "text", type="text/json")
   if (identical(text, "")) {
     stop("Response is empty.")
   }

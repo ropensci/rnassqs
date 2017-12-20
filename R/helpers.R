@@ -4,7 +4,7 @@
 #'
 #' @export
 #'
-#' @param field the name of a NASS quickstats field.
+#' @param param the name of a NASS quickstats field.
 #' @return a list containing values for that parameter.
 #' @examples \dontrun{
 #'   #See all values available for the statisticcat_desc field.
@@ -12,19 +12,19 @@
 #'   #set of parameters, not all of the values may be available.
 #'   nassqs_field_values("statisticcat_desc")
 #' }
-nassqs_field_values <- function(field) {
-  params = list("field"=field)
+nassqs_params_values <- function(param) {
+  params = list("field"=param)
   nassqs_parse(nassqs_GET(params, api_path="get_param_values"), as="list")
 }
 
 #' Depreciated: Get all values for a specific parameter.
 #'
-#' Use \code{nassqs_field_values()} instead.
+#' Use \code{nassqs_param_values()} instead.
 #' 
-#' @param param the name of a NASS quickstats field.
+#' @param field the name of a NASS quickstats field.
 #' @export
-nassqs_param_values <- function(param) {
-  params = list("param"=param)
+nassqs_field_values <- function(field) {
+  params = list("param"=field)
   nassqs_parse(nassqs_GET(params, api_path="get_param_values"), as="list")
 }
 

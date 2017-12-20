@@ -2,24 +2,13 @@
 % Please edit documentation in R/helpers.R
 \name{nassqs_field_values}
 \alias{nassqs_field_values}
-\title{Get all values for a specific parameter.}
+\title{Depreciated: Get all values for a specific parameter.}
 \usage{
 nassqs_field_values(field)
 }
 \arguments{
 \item{field}{the name of a NASS quickstats field.}
 }
-\value{
-a list containing values for that parameter.
-}
 \description{
-Equivalent to \code{nassqs_GET(list('param'=param_name))}
-}
-\examples{
-\dontrun{
-  #See all values available for the statisticcat_desc field.
-  #Note that this does not provide any filtering, so for a specific
-  #set of parameters, not all of the values may be available.
-  nassqs_field_values("statisticcat_desc")
-}
+Use \code{nassqs_param_values()} instead.
 }
