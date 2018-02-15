@@ -113,7 +113,9 @@ nassqs_parse <- function(req, as = c("data.frame", "list", "raw"), ...) {
     c = nassqs_parse.csv(text, as = as, ...)
     stop("CSV is not yet implemented in rnassqs. Use JSON instead.")
   }
-
+  
+  #remove the "data." from the beginning of all names
+  if(as != "raw") names(c) <- sapply(names(df), function(n) { substring(n, 6) }, USE.NAMES = FALSE)
   c
 }
 
