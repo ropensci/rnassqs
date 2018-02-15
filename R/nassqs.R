@@ -115,7 +115,7 @@ nassqs_parse <- function(req, as = c("data.frame", "list", "raw"), ...) {
   }
   
   #remove the "data." from the beginning of all names
-  if(as != "raw") names(c) <- sapply(names(df), function(n) { substring(n, 6) }, USE.NAMES = FALSE)
+  if(as != "raw") names(c) <- gsub("data.", "", names(c))
   c
 }
 
