@@ -1,4 +1,4 @@
-all: clean_all data_all doc test paper readme
+all: clean_all doc test readme
 
 #CLEANING
 #remove any intermediate files
