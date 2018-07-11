@@ -20,7 +20,7 @@ Calls nassqs_GET and nassqs_parse and returns a data frame by default.
 }
 \examples{
 \dontrun{
-params = list(COMMODITY_NAME="Corn", YEAR=2012, STATE_ALPHA="WA")
+params = list(COMMODITY_NAME="CORN", YEAR=2012, STATE_ALPHA="WA")
 nassqs(params)
 }
 }

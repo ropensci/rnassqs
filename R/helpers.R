@@ -107,6 +107,8 @@ nassqs_area <- function(params,
   nassqs(q, ...)
 }
 
+#' @importFrom stats setNames
+#' @importFrom utils stack
 expand_list <- function(listx){
   res <- stack(listx)    
   as.list(setNames(res$values, res$ind))
