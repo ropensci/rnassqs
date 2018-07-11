@@ -17,3 +17,10 @@ test_that("nassqs_param_values returns list of characters.", {
   #expect_is(v[1], "list")
 })
 
+test_that("passing vectors as arguments works.", {
+  # params = list("commodity_desc"="CORN", 
+  #               "year__GE"=2012, 
+  #               "state_alpha"=c("VA", "PA"))
+  #               
+  # df = nassqs(params=params, key = key)
+})

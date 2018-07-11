@@ -107,3 +107,7 @@ nassqs_area <- function(params,
   nassqs(q, ...)
 }
 
+expand_list <- function(listx){
+  res <- stack(listx)    
+  as.list(setNames(res$values, res$ind))
+}
