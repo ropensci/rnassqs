@@ -9,8 +9,7 @@ nassqs(params, ...)
 \arguments{
 \item{params}{a named list of parameters to pass to quick stats}
 
-\item{...}{additional parameters passed to low level functions \code{\link{nassqs.single}}
-and \code{\link{nassqs.multi}}.}
+\item{...}{additional parameters passed to the low level function \code{\link{nassqs.single}}.}
 }
 \value{
 a data frame of requested data.

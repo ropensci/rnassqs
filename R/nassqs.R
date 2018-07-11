@@ -231,8 +231,7 @@ nassqs_token <- function(force = FALSE) {
 #' @export
 #'
 #' @param params a named list of parameters to pass to quick stats
-#' @param ... additional parameters passed to low level functions \code{\link{nassqs.single}}
-#' and \code{\link{nassqs.multi}}.
+#' @param ... additional parameters passed to the low level function \code{\link{nassqs.single}}.
 #' @return a data frame of requested data.
 #' @examples
 #' \dontrun{
