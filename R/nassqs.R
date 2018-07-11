@@ -11,9 +11,6 @@
 #' @title rnassqs-package: Use the NASS Quickstats API from R.
 #' @keywords package rnassqs-package
 #' @references \url{http://quickstats.nass.usda.gov}
-#' @examples \dontrun{
-#'
-#' }
 #' @seealso \url{http://quickstats.nass.usda.gov/api}
 NULL
 

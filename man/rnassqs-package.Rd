@@ -13,11 +13,6 @@ QuickStats data from R directly.  Based on the httr api package guide.
 The functions in this package facilitate getting data from NASS QuickStats.
 It handles the API key checking and storage, authorization, and fetching of data.
 }
-\examples{
-\dontrun{
-
-}
-}
 \references{
 \url{http://quickstats.nass.usda.gov}
 }
