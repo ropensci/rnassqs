@@ -9,8 +9,7 @@ nassqs(params, ...)
 \arguments{
 \item{params}{a named list of parameters to pass to quick stats}
 
-\item{...}{additional parameters passed to low level functions \code{\link{nassqs.single}}
-and \code{\link{nassqs.multi}}.}
+\item{...}{additional parameters passed to the low level function \code{\link{nassqs.single}}.}
 }
 \value{
 a data frame of requested data.
@@ -20,7 +19,7 @@ Calls nassqs_GET and nassqs_parse and returns a data frame by default.
 }
 \examples{
 \dontrun{
-params = list(COMMODITY_NAME="Corn", YEAR=2012, STATE_ALPHA="WA")
+params = list(COMMODITY_NAME="CORN", YEAR=2012, STATE_ALPHA="WA")
 nassqs(params)
 }
 }

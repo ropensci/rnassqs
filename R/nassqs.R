@@ -11,9 +11,6 @@
 #' @title rnassqs-package: Use the NASS Quickstats API from R.
 #' @keywords package rnassqs-package
 #' @references \url{http://quickstats.nass.usda.gov}
-#' @examples \dontrun{
-#'
-#' }
 #' @seealso \url{http://quickstats.nass.usda.gov/api}
 NULL
 
@@ -40,12 +37,14 @@ nassqs_GET <- function(params, # a named list of queries
   format = match.arg(format)
 
   #get the full param list
+  params <- expand_list(params)
   query = list("key"=key)
   query = append(query, params)
+  
   query["format"] = format
 
   # full url
-  url = paste0(base_url,api_path)
+  url = paste0(base_url, api_path)
 
   # GET request and check
   req <- GET(url, query=query)
@@ -229,30 +228,15 @@ nassqs_token <- function(force = FALSE) {
 #' @export
 #'
 #' @param params a named list of parameters to pass to quick stats
-#' @param ... additional parameters passed to low level functions \code{\link{nassqs.single}}
-#' and \code{\link{nassqs.multi}}.
+#' @param ... additional parameters passed to the low level function \code{\link{nassqs.single}}.
 #' @return a data frame of requested data.
 #' @examples
 #' \dontrun{
-#' params = list(COMMODITY_NAME="Corn", YEAR=2012, STATE_ALPHA="WA")
+#' params = list(COMMODITY_NAME="CORN", YEAR=2012, STATE_ALPHA="WA")
 #' nassqs(params)
 #' }
 nassqs <- function(params, ...) {
-  params_are_single = TRUE
-  for (p in params) {
-    if (length(params[p])!=1) {
-      # we need the much more complication function
-      params_are_single = FALSE
-    }
-  }
-
-  if (params_are_single) {
     nassqs.single(params, ...)
-  }
-  else {
-    #
-    nassqs.multi(params, ...)
-  }
 }
 
 #' Get data and return a data frame, in which each parameter selected has only one value.
@@ -272,38 +256,3 @@ nassqs.single <- function(params,
   as = match.arg(as)
   nassqs_parse(nassqs_GET(params, ...), as=as)
 }
-
-#' Get data and return a data frame, can handle multiple values for parameters.
-#'
-#' Warning - the NASS QS API does not allow more than a single value per GET request.
-#' To handle multiple values, this function splits the parameters into a set of single
-#' value requests and issues a GET request for each set of values, then combines the
-#' results into a single data frame. As a result, this can take some time to run...
-#'
-#' @export
-#'
-#' @param params a named list of parameters and the query values.
-#' @param as determines the output. Can be "js", "list", or "dataframe".
-#' @param ... additional parameters passed to \code{\link{nassqs.single}}.
-#' @return a dataframe of data
-nassqs.multi <- function(params,
-                         as = c("data.frame", "list", "raw"),
-                         ...) {
-  #get a list of each parameter combination
-  #TODO
-  param_set = NULL
-
-  #run the request for each parameter combination and add the result to a data frame
-  df = data.frame()
-  for (params in param_set) {
-    d = nassqs.single(params, ...)
-    #TODO: concatenate the new df to the aggregate one
-  }
-  df
-}
-
-
-
-
-
-
