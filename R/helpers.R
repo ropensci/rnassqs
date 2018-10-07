@@ -13,8 +13,8 @@
 #'   nassqs_field_values("statisticcat_desc")
 #' }
 nassqs_params_values <- function(param) {
-  params = list("field"=param)
-  nassqs_parse(nassqs_GET(params, api_path="get_param_values"), as="list")
+  params = list("param"=param)
+  nassqs_parse(nassqs_GET(params, api_path="get_param_values"), as="list")[[1]]
 }
 
 #' Depreciated: Get all values for a specific parameter.
@@ -25,7 +25,7 @@ nassqs_params_values <- function(param) {
 #' @export
 nassqs_field_values <- function(field) {
   params = list("param"=field)
-  nassqs_parse(nassqs_GET(params, api_path="get_param_values"), as="list")
+  nassqs_parse(nassqs_GET(params, api_path="get_param_values"), as="list")[[1]]
 }
 
 #' Get a count of number of records for given parameters.

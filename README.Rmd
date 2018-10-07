@@ -59,8 +59,6 @@ Note that you can request data for multiple values of the same parameter by as f
 
 NASS does not allow GET requests that pull more than 50,000 records in one request. The function will inform you if you try to do that. It will also inform you if you've requested a set of parameters for which there are no records.
 
-
-
 ### Handling inequalities and operators other than "="
 The NASS API handles other operators by modifying the variable name. The API can accept the following modifications:
 
@@ -72,13 +70,15 @@ The NASS API handles other operators by modifying the variable name. The API can
 * __NOT_LIKE: not like 
 * __NE: not equal 
 
-For example, to request corn yields for all years since 2000, you would use something like:
+For example, to request corn yields in Virginia and Pennsylvania for all years since 2000, you would use something like:
 
     params = list("commodity_desc"="CORN", 
                   "year__GE"=2000, 
-                  "state_alpha"="VA", 
+                  "state_alpha"=c("VA", "PA"), 
                   "statisticcat_desc"="YIELD")
     df = nassqs(params=params) #returns data as a data frame.
+
+This also demonstrates the use of multiple values as a list, where in the above query we select both "VA" and "PA".
 
 You could also use the helper function `nassqs_yield()`:
 
