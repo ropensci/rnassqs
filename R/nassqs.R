@@ -16,7 +16,7 @@ NULL
 
 #' Issue a GET request to the NASS API
 #'http://quickstats.nass.usda.gov/api
-#' This is the core function, which several other nassqs functions use to request data.
+#' This is the core function, which several other rnassqs functions use to request data.
 #'
 #' @importFrom httr GET
 #' @export
@@ -40,7 +40,7 @@ nassqs_GET <- function(params, # a named list of queries
   params <- expand_list(params)
   query = list("key"=key)
   query = append(query, params)
-  
+
   query["format"] = format
 
   # full url
@@ -54,7 +54,7 @@ nassqs_GET <- function(params, # a named list of queries
 }
 
 #' Check the request.
-#' 
+#'
 #' Check that the request is valid, i.e. that it doesn't exceed 50,000 records and that all the parameter values are valid. This is helpful for checking a query before submitting it so that you don't have to wait for the query to fail.
 #'
 #' @importFrom jsonlite fromJSON
@@ -112,7 +112,7 @@ nassqs_parse <- function(req, as = c("data.frame", "list", "raw"), ...) {
     c = nassqs_parse.csv(text, as = as, ...)
     stop("CSV is not yet implemented in rnassqs. Use JSON instead.")
   }
-  
+
   #remove the "data." from the beginning of all names
   if(as != "raw") names(c) <- gsub("data.", "", names(c))
   c
