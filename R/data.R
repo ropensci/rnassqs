@@ -43,9 +43,8 @@ nassqs_params <- function() {
     "zip_5")
 }
 
-#' Depreciated: Return list of NASS QS parameters.
-#' 
-#' Depreciated. Use \code{nassqs_params()} instead.
+#' Deprecated: Return list of NASS QS parameters.
+#'
+#' Deprecated. Use \code{nassqs_params()} instead.
 #' @export
 nassqs_fields <- function() { nassqs_params() }
-  

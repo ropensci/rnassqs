@@ -17,10 +17,10 @@ nassqs_params_values <- function(param) {
   nassqs_parse(nassqs_GET(params, api_path="get_param_values"), as="list")[[1]]
 }
 
-#' Depreciated: Get all values for a specific parameter.
+#' Deprecated: Get all values for a specific parameter.
 #'
 #' Use \code{nassqs_param_values()} instead.
-#' 
+#'
 #' @param field the name of a NASS quickstats field.
 #' @export
 nassqs_field_values <- function(field) {
@@ -39,7 +39,7 @@ nassqs_field_values <- function(field) {
 #' @param ... additional parameters passed to \code{\link{nassqs_GET}}.
 #' @return integer that is the number of records that fits those parameter values.
 #' @examples \dontrun{
-#'   #Check the number of records returned for corn in 1995, washington state
+#'   #Check the number of records returned for corn in 1995, Washington state
 #'   params = list(
 #'     commodity_desc = "CORN",
 #'     year = "2005",
@@ -110,6 +110,6 @@ nassqs_area <- function(params,
 #' @importFrom stats setNames
 #' @importFrom utils stack
 expand_list <- function(listx){
-  res <- stack(listx)    
+  res <- stack(listx)
   as.list(setNames(res$values, res$ind))
 }
