@@ -4,11 +4,11 @@
 \alias{nassqs_GET}
 \title{Issue a GET request to the NASS API
 http://quickstats.nass.usda.gov/api
-This is the core function, which several other nassqs functions use to request data.}
+This is the core function, which several other rnassqs functions use to request data.}
 \usage{
-nassqs_GET(params, api_path = c("api_GET", "get_param_values", "get_counts"),
-  base_url = "http://quickstats.nass.usda.gov/api/", key = nassqs_auth(),
-  format = c("JSON", "XML", "CSV"))
+nassqs_GET(params, api_path = c("api_GET", "get_param_values",
+  "get_counts"), base_url = "http://quickstats.nass.usda.gov/api/",
+  key = nassqs_auth(), format = c("JSON", "XML", "CSV"))
 }
 \arguments{
 \item{params}{a named list of values to be queried.}
@@ -27,5 +27,5 @@ data returned in the format specified.
 \description{
 Issue a GET request to the NASS API
 http://quickstats.nass.usda.gov/api
-This is the core function, which several other nassqs functions use to request data.
+This is the core function, which several other rnassqs functions use to request data.
 }

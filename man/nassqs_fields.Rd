@@ -7,5 +7,5 @@
 nassqs_fields()
 }
 \description{
-deprecated. Use \code{nassqs_params()} instead.
+Deprecated. Use \code{nassqs_params()} instead.
 }

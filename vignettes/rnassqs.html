@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<meta name="author" content="Nicholas A Potter" />
+
+<meta name="date" content="2019-04-26" />
+
+<title>Using rnassqs</title>
+
+
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css" data-origin="pandoc">
+div.sourceLine, a.sourceLine { display: inline-block; min-height: 1.25em; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; }
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+div.sourceLine, a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource div.sourceLine, .numberSource a.sourceLine
+  { position: relative; }
+pre.numberSource div.sourceLine::before, .numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: absolute; left: -5em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em; }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa; color: #aaaaaa;  padding-left: 4px; }
+@media screen {
+a.sourceLine::before { text-decoration: underline; color: initial; }
+}
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.bn { color: #40a070; } /* BaseN */
+code span.fl { color: #40a070; } /* Float */
+code span.ch { color: #4070a0; } /* Char */
+code span.st { color: #4070a0; } /* String */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.ot { color: #007020; } /* Other */
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.fu { color: #06287e; } /* Function */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code span.cn { color: #880000; } /* Constant */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.im { } /* Import */
+code span.va { color: #19177c; } /* Variable */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.op { color: #666666; } /* Operator */
+code span.bu { } /* BuiltIn */
+code span.ex { } /* Extension */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.at { color: #7d9029; } /* Attribute */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+
+</style>
+<script>
+// apply pandoc div.sourceCode style to pre.sourceCode instead
+(function() {
+  var sheets = document.styleSheets;
+  for (var i = 0; i < sheets.length; i++) {
+    if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
+    try { var rules = sheets[i].cssRules; } catch (e) { continue; }
+    for (var j = 0; j < rules.length; j++) {
+      var rule = rules[j];
+      // check if there is a div.sourceCode rule
+      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") continue;
+      var style = rule.style.cssText;
+      // check if color or background-color is set
+      if (rule.style.color === '' || rule.style.backgroundColor === '') continue;
+      // replace div.sourceCode by a pre.sourceCode rule
+      sheets[i].deleteRule(j);
+      sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
+    }
+  }
+})();
+</script>
+
+
+
+<style type="text/css">body {
+background-color: #fff;
+margin: 1em auto;
+max-width: 700px;
+overflow: visible;
+padding-left: 2em;
+padding-right: 2em;
+font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+font-size: 14px;
+line-height: 1.35;
+}
+#header {
+text-align: center;
+}
+#TOC {
+clear: both;
+margin: 0 0 10px 10px;
+padding: 4px;
+width: 400px;
+border: 1px solid #CCCCCC;
+border-radius: 5px;
+background-color: #f6f6f6;
+font-size: 13px;
+line-height: 1.3;
+}
+#TOC .toctitle {
+font-weight: bold;
+font-size: 15px;
+margin-left: 5px;
+}
+#TOC ul {
+padding-left: 40px;
+margin-left: -1.5em;
+margin-top: 5px;
+margin-bottom: 5px;
+}
+#TOC ul ul {
+margin-left: -2em;
+}
+#TOC li {
+line-height: 16px;
+}
+table {
+margin: 1em auto;
+border-width: 1px;
+border-color: #DDDDDD;
+border-style: outset;
+border-collapse: collapse;
+}
+table th {
+border-width: 2px;
+padding: 5px;
+border-style: inset;
+}
+table td {
+border-width: 1px;
+border-style: inset;
+line-height: 18px;
+padding: 5px 5px;
+}
+table, table th, table td {
+border-left-style: none;
+border-right-style: none;
+}
+table thead, table tr.even {
+background-color: #f7f7f7;
+}
+p {
+margin: 0.5em 0;
+}
+blockquote {
+background-color: #f6f6f6;
+padding: 0.25em 0.75em;
+}
+hr {
+border-style: solid;
+border: none;
+border-top: 1px solid #777;
+margin: 28px 0;
+}
+dl {
+margin-left: 0;
+}
+dl dd {
+margin-bottom: 13px;
+margin-left: 13px;
+}
+dl dt {
+font-weight: bold;
+}
+ul {
+margin-top: 0;
+}
+ul li {
+list-style: circle outside;
+}
+ul ul {
+margin-bottom: 0;
+}
+pre, code {
+background-color: #f7f7f7;
+border-radius: 3px;
+color: #333;
+white-space: pre-wrap; 
+}
+pre {
+border-radius: 3px;
+margin: 5px 0px 10px 0px;
+padding: 10px;
+}
+pre:not([class]) {
+background-color: #f7f7f7;
+}
+code {
+font-family: Consolas, Monaco, 'Courier New', monospace;
+font-size: 85%;
+}
+p > code, li > code {
+padding: 2px 0px;
+}
+div.figure {
+text-align: center;
+}
+img {
+background-color: #FFFFFF;
+padding: 2px;
+border: 1px solid #DDDDDD;
+border-radius: 3px;
+border: 1px solid #CCCCCC;
+margin: 0 5px;
+}
+h1 {
+margin-top: 0;
+font-size: 35px;
+line-height: 40px;
+}
+h2 {
+border-bottom: 4px solid #f7f7f7;
+padding-top: 10px;
+padding-bottom: 2px;
+font-size: 145%;
+}
+h3 {
+border-bottom: 2px solid #f7f7f7;
+padding-top: 10px;
+font-size: 120%;
+}
+h4 {
+border-bottom: 1px solid #f7f7f7;
+margin-left: 8px;
+font-size: 105%;
+}
+h5, h6 {
+border-bottom: 1px solid #ccc;
+font-size: 105%;
+}
+a {
+color: #0033dd;
+text-decoration: none;
+}
+a:hover {
+color: #6666ff; }
+a:visited {
+color: #800080; }
+a:visited:hover {
+color: #BB00BB; }
+a[href^="http:"] {
+text-decoration: underline; }
+a[href^="https:"] {
+text-decoration: underline; }
+
+code > span.kw { color: #555; font-weight: bold; } 
+code > span.dt { color: #902000; } 
+code > span.dv { color: #40a070; } 
+code > span.bn { color: #d14; } 
+code > span.fl { color: #d14; } 
+code > span.ch { color: #d14; } 
+code > span.st { color: #d14; } 
+code > span.co { color: #888888; font-style: italic; } 
+code > span.ot { color: #007020; } 
+code > span.al { color: #ff0000; font-weight: bold; } 
+code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61717; background-color: #e3d2d2; } 
+</style>
+
+</head>
+
+<body>
+
+
+
+
+<h1 class="title toc-ignore">Using rnassqs</h1>
+<h4 class="author"><em>Nicholas A Potter</em></h4>
+<h4 class="date"><em>2019-04-26</em></h4>
+
+
+
+<p><code>rnassqs</code> is a package to access the QuickStats API from national agricultural statistics service (NASS) at the USDA. There are at least two good reasons to do this:</p>
+<ol style="list-style-type: decimal">
+<li><p><strong>Reproducability</strong>. donwloading the data via an R script creates a trail that you can revisit later to see exactly what you downloaded. It also makes it much easier for people seeking to replicate your results to ensure they have the same data that you do.</p></li>
+<li><p><strong>DRY</strong>. Don’t repeat yourself. Downloading data via API makes it easier to download new data as it is released, and to fetch multiple variables, geographies, or time frames without having to manually click through the QuickStats tool for each data request.</p></li>
+</ol>
+<p>In the beginning it can be more confusing, and potentially take more time, but as you become familiar with the variables and calls of the <code>rnassqs</code> package and the QuickStats database, you’ll be able to quickly and easily download new data.</p>
+<div id="step-1-authentication" class="section level2">
+<h2>Step 1: Authentication</h2>
+<p>the QuickStats API requires authentication. You can get an API Key <a href="https://quickstats.nass.usda.gov/api">here</a>. Once you have a key, you can use it in any of the following ways:</p>
+<div id="put-it-in-a-file" class="section level4">
+<h4>Put it in a file</h4>
+<p>You can add a file to your project directory called <code>.secret</code> that contains any necessary API keys, and ignore it via <code>.gitignore</code> if you’re using github. The advantage of this method is that you don’t have to think about the API key for the rest of the project. Once the api key is in a file, you can use it like this:</p>
+<pre><code># Load the api key
+api_key &lt;- readLines(&quot;.secret&quot;)</code></pre>
+</div>
+<div id="add-it-to-your-.renviron-file" class="section level4">
+<h4>Add it to your .Renviron file</h4>
+<p>In your home directory create or edit the <code>.Renviron</code> file, and add <code>NASSQS_TOKEN=&lt;your api key&gt;</code> to the file. <code>R</code> sessions will have the variable set automatically, and <code>rnassqs</code> will detect this when querying data.</p>
+</div>
+<div id="add-it-interactively" class="section level4">
+<h4>Add it interactively</h4>
+<p>If you don’t want to add the API key to a file, you can enter it in the console in a session as follows</p>
+<pre><code>library(rnassqs)
+
+# Checks if the api key is set and prints it. 
+# If it is not set, asks the user to set the value in the console.
+nassqs_token()</code></pre>
+</div>
+</div>
+<div id="step-2-building-queries" class="section level2">
+<h2>Step 2: Building Queries</h2>
+<p>The QuickStats API offers a bewildering array of fields on which to query. <code>rnassqs</code> tries to help navigate query building with some functions that return field names and valid values for those fields. <code>rnassqs::nassqs_fields()</code> provides the field names, which at the time of this writing are</p>
+<pre class="sourceCode r" id="cb3"><code class="sourceCode r"><div class="sourceLine" id="cb3-1" data-line-number="1"><span class="co"># returns a list of fields that you can query</span></div>
+<div class="sourceLine" id="cb3-2" data-line-number="2">rnassqs<span class="op">::</span><span class="kw">nassqs_fields</span>()</div>
+<div class="sourceLine" id="cb3-3" data-line-number="3"><span class="co">#&gt;  [1] &quot;agg_level_desc&quot;        &quot;asd_code&quot;             </span></div>
+<div class="sourceLine" id="cb3-4" data-line-number="4"><span class="co">#&gt;  [3] &quot;asd_desc&quot;              &quot;begin_code&quot;           </span></div>
+<div class="sourceLine" id="cb3-5" data-line-number="5"><span class="co">#&gt;  [5] &quot;class_desc&quot;            &quot;commodity_desc&quot;       </span></div>
+<div class="sourceLine" id="cb3-6" data-line-number="6"><span class="co">#&gt;  [7] &quot;congr_district_code&quot;   &quot;country_code&quot;         </span></div>
+<div class="sourceLine" id="cb3-7" data-line-number="7"><span class="co">#&gt;  [9] &quot;country_name&quot;          &quot;county_ansi&quot;          </span></div>
+<div class="sourceLine" id="cb3-8" data-line-number="8"><span class="co">#&gt; [11] &quot;county_code&quot;           &quot;county_name&quot;          </span></div>
+<div class="sourceLine" id="cb3-9" data-line-number="9"><span class="co">#&gt; [13] &quot;CV&quot;                    &quot;domaincat_desc&quot;       </span></div>
+<div class="sourceLine" id="cb3-10" data-line-number="10"><span class="co">#&gt; [15] &quot;domain_desc&quot;           &quot;end_code&quot;             </span></div>
+<div class="sourceLine" id="cb3-11" data-line-number="11"><span class="co">#&gt; [17] &quot;freq_desc&quot;             &quot;group_desc&quot;           </span></div>
+<div class="sourceLine" id="cb3-12" data-line-number="12"><span class="co">#&gt; [19] &quot;load_time&quot;             &quot;location_desc&quot;        </span></div>
+<div class="sourceLine" id="cb3-13" data-line-number="13"><span class="co">#&gt; [21] &quot;prodn_practice_desc&quot;   &quot;reference_period_desc&quot;</span></div>
+<div class="sourceLine" id="cb3-14" data-line-number="14"><span class="co">#&gt; [23] &quot;region_desc&quot;           &quot;sector_desc&quot;          </span></div>
+<div class="sourceLine" id="cb3-15" data-line-number="15"><span class="co">#&gt; [25] &quot;short_desc&quot;            &quot;state_alpha&quot;          </span></div>
+<div class="sourceLine" id="cb3-16" data-line-number="16"><span class="co">#&gt; [27] &quot;state_ansi&quot;            &quot;state_name&quot;           </span></div>
+<div class="sourceLine" id="cb3-17" data-line-number="17"><span class="co">#&gt; [29] &quot;state_fips_code&quot;       &quot;statisticcat_desc&quot;    </span></div>
+<div class="sourceLine" id="cb3-18" data-line-number="18"><span class="co">#&gt; [31] &quot;source_desc&quot;           &quot;unit_desc&quot;            </span></div>
+<div class="sourceLine" id="cb3-19" data-line-number="19"><span class="co">#&gt; [33] &quot;util_practice_desc&quot;    &quot;Value&quot;                </span></div>
+<div class="sourceLine" id="cb3-20" data-line-number="20"><span class="co">#&gt; [35] &quot;watershed_code&quot;        &quot;watershed_desc&quot;       </span></div>
+<div class="sourceLine" id="cb3-21" data-line-number="21"><span class="co">#&gt; [37] &quot;week_ending&quot;           &quot;year&quot;                 </span></div>
+<div class="sourceLine" id="cb3-22" data-line-number="22"><span class="co">#&gt; [39] &quot;zip_5&quot;</span></div></code></pre>
+<p>A list of the valid values for a given field is available via <code>rnassqs::nassqs_field_values(field = &lt;field name&gt;)</code>. For example,</p>
+<pre><code>rnassqs::nassqs_field_values(field = 'unit_desc')</code></pre>
+<p>returns a list of valid values.to see valid units in the <code>unit_desc</code> field. There are 327 valid values at the time of this writing, with values including “STEMS”, “TON / TON”, “GALLONS / TANK”, etc…</p>
+<p>To build a query usually requires some trial and error. One way of developing the query is to use the <a href="https://quickstats.nass.usda.gov/">QuickStats web interface</a>. This is often the fastest method and provides quick feedback on the subset of values for a given query. Alternatively, you can query values for each field as above and iteratively build your query. The query in the end takes the form of a list of parameters that looks like</p>
+<pre><code>params &lt;- list(&quot;commodity_desc&quot;=&quot;CORN&quot;, &quot;year__GE&quot;=2012, &quot;state_alpha&quot;=&quot;VA&quot;)</code></pre>
+<p>It’s worth spending some time on the selection of values. Most queries will probably be for specific values, but you may also want to query ranges or similar values. For those queries, append one of the following to the field you’d like to modify:</p>
+<ul>
+<li>__LE: less than or equal</li>
+<li>__LT: less than</li>
+<li>__GE: greater than or equal</li>
+<li>__GT: greater than</li>
+<li>__LIKE: like</li>
+<li>__NOT_LIKE: not like</li>
+<li>__NE: not equal</li>
+</ul>
+<p>In the above parameter list, <code>year__GE</code> is the <code>year</code> field with the <code>__GE</code> modifier attached to it. The returned data includes all records with year greater than or equal to 2012.</p>
+<p>The query above selects all the data available on Corn since 2012 in the state of Virginia. The API only returns queries that return 50,000 or less records, so it’s a good idea to check that before running a query, perhaps as an assert:</p>
+<pre><code># Check that the number of returned records will be less than 50000
+records &lt;- rnassqs::nassqs_record_count(params)
+assertthat::assert_that(as.integer(records$count) &lt;= 50000)</code></pre>
+</div>
+<div id="step-3-running-queries" class="section level2">
+<h2>Step 3: Running Queries</h2>
+<p>Once you’ve built a query, running it is easy:</p>
+<pre><code># Run a query given a set of parameters and an API key
+rnassqs::nassqs(params = params, key = api_key)</code></pre>
+<p><code>nassqs</code> is a wrapper around GET and PARSE functions, which you can use independently if you want to see the raw data before parsing:</p>
+<pre><code># Get the data but but parse into a data.frame separately
+raw &lt;- rnassqs::nassqs_GET(params = params, key = api_key)
+parsed &lt;- rnassqs::nassqs_parse(raw, as = 'data.frame')</code></pre>
+</div>
+<div id="all-together" class="section level2">
+<h2>All together</h2>
+<p>Putting all of the above together, we have a script that looks like:</p>
+<pre><code>library(rnassqs)
+library(assertthat) #for checking the size of the query
+
+# Load the api key
+api_key &lt;- readLines(&quot;.secret&quot;)
+
+# Get a list of available fields
+fields &lt;- nassq_fields()
+
+# Get valid values for 'commodity_desc'
+nassqs_field_values(field = 'commodity_desc')
+
+# Set a list of parameters to query on
+params &lt;- list(&quot;commodity_desc&quot;=&quot;CORN&quot;, &quot;year__GE&quot;=2012, &quot;state_alpha&quot;=&quot;VA&quot;)
+
+# Check that the number of returned records will be less than 50000
+records &lt;- nassqs_record_count(params)
+assert_that(as.integer(records$count) &lt;= 50000)
+
+# Run a query given a set of parameters and an API key
+nassqs(params = params, key = api_key)
+
+# Run the same query but parse into a data.frame separately
+raw &lt;- nassqs_GET(params = params, key = api_key)
+parsed &lt;- nassqs_parse(raw, as = 'data.frame')</code></pre>
+</div>
+
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

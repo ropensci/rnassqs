@@ -1,5 +1,8 @@
+^Meta$
+^doc$
 ^.*\.Rproj$
 ^\.Rproj\.user$
 ^.travis.yml$
 ^README\.Rmd$
 Makefile
+cran-comments.md

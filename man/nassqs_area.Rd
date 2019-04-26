@@ -6,8 +6,8 @@
 \usage{
 nassqs_area(params, area = c("AREA", "AREA PLANTED", "AREA BEARING",
   "AREA BEARING & NON-BEARING", "AREA GROWN", "AREA HARVESTED",
-  "AREA IRRIGATED", "AREA NON-BEARING", "AREA PLANTED", "AREA PLANTED, NET"),
-  ...)
+  "AREA IRRIGATED", "AREA NON-BEARING", "AREA PLANTED",
+  "AREA PLANTED, NET"), ...)
 }
 \arguments{
 \item{params}{a named list of parameters to select records.}

@@ -14,6 +14,16 @@
 #' @seealso \url{http://quickstats.nass.usda.gov/api}
 NULL
 
+#' Questions to ask before release.
+#' 
+release_questions <- function() {
+  c(
+    "",
+    "Is inst/cacert.pem up to date?"
+  )
+}
+
+
 #' Issue a GET request to the NASS API
 #'http://quickstats.nass.usda.gov/api
 #' This is the core function, which several other rnassqs functions use to request data.

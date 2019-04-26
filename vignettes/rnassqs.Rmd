@@ -22,7 +22,7 @@ knitr::opts_chunk$set(
 
 2. **DRY**. Don't repeat yourself. Downloading data via API makes it easier to download new data as it is released, and to fetch multiple variables, geographies, or time frames without having to manually click through the QuickStats tool for each data request.
 
-In the beginning it can be more confusing, and potentially take more time, but as you become familiar with the variables and calls of the `rnassqs` package and the QuickStats database, you'll be able to quickly and easily download new data. In this document I hope to make that process easier.
+In the beginning it can be more confusing, and potentially take more time, but as you become familiar with the variables and calls of the `rnassqs` package and the QuickStats database, you'll be able to quickly and easily download new data.
 
 ## Step 1: Authentication
 
@@ -94,7 +94,7 @@ Once you've built a query, running it is easy:
     # Run a query given a set of parameters and an API key
     rnassqs::nassqs(params = params, key = api_key)
 
-`nassqs` is just a wrapper around GET and PARSE functions, which you can use independently if you want to see the raw data before parsing:
+`nassqs` is a wrapper around GET and PARSE functions, which you can use independently if you want to see the raw data before parsing:
 
     # Get the data but but parse into a data.frame separately
     raw <- rnassqs::nassqs_GET(params = params, key = api_key)

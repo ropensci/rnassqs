@@ -20,7 +20,7 @@ current parameter set returns more than the 50,000 record limit.
 }
 \examples{
 \dontrun{
-  #Check the number of records returned for corn in 1995, washington state
+  #Check the number of records returned for corn in 1995, Washington state
   params = list(
     commodity_desc = "CORN",
     year = "2005",

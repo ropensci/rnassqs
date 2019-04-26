@@ -1,11 +1,13 @@
 Package: rnassqs
 Type: Package
-Title: R package to pull data from NASS Quickstats
-Version: 0.2.2
-Date: 2015-06-12
+Title: R Package to Access the NASS Quickstats API
+Version: 0.3.0
+Date: 2019-04-26
+Author: Nicholas Potter <potter.nicholas@gmail.com>
 Authors@R: c(
   person('Nicholas', 'Potter', email='potter.nicholas@gmail.com', role = c('aut', 'cre')),
-  person('Joseph', 'Stachelek', email='', role = c('aut'))) 
+  person('Joseph', 'Stachelek', email='', role = c('ctb')),
+  person('Julia', 'Piaskowski', email='', role = c('ctb'))) 
 Maintainer: Nicholas Potter <potter.nicholas@gmail.com>
 Description: R package that allows the user to access data from the NASS Quickstats web API.
 URL: https://github.com/potterzot/rnassqs
@@ -17,7 +19,7 @@ Imports:
   jsonlite,
 Suggests:
   testthat,
-    knitr,
-    rmarkdown
-RoxygenNote: 6.0.1
+  knitr,
+  rmarkdown
+RoxygenNote: 6.1.1
 VignetteBuilder: knitr

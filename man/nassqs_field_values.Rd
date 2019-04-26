@@ -2,7 +2,7 @@
 % Please edit documentation in R/helpers.R
 \name{nassqs_field_values}
 \alias{nassqs_field_values}
-\title{Depreciated: Get all values for a specific parameter.}
+\title{Deprecated: Get all values for a specific parameter.}
 \usage{
 nassqs_field_values(field)
 }
