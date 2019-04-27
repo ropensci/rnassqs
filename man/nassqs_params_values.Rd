@@ -4,10 +4,12 @@
 \alias{nassqs_params_values}
 \title{Get all values for a specific parameter.}
 \usage{
-nassqs_params_values(param)
+nassqs_params_values(param, ...)
 }
 \arguments{
 \item{param}{the name of a NASS quickstats field.}
+
+\item{...}{additional parameters passed to \code{\link{nassqs_GET}}.}
 }
 \value{
 a list containing values for that parameter.

@@ -6,3 +6,4 @@
 ^README\.Rmd$
 Makefile
 cran-comments.md
+.secret

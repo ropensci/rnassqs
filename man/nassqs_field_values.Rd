@@ -4,10 +4,12 @@
 \alias{nassqs_field_values}
 \title{Deprecated: Get all values for a specific parameter.}
 \usage{
-nassqs_field_values(field)
+nassqs_field_values(field, ...)
 }
 \arguments{
 \item{field}{the name of a NASS quickstats field.}
+
+\item{...}{additional parameters passed to \code{\link{nassqs_GET}}.}
 }
 \description{
 Use \code{nassqs_param_values()} instead.

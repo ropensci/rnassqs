@@ -7,8 +7,9 @@ http://quickstats.nass.usda.gov/api
 This is the core function, which several other rnassqs functions use to request data.}
 \usage{
 nassqs_GET(params, api_path = c("api_GET", "get_param_values",
-  "get_counts"), base_url = "http://quickstats.nass.usda.gov/api/",
-  key = nassqs_auth(), format = c("JSON", "XML", "CSV"))
+  "get_counts"), base_url = "https://quickstats.nass.usda.gov/api/",
+  key = nassqs_auth(), debug = FALSE, format = c("JSON", "XML",
+  "CSV"))
 }
 \arguments{
 \item{params}{a named list of values to be queried.}
@@ -18,6 +19,8 @@ nassqs_GET(params, api_path = c("api_GET", "get_param_values",
 \item{base_url}{the base api url. This should probably never be changed.}
 
 \item{key}{your api key. If not provided the function will check for an env var and if not found, will prompt for your api key.}
+
+\item{debug}{(logical) if TRUE, returns the URL and makes no API call.}
 
 \item{format}{format of returned data. JSON by default, but can also be XML or CSV.}
 }

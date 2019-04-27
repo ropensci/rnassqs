@@ -5,6 +5,7 @@
 #' @export
 #'
 #' @param param the name of a NASS quickstats field.
+#' @param ... additional parameters passed to \code{\link{nassqs_GET}}.
 #' @return a list containing values for that parameter.
 #' @examples \dontrun{
 #'   #See all values available for the statisticcat_desc field.
@@ -12,9 +13,9 @@
 #'   #set of parameters, not all of the values may be available.
 #'   nassqs_field_values("statisticcat_desc")
 #' }
-nassqs_params_values <- function(param) {
+nassqs_params_values <- function(param, ...) {
   params = list("param"=param)
-  nassqs_parse(nassqs_GET(params, api_path="get_param_values"), as="list")[[1]]
+  nassqs_parse(nassqs_GET(params, ..., api_path="get_param_values"), as="list")[[1]]
 }
 
 #' Deprecated: Get all values for a specific parameter.
@@ -22,10 +23,10 @@ nassqs_params_values <- function(param) {
 #' Use \code{nassqs_param_values()} instead.
 #'
 #' @param field the name of a NASS quickstats field.
+#' @param ... additional parameters passed to \code{\link{nassqs_GET}}.
 #' @export
-nassqs_field_values <- function(field) {
-  params = list("param"=field)
-  nassqs_parse(nassqs_GET(params, api_path="get_param_values"), as="list")[[1]]
+nassqs_field_values <- function(field, ...) {
+  nassqs_params_values(field, ...)
 }
 
 #' Get a count of number of records for given parameters.

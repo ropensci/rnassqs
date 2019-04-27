@@ -28,19 +28,20 @@ release_questions <- function() {
 #'http://quickstats.nass.usda.gov/api
 #' This is the core function, which several other rnassqs functions use to request data.
 #'
-#' @importFrom httr GET
 #' @export
 
 #' @param params a named list of values to be queried.
 #' @param api_path the api path. Can be "api_GET", "get_param_values", or "get_counts"
 #' @param base_url the base api url. This should probably never be changed.
 #' @param key your api key. If not provided the function will check for an env var and if not found, will prompt for your api key.
+#' @param debug (logical) if TRUE, returns the URL and makes no API call.
 #' @param format format of returned data. JSON by default, but can also be XML or CSV.
 #' @return data returned in the format specified.
 nassqs_GET <- function(params, # a named list of queries
                        api_path=c("api_GET", "get_param_values", "get_counts"), # specific sub api call
-                       base_url="http://quickstats.nass.usda.gov/api/",
+                       base_url="https://quickstats.nass.usda.gov/api/",
                        key=nassqs_auth(), #api key
+                       debug = FALSE,
                        format=c("JSON", "XML", "CSV")) {
   #match args
   api_path = match.arg(api_path)
@@ -56,9 +57,15 @@ nassqs_GET <- function(params, # a named list of queries
   # full url
   url = paste0(base_url, api_path)
 
-  # GET request and check
-  req <- GET(url, query=query)
-  nassqs_check(req)
+  # If not debugging, GET request and check. Otherwise just return the url
+  if(debug) {
+    u <- httr::parse_url(url)
+    u$query <- query
+    req <- httr::build_url(u)
+  } else {
+    req <- httr::GET(url, query=query)
+    nassqs_check(req)
+  }  
 
   req
 }
@@ -96,36 +103,39 @@ nassqs_check <- function(req) {
 #' @return a data frame of the content from the request.
 nassqs_parse <- function(req, as = c("data.frame", "list", "raw"), ...) {
   as = match.arg(as)
-
-  text <- content(req, as = "text", type="text/json")
-  if (identical(text, "")) {
-    stop("Response is empty.")
+  if(class(req) != "response") { 
+    text <- req 
+  } else {
+    resp <- content(req, as = "text", type="text/json")
+    if (identical(resp, "")) {
+      stop("Response is empty.")
+    }
+    else if (identical(resp, "{\"error\":[\"unauthorized\"]}")) {
+      stop("Incorrect API Key.")
+    }
+    
+    #process the data depending on returned data type
+    if (as == "raw") {
+      text = resp
+    }
+    else if (req$headers['content-type']=="application/json") {
+      text = nassqs_parse.json(resp, as = as, ...)
+    }
+    else if (req$headers['content-type']=="application/xml") {
+      #c = jsonlite::fromJSON(text, simplifyVector = FALSE)
+      text = nassqs_parse.xml(resp, as = as, ...)
+      #stop("XML is not yet implemented in rnassqs. Use JSON instead.")
+    }
+    else if (req$headers['content-type']=="text/plain") {
+      tesp = nassqs_parse.csv(resp, as = as, ...)
+      #stop("CSV is not yet implemented in rnassqs. Use JSON instead.")
+    }
+    
+    #remove the "data." from the beginning of all names
+    if(as != "raw") names(text) <- gsub("data.", "", names(text))
+    text
   }
-  else if (identical(text, "{\"error\":[\"unauthorized\"]}")) {
-    stop("Incorrect API Key.")
-  }
-
-  #process the data depending on returned data type
-  if (as == "raw") {
-    c = text
-  }
-  else if (req$headers['content-type']=="application/json") {
-    c = nassqs_parse.json(text, as = as, ...)
-  }
-  else if (req$headers['content-type']=="application/xml") {
-    #c = jsonlite::fromJSON(text, simplifyVector = FALSE)
-    c = nassqs_parse.xml(text, as = as, ...)
-    stop("XML is not yet implemented in rnassqs. Use JSON instead.")
-  }
-  else if (req$headers['content-type']=="text/plain") {
-    #c = jsonlite::fromJSON(text, simplifyVector = FALSE)
-    c = nassqs_parse.csv(text, as = as, ...)
-    stop("CSV is not yet implemented in rnassqs. Use JSON instead.")
-  }
-
-  #remove the "data." from the beginning of all names
-  if(as != "raw") names(c) <- gsub("data.", "", names(c))
-  c
+  text
 }
 
 #' Parse a NASS QS request returned as XML.
