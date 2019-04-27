@@ -10,6 +10,7 @@ params = list(
 
 test_that("nassqs_record_count returns a numeric", {
   skip_on_cran()
+  skip_on_travis()
   key_file <- "../../.secret"
   if(file.exists(key_file)) {
     con <- file(key_file)
@@ -25,6 +26,7 @@ test_that("nassqs_record_count returns a numeric", {
 
 test_that("nassqs_param_values returns list of characters.", {
   skip_on_cran()
+  skip_on_travis()
   key_file <- "../../.secret"
   if(file.exists(key_file)) { 
     con <- file(key_file)
