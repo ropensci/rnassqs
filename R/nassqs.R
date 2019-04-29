@@ -18,8 +18,12 @@ NULL
 #' 
 release_questions <- function() {
   c(
-    "",
-    "Is inst/cacert.pem up to date?"
+    "Have you submitted to winbuilder with devtools::check_win_devel?",
+    "Have you submitted to winbuilder with devtools::check_win_release?",
+    "Have you updated the version number?",
+    "Have you run devtools::check() and updated cran-comments.md?",
+    "Have you updated NEWS.md?",
+    "Have you updated README.Rmd?"
   )
 }
 
