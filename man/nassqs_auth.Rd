@@ -2,22 +2,26 @@
 % Please edit documentation in R/nassqs.R
 \name{nassqs_auth}
 \alias{nassqs_auth}
-\title{Authenticate the user}
+\title{Get/Set the API key from the environment.}
 \usage{
-nassqs_auth(key = nassqs_token())
+nassqs_auth(key, force = FALSE)
 }
 \arguments{
-\item{key}{api key. If not specified, looks for an env variable named NASSQS_TOKEN and if not available, asks at the console.}
+\item{key}{the api key.}
+
+\item{force}{a boolean to force asking in the console.}
 }
 \value{
-authentication token.
+the api key.
 }
 \description{
-the NASS API uses a basic html API key authorization, where the key is included in the
-html call. You can add your API key in three ways:
+If the api key is provided, sets the environmental variable. If not, first 
+checks if the NASSQS_TOKEN environmental variable is set, and if so,
+returns it. Otherwise asks for the key in the console. If not an interactive 
+session, fails with error msg. You can set your API key in three ways:
 }
 \details{
-(1) directly or as a variable from your R program: \code{auth = nassqs_auth(`api_key`)}
+(1) directly or as a variable from your R program: \code{key = nassqs_auth(`api_key`)}
 (2) by setting it in your R environment (you'll never have to enter it again).
 (3) by entering it into the console when asked (it will be stored for the rest of the session.)
 }

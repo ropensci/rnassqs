@@ -4,12 +4,14 @@
 \alias{nassqs}
 \title{Get data and return a data frame}
 \usage{
-nassqs(params, ...)
+nassqs(params, as = c("data.frame", "raw"), ...)
 }
 \arguments{
 \item{params}{a named list of parameters to pass to quick stats}
 
-\item{...}{additional parameters passed to the low level function \code{\link{nassqs.single}}.}
+\item{as}{whether to return a raw string or process the response into a data.frame.}
+
+\item{...}{additional parameters passed to the low level function \code{\link{nassqs_GET}}.}
 }
 \value{
 a data frame of requested data.

@@ -14,15 +14,18 @@ nassqs_GET(params, api_path = c("api_GET", "get_param_values",
 \arguments{
 \item{params}{a named list of values to be queried.}
 
-\item{api_path}{the api path. Can be "api_GET", "get_param_values", or "get_counts"}
+\item{api_path}{the api path. Can be "api_GET", "get_param_values", or 
+"get_counts".}
 
 \item{base_url}{the base api url. This should probably never be changed.}
 
-\item{key}{your api key. If not provided the function will check for an env var and if not found, will prompt for your api key.}
+\item{key}{your api key. If not provided the function will check for an env 
+var and if not found, will prompt for your api key.}
 
 \item{debug}{(logical) if TRUE, returns the URL and makes no API call.}
 
-\item{format}{format of returned data. JSON by default, but can also be XML or CSV.}
+\item{format}{format of returned data. JSON by default, but can also be XML 
+or CSV. Can also be set as a parameter.}
 }
 \value{
 data returned in the format specified.

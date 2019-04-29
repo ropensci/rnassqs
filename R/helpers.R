@@ -82,7 +82,7 @@ nassqs_yield <- function(params, ...) {
 #' @export
 #'
 #' @param params a named list of parameters to select records.
-#' @param area the type of area to return.
+#' @param area the type of area to return. Default is all types.
 #' @param ... additional parameters passed to \code{nassqs()}.
 #' @return a data frame of NASS QS data.
 #' @examples \dontrun{
@@ -100,7 +100,7 @@ nassqs_area <- function(params,
                                "AREA GROWN", "AREA HARVESTED", "AREA IRRIGATED", "AREA NON-BEARING",
                                "AREA PLANTED", "AREA PLANTED, NET"),
                         ...) {
-  area = match.arg(area)
+  area = match.arg(area, several.ok = TRUE)
   q = list(statisticcat_desc = area, unit_desc = "ACRES")
   for (p in names(params)) {
     q[p] = params[p]
@@ -108,8 +108,12 @@ nassqs_area <- function(params,
   nassqs(q, ...)
 }
 
+#' Expand an ellipsis list.
 #' @importFrom stats setNames
 #' @importFrom utils stack
+#' 
+#' @param listx a list to be expanded.
+#' @return an expanded list.
 expand_list <- function(listx){
   res <- stack(listx)
   as.list(setNames(res$values, res$ind))

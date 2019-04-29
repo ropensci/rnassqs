@@ -12,7 +12,7 @@ nassqs_area(params, area = c("AREA", "AREA PLANTED", "AREA BEARING",
 \arguments{
 \item{params}{a named list of parameters to select records.}
 
-\item{area}{the type of area to return.}
+\item{area}{the type of area to return. Default is all types.}
 
 \item{...}{additional parameters passed to \code{nassqs()}.}
 }

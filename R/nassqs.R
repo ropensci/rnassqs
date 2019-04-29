@@ -31,11 +31,14 @@ release_questions <- function() {
 #' @export
 
 #' @param params a named list of values to be queried.
-#' @param api_path the api path. Can be "api_GET", "get_param_values", or "get_counts"
+#' @param api_path the api path. Can be "api_GET", "get_param_values", or 
+#' "get_counts".
 #' @param base_url the base api url. This should probably never be changed.
-#' @param key your api key. If not provided the function will check for an env var and if not found, will prompt for your api key.
+#' @param key your api key. If not provided the function will check for an env 
+#' var and if not found, will prompt for your api key.
 #' @param debug (logical) if TRUE, returns the URL and makes no API call.
-#' @param format format of returned data. JSON by default, but can also be XML or CSV.
+#' @param format format of returned data. JSON by default, but can also be XML 
+#' or CSV. Can also be set as a parameter.
 #' @return data returned in the format specified.
 nassqs_GET <- function(params, # a named list of queries
                        api_path=c("api_GET", "get_param_values", "get_counts"), # specific sub api call
@@ -74,8 +77,6 @@ nassqs_GET <- function(params, # a named list of queries
 #'
 #' Check that the request is valid, i.e. that it doesn't exceed 50,000 records and that all the parameter values are valid. This is helpful for checking a query before submitting it so that you don't have to wait for the query to fail.
 #'
-#' @importFrom jsonlite fromJSON
-#'
 #' @param req request result returned from quickstats
 #' @return parsed request result as json
 nassqs_check <- function(req) {
@@ -86,7 +87,7 @@ nassqs_check <- function(req) {
     stop("Request was too large. NASS requires that an API call returns a maximum of 50k records.", call. = FALSE)
   }
   else {
-    stop("HTTP Failure: ", req$status_code, "\n", fromJSON(content(req, as="text", type="text/json")), call. = FALSE)
+    stop("HTTP Failure: ", req$status_code, "\n", jsonlite::fromJSON(httr::content(req, as="text", type="text/json", encoding = "UTF-8")), call. = FALSE)
   }
 }
 
@@ -94,148 +95,95 @@ nassqs_check <- function(req) {
 #'
 #' Returns a data frame. All values are strings.
 #'
-#' @importFrom httr content
 #' @export
+#' @importFrom utils read.table
 #'
-#' @param req the GET request.
-#' @param as indicates type of data returned. Can be one of "list", "js", or "dataframe".
-#' @param ... additional parameters passed to \code{\link{nassqs_parse.json}}
+#' @param req the GET request from \code{\link{nassqs_GET}}.
+#' @param as indicates type of data returned.
+#' @param ... additional parameters passed to \code{jsonlite::fromJSON} or 
+#' \code{read.table}.
 #' @return a data frame of the content from the request.
 nassqs_parse <- function(req, as = c("data.frame", "list", "raw"), ...) {
   as = match.arg(as)
   if(class(req) != "response") { 
-    text <- req 
+    ret <- req 
   } else {
-    resp <- content(req, as = "text", type="text/json")
-    if (identical(resp, "")) {
-      stop("Response is empty.")
+    type <- req$headers['content-type']
+    
+    if (identical(req, "")) {
+      warning("Response is empty.")
     }
-    else if (identical(resp, "{\"error\":[\"unauthorized\"]}")) {
-      stop("Incorrect API Key.")
-    }
+
+    type <- req$headers[['content-type']]
+    resp <- httr::content(req, as = "text", encoding = "UTF-8")
     
     #process the data depending on returned data type
-    if (as == "raw") {
-      text = resp
+    if(as == "raw") {
+      ret <- resp
     }
-    else if (req$headers['content-type']=="application/json") {
-      text = nassqs_parse.json(resp, as = as, ...)
+    else if(type == "application/json") { # format == JSON
+      ret <- jsonlite::fromJSON(resp, ...)
+      if("data" %in% names(ret)) { ret <- ret$data }
     }
-    else if (req$headers['content-type']=="application/xml") {
-      #c = jsonlite::fromJSON(text, simplifyVector = FALSE)
-      text = nassqs_parse.xml(resp, as = as, ...)
-      #stop("XML is not yet implemented in rnassqs. Use JSON instead.")
+    else if(type == "application/xml") { # format == XML
+      stop("XML not yet implemented. Use format = 'JSON' or format = 'CSV' instead.")
     }
-    else if (req$headers['content-type']=="text/plain") {
-      tesp = nassqs_parse.csv(resp, as = as, ...)
-      #stop("CSV is not yet implemented in rnassqs. Use JSON instead.")
+    else if(type == "text/csv") { # format == CSV
+      ret <- read.table(text = resp, sep =",", header = TRUE, ...)
+      names(ret)[which(names(ret) == "CV....")] <- "CV (%)"
     }
-    
-    #remove the "data." from the beginning of all names
-    if(as != "raw") names(text) <- gsub("data.", "", names(text))
-    text
   }
-  text
+  ret
 }
 
-#' Parse a NASS QS request returned as XML.
-#'
-#' @param text the text returned from \code{content()}.
-#' @param as indicator of output format.
-#' @param ... additional parameters passed to \code{fromJSON()}.
-#' @return a data frame or a list depending on the the "as" parameter.
-nassqs_parse.xml <- function(text, as = c("data.frame", "list", "raw"), ...) {
-  stop("XML is not yet implemented in rnassqs. Use JSON instead.")
-}
 
-#' Parse a NASS QS request returned as XML.
+#' Get/Set the API key from the environment.
 #'
-#' @param text the text returned from \code{content()}.
-#' @param as indicator of output format.
-#' @param ... additional parameters passed to \code{fromJSON()}.
-#' @return a data frame or a list depending on the the "as" parameter.
-nassqs_parse.csv <- function(text, as = c("data.frame", "list", "raw"), ...) {
-  stop("CSV is not yet implemented in rnassqs. Use JSON instead.")
-}
-
-#' Parse a request returned as JSON.
+#' If the api key is provided, sets the environmental variable. If not, first 
+#' checks if the NASSQS_TOKEN environmental variable is set, and if so,
+#' returns it. Otherwise asks for the key in the console. If not an interactive 
+#' session, fails with error msg. You can set your API key in three ways:
 #'
-#' @importFrom jsonlite fromJSON
-#'
-#' @param text the text returned from \code{content()}.
-#' @param as indicator of output format..
-#' @param ... additional parameters passed to \code{fromJSON()}.
-#' @return a data frame or a list depending on the input.
-nassqs_parse.json <- function(text,
-                              as = c("data.frame", "list", "raw"),
-                              ...) {
-  as = match.arg(as)
-
-  js = jsonlite::fromJSON(text, ...)
-
-  # return based on specified by user
-  if (as=="raw") {
-    df = js
-  }
-  else if (as=="list") {
-    df = list(js)
-  }
-  else {
-    df = data.frame(js, stringsAsFactors = FALSE)
-  }
-
-  df
-}
-
-#' Authenticate the user
-#'
-#' the NASS API uses a basic html API key authorization, where the key is included in the
-#' html call. You can add your API key in three ways:
-#'
-#' (1) directly or as a variable from your R program: \code{auth = nassqs_auth(`api_key`)}
+#' (1) directly or as a variable from your R program: \code{key = nassqs_auth(`api_key`)}
 #' (2) by setting it in your R environment (you'll never have to enter it again).
 #' (3) by entering it into the console when asked (it will be stored for the rest of the session.)
 #'
-#' @param key api key. If not specified, looks for an env variable named NASSQS_TOKEN and if not available, asks at the console.
-#' @return authentication token.
-nassqs_auth <- function(key = nassqs_token()) {
-  key
-}
 
-#' Get the user's API key from the environment
-#'
-#' First checks if the NASSQS_TOKEN environmental variable is set, and if so,
-#' returns it. Otherwise asks the console. If not an interactive session,
-#' fails with error msg.
-#'
 #' @export
 #'
+#' @param key the api key.
 #' @param force a boolean to force asking in the console.
 #' @return the api key.
 #'
-nassqs_token <- function(force = FALSE) {
-  env <- Sys.getenv('NASSQS_TOKEN')
-  if (!identical(env, "") && !force) return(env)
-
-  if (!interactive()) {
-    stop("Please set env variable NASSQS_TOKEN to your NASS Quickstats API Key.", call. = FALSE)
+nassqs_auth <- function(key, force = FALSE) {
+  env_var <- Sys.getenv('NASSQS_TOKEN')
+  
+  if (!missing(key)) { # Directly set the key
+    Sys.setenv(NASSQS_TOKEN = key); 
+    return(key) 
+  } else if(!identical(env_var, "") && !force) { #Get the key if it is already set
+    return(env_var)
+  } else {
+    if (!interactive()) {
+      stop("Session is not interactive, so please set env variable NASSQS_TOKEN to your NASS Quickstats API Key.", call. = FALSE)
+    }
+    
+    #If not yet set, then try to read it from the console
+    message("Couldn't find env variable NASSQS_TOKEN. SEE ?nassqs_token for more details.")
+    message("Please enter your NASS Quickstats API Key and press enter:")
+    token <- readline(": ")
+    
+    #If blank, then exit with error. No API Key present.
+    if (identical(token, "")) {
+      stop("No API Key entered.", call. = FALSE)
+    }
+    
+    #If not blank, then set the environmental variable so future calls in this session do not need it.
+    message("Setting API KEY environmental variable: NASSQS_TOKEN for the rest of session.")
+    Sys.setenv(NASSQS_TOKEN = token)
+    
+    return(token)
   }
-
-  #If not yet set, then try to read it from the console
-  message("Couldn't find env variable NASSQS_TOKEN. SEE ?nassqs_token for more details.")
-  message("Please enter your NASS Quickstats API Key and press enter:")
-  token <- readline(": ")
-
-  #If blank, then exit with error. No API Key present.
-  if (identical(token, "")) {
-    stop("No API Key entered.", call. = FALSE)
-  }
-
-  #If not blank, then set the environmental variable so future calls in this session do not need it.
-  message("Setting API KEY environmental variable: NASSQS_TOKEN for the rest of session.")
-  Sys.setenv(NASSQS_TOKEN = token)
-
-  token
 }
 
 #####################################################
@@ -248,31 +196,17 @@ nassqs_token <- function(force = FALSE) {
 #' @export
 #'
 #' @param params a named list of parameters to pass to quick stats
-#' @param ... additional parameters passed to the low level function \code{\link{nassqs.single}}.
+#' @param as whether to return a raw string or process the response into a data.frame.
+#' @param ... additional parameters passed to the low level function \code{\link{nassqs_GET}}.
 #' @return a data frame of requested data.
 #' @examples
 #' \dontrun{
 #' params = list(COMMODITY_NAME="CORN", YEAR=2012, STATE_ALPHA="WA")
 #' nassqs(params)
 #' }
-nassqs <- function(params, ...) {
-    nassqs.single(params, ...)
-}
-
-#' Get data and return a data frame, in which each parameter selected has only one value.
-#'
-#' Calls nassqs_GET and nassqs_parse to return a data frame
-#'
-#' @export
-#'
-#' @param params a named list of parameters to pass to quick stats. One value per parameter.
-#' @param as a string naming the format the data should be returned as. Default is dataframe.
-#' @param ... additional parameters passed to \code{\link{nassqs_GET}}.
-#' @return a data frame of requested data.
-nassqs.single <- function(params,
-                          as = c("data.frame", "list", "raw"),
-                          ...) {
-
+nassqs <- function(params, 
+                   as = c("data.frame", "raw"),
+                   ...) {
   as = match.arg(as)
   nassqs_parse(nassqs_GET(params, ...), as=as)
 }
