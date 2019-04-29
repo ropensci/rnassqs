@@ -17,7 +17,7 @@ test_that("nassqs_record_count returns a numeric", {
     key <- readLines(con)
     close(con)
   } else {
-    key = Sys.getenv("API_KEY")
+    key = Sys.getenv("NASSQS_TOKEN")
   }
   
   v = nassqs_record_count(params, key = key)
@@ -33,7 +33,7 @@ test_that("nassqs_param_values returns list of characters.", {
     key <- readLines(con)
     close(con)
   } else {
-    key = Sys.getenv("API_KEY")
+    key = Sys.getenv("NASSQS_TOKEN")
   }
   
   v = nassqs_params_values("statisticcat_desc", key = key)
