@@ -19,6 +19,7 @@ Imports:
   jsonlite,
 Suggests:
   testthat,
+  here,
   knitr,
   rmarkdown
 RoxygenNote: 6.1.1
