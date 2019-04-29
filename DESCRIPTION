@@ -3,13 +3,12 @@ Type: Package
 Title: Access the NASS Quickstats API
 Version: 0.3.1
 Date: 2019-04-26
-Author: Nicholas Potter <potter.nicholas@gmail.com>
 Authors@R: c(
   person('Nicholas', 'Potter', email='potter.nicholas@gmail.com', role = c('aut', 'cre')),
   person('Joseph', 'Stachelek', email='', role = c('ctb')),
   person('Julia', 'Piaskowski', email='', role = c('ctb'))) 
 Maintainer: Nicholas Potter <potter.nicholas@gmail.com>
-Description: Interace to access data via the NASS Quickstats web API.
+Description: Interface to access data via the NASS Quickstats web API.
 URL: https://github.com/potterzot/rnassqs
 BugReports: http://www.github.com/potterzot/rnassqs/issues
 License: MIT + file LICENSE
