@@ -2,9 +2,7 @@
 % Please edit documentation in R/nassqs.R
 \name{nassqs_GET}
 \alias{nassqs_GET}
-\title{Issue a GET request to the NASS API
-http://quickstats.nass.usda.gov/api
-This is the core function, which several other rnassqs functions use to request data.}
+\title{Issue a GET request to the NASS QuickStats API}
 \usage{
 nassqs_GET(params, api_path = c("api_GET", "get_param_values",
   "get_counts"), base_url = "https://quickstats.nass.usda.gov/api/",
@@ -19,8 +17,8 @@ nassqs_GET(params, api_path = c("api_GET", "get_param_values",
 
 \item{base_url}{the base api url. This should probably never be changed.}
 
-\item{key}{your api key. If not provided the function will check for an env 
-var and if not found, will prompt for your api key.}
+\item{key}{your api key. If not provided the function will check for an 
+environmental variable and if not found, will prompt for your api key.}
 
 \item{debug}{(logical) if TRUE, returns the URL and makes no API call.}
 
@@ -31,7 +29,7 @@ or CSV. Can also be set as a parameter.}
 data returned in the format specified.
 }
 \description{
-Issue a GET request to the NASS API
-http://quickstats.nass.usda.gov/api
-This is the core function, which several other rnassqs functions use to request data.
+This is the core function, which several other rnassqs functions use to 
+request data from the NASS QuickStats API: 
+https://quickstats.nass.usda.gov/api.
 }

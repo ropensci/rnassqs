@@ -7,7 +7,7 @@
 nassqs_check(req)
 }
 \arguments{
-\item{req}{request result returned from quickstats}
+\item{req}{request result returned from the API}
 }
 \value{
 parsed request result as json

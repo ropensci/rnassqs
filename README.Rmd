@@ -33,7 +33,7 @@ Install should be simple via either devtools or CRAN:
 
 ## API Key
 
-To use the NASS Quickstats API you need an [API key](http://quickstats.nass.usda.gov/api). There are several ways of clueing the rnassqs package in to your api key. You can set the variable explicitly and pass it to functions, like so
+To use the NASS QuickStats API you need an [API key](http://quickstats.nass.usda.gov/api). There are several ways of clueing the rnassqs package in to your api key. You can set the variable explicitly and pass it to functions, like so
 
     params <- list(...)                    # parameters for query 
     api_key <- "<your api key here>"       # api key

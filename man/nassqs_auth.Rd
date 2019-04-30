@@ -18,7 +18,7 @@ the api key.
 If the api key is provided, sets the environmental variable. If not, first 
 checks if the NASSQS_TOKEN environmental variable is set, and if so,
 returns it. Otherwise asks for the key in the console. If not an interactive 
-session, fails with error msg. You can set your API key in three ways:
+session, fails with error message. You can set your API key in three ways:
 }
 \details{
 (1) directly or as a variable from your R program: \code{key = nassqs_auth(`api_key`)}

@@ -8,7 +8,7 @@ Authors@R: c(
   person('Joseph', 'Stachelek', email='', role = c('ctb')),
   person('Julia', 'Piaskowski', email='', role = c('ctb'))) 
 Maintainer: Nicholas Potter <potter.nicholas@gmail.com>
-Description: Interface to access data via the NASS Quickstats web API 
+Description: Interface to access data via the NASS QuickStats web API 
   <https://quickstats.nass.usda.gov/api>. Convenience functions facilitate 
   building queries based on available parameters and valid parameter values.
 URL: https://github.com/potterzot/rnassqs

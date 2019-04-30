@@ -4,10 +4,10 @@
 \name{rnassqs-package}
 \alias{rnassqs-package}
 \alias{rnassqs}
-\title{rnassqs-package: Use the NASS Quickstats API from R.}
+\title{rnassqs-package: Use the NASS QuickStats API from R.}
 \description{
-rnassqs is a wrapper for the NASS Quickstats API to enable getting NASS
-QuickStats data from R directly.  Based on the httr api package guide.
+rnassqs is a wrapper for the NASS QuickStats API to enable getting NASS
+QuickStats data directly from R.  Based on the httr API package guide.
 }
 \details{
 The functions in this package facilitate getting data from NASS QuickStats.

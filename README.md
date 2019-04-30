@@ -7,7 +7,7 @@
 
 [![Build
 Status](https://travis-ci.org/potterzot/rnassqs.svg?branch=master)](https://travis-ci.org/potterzot/rnassqs)
-[![Last-changedate](https://img.shields.io/badge/last%20change-2019--04--29-brightgreen.svg)](https://github.com/potterzot/rnassqs/commits/master)
+[![Last-changedate](https://img.shields.io/badge/last%20change-2019--04--30-brightgreen.svg)](https://github.com/potterzot/rnassqs/commits/master)
 [![Coverage
 Status](https://coveralls.io/repos/github/potterzot/rnassqs/badge.svg?branch=master)](https://coveralls.io/github/potterzot/rnassqs?branch=master)
 
@@ -31,7 +31,7 @@ Install should be simple via either devtools or CRAN:
 
 ## API Key
 
-To use the NASS Quickstats API you need an [API
+To use the NASS QuickStats API you need an [API
 key](http://quickstats.nass.usda.gov/api). There are several ways of
 clueing the rnassqs package in to your api key. You can set the variable
 explicitly and pass it to functions, like so

@@ -17,7 +17,7 @@ nassqs_area(params, area = c("AREA", "AREA PLANTED", "AREA BEARING",
 \item{...}{additional parameters passed to \code{nassqs()}.}
 }
 \value{
-a data frame of NASS QS data.
+a data frame of NASSQS data.
 }
 \description{
 Get NASS Area given a set of parameters.

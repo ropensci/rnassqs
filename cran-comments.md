@@ -4,12 +4,16 @@
 * win-builder (devel and release)
 * r-hub builder
 
-
 ## R CMD check results
 There were no ERRORs, no WARNINGs, and 1 NOTEs
 
 The NOTE is because this is a new package
 
+## Resubmission
+This is a resubmission. In this version I have:
+
+* Included the http address of the API in the package description.
+* Fixed the license configuration error. LICENSE now contains just the year and name.
 
 ## Downstream dependencies
 There are no downstream dependencies

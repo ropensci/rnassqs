@@ -1,6 +1,6 @@
 #'
 #' rnassqs is a wrapper for the NASS QuickStats API to enable getting NASS
-#' QuickStats data from R directly.  Based on the httr API package guide.
+#' QuickStats data directly from R.  Based on the httr API package guide.
 #'
 #' The functions in this package facilitate getting data from NASS QuickStats.
 #' It handles the API key checking and storage, authorization, and fetching of data.
@@ -8,7 +8,7 @@
 #' @name rnassqs-package
 #' @aliases rnassqs
 #' @docType package
-#' @title rnassqs-package: Use the NASS Quickstats API from R.
+#' @title rnassqs-package: Use the NASS QuickStats API from R.
 #' @keywords package rnassqs-package
 #' @references \url{http://quickstats.nass.usda.gov}
 #' @seealso \url{http://quickstats.nass.usda.gov/api}
@@ -32,7 +32,7 @@ release_questions <- function() {
 #' 
 #' This is the core function, which several other rnassqs functions use to 
 #' request data from the NASS QuickStats API: 
-#' http://quickstats.nass.usda.gov/api. 
+#' https://quickstats.nass.usda.gov/api. 
 #'
 #' @export
 
