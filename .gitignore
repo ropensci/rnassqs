@@ -3,6 +3,7 @@ doc
 .Rproj.user
 .Rhistory
 .RData
+..Rcheck/
 *.Rproj
 .secret
 inst/doc

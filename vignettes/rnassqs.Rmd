@@ -18,7 +18,7 @@ knitr::opts_chunk$set(
 
 `rnassqs` is a package to access the QuickStats API from national agricultural statistics service (NASS) at the USDA. There are at least two good reasons to do this:
 
-1. **Reproducability**. donwloading the data via an R script creates a trail that you can revisit later to see exactly what you downloaded. It also makes it much easier for people seeking to replicate your results to ensure they have the same data that you do.
+1. **Reproducability**. downloading the data via an R script creates a trail that you can revisit later to see exactly what you downloaded. It also makes it much easier for people seeking to replicate your results to ensure they have the same data that you do.
 
 2. **DRY**. Don't repeat yourself. Downloading data via API makes it easier to download new data as it is released, and to fetch multiple variables, geographies, or time frames without having to manually click through the QuickStats tool for each data request.
 

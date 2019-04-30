@@ -84,7 +84,7 @@ nassqs_yield <- function(params, ...) {
 #' @param params a named list of parameters to select records.
 #' @param area the type of area to return. Default is all types.
 #' @param ... additional parameters passed to \code{nassqs()}.
-#' @return a data frame of NASS QS data.
+#' @return a data frame of NASSQS data.
 #' @examples \dontrun{
 #'   #Get Area bearing for Apples in Washington, 2012.
 #'   params = list(

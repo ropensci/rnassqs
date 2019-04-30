@@ -1,6 +1,6 @@
 #'
-#' rnassqs is a wrapper for the NASS Quickstats API to enable getting NASS
-#' QuickStats data from R directly.  Based on the httr api package guide.
+#' rnassqs is a wrapper for the NASS QuickStats API to enable getting NASS
+#' QuickStats data from R directly.  Based on the httr API package guide.
 #'
 #' The functions in this package facilitate getting data from NASS QuickStats.
 #' It handles the API key checking and storage, authorization, and fetching of data.
@@ -28,9 +28,11 @@ release_questions <- function() {
 }
 
 
-#' Issue a GET request to the NASS API
-#'http://quickstats.nass.usda.gov/api
-#' This is the core function, which several other rnassqs functions use to request data.
+#' Issue a GET request to the NASS QuickStats API
+#' 
+#' This is the core function, which several other rnassqs functions use to 
+#' request data from the NASS QuickStats API: 
+#' http://quickstats.nass.usda.gov/api. 
 #'
 #' @export
 
@@ -38,8 +40,8 @@ release_questions <- function() {
 #' @param api_path the api path. Can be "api_GET", "get_param_values", or 
 #' "get_counts".
 #' @param base_url the base api url. This should probably never be changed.
-#' @param key your api key. If not provided the function will check for an env 
-#' var and if not found, will prompt for your api key.
+#' @param key your api key. If not provided the function will check for an 
+#' environmental variable and if not found, will prompt for your api key.
 #' @param debug (logical) if TRUE, returns the URL and makes no API call.
 #' @param format format of returned data. JSON by default, but can also be XML 
 #' or CSV. Can also be set as a parameter.
@@ -81,7 +83,7 @@ nassqs_GET <- function(params, # a named list of queries
 #'
 #' Check that the request is valid, i.e. that it doesn't exceed 50,000 records and that all the parameter values are valid. This is helpful for checking a query before submitting it so that you don't have to wait for the query to fail.
 #'
-#' @param req request result returned from quickstats
+#' @param req request result returned from the API
 #' @return parsed request result as json
 nassqs_check <- function(req) {
   if (req$status_code < 400) {
@@ -146,7 +148,7 @@ nassqs_parse <- function(req, as = c("data.frame", "list", "raw"), ...) {
 #' If the api key is provided, sets the environmental variable. If not, first 
 #' checks if the NASSQS_TOKEN environmental variable is set, and if so,
 #' returns it. Otherwise asks for the key in the console. If not an interactive 
-#' session, fails with error msg. You can set your API key in three ways:
+#' session, fails with error message. You can set your API key in three ways:
 #'
 #' (1) directly or as a variable from your R program: \code{key = nassqs_auth(`api_key`)}
 #' (2) by setting it in your R environment (you'll never have to enter it again).
