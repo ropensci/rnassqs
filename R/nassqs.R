@@ -1,21 +1,21 @@
+#' rnassqs is a wrapper for the United States Deparment of Agriculture's
+#' National Agricultural Statistical Service (NASS) 'Quick Stats' API to enable 
+#' getting NASS 'Quick Stats' data directly from R.  Based on the httr API 
+#' package guide.
 #'
-#' rnassqs is a wrapper for the NASS QuickStats API to enable getting NASS
-#' QuickStats data directly from R.  Based on the httr API package guide.
-#'
-#' The functions in this package facilitate getting data from NASS QuickStats.
+#' The functions in this package facilitate getting data from NASS 'Quick Stats'.
 #' It handles the API key checking and storage, authorization, and fetching of data.
 #' @author Nicholas Potter
 #' @name rnassqs-package
 #' @aliases rnassqs
 #' @docType package
-#' @title rnassqs-package: Use the NASS QuickStats API from R.
+#' @title rnassqs-package: Use the NASS 'Quick Stats' API from R.
 #' @keywords package rnassqs-package
 #' @references \url{http://quickstats.nass.usda.gov}
 #' @seealso \url{http://quickstats.nass.usda.gov/api}
 NULL
 
 #' Questions to ask before release.
-#' 
 release_questions <- function() {
   c(
     "Have you submitted to winbuilder with devtools::check_win_devel?",
@@ -28,30 +28,56 @@ release_questions <- function() {
 }
 
 
-#' Issue a GET request to the NASS QuickStats API
+#' Issue a GET request to the NASS 'Quick Stats' API
 #' 
 #' This is the core function, which several other rnassqs functions use to 
-#' request data from the NASS QuickStats API: 
+#' request data from the NASS 'Quick Stats' API: 
 #' https://quickstats.nass.usda.gov/api. 
 #'
 #' @export
 
 #' @param params a named list of values to be queried.
+#' @param key your api key. If not provided the function will check for an 
+#' environmental variable and if not found, will prompt for your api key.
 #' @param api_path the api path. Can be "api_GET", "get_param_values", or 
 #' "get_counts".
 #' @param base_url the base api url. This should probably never be changed.
-#' @param key your api key. If not provided the function will check for an 
-#' environmental variable and if not found, will prompt for your api key.
-#' @param debug (logical) if TRUE, returns the URL and makes no API call.
+#' @param url_only (logical) if TRUE, returns the URL and makes no API call.
 #' @param format format of returned data. JSON by default, but can also be XML 
 #' or CSV. Can also be set as a parameter.
 #' @return data returned in the format specified.
+#' @examples
+#' \donttest{
+#' # Yields for corn in 2012 in Washington
+#' params = list(commodity_name="CORN", 
+#'               year=2012, 
+#'               agg_level_desc = "STATE",
+#'               state_alpha = "WA",
+#'               statisticcat_desc = "YIELD")
+#' nassqs_GET(params)
+#' 
+#' # Equivalent to 'nassqs_record_count(params)'
+#' req <- nassqs_GET(params, api_path = "get_counts")
+#' nassqs_parse(req)
+#' 
+#' # Get the list of allowable values for the parameters 'statisticcat_desc'.
+#' # Equivalent to 'nassqs_param_values("statisticcat_desc")'
+#' req <- nassqs_GET(list(param = "statisticcat_desc"), 
+#'                   api_path="get_param_values")
+#' nassqs_parse(req, as = "list")
+#' }
 nassqs_GET <- function(params, # a named list of queries
+                       key = nassqs_auth(), # api key
                        api_path=c("api_GET", "get_param_values", "get_counts"), # specific sub api call
                        base_url="https://quickstats.nass.usda.gov/api/",
-                       key=nassqs_auth(), #api key
-                       debug = FALSE,
+                       url_only = FALSE,
                        format=c("JSON", "XML", "CSV")) {
+  
+  if(missing(key)) { 
+    key <- tryCatch(nassqs_auth(), error = function(e) e)
+    if("error" %in% class(key)) { stop(key$message) }
+  }
+  
   #match args
   api_path = match.arg(api_path)
   format = match.arg(format)
@@ -65,11 +91,11 @@ nassqs_GET <- function(params, # a named list of queries
 
   # full url
   url = paste0(base_url, api_path)
+  u <- httr::parse_url(url)
+  u$query <- query
 
-  # If not debugging, GET request and check. Otherwise just return the url
-  if(debug) {
-    u <- httr::parse_url(url)
-    u$query <- query
+  # If only the URL just return the url, otherwise make GET request and check.
+  if(url_only) {
     req <- httr::build_url(u)
   } else {
     req <- httr::GET(url, query=query)
@@ -108,7 +134,21 @@ nassqs_check <- function(req) {
 #' @param as indicates type of data returned.
 #' @param ... additional parameters passed to \code{jsonlite::fromJSON} or 
 #' \code{read.table}.
-#' @return a data frame of the content from the request.
+#' @return a data frame or raw text of the content from the request.
+#' @examples
+#' \donttest{
+#' # Set parameters and make the request
+#' params = list(commodity_name="CORN", 
+#'               year=2012, 
+#'               agg_level_desc = "STATE",
+#'               state_alpha = "WA",
+#'               statisticcat_desc = "YIELD")
+#' req <- nassqs_GET(params)
+#' nassqs_parse(req, as = "data.frame")
+#' 
+#' # Return the request results as a raw string
+#' nassqs_parse(req, as = "raw")
+#' }
 nassqs_parse <- function(req, as = c("data.frame", "list", "raw"), ...) {
   as = match.arg(as)
   if(class(req) != "response") { 
@@ -160,6 +200,12 @@ nassqs_parse <- function(req, as = c("data.frame", "list", "raw"), ...) {
 #' @param key the api key.
 #' @param force a boolean to force asking in the console.
 #' @return the api key.
+#' @examples
+#' # Set the key
+#' #nassqs_auth(key = "my api key")
+#' 
+#' # return the key if set, otherwise ask in the console if interactive.
+#' nassqs_auth()
 #'
 nassqs_auth <- function(key, force = FALSE) {
   env_var <- Sys.getenv('NASSQS_TOKEN')
@@ -171,17 +217,17 @@ nassqs_auth <- function(key, force = FALSE) {
     return(env_var)
   } else {
     if (!interactive()) {
-      stop("Session is not interactive, so please set env variable NASSQS_TOKEN to your NASS Quickstats API Key.", call. = FALSE)
+      stop("No authentication provided and your session is not interactive. See help('nassqs_auth') for details.", call. = FALSE)
     }
     
     #If not yet set, then try to read it from the console
     message("Couldn't find env variable NASSQS_TOKEN. SEE ?nassqs_token for more details.")
-    message("Please enter your NASS Quickstats API Key and press enter:")
+    message("Please enter your NASS 'Quick Stats' API Key and press enter:")
     token <- readline(": ")
     
     #If blank, then exit with error. No API Key present.
     if (identical(token, "")) {
-      stop("No API Key entered.", call. = FALSE)
+      stop("No authentication provided and no API Key entered. Exiting.", call. = FALSE)
     }
     
     #If not blank, then set the environmental variable so future calls in this session do not need it.
@@ -206,8 +252,13 @@ nassqs_auth <- function(key, force = FALSE) {
 #' @param ... additional parameters passed to the low level function \code{\link{nassqs_GET}}.
 #' @return a data frame of requested data.
 #' @examples
-#' \dontrun{
-#' params = list(COMMODITY_NAME="CORN", YEAR=2012, STATE_ALPHA="WA")
+#' \donttest{
+#' # Get corn yields in Virginia in 2012
+#' params = list(commodity_name="CORN", 
+#'               year=2012, 
+#'               agg_level_desc = "COUNTY",
+#'               state_alpha="VA", 
+#'               statisticcat_desc = "YIELD")
 #' nassqs(params)
 #' }
 nassqs <- function(params, 

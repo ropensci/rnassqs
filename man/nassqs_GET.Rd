@@ -2,25 +2,25 @@
 % Please edit documentation in R/nassqs.R
 \name{nassqs_GET}
 \alias{nassqs_GET}
-\title{Issue a GET request to the NASS QuickStats API}
+\title{Issue a GET request to the NASS 'Quick Stats' API}
 \usage{
-nassqs_GET(params, api_path = c("api_GET", "get_param_values",
-  "get_counts"), base_url = "https://quickstats.nass.usda.gov/api/",
-  key = nassqs_auth(), debug = FALSE, format = c("JSON", "XML",
-  "CSV"))
+nassqs_GET(params, key = nassqs_auth(), api_path = c("api_GET",
+  "get_param_values", "get_counts"),
+  base_url = "https://quickstats.nass.usda.gov/api/", url_only = FALSE,
+  format = c("JSON", "XML", "CSV"))
 }
 \arguments{
 \item{params}{a named list of values to be queried.}
+
+\item{key}{your api key. If not provided the function will check for an 
+environmental variable and if not found, will prompt for your api key.}
 
 \item{api_path}{the api path. Can be "api_GET", "get_param_values", or 
 "get_counts".}
 
 \item{base_url}{the base api url. This should probably never be changed.}
 
-\item{key}{your api key. If not provided the function will check for an 
-environmental variable and if not found, will prompt for your api key.}
-
-\item{debug}{(logical) if TRUE, returns the URL and makes no API call.}
+\item{url_only}{(logical) if TRUE, returns the URL and makes no API call.}
 
 \item{format}{format of returned data. JSON by default, but can also be XML 
 or CSV. Can also be set as a parameter.}
@@ -30,6 +30,27 @@ data returned in the format specified.
 }
 \description{
 This is the core function, which several other rnassqs functions use to 
-request data from the NASS QuickStats API: 
+request data from the NASS 'Quick Stats' API: 
 https://quickstats.nass.usda.gov/api.
+}
+\examples{
+\donttest{
+# Yields for corn in 2012 in Washington
+params = list(commodity_name="CORN", 
+              year=2012, 
+              agg_level_desc = "STATE",
+              state_alpha = "WA",
+              statisticcat_desc = "YIELD")
+nassqs_GET(params)
+
+# Equivalent to 'nassqs_record_count(params)'
+req <- nassqs_GET(params, api_path = "get_counts")
+nassqs_parse(req)
+
+# Get the list of allowable values for the parameters 'statisticcat_desc'.
+# Equivalent to 'nassqs_param_values("statisticcat_desc")'
+req <- nassqs_GET(list(param = "statisticcat_desc"), 
+                  api_path="get_param_values")
+nassqs_parse(req, as = "list")
+}
 }

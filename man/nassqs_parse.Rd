@@ -15,8 +15,23 @@ nassqs_parse(req, as = c("data.frame", "list", "raw"), ...)
 \code{read.table}.}
 }
 \value{
-a data frame of the content from the request.
+a data frame or raw text of the content from the request.
 }
 \description{
 Returns a data frame. All values are strings.
+}
+\examples{
+\donttest{
+# Set parameters and make the request
+params = list(commodity_name="CORN", 
+              year=2012, 
+              agg_level_desc = "STATE",
+              state_alpha = "WA",
+              statisticcat_desc = "YIELD")
+req <- nassqs_GET(params)
+nassqs_parse(req, as = "data.frame")
+
+# Return the request results as a raw string
+nassqs_parse(req, as = "raw")
+}
 }

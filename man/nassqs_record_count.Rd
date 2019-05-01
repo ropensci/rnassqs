@@ -19,7 +19,7 @@ Returns the number of records that fit a set of parameters. Useful if your
 current parameter set returns more than the 50,000 record limit.
 }
 \examples{
-\dontrun{
+\donttest{
   #Check the number of records returned for corn in 1995, Washington state
   params = list(
     commodity_desc = "CORN",
@@ -27,6 +27,7 @@ current parameter set returns more than the 50,000 record limit.
     agg_level_desc = "STATE",
     state_name = "WASHINGTON"
   )
+  
   nassqs_record_count(params) #returns 17.
 
 }

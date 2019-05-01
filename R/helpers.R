@@ -7,26 +7,17 @@
 #' @param param the name of a NASS quickstats field.
 #' @param ... additional parameters passed to \code{\link{nassqs_GET}}.
 #' @return a list containing values for that parameter.
-#' @examples \dontrun{
-#'   #See all values available for the statisticcat_desc field.
-#'   #Note that this does not provide any filtering, so for a specific
-#'   #set of parameters, not all of the values may be available.
-#'   nassqs_field_values("statisticcat_desc")
+#' @examples \donttest{
+#'   # See all values available for the statisticcat_desc field. Values may not
+#'   # be available in the context of other parameters you set, for example
+#'   # a given state may not have any 'YIElD' in blueberries if they don't grow
+#'   # blueberries in that state.
+#'   # Requires an API key:
+#'   #nassqs_param_values("statisticcat_desc", key = "my api key")
 #' }
-nassqs_params_values <- function(param, ...) {
+nassqs_param_values <- function(param, ...) {
   params = list("param"=param)
   nassqs_parse(nassqs_GET(params, ..., api_path="get_param_values"), as="list")[[1]]
-}
-
-#' Deprecated: Get all values for a specific parameter.
-#'
-#' Use \code{nassqs_param_values()} instead.
-#'
-#' @param field the name of a NASS quickstats field.
-#' @param ... additional parameters passed to \code{\link{nassqs_GET}}.
-#' @export
-nassqs_field_values <- function(field, ...) {
-  nassqs_params_values(field, ...)
 }
 
 #' Get a count of number of records for given parameters.
@@ -39,7 +30,7 @@ nassqs_field_values <- function(field, ...) {
 #' @param params a named list of parameters and values.
 #' @param ... additional parameters passed to \code{\link{nassqs_GET}}.
 #' @return integer that is the number of records that fits those parameter values.
-#' @examples \dontrun{
+#' @examples \donttest{
 #'   #Check the number of records returned for corn in 1995, Washington state
 #'   params = list(
 #'     commodity_desc = "CORN",
@@ -47,6 +38,7 @@ nassqs_field_values <- function(field, ...) {
 #'     agg_level_desc = "STATE",
 #'     state_name = "WASHINGTON"
 #'   )
+#'   
 #'   nassqs_record_count(params) #returns 17.
 #'
 #' }
@@ -64,17 +56,14 @@ nassqs_record_count <- function(params, ...) {
 #' @param params a named list of parameters
 #' @param ... additional parameters passed to \code{\link{nassqs}}
 #' @return a dataset of NASSQS data.
-#' @examples \dontrun{
+#' @examples \donttest{
 #'   #get yields for wheat in 2012, all geographies
 #'   params = list(commodity_desc="WHEAT", year="2012")
 #'   nassqs_yield(params)
 #' }
 nassqs_yield <- function(params, ...) {
-  q = list('statisticcat_desc'='YIELD')
-  for (p in names(params)) {
-    q[p] = params[p]
-  }
-  nassqs(q, ...)
+  params[['statisticcat_desc']] <- "YIELD"
+  nassqs(params, ...)
 }
 
 #' Get NASS Area given a set of parameters.
@@ -85,7 +74,7 @@ nassqs_yield <- function(params, ...) {
 #' @param area the type of area to return. Default is all types.
 #' @param ... additional parameters passed to \code{nassqs()}.
 #' @return a data frame of NASSQS data.
-#' @examples \dontrun{
+#' @examples \donttest{
 #'   #Get Area bearing for Apples in Washington, 2012.
 #'   params = list(
 #'     commodity_desc = "APPLES",
@@ -101,11 +90,10 @@ nassqs_area <- function(params,
                                "AREA PLANTED", "AREA PLANTED, NET"),
                         ...) {
   area = match.arg(area, several.ok = TRUE)
-  q = list(statisticcat_desc = area, unit_desc = "ACRES")
-  for (p in names(params)) {
-    q[p] = params[p]
-  }
-  nassqs(q, ...)
+  params[['statisticcat_desc']] <- area
+  params[['unit_desc']] <- "ACRES"
+
+  nassqs(params, ...)
 }
 
 #' Expand an ellipsis list.

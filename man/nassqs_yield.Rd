@@ -19,7 +19,7 @@ Convenience function to take a list of parameters and add a parameter to
 specify yield. Equivalent to \code{nassqs(list(..., "statisticcat_desc" = "YIELD"))}
 }
 \examples{
-\dontrun{
+\donttest{
   #get yields for wheat in 2012, all geographies
   params = list(commodity_desc="WHEAT", year="2012")
   nassqs_yield(params)

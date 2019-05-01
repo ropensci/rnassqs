@@ -5,6 +5,8 @@
 - Add parsing for CSV formatted data.
 - Improve authentication.
 - Simplify function calls to eliminate redundant calls.
+- Add working examples and tests.
+- fix name error in the function `nassqs_params_values` to `nassqs_param_values`
 
 # rnassqs 0.3.0
 

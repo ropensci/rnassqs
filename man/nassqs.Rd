@@ -20,8 +20,13 @@ a data frame of requested data.
 Calls nassqs_GET and nassqs_parse and returns a data frame by default.
 }
 \examples{
-\dontrun{
-params = list(COMMODITY_NAME="CORN", YEAR=2012, STATE_ALPHA="WA")
+\donttest{
+# Get corn yields in Virginia in 2012
+params = list(commodity_name="CORN", 
+              year=2012, 
+              agg_level_desc = "COUNTY",
+              state_alpha="VA", 
+              statisticcat_desc = "YIELD")
 nassqs(params)
 }
 }

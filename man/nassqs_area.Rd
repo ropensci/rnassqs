@@ -23,7 +23,7 @@ a data frame of NASSQS data.
 Get NASS Area given a set of parameters.
 }
 \examples{
-\dontrun{
+\donttest{
   #Get Area bearing for Apples in Washington, 2012.
   params = list(
     commodity_desc = "APPLES",

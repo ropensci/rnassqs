@@ -12,8 +12,13 @@ The NOTE is because this is a new package
 ## Resubmission
 This is a resubmission. In this version I have:
 
-* Included the http address of the API in the package description.
-* Fixed the license configuration error. LICENSE now contains just the year and name.
+* Changed description of package names, software names, and API names to be in single quotes (e.g. 'Quick Stats' in the title and description (and also throughout the documentation.)
+
+* Explained acronyms in the description text (e.g. NASS).
+
+* Provided executable examples in all exported functions. Some of these cannot be tested because they require an authentication key. Those have been excluded from testing with \donttest{}.
+
+* Previous executable examples were excluded from testing with '\dontrun{}'. Those have been switched to '\donttest'.
 
 ## Downstream dependencies
 There are no downstream dependencies
