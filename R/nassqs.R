@@ -201,12 +201,13 @@ nassqs_parse <- function(req, as = c("data.frame", "list", "raw"), ...) {
 #' @param force a boolean to force asking in the console.
 #' @return the api key.
 #' @examples
-#' # Set the key
-#' #nassqs_auth(key = "my api key")
-#' 
+#' \donttest{
 #' # return the key if set, otherwise ask in the console if interactive.
-#' nassqs_auth()
-#'
+#' api_key <- nassqs_auth()
+
+#' # Set the key
+#' nassqs_auth(key = api_key)
+#' }
 nassqs_auth <- function(key, force = FALSE) {
   env_var <- Sys.getenv('NASSQS_TOKEN')
   

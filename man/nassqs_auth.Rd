@@ -26,10 +26,10 @@ session, fails with error message. You can set your API key in three ways:
 (3) by entering it into the console when asked (it will be stored for the rest of the session.)
 }
 \examples{
-# Set the key
-#nassqs_auth(key = "my api key")
-
+\donttest{
 # return the key if set, otherwise ask in the console if interactive.
-nassqs_auth()
-
+api_key <- nassqs_auth()
+# Set the key
+nassqs_auth(key = api_key)
+}
 }
