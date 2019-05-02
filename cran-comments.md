@@ -7,18 +7,18 @@
 ## R CMD check results
 There were no ERRORs, no WARNINGs, and 1 NOTEs
 
-The NOTE is because this is a new package
+The NOTE is because this is a new package.
 
 ## Resubmission
-This is a resubmission. In this version I have:
+This is a resubmission. In this version I have made requested changes to:
 
-* Changed description of package names, software names, and API names to be in single quotes (e.g. 'Quick Stats' in the title and description (and also throughout the documentation.)
+* Use single quotes around names of packages, software, and APIs (e.g. 'Quick Stats') in the title and description (and also throughout the documentation).
 
-* Explained acronyms in the description text (e.g. NASS).
+* Explain acronyms in the description text (e.g. NASS).
 
-* Provided executable examples in all exported functions. Some of these cannot be tested because they require an authentication key. Those have been excluded from testing with \donttest{}.
+* Provide executable examples in all exported functions. Some of these cannot be tested because they require an authentication key. Those have been excluded from testing with \donttest{}.
 
-* Previous executable examples were excluded from testing with '\dontrun{}'. Those have been switched to '\donttest'.
+* Switch examples that should be excluded from testing to use '\donttest' instead of '\dontrun'.
 
 ## Downstream dependencies
 There are no downstream dependencies
