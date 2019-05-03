@@ -10,7 +10,10 @@ clean_all: clean
 
 #Project README
 readme: README.Rmd
-	#R -e "knitr::knit('README.Rmd')"
+	R -e "rmarkdown::render('$(<F)')"
+
+#Project Paper
+paper: paper.Rmd
 	R -e "rmarkdown::render('$(<F)')"
 
 #R PACKAGE

@@ -265,11 +265,9 @@ years since 2000, you would use something like:
 
 NASS also provides a daily tarred and gzipped file of their entire
 dataset. At the time of writing it is approaching 1 GB. You can download
-that file from their FTP:
+that file via their [FTP site](ftp://ftp.nass.usda.gov/quickstats).
 
-<ftp://ftp.nass.usda.gov/quickstats>
-
-The FTP link also contains builds for: NASS’ census (every 5 years, the
-next is 2017), or data for one of their specific sectors (CROPS,
+The FTP link also contains builds for: NASS census (every 5 years ending
+with 2 and 7), or data for one of their specific sectors (CROPS,
 ECONOMICS, ANIMALS & PRODUCTS). At the time of this writing, specific
 files for the ENVIRONMENTAL and DEMOGRAPHICS sectors are not available.
