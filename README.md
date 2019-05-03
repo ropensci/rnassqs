@@ -4,10 +4,15 @@
 [![DOI](https://zenodo.org/badge/37335585.svg)](https://zenodo.org/badge/latestdoi/37335585)
 
 [![License](https://img.shields.io/github/license/mashape/apistatus.svg)](http://choosealicense.com/licenses/mit/)
+[![Last-changedate](https://img.shields.io/badge/last%20change-2019--05--03-brightgreen.svg)](https://github.com/potterzot/rnassqs/commits/master)
+
+[![Project Status: WIP – Initial development is in progress, but there
+has not yet been a stable, usable release suitable for the
+public.](https://www.repostatus.org/badges/latest/wip.svg)](https://www.repostatus.org/#wip)
+/ <https://img.shields.io/badge/lifecycle-experimental-orange.svg>
 
 [![Build
 Status](https://travis-ci.org/potterzot/rnassqs.svg?branch=master)](https://travis-ci.org/potterzot/rnassqs)
-[![Last-changedate](https://img.shields.io/badge/last%20change-2019--05--01-brightgreen.svg)](https://github.com/potterzot/rnassqs/commits/master)
 [![Coverage
 Status](https://coveralls.io/repos/github/potterzot/rnassqs/badge.svg?branch=master)](https://coveralls.io/github/potterzot/rnassqs?branch=master)
 

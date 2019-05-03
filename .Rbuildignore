@@ -9,3 +9,4 @@ cran-comments.md
 .secret
 data-raw
 ^CRAN-RELEASE$
+^codemeta\.json$
