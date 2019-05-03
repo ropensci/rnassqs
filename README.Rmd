@@ -6,17 +6,86 @@ output:
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-[![ORCiD](https://img.shields.io/badge/ORCiD-0000--0002--3410--3732-green.svg)](http://orcid.org/0000-0002-3410-3732) 
-[![DOI](https://zenodo.org/badge/37335585.svg)](https://zenodo.org/badge/latestdoi/37335585)
+<table class="table">
+<thead>
+<tr class="header">
+<th align="left">
+Usage
+</th>
+<th align="left">
+Release
+</th>
+<th align="left">
+Development
+</th>
+</tr>
+</thead>
+<tbody>
 
-[![License](https://img.shields.io/github/license/mashape/apistatus.svg)](http://choosealicense.com/licenses/mit/) 
-[![Last-changedate](https://img.shields.io/badge/last%20change-`r gsub('-', '--', Sys.Date())`-brightgreen.svg)](https://github.com/potterzot/rnassqs/commits/master) 
+<tr class="odd">
+<td align="left">
+<a href="http://choosealicense.com/licenses/mit/"><img src="https://img.shields.io/github/license/mashape/apistatus.svg" alt="Licence"></a>
+</td>
+<td align="left">
+<a href="https://cran.r-project.org/package=rnassqs"><img src="http://www.r-pkg.org/badges/version-last-release/rnassqs" alt="CRAN"></a>
+</td>
+<td align="left">
+<a href="https://github.com/potterzot/rnassqs/commits/master"><img src="https://img.shields.io/badge/last%20change-`r gsub('-', '--', Sys.Date())`-brightgreen.svg" alt="Last Change"></a>
+</td>
+</tr>
 
-[![Project Status: WIP – Initial development is in progress, but there has not yet been a stable, usable release suitable for the public.](https://www.repostatus.org/badges/latest/wip.svg)](https://www.repostatus.org/#wip) / [![Project Status: Experimental.](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
+<tr class="even">
+<td align="left">
+<a href="https://CRAN.R-project.org/package=rnassqs"><img src="https://cranlogs.r-pkg.org/badges/rnassqs" alt="downloads"></a>
+</td>
+<td align="left">
+<a href="https://zenodo.org/badge/latestdoi/37335585"><img src="https://zenodo.org/badge/37335585.svg" alt="Zenodo"></a>
+</td>
+<td align="left">
+<a href="https://travis-ci.org/potterzot/rnassqs"><img src="https://travis-ci.org/potterzot/rnassqs.svg?branch=master" alt="Build Status"></a>
+</td>
+</tr>
+
+<tr class="odd">
+<td align="left">
+</td>
+<td align="left">
+<a href="http://orcid.org/0000-0002-3410-3732"><img src="https://img.shields.io/badge/ORCiD-0000--0002--3410--3732-green.svg" alt="ORCID"></a>
+</td>
+<td align="left">
+<a href="https://coveralls.io/github/potterzot/rnassqs?branch=master"><img src="https://coveralls.io/repos/github/potterzot/rnassqs/badge.svg?branch=master" alt="Coverage Status"></a>
+</td>
+</tr>
+
+<tr class="even">
+<td align="left">
+</td>
+<td align="left">
+</td>
+<td align="left">
+<a href="https://www.repostatus.org/#WIP"><img src="https://www.repostatus.org/badges/latest/wip.svg" alt="Project Status: WIP – Initial development is in progress, but there has not yet been a stable, usable release suitable for the public." /></a>
+</td>
+</tr>
+
+<tr class="even">
+<td align="left">
+</td>
+<td align="left">
+</td>
+<td align="left">
+<a href="https://www.tidyverse.org/lifecycle/#experimental"><img src="https://img.shields.io/badge/lifecycle-experimental-orange.svg" alt="Project Status: Experimental." /></a>
+</td>
+</tr>
+
+</tbody>
+</table>
+<br>
+
 
 [![Build Status](https://travis-ci.org/potterzot/rnassqs.svg?branch=master)](https://travis-ci.org/potterzot/rnassqs)
 [![Coverage Status](https://coveralls.io/repos/github/potterzot/rnassqs/badge.svg?branch=master)](https://coveralls.io/github/potterzot/rnassqs?branch=master)
 
+(http://www.r-pkg.org/badges/version-last-release/rnassqs)
 
 ## rnassqs (R NASS Quick Stats)
 
