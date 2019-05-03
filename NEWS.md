@@ -1,3 +1,7 @@
+# rnassqs 0.4.0.9000
+
+- Development version
+
 # rnassqs 0.4.0
 
 - Add automated unit tests that work locally and others that work on CRAN.
