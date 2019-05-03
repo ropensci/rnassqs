@@ -136,13 +136,6 @@ Development
 
 <br>
 
-[![Build
-Status](https://travis-ci.org/potterzot/rnassqs.svg?branch=master)](https://travis-ci.org/potterzot/rnassqs)
-[![Coverage
-Status](https://coveralls.io/repos/github/potterzot/rnassqs/badge.svg?branch=master)](https://coveralls.io/github/potterzot/rnassqs?branch=master)
-
-(<http://www.r-pkg.org/badges/version-last-release/rnassqs>)
-
 ## rnassqs (R NASS Quick Stats)
 
 This is a package that allows users to access the USDA’s National
