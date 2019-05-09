@@ -10,3 +10,6 @@ cran-comments.md
 data-raw
 ^CRAN-RELEASE$
 ^codemeta\.json$
+paper.bib
+paper.md
+paoer.pdf

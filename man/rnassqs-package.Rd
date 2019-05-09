@@ -6,7 +6,7 @@
 \alias{rnassqs}
 \title{rnassqs-package: Use the NASS 'Quick Stats' API from R.}
 \description{
-rnassqs is a wrapper for the United States Deparment of Agriculture's
+rnassqs is a wrapper for the United States Department of Agriculture's
 National Agricultural Statistical Service (NASS) 'Quick Stats' API to enable 
 getting NASS 'Quick Stats' data directly from R.  Based on the httr API 
 package guide.
