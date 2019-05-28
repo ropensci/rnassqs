@@ -34,7 +34,7 @@ Development
 
 <td align="left">
 
-<a href="http://choosealicense.com/licenses/mit/"><img src="https://img.shields.io/github/license/mashape/apistatus.svg" alt="Licence"></a>
+<a href="http://choosealicense.com/licenses/mit/"><img src="https://img.shields.io/github/license/mashape/apistatus.svg" alt="License"></a>
 
 </td>
 
@@ -46,7 +46,7 @@ Development
 
 <td align="left">
 
-<a href="https://github.com/potterzot/rnassqs/commits/master"><img src="https://img.shields.io/badge/last%20change-2019--05--03-brightgreen.svg" alt="Last Change"></a>
+<a href="https://github.com/potterzot/rnassqs/commits/master"><img src="https://img.shields.io/badge/last%20change-2019--05--28-brightgreen.svg" alt="Last Change"></a>
 
 </td>
 
