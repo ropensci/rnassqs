@@ -46,7 +46,7 @@ Development
 
 <td align="left">
 
-<a href="https://github.com/potterzot/rnassqs/commits/master"><img src="https://img.shields.io/badge/last%20change-2019--05--28-brightgreen.svg" alt="Last Change"></a>
+<a href="https://github.com/potterzot/rnassqs/commits/master"><img src="https://img.shields.io/badge/last%20change-2019--06--22-brightgreen.svg" alt="Last Change"></a>
 
 </td>
 
@@ -262,6 +262,11 @@ years since 2000, you would use something like:
     df = nassqs(params=params) #returns data as a data frame.
 
 ## Alternatives
+
+In June 2019 the `usdarnass` package was released on
+[CRAN](https://cran.r-project.org/package=usdarnass) and is also
+available to install via [github](https://github.com/rdinter/usdarnass).
+`usdarnass` has similar functionality to this package.
 
 NASS also provides a daily tarred and gzipped file of their entire
 dataset. At the time of writing it is approaching 1 GB. You can download
