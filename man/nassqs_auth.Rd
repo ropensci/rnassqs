@@ -7,15 +7,15 @@
 nassqs_auth(key, force = FALSE)
 }
 \arguments{
-\item{key}{the api key.}
+\item{key}{the API key.}
 
 \item{force}{a boolean to force asking in the console.}
 }
 \value{
-the api key.
+the API key.
 }
 \description{
-If the api key is provided, sets the environmental variable. If not, first 
+If the API key is provided, sets the environmental variable. If not, first 
 checks if the NASSQS_TOKEN environmental variable is set, and if so,
 returns it. Otherwise asks for the key in the console. If not an interactive 
 session, fails with error message. You can set your API key in three ways:

@@ -12,13 +12,12 @@ nassqs_GET(params, key = nassqs_auth(), api_path = c("api_GET",
 \arguments{
 \item{params}{a named list of values to be queried.}
 
-\item{key}{your api key. If not provided the function will check for an 
-environmental variable and if not found, will prompt for your api key.}
+\item{key}{your API key. If not provided the function will check for an 
+environmental variable and if not found, will prompt for your API key.}
 
-\item{api_path}{the api path. Can be "api_GET", "get_param_values", or 
-"get_counts".}
+\item{api_path}{the API path.}
 
-\item{base_url}{the base api url. This should probably never be changed.}
+\item{base_url}{the base API url. This should probably never be changed.}
 
 \item{url_only}{(logical) if TRUE, returns the URL and makes no API call.}
 

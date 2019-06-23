@@ -2,9 +2,9 @@ Package: rnassqs
 Type: Package
 Title: Access the NASS 'Quick Stats' API
 Version: 0.4.0.9000
-Date: 2019-04-29
 Authors@R: c(
   person('Nicholas', 'Potter', email='potter.nicholas@gmail.com', role = c('aut', 'cre')),
+  person('Jonathan', 'Adams', email='', role = c('ctb')),
   person('Joseph', 'Stachelek', email='', role = c('ctb')),
   person('Julia', 'Piaskowski', email='', role = c('ctb'))) 
 Maintainer: Nicholas Potter <potter.nicholas@gmail.com>

@@ -7,10 +7,10 @@
 nassqs_check(req)
 }
 \arguments{
-\item{req}{request result returned from the API}
+\item{req}{request result returned from the API.}
 }
 \value{
-parsed request result as json
+parsed request result as JSON.
 }
 \description{
 Check that the request is valid, i.e. that it doesn't exceed 50,000 records and that all the parameter values are valid. This is helpful for checking a query before submitting it so that you don't have to wait for the query to fail.

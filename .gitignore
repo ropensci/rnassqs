@@ -8,3 +8,4 @@ doc
 CRAN-RELEASE
 .secret
 inst/doc
+*.pdf
