@@ -217,7 +217,7 @@ You can request data for multiple values of the same parameter by using
 a simple list as follows:
 
     params <- list(commodity_desc = "CORN", year__GE = 2012, state_alpha = c("VA", "WA"))
-    d <- nassqs(params=params)
+    d <- nassqs(params)
 
 NASS does not allow GET requests that pull more than 50,000 records in
 one request. The function will inform you if you try to do that. It will
