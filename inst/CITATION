@@ -4,16 +4,16 @@ citEntry(
   entry = "Article",
   author = as.person("Nicholas A Potter"),
   title = "rnassqs: An `R` package to access agricultural data via the USDA National Agricultural Statistics Service (USDA-NASS) 'Quick Stats' API",
-  doi = "10.21105/joss.01035",
-  year = 2018,
-  month = "sep",
-  publisher = "The Open Journal",
-  volume = 3,
-  number = 30,
-  pages = 1035,
-  journal = "The Journal of Open Source Software",
+  doi = "",
+  year = "",
+  month = "",
+  publisher = "",
+  volume = "",
+  number = "",
+  pages = "",
+  journal = "",
 
-  textVersion = paste("Potter, Nicholas A (2019). rnassqs: An `R` package to access agricultural data via the USDA National Agricultural Statistics Service (USDA-NASS) 'Quick Stats' API. Journal of Open Source Software, 3(30), 1035, <doi>"))
+  textVersion = paste("Potter, Nicholas A (2019). rnassqs: An `R` package to access agricultural data via the USDA National Agricultural Statistics Service (USDA-NASS) 'Quick Stats' API."))
 
 year <- sub("-.*", "", meta$Date)
 note <- sprintf("R package version %s", meta$Version)
