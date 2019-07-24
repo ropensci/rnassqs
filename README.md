@@ -49,7 +49,7 @@ Development
 
 <td align="left">
 
-<a href="https://github.com/potterzot/rnassqs/commits/master"><img src="https://img.shields.io/badge/last%20change-2019--07--23-brightgreen.svg" alt="Last Change"></a>
+<a href="https://github.com/potterzot/rnassqs/commits/master"><img src="https://img.shields.io/badge/last%20change-2019--07--24-brightgreen.svg" alt="Last Change"></a>
 
 </td>
 
@@ -141,13 +141,13 @@ Development
 
 ## rnassqs (R NASS Quick Stats)
 
-This is a package that allows users to access the USDA’s National
-Agricultural Statistics Service (NASS) ‘Quick Stats’ data through their
-API. It is fairly low level and does not include a lot of scaffolding or
-setup. Some things may change, but at this point it is relatively
-stable.
+`rnassqs` allows users to access the USDA’s National Agricultural
+Statistics Service (NASS) ‘Quick Stats’ data through their API. It is
+simple and easy to use, and provides some functions to help navigate the
+bewildering complexity of some Quick Stats data.
 
-Visit the package web page here: <https://potterzot.com/rnassqs/>.
+For docs and code examples, visit the package web page here:
+<https://potterzot.com/rnassqs/>.
 
 ## Installing
 

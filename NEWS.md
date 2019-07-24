@@ -1,3 +1,14 @@
+# rnassqs 0.4.0.9001
+
+- Change in syntax to allow for lower case query parameter values
+- Change in syntax to allow for specifying each parameter as a separate function argument rather than as a single list (in addition to specifying a single list)
+- Create package website with pkgdown
+- Standardize code style in package code, examples, and vignette
+- Simplify authentication
+- Expanded test coverage with use of httptest::with_mock_api()
+- Better clarification in documentation and documentation examples
+- Improved README and vignette
+
 # rnassqs 0.4.0.9000
 
 - Development version
