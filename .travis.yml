@@ -4,11 +4,8 @@ cache: packages
 warnings_are_errors: true
 r_binary_packages:
 - testthat
+- httptest
 - knitr
 r_github_packages:
 - r-lib/covr
 after_success:
-- Rscript -e 'library(covr); coveralls()'
-env:
-  global:
-    secure: YTwBBmtY7IEiMQonmxk4mq98TbHMvIarC7E1ciYtizhaIfSlYHaYi9RqWkXBl1sRr/b3sTzr7PSUB8iTesmEJXZ8iKYwgUv/adftZUSXiKNd9sJnQvM4L53FHUo7yW1koAe+g3PSg3P6SUlxYj8s8hopWr/in/fJiArto7hFFxQCOv3yZa7Nz4Y7tGT3+tJE4pVAsmrVYAJ0nMdHCsgZNLAChXkFRfNrBkZmoJRRynMDUHuQzsocn14EOrvFerCr0bBmYssxb+GrXaPVU8zf+86Rt8kFJSTJ3uMbn9HEWhurluJqp0SgEFNTT78LAD7UKSBeXz0SRwyQbKmBqN+mG1YD0p90rMMNC7gOojpKz/RO/tr6XhBy6cnyk4zi934D1nFEUfY0NudEyTajrvOfXJhsS09UEUNwWR77cLUdVZhUGe5fFVOBZ+jOjkQKylOO/WwTpN6/96NJ6u4H+XkmS+Wnnv8cmeZGQXKV8/W3DsZFUyWI6lJsLoJx9VrQy5FMX4UKffwhcDKTp0rk1TrdPGSq2onJkyKA801WEAhA9xa+2z56Ov3vK3nstG7Y3PLsjTk5EeXlc9D0yVYkQ1tuSlihiRgvB1gpIIw7l+Ha0uTw735K3Kr3Q1ux03n2ih5SK/Ey8c7YfMjhxT7OpWwk5pItKL2nlB13igJK7qIIc78=
