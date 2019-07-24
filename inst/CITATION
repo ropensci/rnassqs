@@ -5,13 +5,13 @@ citEntry(
   author = as.person("Nicholas A Potter"),
   title = "rnassqs: An `R` package to access agricultural data via the USDA National Agricultural Statistics Service (USDA-NASS) 'Quick Stats' API",
   doi = "",
-  year = "",
+  year = "2019",
   month = "",
   publisher = "",
   volume = "",
   number = "",
   pages = "",
-  journal = "",
+  journal = "Unknown",
 
   textVersion = paste("Potter, Nicholas A (2019). rnassqs: An `R` package to access agricultural data via the USDA National Agricultural Statistics Service (USDA-NASS) 'Quick Stats' API."))
 

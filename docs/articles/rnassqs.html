@@ -30,7 +30,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">rnassqs</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.4.0.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.4.0.9001</span>
       </span>
     </div>
 
@@ -114,6 +114,14 @@ nassqs_record_count(params)
 
 # Get the data
 d &lt;- nassqs(params)</code></pre>
+<p>Parameters need not be specified in a list and need not be capitalized. The following is equivalent</p>
+<pre><code># Get the data specifying each parameter as a separate argument to the 
+# function `rnassqs`
+d &lt;- nassqs(commodity_desc = "operators", 
+            domain_desc = "area operated",
+            agg_level_desc = "state",
+            state_alpha = "or",
+            year = 2012)</code></pre>
 </div>
 <div id="convenience-functions" class="section level2">
 <h2 class="hasAnchor">
@@ -130,7 +138,7 @@ params &lt;- list(
 
 # Yields and Acres
 yields &lt;- nassqs_yields(params)
-acres &lt;- nassqs_acres()</code></pre>
+acres &lt;- nassqs_acres(params)</code></pre>
 </div>
 <div id="detailed-usage" class="section level2">
 <h2 class="hasAnchor">
@@ -165,34 +173,34 @@ nassqs_auth()</a></code></pre>
 <h3 class="hasAnchor">
 <a href="#step-2-building-queries" class="anchor"></a>Step 2: Building Queries</h3>
 <p>The QuickStats API offers a bewildering array of fields on which to query. <code>rnassqs</code> tries to help navigate query building with some functions that return parameter names and valid values for those parameters. <code><a href="../reference/nassqs_params.html">nassqs_params()</a></code> provides the parameter names, which at the time of this writing are</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(rnassqs)</span>
-<span id="cb5-2"><a href="#cb5-2"></a></span>
-<span id="cb5-3"><a href="#cb5-3"></a><span class="co"># returns a list of fields that you can query</span></span>
-<span id="cb5-4"><a href="#cb5-4"></a><span class="kw"><a href="../reference/nassqs_params.html">nassqs_params</a></span>()</span>
-<span id="cb5-5"><a href="#cb5-5"></a><span class="co">#&gt;  [1] "agg_level_desc"        "asd_code"             </span></span>
-<span id="cb5-6"><a href="#cb5-6"></a><span class="co">#&gt;  [3] "asd_desc"              "begin_code"           </span></span>
-<span id="cb5-7"><a href="#cb5-7"></a><span class="co">#&gt;  [5] "class_desc"            "commodity_desc"       </span></span>
-<span id="cb5-8"><a href="#cb5-8"></a><span class="co">#&gt;  [7] "congr_district_code"   "country_code"         </span></span>
-<span id="cb5-9"><a href="#cb5-9"></a><span class="co">#&gt;  [9] "country_name"          "county_ansi"          </span></span>
-<span id="cb5-10"><a href="#cb5-10"></a><span class="co">#&gt; [11] "county_code"           "county_name"          </span></span>
-<span id="cb5-11"><a href="#cb5-11"></a><span class="co">#&gt; [13] "CV"                    "domaincat_desc"       </span></span>
-<span id="cb5-12"><a href="#cb5-12"></a><span class="co">#&gt; [15] "domain_desc"           "end_code"             </span></span>
-<span id="cb5-13"><a href="#cb5-13"></a><span class="co">#&gt; [17] "freq_desc"             "group_desc"           </span></span>
-<span id="cb5-14"><a href="#cb5-14"></a><span class="co">#&gt; [19] "load_time"             "location_desc"        </span></span>
-<span id="cb5-15"><a href="#cb5-15"></a><span class="co">#&gt; [21] "prodn_practice_desc"   "reference_period_desc"</span></span>
-<span id="cb5-16"><a href="#cb5-16"></a><span class="co">#&gt; [23] "region_desc"           "sector_desc"          </span></span>
-<span id="cb5-17"><a href="#cb5-17"></a><span class="co">#&gt; [25] "short_desc"            "state_alpha"          </span></span>
-<span id="cb5-18"><a href="#cb5-18"></a><span class="co">#&gt; [27] "state_ansi"            "state_name"           </span></span>
-<span id="cb5-19"><a href="#cb5-19"></a><span class="co">#&gt; [29] "state_fips_code"       "statisticcat_desc"    </span></span>
-<span id="cb5-20"><a href="#cb5-20"></a><span class="co">#&gt; [31] "source_desc"           "unit_desc"            </span></span>
-<span id="cb5-21"><a href="#cb5-21"></a><span class="co">#&gt; [33] "util_practice_desc"    "Value"                </span></span>
-<span id="cb5-22"><a href="#cb5-22"></a><span class="co">#&gt; [35] "watershed_code"        "watershed_desc"       </span></span>
-<span id="cb5-23"><a href="#cb5-23"></a><span class="co">#&gt; [37] "week_ending"           "year"                 </span></span>
-<span id="cb5-24"><a href="#cb5-24"></a><span class="co">#&gt; [39] "zip_5"</span></span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(rnassqs)</span>
+<span id="cb6-2"><a href="#cb6-2"></a></span>
+<span id="cb6-3"><a href="#cb6-3"></a><span class="co"># returns a list of fields that you can query</span></span>
+<span id="cb6-4"><a href="#cb6-4"></a><span class="kw"><a href="../reference/nassqs_params.html">nassqs_params</a></span>()</span>
+<span id="cb6-5"><a href="#cb6-5"></a><span class="co">#&gt;  [1] "agg_level_desc"        "asd_code"             </span></span>
+<span id="cb6-6"><a href="#cb6-6"></a><span class="co">#&gt;  [3] "asd_desc"              "begin_code"           </span></span>
+<span id="cb6-7"><a href="#cb6-7"></a><span class="co">#&gt;  [5] "class_desc"            "commodity_desc"       </span></span>
+<span id="cb6-8"><a href="#cb6-8"></a><span class="co">#&gt;  [7] "congr_district_code"   "country_code"         </span></span>
+<span id="cb6-9"><a href="#cb6-9"></a><span class="co">#&gt;  [9] "country_name"          "county_ansi"          </span></span>
+<span id="cb6-10"><a href="#cb6-10"></a><span class="co">#&gt; [11] "county_code"           "county_name"          </span></span>
+<span id="cb6-11"><a href="#cb6-11"></a><span class="co">#&gt; [13] "CV"                    "domaincat_desc"       </span></span>
+<span id="cb6-12"><a href="#cb6-12"></a><span class="co">#&gt; [15] "domain_desc"           "end_code"             </span></span>
+<span id="cb6-13"><a href="#cb6-13"></a><span class="co">#&gt; [17] "freq_desc"             "group_desc"           </span></span>
+<span id="cb6-14"><a href="#cb6-14"></a><span class="co">#&gt; [19] "load_time"             "location_desc"        </span></span>
+<span id="cb6-15"><a href="#cb6-15"></a><span class="co">#&gt; [21] "prodn_practice_desc"   "reference_period_desc"</span></span>
+<span id="cb6-16"><a href="#cb6-16"></a><span class="co">#&gt; [23] "region_desc"           "sector_desc"          </span></span>
+<span id="cb6-17"><a href="#cb6-17"></a><span class="co">#&gt; [25] "short_desc"            "state_alpha"          </span></span>
+<span id="cb6-18"><a href="#cb6-18"></a><span class="co">#&gt; [27] "state_ansi"            "state_name"           </span></span>
+<span id="cb6-19"><a href="#cb6-19"></a><span class="co">#&gt; [29] "state_fips_code"       "statisticcat_desc"    </span></span>
+<span id="cb6-20"><a href="#cb6-20"></a><span class="co">#&gt; [31] "source_desc"           "unit_desc"            </span></span>
+<span id="cb6-21"><a href="#cb6-21"></a><span class="co">#&gt; [33] "util_practice_desc"    "Value"                </span></span>
+<span id="cb6-22"><a href="#cb6-22"></a><span class="co">#&gt; [35] "watershed_code"        "watershed_desc"       </span></span>
+<span id="cb6-23"><a href="#cb6-23"></a><span class="co">#&gt; [37] "week_ending"           "year"                 </span></span>
+<span id="cb6-24"><a href="#cb6-24"></a><span class="co">#&gt; [39] "zip_5"</span></span></code></pre></div>
 <p>Including parameter names in <code>nassqs_params</code> will return a description of the parameter(s) in question:</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="kw"><a href="../reference/nassqs_params.html">nassqs_params</a></span>(<span class="st">"agg_level_desc"</span>, <span class="st">"source_desc"</span>)</span>
-<span id="cb6-2"><a href="#cb6-2"></a><span class="co">#&gt; [1] "agg_level_desc: Geographical level of data. Often 'county', 'state', or 'national', but can include other levels as well"</span></span>
-<span id="cb6-3"><a href="#cb6-3"></a><span class="co">#&gt; [2] "source_desc: Data source. Either 'CENSUS' or 'SURVEY'"</span></span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="kw"><a href="../reference/nassqs_params.html">nassqs_params</a></span>(<span class="st">"agg_level_desc"</span>, <span class="st">"source_desc"</span>)</span>
+<span id="cb7-2"><a href="#cb7-2"></a><span class="co">#&gt; [1] "agg_level_desc: Geographical level of data. Often 'county', 'state', or 'national', but can include other levels as well"</span></span>
+<span id="cb7-3"><a href="#cb7-3"></a><span class="co">#&gt; [2] "source_desc: Data source. Either 'CENSUS' or 'SURVEY'"</span></span></code></pre></div>
 <p>Documentation on all of the parameters is available at <a href="https://quickstats.nass.usda.gov/api#param_define">https://quickstats.nass.usda.gov/api#param_define</a>.</p>
 <p>A list of the valid values for a given field is available via <code>nassqs_param_values(param = &lt;parameter name&gt;)</code>. For example,</p>
 <pre><code><a href="../reference/nassqs_param_values.html">nassqs_param_values(param = 'source_desc')</a></code></pre>

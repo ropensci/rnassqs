@@ -69,7 +69,7 @@ restrict the number of columns." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">rnassqs</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.4.0.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.4.0.9001</span>
       </span>
     </div>
 
@@ -161,63 +161,7 @@ form the query</p></td>
                  <span class='kw'>agg_level_desc</span> <span class='kw'>=</span> <span class='st'>"COUNTY"</span>,
                  <span class='kw'>state_alpha</span> <span class='kw'>=</span> <span class='st'>"VA"</span>,
                  <span class='kw'>statisticcat_desc</span> <span class='kw'>=</span> <span class='st'>"YIELD"</span>)
-  <span class='no'>yields</span> <span class='kw'>&lt;-</span> <span class='fu'>nassqs</span>(<span class='no'>params</span>)
-  <span class='fu'><a href='https://www.rdocumentation.org/packages/utils/topics/head'>head</a></span>(<span class='no'>yields</span>)</div><div class='output co'>#&gt;        prodn_practice_desc source_desc reference_period_desc  country_name
-#&gt; 1 ALL PRODUCTION PRACTICES      SURVEY                  YEAR UNITED STATES
-#&gt; 2 ALL PRODUCTION PRACTICES      SURVEY                  YEAR UNITED STATES
-#&gt; 3 ALL PRODUCTION PRACTICES      SURVEY                  YEAR UNITED STATES
-#&gt; 4 ALL PRODUCTION PRACTICES      SURVEY                  YEAR UNITED STATES
-#&gt; 5 ALL PRODUCTION PRACTICES      SURVEY                  YEAR UNITED STATES
-#&gt; 6 ALL PRODUCTION PRACTICES      SURVEY                  YEAR UNITED STATES
-#&gt;   watershed_desc agg_level_desc region_desc begin_code year domain_desc
-#&gt; 1                        COUNTY                     00 2012       TOTAL
-#&gt; 2                        COUNTY                     00 2012       TOTAL
-#&gt; 3                        COUNTY                     00 2012       TOTAL
-#&gt; 4                        COUNTY                     00 2012       TOTAL
-#&gt; 5                        COUNTY                     00 2012       TOTAL
-#&gt; 6                        COUNTY                     00 2012       TOTAL
-#&gt;   county_name end_code state_fips_code        util_practice_desc zip_5
-#&gt; 1    CULPEPER       00              51 ALL UTILIZATION PRACTICES      
-#&gt; 2    FAUQUIER       00              51 ALL UTILIZATION PRACTICES      
-#&gt; 3     MADISON       00              51 ALL UTILIZATION PRACTICES      
-#&gt; 4        PAGE       00              51 ALL UTILIZATION PRACTICES      
-#&gt; 5  ROCKINGHAM       00              51 ALL UTILIZATION PRACTICES      
-#&gt; 6  SHENANDOAH       00              51 ALL UTILIZATION PRACTICES      
-#&gt;   freq_desc domaincat_desc unit_desc                            short_desc
-#&gt; 1    ANNUAL  NOT SPECIFIED BU / ACRE BARLEY - YIELD, MEASURED IN BU / ACRE
-#&gt; 2    ANNUAL  NOT SPECIFIED BU / ACRE BARLEY - YIELD, MEASURED IN BU / ACRE
-#&gt; 3    ANNUAL  NOT SPECIFIED BU / ACRE BARLEY - YIELD, MEASURED IN BU / ACRE
-#&gt; 4    ANNUAL  NOT SPECIFIED BU / ACRE BARLEY - YIELD, MEASURED IN BU / ACRE
-#&gt; 5    ANNUAL  NOT SPECIFIED BU / ACRE BARLEY - YIELD, MEASURED IN BU / ACRE
-#&gt; 6    ANNUAL  NOT SPECIFIED BU / ACRE BARLEY - YIELD, MEASURED IN BU / ACRE
-#&gt;   country_code sector_desc  group_desc asd_code commodity_desc watershed_code
-#&gt; 1         9000       CROPS FIELD CROPS       20         BARLEY       00000000
-#&gt; 2         9000       CROPS FIELD CROPS       20         BARLEY       00000000
-#&gt; 3         9000       CROPS FIELD CROPS       20         BARLEY       00000000
-#&gt; 4         9000       CROPS FIELD CROPS       20         BARLEY       00000000
-#&gt; 5         9000       CROPS FIELD CROPS       20         BARLEY       00000000
-#&gt; 6         9000       CROPS FIELD CROPS       20         BARLEY       00000000
-#&gt;   asd_desc statisticcat_desc state_ansi state_alpha state_name county_code
-#&gt; 1 NORTHERN             YIELD         51          VA   VIRGINIA         047
-#&gt; 2 NORTHERN             YIELD         51          VA   VIRGINIA         061
-#&gt; 3 NORTHERN             YIELD         51          VA   VIRGINIA         113
-#&gt; 4 NORTHERN             YIELD         51          VA   VIRGINIA         139
-#&gt; 5 NORTHERN             YIELD         51          VA   VIRGINIA         165
-#&gt; 6 NORTHERN             YIELD         51          VA   VIRGINIA         171
-#&gt;   CV (%)  class_desc week_ending county_ansi                  location_desc
-#&gt; 1        ALL CLASSES                     047   VIRGINIA, NORTHERN, CULPEPER
-#&gt; 2        ALL CLASSES                     061   VIRGINIA, NORTHERN, FAUQUIER
-#&gt; 3        ALL CLASSES                     113    VIRGINIA, NORTHERN, MADISON
-#&gt; 4        ALL CLASSES                     139       VIRGINIA, NORTHERN, PAGE
-#&gt; 5        ALL CLASSES                     165 VIRGINIA, NORTHERN, ROCKINGHAM
-#&gt; 6        ALL CLASSES                     171 VIRGINIA, NORTHERN, SHENANDOAH
-#&gt;   Value congr_district_code           load_time
-#&gt; 1  87.1                     2015-06-02 15:00:27
-#&gt; 2  68.1                     2015-06-02 15:00:27
-#&gt; 3  71.8                     2015-06-02 15:00:27
-#&gt; 4    67                     2015-06-02 15:00:27
-#&gt; 5    76                     2015-06-02 15:00:27
-#&gt; 6    69                     2015-06-02 15:00:27</div></pre>
+  <span class='no'>yields</span> <span class='kw'>&lt;-</span> <span class='fu'>nassqs</span>(<span class='no'>params</span>)</div><div class='output co'>#&gt;   |                                                                              |                                                                      |   0%  |                                                                              |=====                                                                 |   7%  |                                                                              |======                                                                |   9%  |                                                                              |===========                                                           |  16%  |                                                                              |====================                                                  |  28%  |                                                                              |================================                                      |  46%  |                                                                              |==============================================                        |  65%  |                                                                              |===========================================================           |  85%  |                                                                              |======================================================================| 100%</div><div class='output co'>#&gt; <span class='error'>Error in nassqs_parse(req, as = as): Response is not in the expected json, xml, or csv format. Use `as = 'text'` to see the unparsed response data, or modify your parameters to include `format = 'json'` to make the request in json.</span></div><div class='input'>  <span class='fu'><a href='https://www.rdocumentation.org/packages/utils/topics/head'>head</a></span>(<span class='no'>yields</span>)</div><div class='output co'>#&gt; <span class='error'>Error in head(yields): object 'yields' not found</span></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

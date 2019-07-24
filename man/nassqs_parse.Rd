@@ -19,7 +19,7 @@ a data frame, list, or text string of the content from the response.
 }
 \description{
 Returns a data frame, list, or text string. If a data.frame, all columns
-except \code{year} strings because the 'Quick Stats' data returns supressed data
+except \code{year} strings because the 'Quick Stats' data returns suppressed data
 as '(D)', (Z)', or other character indicators which mean different things.
 Converting the value to a numerical results in NA, which loses that
 information.

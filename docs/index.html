@@ -11,7 +11,7 @@
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script><!-- sticky kit --><script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script><!-- pkgdown --><link href="pkgdown.css" rel="stylesheet">
 <script src="pkgdown.js"></script><meta property="og:title" content="Access the NASS 'Quick Stats' API">
 <meta property="og:description" content="Interface to access data via the United States Department of 
-  Agricultre's National Agricultural Statistical Service (NASS) 'Quick Stats' 
+  Agriculture's National Agricultural Statistical Service (NASS) 'Quick Stats' 
   web API &lt;https://quickstats.nass.usda.gov/api&gt;. Convenience functions 
   facilitate building queries based on available parameters and valid parameter 
   values.">
@@ -34,7 +34,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">rnassqs</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.4.0.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.4.0.9001</span>
       </span>
     </div>
 
@@ -149,6 +149,7 @@ Development
 <h2 class="hasAnchor">
 <a href="#rnassqs-r-nass-quick-stats" class="anchor"></a>rnassqs (R NASS Quick Stats)</h2>
 <p>This is a package that allows users to access the USDA’s National Agricultural Statistics Service (NASS) ‘Quick Stats’ data through their API. It is fairly low level and does not include a lot of scaffolding or setup. Some things may change, but at this point it is relatively stable.</p>
+<p>Visit the package web page here: <a href="https://potterzot.com/rnassqs/">https://potterzot.com/rnassqs/</a>.</p>
 </div>
 <div id="installing" class="section level2">
 <h2 class="hasAnchor">
@@ -185,7 +186,7 @@ d &lt;- nassqs(params)</code></pre>
 <pre><code>d &lt;- nassqs(commodity_desc = "corn", year__GE = 2012, state_alpha = "va")</code></pre>
 <p>You can request data for multiple values of the same parameter by using a simple list as follows:</p>
 <pre><code>params &lt;- list(commodity_desc = "CORN", year__GE = 2012, state_alpha = c("VA", "WA"))
-d = nassqs(params=params)</code></pre>
+d &lt;- nassqs(params=params)</code></pre>
 <p>NASS does not allow GET requests that pull more than 50,000 records in one request. The function will inform you if you try to do that. It will also inform you if you’ve requested a set of parameters for which there are no records.</p>
 <p>Other useful functions include:</p>
 <pre><code><a href="reference/nassqs_param_values.html"># returns a set of unnique values for the parameter "STATISTICCAT_DESC"
@@ -218,11 +219,12 @@ nassqs_acres(params, area = "AREA HARVESTED")</a></code></pre>
 <li>__NE: not equal</li>
 </ul>
 <p>For example, to request corn yields in Virginia and Pennsylvania for all years since 2000, you would use something like:</p>
-<pre><code>params = list(commodity_desc="CORN", 
-              year__GE=2000, 
-              state_alpha=c("VA", "PA"), 
-              statisticcat_desc="YIELD")
-df = nassqs(params=params) #returns data as a data frame.</code></pre>
+<pre><code>params &lt;- list(commodity_desc = "CORN", 
+              year__GE = 2000, 
+              state_alpha = c("VA", "PA"), 
+              statisticcat_desc = "YIELD")
+df &lt;- nassqs(params) #returns data as a data frame.</code></pre>
+<p>See the <a href="vignettes/rnassqs.html">vignette</a> for more examples and details on usage.</p>
 </div>
 </div>
 <div id="contributing" class="section level2">

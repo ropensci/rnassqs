@@ -144,6 +144,8 @@ API. It is fairly low level and does not include a lot of scaffolding or
 setup. Some things may change, but at this point it is relatively
 stable.
 
+Visit the package web page here: <https://potterzot.com/rnassqs/>.
+
 ## Installing
 
 Install the package via `devtools` or CRAN:
@@ -200,7 +202,7 @@ You can request data for multiple values of the same parameter by using
 a simple list as follows:
 
     params <- list(commodity_desc = "CORN", year__GE = 2012, state_alpha = c("VA", "WA"))
-    d = nassqs(params=params)
+    d <- nassqs(params=params)
 
 NASS does not allow GET requests that pull more than 50,000 records in
 one request. The function will inform you if you try to do that. It will
@@ -242,11 +244,11 @@ API can accept the following modifications:
 For example, to request corn yields in Virginia and Pennsylvania for all
 years since 2000, you would use something like:
 
-    params = list(commodity_desc = "CORN", 
+    params <- list(commodity_desc = "CORN", 
                   year__GE = 2000, 
                   state_alpha = c("VA", "PA"), 
                   statisticcat_desc = "YIELD")
-    df = nassqs(params) #returns data as a data frame.
+    df <- nassqs(params) #returns data as a data frame.
 
 See the [vignette](vignettes/rnassqs.html) for more examples and details
 on usage.
