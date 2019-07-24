@@ -123,11 +123,11 @@ nassqs_GET <- function(...,
   if(!("format" %in% names(query))) query['format'] <- "JSON"
   
   # full url
-  url <- "https://quickstats.nass.usda.gov/api/"
+  url <- paste0("https://quickstats.nass.usda.gov/api/", api_path)
   u <- httr::parse_url(url)
   u$query <- query
   
-  resp <- httr::GET(url, path = api_path, query = query, httr::progress())
+  resp <- httr::GET(url, query = query, httr::progress())
   nassqs_check(resp)
   
   resp
