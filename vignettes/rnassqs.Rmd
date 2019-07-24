@@ -243,10 +243,11 @@ Subsetting by geography works similarly, looping over the geography variable (us
 
 ### Iterating over lists of parameters
 
-Similar to above, at times it is helpful to make multiple queries and bind the data into a single `data.frame`. For example, you may want to collect the many different categories of acres in 2012, which you can do with something like
+Similar to above, at times it is helpful to make multiple queries and bind the data into a single `data.frame`. For example, you may want to collect the many different categories of acres for every Agricultural Census since 1997, which you can do with something like
 
     # First define a base parameter list to modify for each new query
     base_params <- list(
+      source_desc = "CENSUS",
       sector_desc = "ECONOMICS",
       commodity_desc = "AG LAND",
       agg_level_desc = "COUNTY",
@@ -254,7 +255,7 @@ Similar to above, at times it is helpful to make multiple queries and bind the d
       statisticcat_desc = "AREA",
       domain_desc = "TOTAL",
       domaincat_desc = "NOT SPECIFIED",
-      year = 2012
+      year_GE = 1997
     )
     
     # List of parameters that vary for each query

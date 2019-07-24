@@ -312,9 +312,10 @@ dt &lt;- rbindlist(data_list)</code></pre>
 <div id="iterating-over-lists-of-parameters" class="section level3">
 <h3 class="hasAnchor">
 <a href="#iterating-over-lists-of-parameters" class="anchor"></a>Iterating over lists of parameters</h3>
-<p>Similar to above, at times it is helpful to make multiple queries and bind the data into a single <code>data.frame</code>. For example, you may want to collect the many different categories of acres in 2012, which you can do with something like</p>
+<p>Similar to above, at times it is helpful to make multiple queries and bind the data into a single <code>data.frame</code>. For example, you may want to collect the many different categories of acres for every Agricultural Census since 1997, which you can do with something like</p>
 <pre><code># First define a base parameter list to modify for each new query
 base_params &lt;- list(
+  source_desc = "CENSUS",
   sector_desc = "ECONOMICS",
   commodity_desc = "AG LAND",
   agg_level_desc = "COUNTY",
@@ -322,7 +323,7 @@ base_params &lt;- list(
   statisticcat_desc = "AREA",
   domain_desc = "TOTAL",
   domaincat_desc = "NOT SPECIFIED",
-  year = 2012
+  year_GE = 1997
 )
 
 # List of parameters that vary for each query
