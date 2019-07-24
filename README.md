@@ -1,13 +1,14 @@
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-![rnassqs icon](profile.png) (Wheat image from
-[here](https://www.flickr.com/photos/53018729@N00/2669034542))
-
 <table class="table">
 
 <thead>
 
 <tr class="header">
+
+<th>
+
+</th>
 
 <th align="left">
 
@@ -34,6 +35,13 @@ Development
 <tbody>
 
 <tr class="odd">
+
+<td rowspan="5">
+
+![rnassqs icon](inst/figures/rnassqs.png) (Wheat image from
+[here](https://www.flickr.com/photos/53018729@N00/2669034542))
+
+</td>
 
 <td align="left">
 
