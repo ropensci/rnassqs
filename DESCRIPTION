@@ -1,15 +1,17 @@
 Package: rnassqs
 Type: Package
 Title: Access the NASS 'Quick Stats' API
-Version: 0.4.0.9000
+Version: 0.4.0.9001
 Authors@R: c(
   person('Nicholas', 'Potter', email='potter.nicholas@gmail.com', role = c('aut', 'cre')),
   person('Jonathan', 'Adams', email='', role = c('ctb')),
   person('Joseph', 'Stachelek', email='', role = c('ctb')),
-  person('Julia', 'Piaskowski', email='', role = c('ctb'))) 
+  person('Julia', 'Piaskowski', email='', role = c('ctb')),
+  person('Adam', 'Sparks', email='', role = c('rev')),
+  person('Neal', 'Richardson', email='', role = c('rev'))) 
 Maintainer: Nicholas Potter <potter.nicholas@gmail.com>
 Description: Interface to access data via the United States Department of 
-  Agricultre's National Agricultural Statistical Service (NASS) 'Quick Stats' 
+  Agriculture's National Agricultural Statistical Service (NASS) 'Quick Stats' 
   web API <https://quickstats.nass.usda.gov/api>. Convenience functions 
   facilitate building queries based on available parameters and valid parameter 
   values.
@@ -18,14 +20,19 @@ BugReports: http://www.github.com/potterzot/rnassqs/issues
 License: MIT + file LICENSE
 LazyData: TRUE
 Language: en-US
-Imports:
+Imports: 
   httr,
   jsonlite,
-Suggests:
-  testthat,
+  stats,
+  utils
+Suggests: 
+  assertthat,
   here,
+  httptest,
   knitr,
-  rmarkdown
+  rmarkdown,
+  testthat
 RoxygenNote: 6.1.1
+Roxygen: list(markdown = TRUE)
 Encoding: UTF-8
 VignetteBuilder: knitr

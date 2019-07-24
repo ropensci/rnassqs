@@ -1,14 +1,6 @@
 ---
-<<<<<<< HEAD
-title: "The rnassqs R package: access the USDA National Agricultural Statistics Service (NASS) 'Quick Stats' API"
-tags:
-  - R
-  - reproducibility
-  - workflow
-=======
 title: "rnassqs: An `R` package to access agricultural data via the USDA 
   National Agricultural Statistics Service (USDA-NASS) 'Quick Stats' API"
->>>>>>> a3e820c98d6e779d0974f640a3c9e616ad9d9e33
 authors:
 - affiliation: 1
   email: potter.nicholas@gmail.com
@@ -108,10 +100,9 @@ By accessing the data via FTP users can avoid using the selection interface of
 'Quick Stats' and avoid limitations on the number of records per request, but do 
 not resolve issues of automated repeated requests or of making data requests 
 reproducible.
->>>>>>> a3e820c98d6e779d0974f640a3c9e616ad9d9e33
 
 # Acknowledgements
 
-Thank you to Jonathan Adams, Julia Piaskowski, and Joseph Stachelek for contributions.
+Thank you to Jonathan Adams, Julia Piaskowski, and Joseph Stachelek for code contributions. A huge thanks to reviewers Adam H Sparks and Neal Richardson for their thoughtful feedback to improve the package and documentation.
 
 # References

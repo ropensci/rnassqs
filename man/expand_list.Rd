@@ -4,14 +4,16 @@
 \alias{expand_list}
 \title{Expand an ellipsis list.}
 \usage{
-expand_list(listx)
+expand_list(...)
 }
 \arguments{
-\item{listx}{a list to be expanded.}
+\item{...}{either a list or a series of strings to be expanded}
 }
 \value{
-an expanded list.
+a named list.
 }
 \description{
-Expand an ellipsis list.
+This function takes an ellipsis list of the form \code{...} and returns an
+expanded list
 }
+\keyword{internal}

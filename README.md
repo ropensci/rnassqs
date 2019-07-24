@@ -46,7 +46,7 @@ Development
 
 <td align="left">
 
-<a href="https://github.com/potterzot/rnassqs/commits/master"><img src="https://img.shields.io/badge/last%20change-2019--06--22-brightgreen.svg" alt="Last Change"></a>
+<a href="https://github.com/potterzot/rnassqs/commits/master"><img src="https://img.shields.io/badge/last%20change-2019--07--23-brightgreen.svg" alt="Last Change"></a>
 
 </td>
 
@@ -146,7 +146,7 @@ stable.
 
 ## Installing
 
-Install should be simple via either devtools or CRAN:
+Install the package via `devtools` or CRAN:
 
     # Via devtools
     library(devtools)
@@ -158,86 +158,73 @@ Install should be simple via either devtools or CRAN:
 ## API Key
 
 To use the NASS Quick Stats API you need an [API
-key](http://quickstats.nass.usda.gov/api). There are several ways of
-setting your API key. You can set the variable explicitly and pass it to
-functions, like so
-
-    params <- list(...)                    # parameters for query 
-    api_key <- "<your api key here>"       # API key
-    data <- nassqs(params, key = api_key)  # query and return data
-
-Alternatively, you can set the API key as an environmental variable
-either by adding it to your `.Renviron` like so:
+key](http://quickstats.nass.usda.gov/api). The API key should in general
+not be included in scripts. One way of making the key available without
+defining it in a script is by setting it in your `.Renviron` file, which
+is usually located in your home directory. If you are an `rstudio` user,
+you can use `usethis::edit_r_environ()` to open your `.Renviron` file
+and add a line that looks like:
 
     NASSQS_TOKEN="<your api key here>"
 
-or by setting it explicitly in the console by calling
-`rnassqs::nassqs_auth()`. This will prompt you to enter the API key if
-not set, and return the value of the API key if it is set. If you do not
-set the key and you are running the session interactively, R will ask
-you for the key when you try to issue a query.
+Alternatively, you can set it explicitly in the console by calling
+`nassqs_auth()`. This will prompt you to enter the API key if not set,
+and return the value of the API key if it is set. If you do not set the
+key and you are running the session interactively, R will ask you for
+the key when you try to issue a query.
 
 ## Usage
 
 See the examples in [inst/examples](inst/examples) for quick recipes to
 download data.
 
-The most basic level of access is with `nassqs()`, with which you can
-make any query of variables. For example, to mirror the request that is
-on the [NASS API documentation](http://quickstats.nass.usda.gov/api),
-you can use:
+The primary function is `nassqs()`, with which you can make any query of
+variables. For example, to mirror the request that is on the [NASS API
+documentation](http://quickstats.nass.usda.gov/api), you can use:
 
     library(nassqs)
-    params = list("commodity_desc"="CORN", "year__GE"=2012, "state_alpha"="VA")
-    d = nassqs(params=params, key=your_api_key)
+    
+    # You must set your api key before requesting data
+    nassqs_auth(key = <your api key>)
+    
+    # Parameters to query on and data call
+    params <- list(commodity_desc = "CORN", year__GE = 2012, state_alpha = "VA")
+    d <- nassqs(params)
 
-You can request data for multiple values of the same parameter by as
-follows:
+Parameters **do not** need to be capitalized, and also do not need to be
+in a list format. The following works just as well:
 
-    params = list("commodity_desc"="CORN", "year__GE"=2012, "state_alpha" = c("VA", "WA"))
-    d = nassqs(params=params, key=your_api_key)
+    d <- nassqs(commodity_desc = "corn", year__GE = 2012, state_alpha = "va")
+
+You can request data for multiple values of the same parameter by using
+a simple list as follows:
+
+    params <- list(commodity_desc = "CORN", year__GE = 2012, state_alpha = c("VA", "WA"))
+    d = nassqs(params=params)
 
 NASS does not allow GET requests that pull more than 50,000 records in
 one request. The function will inform you if you try to do that. It will
 also inform you if you’ve requested a set of parameters for which there
 are no records.
 
-Other useful functions
-    include:
+Other useful functions include:
 
     # returns a set of unnique values for the parameter "STATISTICCAT_DESC"
-    nassqs_param_values("statisticcat_desc", key = your_api_key)
+    nassqs_param_values("statisticcat_desc")
     
     # returns a count of the number of records for a given query
-    nassqs_record_count(params=params, key=your_api_key)
+    nassqs_record_count(params=params)
     
     # Get yields specifically
     # Equivalent to including "'statisticat_desc' = 'YIELD'" in your parameter list. 
-    nassqs_yield(params, key = your_api_key)
+    nassqs_yields(params)
     
-    # Get area specifically
+    # Get acres specifically
     # Equivalent to including all "AREA" values in statisticcat_desc
-    nassqs_area(params, key = your_api_key)
+    nassqs_acres(params)
     
     # Specifies just "AREA HARVESTED" values of statisticcat_desc
-    nassqs_area(params, area = "AREA HARVESTED", key = your_api_key)
-
-### Separating the GET request and the parsing
-
-If you prefer to process the returned request separately, you can
-specify just the GET request with
-
-    d = nassqs_GET(params=params, key=your_api_key)
-
-To parse it, you can use
-
-    nassqs_parse(d)
-
-If you need JSON or CSV returned, the option `format = "JSON"` or
-`format = "CSV"` will do that. Both return a data.frame though, so
-there’s no difference unless you also pass `as = "raw"` to `nassqs()`
-to leave the response as raw text. This will return either a JSON string
-or a CSV string that you can parse as you see fit.
+    nassqs_acres(params, area = "AREA HARVESTED")
 
 ### Handling inequalities and operators other than “=”
 
@@ -255,11 +242,44 @@ API can accept the following modifications:
 For example, to request corn yields in Virginia and Pennsylvania for all
 years since 2000, you would use something like:
 
-    params = list("commodity_desc"="CORN", 
-                  "year__GE"=2000, 
-                  "state_alpha"=c("VA", "PA"), 
-                  "statisticcat_desc"="YIELD")
-    df = nassqs(params=params) #returns data as a data frame.
+    params = list(commodity_desc = "CORN", 
+                  year__GE = 2000, 
+                  state_alpha = c("VA", "PA"), 
+                  statisticcat_desc = "YIELD")
+    df = nassqs(params) #returns data as a data frame.
+
+See the [vignette](vignettes/rnassqs.html) for more examples and details
+on usage.
+
+## Contributing
+
+Contributions are more than welcome, and there are several ways to
+contribute:
+
+  - Examples: More examples are always helpful. If you use `rnassqs` to
+    query data from ‘Quick Stats’ and would like to contribute your
+    query, consider submitting a pull request adding your query as a
+    file in
+    [inst/examples/](https://github.com/potterzot/rnassqs/tree/master/inst/examples).
+  - File an issue: If there is functionality you’d like to see added or
+    something that is confusing, consider [creating an
+    issue](https://github.com/potterzot/rnassqs/issues/new). The best
+    issue contains an example of the problem or feature. Consider the
+    excellent package [reprex](https://github.com/tidyverse/reprex) in
+    creating a reproducible example.
+  - Contributing documentation: Clarifying and expanding the
+    documentation is always appreciated, especially if you find an area
+    that is lacking and would like to improve it. `rnassqs` uses
+    roxygen2, which means the documentation is at the top of each
+    function definition. Please submit any improvements as a pull
+    request.
+  - Contributing code: if you see something that needs improving and
+    you’d like to make the changes, contributed code is very welcome.
+    Begin by filing a new issue to discuss the proposed change, and then
+    submit a pull request to address the issue. `rnassqs` follows the
+    style outlined in Hadley Wickham’s [R
+    Packages](http://r-pkgs.had.co.nz/style.html). Following this style
+    makes the pull request and review go more smoothly.
 
 ## Alternatives
 

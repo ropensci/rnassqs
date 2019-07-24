@@ -9,3 +9,5 @@ CRAN-RELEASE
 .secret
 inst/doc
 *.pdf
+rnassqs.Rcheck
+rnassqs_*.tar.gz
