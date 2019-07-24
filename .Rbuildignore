@@ -17,4 +17,6 @@ rnassqs.Rcheck
 rnassqs_*.tar.gz
 CONDUCT.md
 CONTRIBUTING.md
+^profile.xcf$
+^profile.png$
 
