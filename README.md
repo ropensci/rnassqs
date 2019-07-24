@@ -184,11 +184,10 @@ and add a line that looks like:
 
     NASSQS_TOKEN="<your api key here>"
 
-Alternatively, you can set it explicitly in the console by calling
-`nassqs_auth()`. This will prompt you to enter the API key if not set,
-and return the value of the API key if it is set. If you do not set the
-key and you are running the session interactively, R will ask you for
-the key when you try to issue a query.
+Alternatively, you can set it explicitly in the console with
+`nassqs_auth(key = <your api key>)`. This will set the environmental
+variable NASSQS\_TOKEN, which is used to access the API. You can also
+set this directly with `Sys.setenv("NASSQS_TOKEN" = <your api key>)`.
 
 ## Usage
 
