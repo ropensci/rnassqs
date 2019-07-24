@@ -6,7 +6,9 @@
 
 <tr class="header">
 
-<th>
+<th align="left">
+
+rnassqs
 
 </th>
 
@@ -38,7 +40,9 @@ Development
 
 <td rowspan="5">
 
-![rnassqs icon](inst/figures/rnassqs.png) (Wheat image from
+<img src="inst/figures/rnassqs.png" alt="rnassqs hexsticker" width="200"/>
+
+(Wheat image from
 [here](https://www.flickr.com/photos/53018729@N00/2669034542))
 
 </td>

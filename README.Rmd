@@ -10,7 +10,9 @@ output:
 <table class="table">
 <thead>
 <tr class="header">
-<th></th>
+<th align="left">
+rnassqs
+</th>
 <th align="left">
 Usage
 </th>
@@ -26,7 +28,8 @@ Development
 
 <tr class="odd">
 <td rowspan="5">
-  ![rnassqs icon](inst/figures/rnassqs.png)
+  <img src="inst/figures/rnassqs.png" alt="rnassqs hexsticker" width="200"/>
+  
   (Wheat image from [here](https://www.flickr.com/photos/53018729@N00/2669034542))
 </td>
 <td align="left">
