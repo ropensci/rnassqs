@@ -250,8 +250,8 @@ years since 2000, you would use something like:
                   statisticcat_desc = "YIELD")
     df <- nassqs(params) #returns data as a data frame.
 
-See the [vignette](vignettes/rnassqs.html) for more examples and details
-on usage.
+See the [vignette](https://potterzot.com/rnassqs/articles/rnassqs.html)
+for more examples and details on usage.
 
 ## Contributing
 
