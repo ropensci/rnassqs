@@ -5,6 +5,7 @@
 #' @keywords internal
 #' @importFrom stats setNames
 #' @importFrom utils stack
+#' @noRd
 #' 
 #' @param ... either a list or a series of strings to be expanded
 #' @return a named list.

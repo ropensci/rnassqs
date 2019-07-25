@@ -1,4 +1,4 @@
-citHeader("To cite nasapower in publications, please use:")
+citHeader("To cite rnassqs in publications, please use:")
 
 citEntry(
   entry = "Article",
@@ -6,14 +6,14 @@ citEntry(
   title = "rnassqs: An `R` package to access agricultural data via the USDA National Agricultural Statistics Service (USDA-NASS) 'Quick Stats' API",
   doi = "",
   year = "2019",
-  month = "",
-  publisher = "",
+  month = "aug",
+  publisher = "The Open Journal",
   volume = "",
   number = "",
   pages = "",
-  journal = "Unknown",
+  journal = "The Journal of Open Source Software",
 
-  textVersion = paste("Potter, Nicholas A (2019). rnassqs: An `R` package to access agricultural data via the USDA National Agricultural Statistics Service (USDA-NASS) 'Quick Stats' API."))
+  textVersion = paste("Potter, Nicholas A (2019). rnassqs: An `R` package to access agricultural data via the USDA National Agricultural Statistics Service (USDA-NASS) 'Quick Stats' API. Journal of Open Source Software, Vol(Num), Page, DOI"))
 
 year <- sub("-.*", "", meta$Date)
 note <- sprintf("R package version %s", meta$Version)
