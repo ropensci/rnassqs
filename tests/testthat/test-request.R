@@ -44,6 +44,22 @@ with_mock_api({
       "Request was too large. NASS requires that an API call returns a max"
     )
   })
+
+  test_that("Other server error is handled", {
+    p3 <- params
+    p3$year <- 2102
+    expect_error(
+      nassqs(p3),
+      "HTTP Failure: 404"
+    )
+  })
+
+  test_that("Invalid format is handled", {
+    expect_error(
+      nassqs(format = "png"),
+      "Your query parameters include 'format' as png"
+    )
+  })
 })
 
 
