@@ -10,17 +10,30 @@ params = list(
   state_alpha = "VA"
 )
 
+lower_params = list(
+  commodity_desc = "corn",
+  year = "2012",
+  agg_level_desc = "state",
+  statisticcat_desc = "area harvested",
+  domaincat_desc = "not specified",
+  state_alpha = "va"
+)
+
 ### Test API URLs with mock APIs ----
 
 with_mock_api({
+  expected_url <- "https://quickstats.nass.usda.gov/api/api_GET?key=API_KEY&commodity_desc=CORN&year=2012&agg_level_desc=STATE&statisticcat_desc=AREA%20HARVESTED&domaincat_desc=NOT%20SPECIFIED&state_alpha=VA&format=JSON"
+
   test_that("nassqs forms a correct URL", {
-    expected_url <- "https://quickstats.nass.usda.gov/api/api_GET?key=API_KEY&commodity_desc=CORN&year=2012&agg_level_desc=STATE&statisticcat_desc=AREA%20HARVESTED&domaincat_desc=NOT%20SPECIFIED&state_alpha=VA&format=JSON"
     expect_GET(nassqs(params), url = expected_url)
   })
 
   test_that("nassqs_GET() forms a correct URL", {
-    expected_url <- "https://quickstats.nass.usda.gov/api/api_GET?key=API_KEY&commodity_desc=CORN&year=2012&agg_level_desc=STATE&statisticcat_desc=AREA%20HARVESTED&domaincat_desc=NOT%20SPECIFIED&state_alpha=VA&format=JSON"
     expect_GET(nassqs_GET(params), url = expected_url)
+  })
+
+  test_that("nassqs_GET() works with lower case values", {
+    expect_GET(nassqs(lower_params), url = expected_url)
   })
 
   test_that("Too-large request error is handled", {
@@ -60,22 +73,6 @@ with_authentication({
 
     n <- nassqs_parse(req)
     expect_is(n$count, "integer")
-  })
-
-  test_that("nassqs_GET() works with lower case values", {
-    lower_params = list(
-      commodity_desc = "corn",
-      year = "2012",
-      agg_level_desc = "state",
-      statisticcat_desc = "area harvested",
-      domaincat_desc = "not specified",
-      state_alpha = "va"
-    )
-
-    req <- nassqs_GET(lower_params)
-    d <- nassqs_parse(req)
-    expect_is(d, "data.frame")
-    expect_equal(ncol(d), 39)
   })
 
   test_that("nassqs_parse successfully parses a request to the Quick Stats API", {
