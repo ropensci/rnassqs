@@ -1,12 +1,5 @@
 library(httptest)
 
-# If no authentication, skip
-skip_if_no_auth <- function() {
-  if (Sys.getenv("NASSQS_TOKEN") %in% c("", "API_KEY")) {
-    skip("No authentication available")
-  }
-}
-
 with_mock_api <- function(expr) {
   # Set a fake token just in this context
   old_token <- Sys.getenv("NASSQS_TOKEN")
