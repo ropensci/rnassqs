@@ -1,7 +1,7 @@
 context("tests wrappers and ease of use functions.")
 
 ### Setup
-params = list(
+params <- list(
   commodity_desc = "CORN",
   year = "2012",
   statisticcat_desc = "YIELD",
@@ -43,7 +43,7 @@ with_mock_api({
 ### API tests that require the API ----
 with_authentication({
   test_that("nassqs_record_count returns a numeric", {
-    v = nassqs_record_count(params)
+    v <- nassqs_record_count(params)
     expect_equal(is.numeric(v$count), TRUE)
   })
 })

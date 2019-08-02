@@ -216,8 +216,8 @@ nassqs_parse <- function(req, as = c("data.frame", "list", "text"), ...) {
   # process the data depending on returned data type
   if(as == "text") {
     ret <- resp
-  }
-  else if(type %in% c("application/json", "application/json; charset=UTF-8")) { # format == JSON
+  } else if(type %in% c("application/json", "application/json; charset=UTF-8")) {
+    # format == JSON
     # Handle error where response is truncated if too long (only happens)
     # when making a call to the "get_param_values" api_path for 'domaincat_desc'
     ret <- tryCatch(jsonlite::fromJSON(resp),
@@ -228,12 +228,12 @@ nassqs_parse <- function(req, as = c("data.frame", "list", "text"), ...) {
                                   e)) })
     if("data" %in% names(ret)) ret <- ret$data
 
-  }
-  else if(type %in% c("application/xml", "application/xml; charset=UTF-8")) { # format == XML
+  } else if(type %in% c("application/xml", "application/xml; charset=UTF-8")) {
+    # format == XML
     stop(paste0("XML not yet implemented. Use format = 'JSON' or format = ",
                 "'CSV' instead."))
-  }
-  else if(type %in% c("text/csv", "text/csv; charset=UTF-8")) { # format == CSV
+  } else if(type %in% c("text/csv", "text/csv; charset=UTF-8")) {
+    # format == CSV
     ret <- read.csv(text = resp, sep =",", header = TRUE, ...)
     names(ret)[which(names(ret) == "CV....")] <- "CV (%)"
   } else {

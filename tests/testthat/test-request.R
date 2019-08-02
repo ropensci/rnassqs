@@ -1,7 +1,7 @@
 context("test HTTP GET related functions")
 
 # Parameters
-params = list(
+params <- list(
   commodity_desc = "CORN",
   year = "2012",
   agg_level_desc = "STATE",
@@ -10,7 +10,7 @@ params = list(
   state_alpha = "VA"
 )
 
-lower_params = list(
+lower_params <- list(
   commodity_desc = "corn",
   year = "2012",
   agg_level_desc = "state",
