@@ -10,7 +10,7 @@
   "codeRepository": "https://github.com/potterzot/rnassqs",
   "issueTracker": "http://www.github.com/potterzot/rnassqs/issues",
   "license": "https://spdx.org/licenses/MIT",
-  "version": "0.4.0.9003",
+  "version": "0.4.0.9004",
   "programmingLanguage": {
     "@type": "ComputerLanguage",
     "name": "R",
