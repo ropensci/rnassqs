@@ -19,6 +19,11 @@ lower_params <- list(
   state_alpha = "va"
 )
 
+too_large_params <- list(
+  commodity_desc = "CORN",
+  agg_level_desc = "COUNTY"
+)
+
 ### Test API URLs with mock APIs ----
 
 with_mock_api({
@@ -34,24 +39,6 @@ with_mock_api({
 
   test_that("nassqs_GET() works with lower case values", {
     expect_GET(nassqs(lower_params), url = expected_url)
-  })
-
-  test_that("Too-large request error is handled", {
-    p2 <- params
-    p2$year <- 2013
-    expect_error(
-      nassqs(p2),
-      "Request was too large. NASS requires that an API call returns a max"
-    )
-  })
-
-  test_that("Other server error is handled", {
-    p3 <- params
-    p3$year <- 2102
-    expect_error(
-      nassqs(p3),
-      "HTTP Failure: 404"
-    )
   })
 
   test_that("Invalid format is handled", {
@@ -90,6 +77,23 @@ with_authentication({
     n <- nassqs_parse(req)
     expect_is(n$count, "integer")
   })
+  
+  test_that("Too-large request error is handled", {
+    expect_error(
+      nassqs(too_large_params),
+      "Request was too large. NASS requires that an API call returns a max"
+    )
+  })
+  
+  test_that("Other server error is handled", {
+    p3 <- params
+    p3$year <- 2102
+    expect_error(
+      nassqs(p3),
+      "HTTP Failure: 400\nbad request - invalid query"
+    )
+  })
+  
 
   test_that("nassqs_parse successfully parses a request to the Quick Stats API", {
     req <- nassqs_GET(params)

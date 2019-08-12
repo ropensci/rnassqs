@@ -2,7 +2,7 @@
 % Please edit documentation in R/request.R
 \name{nassqs_parse}
 \alias{nassqs_parse}
-\title{Parse a response object from \code{nassqs_GET}.}
+\title{Parse a response object from \code{nassqs_GET()}.}
 \usage{
 nassqs_parse(req, as = c("data.frame", "list", "text"), ...)
 }
@@ -20,30 +20,30 @@ a data frame, list, or text string of the content from the response.
 \description{
 Returns a data frame, list, or text string. If a data.frame, all columns
 except \code{year} strings because the 'Quick Stats' data returns suppressed data
-as '(D)', (Z)', or other character indicators which mean different things.
+as '(D)', '(Z)', or other character indicators which mean different things.
 Converting the value to a numerical results in NA, which loses that
 information.
 }
 \examples{
 \donttest{
   # Set parameters and make the request
-  params <- list(commodity_name = "CORN", 
-                 year = 2012, 
+  params <- list(commodity_name = "CORN",
+                 year = 2012,
                  agg_level_desc = "STATE",
                  state_alpha = "WA",
                  statisticcat_desc = "YIELD")
   response <- nassqs_GET(params)
-  
+
   # Parse the response to a data frame
   corn <- nassqs_parse(response, as = "data.frame")
   head(corn)
-  
+
   # Parse the response into a raw character string.
   corn_text<- nassqs_parse(response, as = "text")
   head(corn_text)
 
   # Get a list of parameter values and parse as a list
-  response <- nassqs_GET(list(param = "statisticcat_desc"), 
+  response <- nassqs_GET(list(param = "statisticcat_desc"),
                     api_path = "get_param_values")
   statisticcat_desc_values <- nassqs_parse(response, as = "list")
   head(statisticcat_desc_values)

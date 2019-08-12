@@ -28,10 +28,10 @@ restrict the number of columns.
 \examples{
 \donttest{
   # Get corn yields in Virginia in 2012
-  params <- list(commodity_name = "CORN", 
-                 year = 2012, 
+  params <- list(commodity_name = "CORN",
+                 year = 2012,
                  agg_level_desc = "COUNTY",
-                 state_alpha = "VA", 
+                 state_alpha = "VA",
                  statisticcat_desc = "YIELD")
   yields <- nassqs(params)
   head(yields)

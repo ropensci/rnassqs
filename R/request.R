@@ -129,7 +129,7 @@ nassqs_GET <- function(...,
 
   resp <- httr::GET(url, query = query, httr::progress())
   nassqs_check(resp)
-
+  
   resp
 }
 
@@ -144,7 +144,7 @@ nassqs_GET <- function(...,
 #' @return nothing if check is passed, or an informative error if not passed.
 nassqs_check <- function(response) {
   if (response$status_code < 400) {
-    return(invisible()) #all good!
+    return(TRUE) #all good!
   }
   else if (response$status_code == 413) {
     stop("Request was too large. NASS requires that an API call ",
