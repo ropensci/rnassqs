@@ -61,7 +61,7 @@ Development
 
 <td align="left">
 
-<a href="https://github.com/potterzot/rnassqs/commits/master"><img src="https://img.shields.io/badge/last%20change-2019--07--24-brightgreen.svg" alt="Last Change"></a>
+<a href="https://github.com/potterzot/rnassqs/commits/master"><img src="https://img.shields.io/badge/last%20change-2019--08--12-brightgreen.svg" alt="Last Change"></a>
 
 </td>
 
@@ -165,12 +165,14 @@ For docs and code examples, visit the package web page here:
 
 Install the package via `devtools` or CRAN:
 
+``` r
     # Via devtools
     library(devtools)
     install_github('potterzot/rnassqs')
     
     # Via CRAN
     install.packages("rnassqs")
+```
 
 ## API Key
 
@@ -182,7 +184,9 @@ is usually located in your home directory. If you are an `rstudio` user,
 you can use `usethis::edit_r_environ()` to open your `.Renviron` file
 and add a line that looks like:
 
+``` r
     NASSQS_TOKEN="<your api key here>"
+```
 
 Alternatively, you can set it explicitly in the console with
 `nassqs_auth(key = <your api key>)`. This will set the environmental
@@ -198,6 +202,7 @@ The primary function is `nassqs()`, with which you can make any query of
 variables. For example, to mirror the request that is on the [NASS API
 documentation](http://quickstats.nass.usda.gov/api), you can use:
 
+``` r
     library(nassqs)
     
     # You must set your api key before requesting data
@@ -206,17 +211,22 @@ documentation](http://quickstats.nass.usda.gov/api), you can use:
     # Parameters to query on and data call
     params <- list(commodity_desc = "CORN", year__GE = 2012, state_alpha = "VA")
     d <- nassqs(params)
+```
 
 Parameters **do not** need to be capitalized, and also do not need to be
 in a list format. The following works just as well:
 
+``` r
     d <- nassqs(commodity_desc = "corn", year__GE = 2012, state_alpha = "va")
+```
 
 You can request data for multiple values of the same parameter by using
 a simple list as follows:
 
+``` r
     params <- list(commodity_desc = "CORN", year__GE = 2012, state_alpha = c("VA", "WA"))
     d <- nassqs(params)
+```
 
 NASS does not allow GET requests that pull more than 50,000 records in
 one request. The function will inform you if you try to do that. It will
@@ -225,6 +235,7 @@ are no records.
 
 Other useful functions include:
 
+``` r
     # returns a set of unnique values for the parameter "STATISTICCAT_DESC"
     nassqs_param_values("statisticcat_desc")
     
@@ -241,6 +252,7 @@ Other useful functions include:
     
     # Specifies just "AREA HARVESTED" values of statisticcat_desc
     nassqs_acres(params, area = "AREA HARVESTED")
+```
 
 ### Handling inequalities and operators other than “=”
 
@@ -258,11 +270,13 @@ API can accept the following modifications:
 For example, to request corn yields in Virginia and Pennsylvania for all
 years since 2000, you would use something like:
 
+``` r
     params <- list(commodity_desc = "CORN", 
                   year__GE = 2000, 
                   state_alpha = c("VA", "PA"), 
                   statisticcat_desc = "YIELD")
     df <- nassqs(params) #returns data as a data frame.
+```
 
 See the [vignette](https://potterzot.com/rnassqs/articles/rnassqs.html)
 for more examples and details on usage.

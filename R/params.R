@@ -111,7 +111,7 @@ nassqs_params <- function(...) {
 #' @examples \donttest{
 #'   # See all values available for the statisticcat_desc field. Values may not
 #'   # be available in the context of other parameters you set, for example
-#'   # a given state may not have any 'YIElD' in blueberries if they don't grow
+#'   # a given state may not have any 'YIELD' in blueberries if they don't grow
 #'   # blueberries in that state.
 #'   # Requires an API key:
 #'   

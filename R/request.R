@@ -40,10 +40,10 @@ nassqs <- function(...,
 #' functionality to the NASS 'Quick Stats' API:
 #' [https://quickstats.nass.usda.gov/api](https://quickstats.nass.usda.gov/api).
 #' In most cases [nassqs()] or other high-level functions should be used.
-#' `nassqs_GET` uses [httr::GET()] to make a HTTP GET request, which returns a
+#' `nassqs_GET()` uses [httr::GET()] to make a HTTP GET request, which returns a
 #' request object which must then be parsed to a data.frame, list, or other `R`
 #' object. Higher-level functions will do that parsing automatically. However,
-#' if you need access to the request object directly, `nassqs_GET` provides
+#' if you need access to the request object directly, `nassqs_GET()` provides
 #' that.
 #'
 #' @export
@@ -110,8 +110,8 @@ nassqs_GET <- function(...,
       format <- tolower(params$format)
       params[["format"]] <- format
       if(!(format %in% c("json", "xml", "csv"))) {
-        stop(paste0("Your query parameters include 'format' as ", format,
-                    " but it should be one of 'json', 'xml', or 'csv'."))
+        stop("Your query parameters include 'format' as ", format,
+                    " but it should be one of 'json', 'xml', or 'csv'.")
       }
     }
   }
@@ -147,10 +147,10 @@ nassqs_check <- function(response) {
     return(invisible()) #all good!
   }
   else if (response$status_code == 413) {
-    stop(paste0("Request was too large. NASS requires that an API call ",
-                "returns a maximum of 50,000 records. Consider subsetting ",
-                "your request by geography or year to reduce the size of ",
-                "your query."), call. = FALSE)
+    stop("Request was too large. NASS requires that an API call ",
+         "returns a maximum of 50,000 records. Consider subsetting ",
+         "your request by geography or year to reduce the size of ",
+         "your query.", call. = FALSE)
   }
   else {
     stop("HTTP Failure: ",
@@ -164,11 +164,11 @@ nassqs_check <- function(response) {
   }
 }
 
-#' Parse a response object from `nassqs_GET`.
+#' Parse a response object from `nassqs_GET()`.
 #'
 #' Returns a data frame, list, or text string. If a data.frame, all columns
 #' except `year` strings because the 'Quick Stats' data returns suppressed data
-#' as '(D)', (Z)', or other character indicators which mean different things.
+#' as '(D)', '(Z)', or other character indicators which mean different things.
 #' Converting the value to a numerical results in NA, which loses that
 #' information.
 #'
@@ -222,25 +222,25 @@ nassqs_parse <- function(req, as = c("data.frame", "list", "text"), ...) {
     # when making a call to the "get_param_values" api_path for 'domaincat_desc'
     ret <- tryCatch(jsonlite::fromJSON(resp),
                     error = function(e) {
-                      stop(paste0("JSON is malformed. This is a problem with ",
-                                  "the Quick Stats API, not the rnassqs ",
-                                  "package. \n",
-                                  e)) })
+                      stop("JSON is malformed. This is a problem with ",
+                           "the Quick Stats API, not the rnassqs ",
+                           "package. \n",
+                           e) })
     if("data" %in% names(ret)) ret <- ret$data
 
   } else if(type %in% c("application/xml", "application/xml; charset=UTF-8")) {
     # format == XML
-    stop(paste0("XML not yet implemented. Use format = 'JSON' or format = ",
-                "'CSV' instead."))
+    stop("XML not yet implemented. Use format = 'JSON' or format = ",
+         "'CSV' instead.")
   } else if(type %in% c("text/csv", "text/csv; charset=UTF-8")) {
     # format == CSV
     ret <- read.csv(text = resp, sep =",", header = TRUE, ...)
     names(ret)[which(names(ret) == "CV....")] <- "CV (%)"
   } else {
-    stop(paste0("Response is not in the expected json, xml, or csv format. ",
-                "Use `as = 'text'` to see the unparsed response data, or ",
-                "modify your parameters to include `format = 'json'` to ",
-                "make the request in json."))
+    stop("Response is not in the expected json, xml, or csv format. ",
+         "Use `as = 'text'` to see the unparsed response data, or ",
+         "modify your parameters to include `format = 'json'` to ",
+         "make the request in json.")
   }
   ret
 }
