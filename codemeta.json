@@ -47,6 +47,11 @@
       "@type": "Person",
       "givenName": "Julia",
       "familyName": "Piaskowski"
+    },
+    {
+      "@type": "Person",
+      "givenName": "Neal",
+      "familyName": "Richardson"
     }
   ],
   "copyrightHolder": {},

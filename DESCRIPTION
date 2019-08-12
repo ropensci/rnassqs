@@ -8,7 +8,7 @@ Authors@R: c(
   person('Joseph', 'Stachelek', email='', role = c('ctb')),
   person('Julia', 'Piaskowski', email='', role = c('ctb')),
   person('Adam', 'Sparks', email='', role = c('rev')),
-  person('Neal', 'Richardson', email='', role = c('rev'))) 
+  person('Neal', 'Richardson', email='', role = c('ctb', 'rev'))) 
 Maintainer: Nicholas Potter <potter.nicholas@gmail.com>
 Description: Interface to access data via the United States Department of 
   Agriculture's National Agricultural Statistical Service (NASS) 'Quick Stats' 
