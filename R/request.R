@@ -206,10 +206,6 @@ nassqs_check <- function(response) {
 nassqs_parse <- function(req, as = c("data.frame", "list", "text"), ...) {
   as = match.arg(as)
 
-  # If an error or otherwise return an object that is not a response object,
-  # return the object and exit
-  if(!inherits(req, "response")) return(req)
-
   type <- req$headers[['content-type']]
   resp <- httr::content(req, as = "text", encoding = "UTF-8")
 
