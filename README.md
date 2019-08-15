@@ -61,7 +61,7 @@ Development
 
 <td align="left">
 
-<a href="https://github.com/potterzot/rnassqs/commits/master"><img src="https://img.shields.io/badge/last%20change-2019--08--12-brightgreen.svg" alt="Last Change"></a>
+<a href="https://github.com/ropensci/rnassqs/commits/master"><img src="https://img.shields.io/badge/last%20change-2019--08--15-brightgreen.svg" alt="Last Change"></a>
 
 </td>
 
@@ -83,7 +83,7 @@ Development
 
 <td align="left">
 
-<a href="https://travis-ci.org/potterzot/rnassqs"><img src="https://travis-ci.org/potterzot/rnassqs.svg?branch=master" alt="Build Status"></a>
+<a href="https://travis-ci.org/ropensci/rnassqs"><img src="https://travis-ci.org/ropensci/rnassqs.svg?branch=master" alt="Build Status"></a>
 
 </td>
 
@@ -97,13 +97,33 @@ Development
 
 <td align="left">
 
-<a href="http://orcid.org/0000-0002-3410-3732"><img src="https://img.shields.io/badge/ORCiD-0000--0002--3410--3732-green.svg" alt="ORCID"></a>
+<a href="https://github.com/ropensci/onboarding/issues/298" alt="rOpensci reviewed!"><img src="https://badges.ropensci.org/298_status.svg"></a>
 
 </td>
 
 <td align="left">
 
-<a href="https://coveralls.io/github/potterzot/rnassqs?branch=master"><img src="https://coveralls.io/repos/github/potterzot/rnassqs/badge.svg?branch=master" alt="Coverage Status"></a>
+<a href="https://coveralls.io/github/ropensci/rnassqs?branch=master"><img src="https://coveralls.io/repos/github/ropensci/rnassqs/badge.svg?branch=master" alt="Coverage Status"></a>
+
+</td>
+
+</tr>
+
+<tr class="even">
+
+<td align="left">
+
+</td>
+
+<td align="left">
+
+<a href="https://orcid.org/0000-0002-3410-3732"><img src="https://img.shields.io/badge/ORCiD-0000--0002--3410--3732-green.svg" alt="ORCID"></a>
+
+</td>
+
+<td align="left">
+
+<a href="https://www.repostatus.org/#active"><img src="https://www.repostatus.org/badges/latest/active.svg" alt="Project Status: Active – The project has reached a stable, usable state and is being actively developed." /></a>
 
 </td>
 
@@ -121,25 +141,7 @@ Development
 
 <td align="left">
 
-<a href="https://www.repostatus.org/#WIP"><img src="https://www.repostatus.org/badges/latest/wip.svg" alt="Project Status: WIP – Initial development is in progress, but there has not yet been a stable, usable release suitable for the public." /></a>
-
-</td>
-
-</tr>
-
-<tr class="even">
-
-<td align="left">
-
-</td>
-
-<td align="left">
-
-</td>
-
-<td align="left">
-
-<a href="https://www.tidyverse.org/lifecycle/#experimental"><img src="https://img.shields.io/badge/lifecycle-experimental-orange.svg" alt="Project Status: Experimental." /></a>
+<a href="https://www.tidyverse.org/lifecycle/#maturing"><img src="https://img.shields.io/badge/lifecycle-maturing-blue.svg" alt="Project Status: Maturing." /></a>
 
 </td>
 
@@ -159,7 +161,7 @@ simple and easy to use, and provides some functions to help navigate the
 bewildering complexity of some Quick Stats data.
 
 For docs and code examples, visit the package web page here:
-<https://potterzot.com/rnassqs/>.
+<https://ropensci.github.io/rnassqs/>.
 
 ## Installing
 
@@ -168,7 +170,7 @@ Install the package via `devtools` or CRAN:
 ``` r
     # Via devtools
     library(devtools)
-    install_github('potterzot/rnassqs')
+    install_github('ropensci/rnassqs')
     
     # Via CRAN
     install.packages("rnassqs")
@@ -278,8 +280,9 @@ years since 2000, you would use something like:
     df <- nassqs(params) #returns data as a data frame.
 ```
 
-See the [vignette](https://potterzot.com/rnassqs/articles/rnassqs.html)
-for more examples and details on usage.
+See the
+[vignette](https://ropensci.github.io/rnassqs/articles/rnassqs.html) for
+more examples and details on usage.
 
 ## Contributing
 
@@ -290,10 +293,10 @@ contribute:
     query data from ‘Quick Stats’ and would like to contribute your
     query, consider submitting a pull request adding your query as a
     file in
-    [inst/examples/](https://github.com/potterzot/rnassqs/tree/master/inst/examples).
+    [inst/examples/](https://github.com/ropensci/rnassqs/tree/master/inst/examples).
   - File an issue: If there is functionality you’d like to see added or
     something that is confusing, consider [creating an
-    issue](https://github.com/potterzot/rnassqs/issues/new). The best
+    issue](https://github.com/ropensci/rnassqs/issues/new). The best
     issue contains an example of the problem or feature. Consider the
     excellent package [reprex](https://github.com/tidyverse/reprex) in
     creating a reproducible example.
@@ -326,3 +329,13 @@ The FTP link also contains builds for: NASS census (every 5 years ending
 with 2 and 7), or data for one of their specific sectors (CROPS,
 ECONOMICS, ANIMALS & PRODUCTS). At the time of this writing, specific
 files for the ENVIRONMENTAL and DEMOGRAPHICS sectors are not available.
+
+### Acknowledgements
+
+Thank you to rOpensci reviewers Adam Sparks and Neal Richardson and
+editor Lincoln Mullen, for their fantastic feedback and assistance. User
+feedback and use case contributions have been a huge help to make
+`rnassqs` more accessible and user-friendly. More use cases or feature
+requests are always welcome\!
+
+[![ropensci\_footer](https://ropensci.org/public_images/ropensci_footer.png)](https://ropensci.org)

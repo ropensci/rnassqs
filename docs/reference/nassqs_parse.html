@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Parse a response object from <code>nassqs_GET</code>. — nassqs_parse • rnassqs</title>
+<title>Parse a response object from <code>nassqs_GET()</code>. — nassqs_parse • rnassqs</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -30,11 +30,11 @@
 
 
 
-<meta property="og:title" content="Parse a response object from <code>nassqs_GET</code>. — nassqs_parse" />
+<meta property="og:title" content="Parse a response object from <code>nassqs_GET()</code>. — nassqs_parse" />
 
 <meta property="og:description" content="Returns a data frame, list, or text string. If a data.frame, all columns
 except year strings because the 'Quick Stats' data returns suppressed data
-as '(D)', (Z)', or other character indicators which mean different things.
+as '(D)', '(Z)', or other character indicators which mean different things.
 Converting the value to a numerical results in NA, which loses that
 information." />
 <meta name="twitter:card" content="summary" />
@@ -67,7 +67,7 @@ information." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">rnassqs</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.4.0.9001</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.4.0.9005</span>
       </span>
     </div>
 
@@ -92,7 +92,7 @@ information." />
       
       <ul class="nav navbar-nav navbar-right">
         <li>
-  <a href="https://github.com/potterzot/rnassqs">
+  <a href="https://github.com/ropensci/rnassqs">
     <span class="fa fa-github fa-lg"></span>
      
   </a>
@@ -109,8 +109,8 @@ information." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Parse a response object from <code>nassqs_GET</code>.</h1>
-    <small class="dont-index">Source: <a href='https://github.com/potterzot/rnassqs/blob/master/R/request.R'><code>R/request.R</code></a></small>
+    <h1>Parse a response object from <code>nassqs_GET()</code>.</h1>
+    <small class="dont-index">Source: <a href='https://github.com/ropensci/rnassqs/blob/master/R/request.R'><code>R/request.R</code></a></small>
     <div class="hidden name"><code>nassqs_parse.Rd</code></div>
     </div>
 
@@ -118,7 +118,7 @@ information." />
     
     <p>Returns a data frame, list, or text string. If a data.frame, all columns
 except <code>year</code> strings because the 'Quick Stats' data returns suppressed data
-as '(D)', (Z)', or other character indicators which mean different things.
+as '(D)', '(Z)', or other character indicators which mean different things.
 Converting the value to a numerical results in NA, which loses that
 information.</p>
     
@@ -159,13 +159,13 @@ information.</p>
   <span class='no'>response</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='nassqs_GET.html'>nassqs_GET</a></span>(<span class='no'>params</span>)</div><div class='output co'>#&gt;   |                                                                              |                                                                      |   0%  |                                                                              |======================================================================| 100%</div><div class='output co'>#&gt; <span class='error'>Error: HTTP Failure: 401</span>
 #&gt; <span class='error'>unauthorized</span></div><div class='input'>
   <span class='co'># Parse the response to a data frame</span>
-  <span class='no'>corn</span> <span class='kw'>&lt;-</span> <span class='fu'>nassqs_parse</span>(<span class='no'>response</span>, <span class='kw'>as</span> <span class='kw'>=</span> <span class='st'>"data.frame"</span>)</div><div class='output co'>#&gt; <span class='error'>Error in inherits(req, "response"): object 'response' not found</span></div><div class='input'>  <span class='fu'><a href='https://www.rdocumentation.org/packages/utils/topics/head'>head</a></span>(<span class='no'>corn</span>)</div><div class='output co'>#&gt; <span class='error'>Error in head(corn): object 'corn' not found</span></div><div class='input'>
+  <span class='no'>corn</span> <span class='kw'>&lt;-</span> <span class='fu'>nassqs_parse</span>(<span class='no'>response</span>, <span class='kw'>as</span> <span class='kw'>=</span> <span class='st'>"data.frame"</span>)</div><div class='output co'>#&gt; <span class='error'>Error in nassqs_parse(response, as = "data.frame"): object 'response' not found</span></div><div class='input'>  <span class='fu'><a href='https://www.rdocumentation.org/packages/utils/topics/head'>head</a></span>(<span class='no'>corn</span>)</div><div class='output co'>#&gt; <span class='error'>Error in head(corn): object 'corn' not found</span></div><div class='input'>
   <span class='co'># Parse the response into a raw character string.</span>
-  <span class='no'>corn_text</span><span class='kw'>&lt;-</span> <span class='fu'>nassqs_parse</span>(<span class='no'>response</span>, <span class='kw'>as</span> <span class='kw'>=</span> <span class='st'>"text"</span>)</div><div class='output co'>#&gt; <span class='error'>Error in inherits(req, "response"): object 'response' not found</span></div><div class='input'>  <span class='fu'><a href='https://www.rdocumentation.org/packages/utils/topics/head'>head</a></span>(<span class='no'>corn_text</span>)</div><div class='output co'>#&gt; <span class='error'>Error in head(corn_text): object 'corn_text' not found</span></div><div class='input'>
+  <span class='no'>corn_text</span><span class='kw'>&lt;-</span> <span class='fu'>nassqs_parse</span>(<span class='no'>response</span>, <span class='kw'>as</span> <span class='kw'>=</span> <span class='st'>"text"</span>)</div><div class='output co'>#&gt; <span class='error'>Error in nassqs_parse(response, as = "text"): object 'response' not found</span></div><div class='input'>  <span class='fu'><a href='https://www.rdocumentation.org/packages/utils/topics/head'>head</a></span>(<span class='no'>corn_text</span>)</div><div class='output co'>#&gt; <span class='error'>Error in head(corn_text): object 'corn_text' not found</span></div><div class='input'>
   <span class='co'># Get a list of parameter values and parse as a list</span>
   <span class='no'>response</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='nassqs_GET.html'>nassqs_GET</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/list'>list</a></span>(<span class='kw'>param</span> <span class='kw'>=</span> <span class='st'>"statisticcat_desc"</span>),
                     <span class='kw'>api_path</span> <span class='kw'>=</span> <span class='st'>"get_param_values"</span>)</div><div class='output co'>#&gt;   |                                                                              |                                                                      |   0%  |                                                                              |======================================================================| 100%</div><div class='output co'>#&gt; <span class='error'>Error: HTTP Failure: 401</span>
-#&gt; <span class='error'>unauthorized</span></div><div class='input'>  <span class='no'>statisticcat_desc_values</span> <span class='kw'>&lt;-</span> <span class='fu'>nassqs_parse</span>(<span class='no'>response</span>, <span class='kw'>as</span> <span class='kw'>=</span> <span class='st'>"list"</span>)</div><div class='output co'>#&gt; <span class='error'>Error in inherits(req, "response"): object 'response' not found</span></div><div class='input'>  <span class='fu'><a href='https://www.rdocumentation.org/packages/utils/topics/head'>head</a></span>(<span class='no'>statisticcat_desc_values</span>)</div><div class='output co'>#&gt; <span class='error'>Error in head(statisticcat_desc_values): object 'statisticcat_desc_values' not found</span></div></pre>
+#&gt; <span class='error'>unauthorized</span></div><div class='input'>  <span class='no'>statisticcat_desc_values</span> <span class='kw'>&lt;-</span> <span class='fu'>nassqs_parse</span>(<span class='no'>response</span>, <span class='kw'>as</span> <span class='kw'>=</span> <span class='st'>"list"</span>)</div><div class='output co'>#&gt; <span class='error'>Error in nassqs_parse(response, as = "list"): object 'response' not found</span></div><div class='input'>  <span class='fu'><a href='https://www.rdocumentation.org/packages/utils/topics/head'>head</a></span>(<span class='no'>statisticcat_desc_values</span>)</div><div class='output co'>#&gt; <span class='error'>Error in head(statisticcat_desc_values): object 'statisticcat_desc_values' not found</span></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

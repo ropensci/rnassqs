@@ -1,3 +1,11 @@
+
+# rnassqs 0.4.0.9005
+
+- approval for rOpensci inclusion!
+- additional testing to improve code coveral by @nealrichardson
+- small changes for rOpensci review process
+- switch to rOpensci repository
+
 # rnassqs 0.4.0.9001
 
 - Change in syntax to allow for lower case query parameter values

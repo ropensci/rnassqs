@@ -15,8 +15,8 @@ Description: Interface to access data via the United States Department of
   web API <https://quickstats.nass.usda.gov/api>. Convenience functions 
   facilitate building queries based on available parameters and valid parameter 
   values.
-URL: https://github.com/potterzot/rnassqs
-BugReports: http://www.github.com/potterzot/rnassqs/issues
+URL: https://github.com/ropensci/rnassqs
+BugReports: http://www.github.com/ropensci/rnassqs/issues
 License: MIT + file LICENSE
 LazyData: TRUE
 Language: en-US
