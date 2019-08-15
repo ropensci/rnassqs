@@ -103,7 +103,7 @@ Development
 
 <td align="left">
 
-<a href="https://coveralls.io/github/ropensci/rnassqs?branch=master"><img src="https://coveralls.io/repos/github/ropensci/rnassqs/badge.svg?branch=master" alt="Coverage Status"></a>
+<a href="https://codecov.io/gh/ropensci/rnassqs"><img src="https://codecov.io/gh/ropensci/rnassqs/branch/master/graph/badge.svg" alt="Coverage Status"></a>
 
 </td>
 
