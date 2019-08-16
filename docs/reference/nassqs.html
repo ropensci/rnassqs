@@ -69,7 +69,7 @@ restrict the number of columns." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">rnassqs</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.4.0.9005</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5.0</span>
       </span>
     </div>
 
@@ -161,62 +161,62 @@ form the query</p></td>
                  <span class='kw'>agg_level_desc</span> <span class='kw'>=</span> <span class='st'>"COUNTY"</span>,
                  <span class='kw'>state_alpha</span> <span class='kw'>=</span> <span class='st'>"VA"</span>,
                  <span class='kw'>statisticcat_desc</span> <span class='kw'>=</span> <span class='st'>"YIELD"</span>)
-  <span class='no'>yields</span> <span class='kw'>&lt;-</span> <span class='fu'>nassqs</span>(<span class='no'>params</span>)</div><div class='output co'>#&gt;   |                                                                              |                                                                      |   0%  |                                                                              |=                                                                     |   2%  |                                                                              |==                                                                    |   2%  |                                                                              |===                                                                   |   4%  |                                                                              |=====                                                                 |   7%  |                                                                              |========                                                              |  12%  |                                                                              |============                                                          |  17%  |                                                                              |===============                                                       |  22%  |                                                                              |===================                                                   |  27%  |                                                                              |====================                                                  |  28%  |                                                                              |=======================                                               |  33%  |                                                                              |===========================                                           |  38%  |                                                                              |===========================                                           |  39%  |                                                                              |===============================                                       |  44%  |                                                                              |===============================                                       |  45%  |                                                                              |================================                                      |  45%  |                                                                              |===================================                                   |  50%  |                                                                              |=======================================                               |  55%  |                                                                              |==========================================                            |  60%  |                                                                              |==============================================                        |  66%  |                                                                              |==================================================                    |  71%  |                                                                              |=====================================================                 |  76%  |                                                                              |=========================================================             |  81%  |                                                                              |============================================================          |  86%  |                                                                              |=============================================================         |  87%  |                                                                              |=================================================================     |  92%  |                                                                              |=================================================================     |  93%  |                                                                              |===================================================================== |  98%  |                                                                              |======================================================================| 100%</div><div class='input'>  <span class='fu'><a href='https://www.rdocumentation.org/packages/utils/topics/head'>head</a></span>(<span class='no'>yields</span>)</div><div class='output co'>#&gt;   region_desc year  group_desc country_code sector_desc watershed_code
-#&gt; 1             2012 FIELD CROPS         9000       CROPS       00000000
-#&gt; 2             2012 FIELD CROPS         9000       CROPS       00000000
-#&gt; 3             2012 FIELD CROPS         9000       CROPS       00000000
-#&gt; 4             2012 FIELD CROPS         9000       CROPS       00000000
-#&gt; 5             2012 FIELD CROPS         9000       CROPS       00000000
-#&gt; 6             2012 FIELD CROPS         9000       CROPS       00000000
-#&gt;   agg_level_desc unit_desc  class_desc      prodn_practice_desc week_ending
-#&gt; 1         COUNTY BU / ACRE ALL CLASSES ALL PRODUCTION PRACTICES            
-#&gt; 2         COUNTY BU / ACRE ALL CLASSES ALL PRODUCTION PRACTICES            
-#&gt; 3         COUNTY BU / ACRE ALL CLASSES ALL PRODUCTION PRACTICES            
-#&gt; 4         COUNTY BU / ACRE ALL CLASSES ALL PRODUCTION PRACTICES            
-#&gt; 5         COUNTY BU / ACRE ALL CLASSES ALL PRODUCTION PRACTICES            
-#&gt; 6         COUNTY BU / ACRE ALL CLASSES ALL PRODUCTION PRACTICES            
-#&gt;   congr_district_code                            short_desc end_code CV (%)
-#&gt; 1                     BARLEY - YIELD, MEASURED IN BU / ACRE       00       
-#&gt; 2                     BARLEY - YIELD, MEASURED IN BU / ACRE       00       
-#&gt; 3                     BARLEY - YIELD, MEASURED IN BU / ACRE       00       
-#&gt; 4                     BARLEY - YIELD, MEASURED IN BU / ACRE       00       
-#&gt; 5                     BARLEY - YIELD, MEASURED IN BU / ACRE       00       
-#&gt; 6                     BARLEY - YIELD, MEASURED IN BU / ACRE       00       
-#&gt;   freq_desc  country_name reference_period_desc state_alpha domain_desc
-#&gt; 1    ANNUAL UNITED STATES                  YEAR          VA       TOTAL
-#&gt; 2    ANNUAL UNITED STATES                  YEAR          VA       TOTAL
-#&gt; 3    ANNUAL UNITED STATES                  YEAR          VA       TOTAL
-#&gt; 4    ANNUAL UNITED STATES                  YEAR          VA       TOTAL
-#&gt; 5    ANNUAL UNITED STATES                  YEAR          VA       TOTAL
-#&gt; 6    ANNUAL UNITED STATES                  YEAR          VA       TOTAL
-#&gt;   source_desc state_name state_fips_code zip_5 domaincat_desc state_ansi
-#&gt; 1      SURVEY   VIRGINIA              51        NOT SPECIFIED         51
-#&gt; 2      SURVEY   VIRGINIA              51        NOT SPECIFIED         51
-#&gt; 3      SURVEY   VIRGINIA              51        NOT SPECIFIED         51
-#&gt; 4      SURVEY   VIRGINIA              51        NOT SPECIFIED         51
-#&gt; 5      SURVEY   VIRGINIA              51        NOT SPECIFIED         51
-#&gt; 6      SURVEY   VIRGINIA              51        NOT SPECIFIED         51
-#&gt;   statisticcat_desc county_code           load_time
-#&gt; 1             YIELD         047 2015-06-02 15:00:27
-#&gt; 2             YIELD         061 2015-06-02 15:00:27
-#&gt; 3             YIELD         113 2015-06-02 15:00:27
-#&gt; 4             YIELD         139 2015-06-02 15:00:27
-#&gt; 5             YIELD         165 2015-06-02 15:00:27
-#&gt; 6             YIELD         171 2015-06-02 15:00:27
-#&gt;                    location_desc asd_desc county_name        util_practice_desc
-#&gt; 1   VIRGINIA, NORTHERN, CULPEPER NORTHERN    CULPEPER ALL UTILIZATION PRACTICES
-#&gt; 2   VIRGINIA, NORTHERN, FAUQUIER NORTHERN    FAUQUIER ALL UTILIZATION PRACTICES
-#&gt; 3    VIRGINIA, NORTHERN, MADISON NORTHERN     MADISON ALL UTILIZATION PRACTICES
-#&gt; 4       VIRGINIA, NORTHERN, PAGE NORTHERN        PAGE ALL UTILIZATION PRACTICES
-#&gt; 5 VIRGINIA, NORTHERN, ROCKINGHAM NORTHERN  ROCKINGHAM ALL UTILIZATION PRACTICES
-#&gt; 6 VIRGINIA, NORTHERN, SHENANDOAH NORTHERN  SHENANDOAH ALL UTILIZATION PRACTICES
-#&gt;   county_ansi asd_code commodity_desc Value begin_code watershed_desc
-#&gt; 1         047       20         BARLEY  87.1         00               
-#&gt; 2         061       20         BARLEY  68.1         00               
-#&gt; 3         113       20         BARLEY  71.8         00               
-#&gt; 4         139       20         BARLEY    67         00               
-#&gt; 5         165       20         BARLEY    76         00               
-#&gt; 6         171       20         BARLEY    69         00               </div></pre>
+  <span class='no'>yields</span> <span class='kw'>&lt;-</span> <span class='fu'>nassqs</span>(<span class='no'>params</span>)</div><div class='output co'>#&gt;   |                                                                              |                                                                      |   0%  |                                                                              |=                                                                     |   2%  |                                                                              |==                                                                    |   2%  |                                                                              |===                                                                   |   5%  |                                                                              |=====                                                                 |   7%  |                                                                              |=========                                                             |  13%  |                                                                              |============                                                          |  18%  |                                                                              |=============                                                         |  18%  |                                                                              |=============                                                         |  19%  |                                                                              |=================                                                     |  24%  |                                                                              |====================                                                  |  29%  |                                                                              |=====================                                                 |  30%  |                                                                              |========================                                              |  35%  |                                                                              |============================                                          |  40%  |                                                                              |=============================                                         |  41%  |                                                                              |================================                                      |  46%  |                                                                              |====================================                                  |  51%  |                                                                              |====================================                                  |  52%  |                                                                              |========================================                              |  57%  |                                                                              |============================================                          |  62%  |                                                                              |===============================================                       |  67%  |                                                                              |===================================================                   |  73%  |                                                                              |======================================================                |  78%  |                                                                              |==========================================================            |  83%  |                                                                              |==============================================================        |  88%  |                                                                              |=================================================================     |  93%  |                                                                              |==================================================================    |  94%  |                                                                              |===================================================================== |  99%  |                                                                              |======================================================================| 100%</div><div class='input'>  <span class='fu'><a href='https://www.rdocumentation.org/packages/utils/topics/head'>head</a></span>(<span class='no'>yields</span>)</div><div class='output co'>#&gt;   source_desc domain_desc state_alpha reference_period_desc  country_name
+#&gt; 1      SURVEY       TOTAL          VA                  YEAR UNITED STATES
+#&gt; 2      SURVEY       TOTAL          VA                  YEAR UNITED STATES
+#&gt; 3      SURVEY       TOTAL          VA                  YEAR UNITED STATES
+#&gt; 4      SURVEY       TOTAL          VA                  YEAR UNITED STATES
+#&gt; 5      SURVEY       TOTAL          VA                  YEAR UNITED STATES
+#&gt; 6      SURVEY       TOTAL          VA                  YEAR UNITED STATES
+#&gt;   freq_desc CV (%) end_code                            short_desc
+#&gt; 1    ANNUAL              00 BARLEY - YIELD, MEASURED IN BU / ACRE
+#&gt; 2    ANNUAL              00 BARLEY - YIELD, MEASURED IN BU / ACRE
+#&gt; 3    ANNUAL              00 BARLEY - YIELD, MEASURED IN BU / ACRE
+#&gt; 4    ANNUAL              00 BARLEY - YIELD, MEASURED IN BU / ACRE
+#&gt; 5    ANNUAL              00 BARLEY - YIELD, MEASURED IN BU / ACRE
+#&gt; 6    ANNUAL              00 BARLEY - YIELD, MEASURED IN BU / ACRE
+#&gt;   congr_district_code week_ending      prodn_practice_desc  class_desc
+#&gt; 1                                 ALL PRODUCTION PRACTICES ALL CLASSES
+#&gt; 2                                 ALL PRODUCTION PRACTICES ALL CLASSES
+#&gt; 3                                 ALL PRODUCTION PRACTICES ALL CLASSES
+#&gt; 4                                 ALL PRODUCTION PRACTICES ALL CLASSES
+#&gt; 5                                 ALL PRODUCTION PRACTICES ALL CLASSES
+#&gt; 6                                 ALL PRODUCTION PRACTICES ALL CLASSES
+#&gt;   unit_desc agg_level_desc watershed_code country_code sector_desc  group_desc
+#&gt; 1 BU / ACRE         COUNTY       00000000         9000       CROPS FIELD CROPS
+#&gt; 2 BU / ACRE         COUNTY       00000000         9000       CROPS FIELD CROPS
+#&gt; 3 BU / ACRE         COUNTY       00000000         9000       CROPS FIELD CROPS
+#&gt; 4 BU / ACRE         COUNTY       00000000         9000       CROPS FIELD CROPS
+#&gt; 5 BU / ACRE         COUNTY       00000000         9000       CROPS FIELD CROPS
+#&gt; 6 BU / ACRE         COUNTY       00000000         9000       CROPS FIELD CROPS
+#&gt;   year region_desc watershed_desc begin_code Value commodity_desc asd_code
+#&gt; 1 2012                                    00  87.1         BARLEY       20
+#&gt; 2 2012                                    00  68.1         BARLEY       20
+#&gt; 3 2012                                    00  71.8         BARLEY       20
+#&gt; 4 2012                                    00    67         BARLEY       20
+#&gt; 5 2012                                    00    76         BARLEY       20
+#&gt; 6 2012                                    00    69         BARLEY       20
+#&gt;   county_ansi        util_practice_desc asd_desc county_name
+#&gt; 1         047 ALL UTILIZATION PRACTICES NORTHERN    CULPEPER
+#&gt; 2         061 ALL UTILIZATION PRACTICES NORTHERN    FAUQUIER
+#&gt; 3         113 ALL UTILIZATION PRACTICES NORTHERN     MADISON
+#&gt; 4         139 ALL UTILIZATION PRACTICES NORTHERN        PAGE
+#&gt; 5         165 ALL UTILIZATION PRACTICES NORTHERN  ROCKINGHAM
+#&gt; 6         171 ALL UTILIZATION PRACTICES NORTHERN  SHENANDOAH
+#&gt;                    location_desc           load_time county_code
+#&gt; 1   VIRGINIA, NORTHERN, CULPEPER 2015-06-02 15:00:27         047
+#&gt; 2   VIRGINIA, NORTHERN, FAUQUIER 2015-06-02 15:00:27         061
+#&gt; 3    VIRGINIA, NORTHERN, MADISON 2015-06-02 15:00:27         113
+#&gt; 4       VIRGINIA, NORTHERN, PAGE 2015-06-02 15:00:27         139
+#&gt; 5 VIRGINIA, NORTHERN, ROCKINGHAM 2015-06-02 15:00:27         165
+#&gt; 6 VIRGINIA, NORTHERN, SHENANDOAH 2015-06-02 15:00:27         171
+#&gt;   statisticcat_desc state_ansi domaincat_desc zip_5 state_fips_code state_name
+#&gt; 1             YIELD         51  NOT SPECIFIED                    51   VIRGINIA
+#&gt; 2             YIELD         51  NOT SPECIFIED                    51   VIRGINIA
+#&gt; 3             YIELD         51  NOT SPECIFIED                    51   VIRGINIA
+#&gt; 4             YIELD         51  NOT SPECIFIED                    51   VIRGINIA
+#&gt; 5             YIELD         51  NOT SPECIFIED                    51   VIRGINIA
+#&gt; 6             YIELD         51  NOT SPECIFIED                    51   VIRGINIA</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

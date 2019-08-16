@@ -10,7 +10,7 @@
   "codeRepository": "https://github.com/ropensci/rnassqs",
   "issueTracker": "http://www.github.com/ropensci/rnassqs/issues",
   "license": "https://spdx.org/licenses/MIT",
-  "version": "0.4.0.9005",
+  "version": "0.5.0",
   "programmingLanguage": {
     "@type": "ComputerLanguage",
     "name": "R",
@@ -207,7 +207,7 @@
       "url": "https://CRAN.R-project.org/package=rnassqs"
     }
   ],
-  "fileSize": "2095.268KB",
+  "fileSize": "2095.262KB",
   "review": {
     "@type": "Review",
     "url": "https://github.com/ropensci/onboarding/issues/298",

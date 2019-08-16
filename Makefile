@@ -17,6 +17,12 @@ paper: paper.Rmd
 	R -e "rmarkdown::render('$(<F)')"
 
 #R PACKAGE
+codemeta:
+	R -e 'codemetar::write_codemeta()'
+
+pkgdown:
+	R -e 'pkgdown::build_site()'
+
 test:
 	R -e 'devtools::test()'
 

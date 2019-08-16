@@ -1,13 +1,9 @@
-
-# rnassqs 0.4.0.9005
+# rnassqs 0.5.0
 
 - approval for rOpensci inclusion!
 - additional testing to improve code coveral by @nealrichardson
 - small changes for rOpensci review process
 - switch to rOpensci repository
-
-# rnassqs 0.4.0.9001
-
 - Change in syntax to allow for lower case query parameter values
 - Change in syntax to allow for specifying each parameter as a separate function argument rather than as a single list (in addition to specifying a single list)
 - Create package website with pkgdown
