@@ -207,7 +207,7 @@
       "url": "https://CRAN.R-project.org/package=rnassqs"
     }
   ],
-  "fileSize": "2095.269KB",
+  "fileSize": "2095.271KB",
   "review": {
     "@type": "Review",
     "url": "https://github.com/ropensci/onboarding/issues/298",
