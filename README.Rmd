@@ -129,7 +129,7 @@ The primary function is `nassqs()`, with which you can make any query of variabl
 For example, to mirror the request that is on the [NASS API documentation](http://quickstats.nass.usda.gov/api), you can use:
 
 ```{r eval=FALSE}
-    library(nassqs)
+    library(rnassqs)
     
     # You must set your api key before requesting data
     nassqs_auth(key = <your api key>)
