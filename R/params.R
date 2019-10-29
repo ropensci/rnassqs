@@ -85,7 +85,8 @@ nassqs_params <- function(...) {
     watershed_desc = "Watershed Name",
     week_ending = "Date of end of week in format 'YYYY-MM-DD'",
     year = "Year",
-    zip_5 = "Zip code")
+    zip_5 = "Zip code",
+    format = "Format of the data request")
   
   if(missing(...)) {
     return(names(param_list))
@@ -102,11 +103,17 @@ nassqs_params <- function(...) {
 
 #' Get all values for a specific parameter.
 #'
-#' Returns a list of all possible values for a given parameter. 
+#' Returns a list of all possible values for a given parameter. Including
+#' additional parameters will restrict the list of valid values to those for
+#' data meeting the additional parameter restrictions. However, this is only
+#' possible by requesting the entire dataset and then filtering for unique
+#' values. It is recommended to make the query as small as possible if
+#' including additional parameters
 #'
 #' @export
 #'
 #' @param param the name of a NASS quickstats parameter
+#' @param ... additional parameters for which to filter the valid responses.
 #' @return a list containing all valid values for that parameter
 #' @examples \donttest{
 #'   # See all values available for the statisticcat_desc field. Values may not
@@ -116,10 +123,23 @@ nassqs_params <- function(...) {
 #'   # Requires an API key:
 #'   
 #'   nassqs_param_values("source_desc")
+#'
+#'   # Valid values for a parameter given a specific set of additional
+#'   # parameters
+#'   nassqs_param_values("commodity_desc", county_code = "53077", year = 2017, group_desc = "EXPENSES")
 #' }
-nassqs_param_values <- function(param) {
-  params <- list(param = param)
-  nassqs_parse(nassqs_GET(params, api_path = "get_param_values"), as = "list")[[1]]
+nassqs_param_values <- function(param, ...) {
+  # Check if parameters are valid
+  chk_param <- parameter_is_valid(param)
+
+  if(length(list(...)) == 0) {
+    params <- list(param = param) 
+    res <- nassqs_parse(nassqs_GET(params, api_path = "get_param_values"), as = "list")[[1]]
+  } else {
+    d <- nassqs(...)
+    res <- sort(unique(d[["param"]]))
+  }
+  res
 }
 
 

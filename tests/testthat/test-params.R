@@ -26,7 +26,17 @@ with_authentication({
     expect_is(v, "character")
     expect_is(v[[1]], "character")
     expect_equal(nassqs_param_values("source_desc"), c("CENSUS", "SURVEY"))
+    expect_equal(nassqs_param_values("SOURCE_DESC"), c("CENSUS", "SURVEY"))
+    expect_equal(nassqs_param_values(param = "SOURCE_DESC"), c("CENSUS", "SURVEY"))
   })
+
+  test_that("nassqs_param_values returns parameter values filtered for other parameters", {
+    v = nassqs_param_values(param = "source_desc", year = 2012, county_name = "YAKIMA",
+                            group_desc = "EXPENSES", sector_desc = "DEMOGRAPHICS")
+    expect_equal(nassqs_param_values("source_desc"), c("CENSUS", "SURVEY"))
+    expect_equal(nassqs_param_values("SOURCE_DESC"), c("CENSUS", "SURVEY"))
+  })
+  
 })
 
 ### Tests not involving the API ----
@@ -43,7 +53,8 @@ test_that("nassqs_params() returns a list of parameters", {
                            "state_ansi", "state_name", "state_fips_code",
                            "statisticcat_desc", "source_desc", "unit_desc",
                            "util_practice_desc", "Value", "watershed_code",
-                           "watershed_desc", "week_ending", "year", "zip_5")
+                           "watershed_desc", "week_ending", "year", "zip_5",
+                           "format")
   expect_equal(nassqs_params(), expected_param_list)
 })
 
