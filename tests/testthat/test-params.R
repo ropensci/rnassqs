@@ -34,8 +34,13 @@ with_authentication({
     v = nassqs_param_values(param = "source_desc", year = 2012, county_name = "YAKIMA",
                             group_desc = "EXPENSES", sector_desc = "DEMOGRAPHICS")
     expect_equal(v, c("CENSUS"))
-  })
-  
+
+    expect_equal(
+      nassqs_param_values(param = "county_code",
+                          year = 2012, state_alpha = "WA", agg_level_desc = "COUNTY",
+                          group_desc = "EXPENSES", sector_desc = "DEMOGRAPHICS")[1:2],
+      c("001", "005"))
+   }) 
 })
 
 ### Tests not involving the API ----
