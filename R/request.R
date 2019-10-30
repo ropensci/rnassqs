@@ -29,6 +29,12 @@
 nassqs <- function(...,
                    as = c("data.frame", "text", "list")) {
   as = match.arg(as)
+  params <- expand_list(...)
+  
+  # Check that names of the parameters are in the valid parameter list
+  chk_params <- lapply(names(params), function(x) { parameter_is_valid(x) })
+
+  # Make the request
   req <- nassqs_GET(..., api_path = "api_GET")
   nassqs_parse(req, as = as)
 }
