@@ -33,8 +33,7 @@ with_authentication({
   test_that("nassqs_param_values returns parameter values filtered for other parameters", {
     v = nassqs_param_values(param = "source_desc", year = 2012, county_name = "YAKIMA",
                             group_desc = "EXPENSES", sector_desc = "DEMOGRAPHICS")
-    expect_equal(nassqs_param_values("source_desc"), c("CENSUS", "SURVEY"))
-    expect_equal(nassqs_param_values("SOURCE_DESC"), c("CENSUS", "SURVEY"))
+    expect_equal(v, c("CENSUS"))
   })
   
 })
