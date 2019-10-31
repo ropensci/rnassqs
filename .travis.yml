@@ -1,12 +1,13 @@
 language: R
 sudo: false
-cache: packages
+cache:
+  packages: true
 warnings_are_errors: true
 r_binary_packages:
-- testthat
-- httptest
-- knitr
+  - testthat
+  - httptest
+  - knitr
 r_github_packages:
-- r-lib/covr
+  - r-lib/covr
 after_success:
-- Rscript -e 'covr::codecov()'
+  - Rscript -e 'covr::codecov()'
