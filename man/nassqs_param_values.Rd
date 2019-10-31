@@ -4,16 +4,23 @@
 \alias{nassqs_param_values}
 \title{Get all values for a specific parameter.}
 \usage{
-nassqs_param_values(param)
+nassqs_param_values(param, ...)
 }
 \arguments{
 \item{param}{the name of a NASS quickstats parameter}
+
+\item{...}{additional parameters for which to filter the valid responses.}
 }
 \value{
 a list containing all valid values for that parameter
 }
 \description{
-Returns a list of all possible values for a given parameter.
+Returns a list of all possible values for a given parameter. Including
+additional parameters will restrict the list of valid values to those for
+data meeting the additional parameter restrictions. However, this is only
+possible by requesting the entire dataset and then filtering for unique
+values. It is recommended to make the query as small as possible if
+including additional parameters
 }
 \examples{
 \donttest{
@@ -24,5 +31,9 @@ Returns a list of all possible values for a given parameter.
   # Requires an API key:
   
   nassqs_param_values("source_desc")
+
+  # Valid values for a parameter given a specific set of additional
+  # parameters
+  nassqs_param_values("commodity_desc", county_code = "53077", year = 2017, group_desc = "EXPENSES")
 }
 }
