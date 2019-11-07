@@ -61,7 +61,7 @@ Development
 
 <td align="left">
 
-<a href="https://github.com/ropensci/rnassqs/commits/master"><img src="https://img.shields.io/badge/last%20change-2019--08--16-brightgreen.svg" alt="Last Change"></a>
+<a href="https://github.com/ropensci/rnassqs/commits/master"><img src="https://img.shields.io/badge/last%20change-2019--11--07-brightgreen.svg" alt="Last Change"></a>
 
 </td>
 
@@ -205,7 +205,7 @@ variables. For example, to mirror the request that is on the [NASS API
 documentation](http://quickstats.nass.usda.gov/api), you can use:
 
 ``` r
-    library(nassqs)
+    library(rnassqs)
     
     # You must set your api key before requesting data
     nassqs_auth(key = <your api key>)
