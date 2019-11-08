@@ -8,21 +8,25 @@
 
 <title>Get data and return a data frame — nassqs • rnassqs</title>
 
+
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous" />
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
 
 <!-- Font Awesome icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous" />
 
 <!-- clipboard.js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script>
 
-<!-- sticky kit -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script>
+<!-- headroom.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
@@ -30,8 +34,8 @@
 
 
 
-<meta property="og:title" content="Get data and return a data frame — nassqs" />
 
+<meta property="og:title" content="Get data and return a data frame — nassqs" />
 <meta property="og:description" content="The primary function in the rnassqs package, nassqs makes a HTTP GET
 request to the USDA-NASS Quick Stats API and returns the data parsed as a
 data.frame, plain text, or list. Various other functions make use of nassqs
@@ -43,6 +47,7 @@ restrict the number of columns." />
 
 
 
+
 <!-- mathjax -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script>
@@ -51,6 +56,7 @@ restrict the number of columns." />
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
+
 
 
   </head>
@@ -69,7 +75,7 @@ restrict the number of columns." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">rnassqs</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.6.1</span>
       </span>
     </div>
 
@@ -77,7 +83,7 @@ restrict the number of columns." />
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fa fa-home fa-lg"></span>
+    <span class="fas fa fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -91,11 +97,10 @@ restrict the number of columns." />
   <a href="../news/index.html">Changelog</a>
 </li>
       </ul>
-      
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/ropensci/rnassqs">
-    <span class="fa fa-github fa-lg"></span>
+    <span class="fab fa fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -106,6 +111,7 @@ restrict the number of columns." />
 </div><!--/.navbar -->
 
       
+
       </header>
 
 <div class="row">
@@ -117,7 +123,6 @@ restrict the number of columns." />
     </div>
 
     <div class="ref-description">
-    
     <p>The primary function in the <code>rnassqs</code> package, <code>nassqs</code> makes a HTTP GET
 request to the USDA-NASS Quick Stats API and returns the data parsed as a
 data.frame, plain text, or list. Various other functions make use of <code>nassqs</code>
@@ -125,11 +130,10 @@ to make specific queries. For a data request the Quick Stats API returns
 JSON that when parsed to a data.frame contains 39 columns and a varying
 number of rows depending on the query. Unfortunately there is not a way to
 restrict the number of columns.</p>
-    
     </div>
 
-    <pre class="usage"><span class='fu'>nassqs</span>(<span class='no'>...</span>, <span class='kw'>as</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"data.frame"</span>, <span class='st'>"text"</span>, <span class='st'>"list"</span>))</pre>
-    
+    <pre class="usage"><span class='fu'>nassqs</span>(<span class='no'>...</span>, <span class='kw'>as</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"data.frame"</span>, <span class='st'>"text"</span>, <span class='st'>"list"</span>))</pre>
+
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
@@ -144,94 +148,38 @@ form the query</p></td>
 <code><a href='nassqs_GET.html'>nassqs_GET()</a></code></p></td>
     </tr>
     </table>
-    
+
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p>a data frame, list, or text string of requested data.</p>
-    
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p><code><a href='nassqs_GET.html'>nassqs_GET()</a></code>, <code><a href='nassqs_yields.html'>nassqs_yields()</a></code>, <code><a href='nassqs_acres.html'>nassqs_acres()</a></code></p></div>
-    
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'>  <span class='co'># Get corn yields in Virginia in 2012</span>
-  <span class='no'>params</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/list'>list</a></span>(<span class='kw'>commodity_name</span> <span class='kw'>=</span> <span class='st'>"CORN"</span>,
+    <pre class="examples"><div class='input'><span class='co'># \donttest{</span>
+  <span class='co'># Get corn yields in Virginia in 2012</span>
+  <span class='no'>params</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='kw'>commodity_name</span> <span class='kw'>=</span> <span class='st'>"CORN"</span>,
                  <span class='kw'>year</span> <span class='kw'>=</span> <span class='fl'>2012</span>,
                  <span class='kw'>agg_level_desc</span> <span class='kw'>=</span> <span class='st'>"COUNTY"</span>,
                  <span class='kw'>state_alpha</span> <span class='kw'>=</span> <span class='st'>"VA"</span>,
                  <span class='kw'>statisticcat_desc</span> <span class='kw'>=</span> <span class='st'>"YIELD"</span>)
-  <span class='no'>yields</span> <span class='kw'>&lt;-</span> <span class='fu'>nassqs</span>(<span class='no'>params</span>)</div><div class='output co'>#&gt;   |                                                                              |                                                                      |   0%  |                                                                              |=                                                                     |   2%  |                                                                              |==                                                                    |   2%  |                                                                              |===                                                                   |   5%  |                                                                              |=====                                                                 |   7%  |                                                                              |=========                                                             |  13%  |                                                                              |============                                                          |  18%  |                                                                              |=============                                                         |  18%  |                                                                              |=============                                                         |  19%  |                                                                              |=================                                                     |  24%  |                                                                              |=================                                                     |  25%  |                                                                              |=====================                                                 |  30%  |                                                                              |=====================                                                 |  31%  |                                                                              |=========================                                             |  36%  |                                                                              |==========================                                            |  37%  |                                                                              |=============================                                         |  42%  |                                                                              |=================================                                     |  47%  |                                                                              |==================================                                    |  48%  |                                                                              |=====================================                                 |  53%  |                                                                              |=====================================                                 |  54%  |                                                                              |======================================                                |  54%  |                                                                              |=========================================                             |  59%  |                                                                              |=============================================                         |  64%  |                                                                              |=============================================                         |  65%  |                                                                              |==============================================                        |  65%  |                                                                              |=================================================                     |  70%  |                                                                              |==================================================                    |  71%  |                                                                              |=====================================================                 |  76%  |                                                                              |======================================================                |  77%  |                                                                              |==========================================================            |  82%  |                                                                              |==========================================================            |  83%  |                                                                              |==============================================================        |  88%  |                                                                              |==================================================================    |  94%  |                                                                              |===================================================================== |  99%  |                                                                              |======================================================================| 100%</div><div class='input'>  <span class='fu'><a href='https://www.rdocumentation.org/packages/utils/topics/head'>head</a></span>(<span class='no'>yields</span>)</div><div class='output co'>#&gt;   state_name week_ending      prodn_practice_desc source_desc unit_desc
-#&gt; 1   VIRGINIA             ALL PRODUCTION PRACTICES      SURVEY BU / ACRE
-#&gt; 2   VIRGINIA             ALL PRODUCTION PRACTICES      SURVEY BU / ACRE
-#&gt; 3   VIRGINIA             ALL PRODUCTION PRACTICES      SURVEY BU / ACRE
-#&gt; 4   VIRGINIA             ALL PRODUCTION PRACTICES      SURVEY BU / ACRE
-#&gt; 5   VIRGINIA             ALL PRODUCTION PRACTICES      SURVEY BU / ACRE
-#&gt; 6   VIRGINIA             ALL PRODUCTION PRACTICES      SURVEY BU / ACRE
-#&gt;   state_fips_code begin_code watershed_desc county_code freq_desc
-#&gt; 1              51         00                        047    ANNUAL
-#&gt; 2              51         00                        061    ANNUAL
-#&gt; 3              51         00                        113    ANNUAL
-#&gt; 4              51         00                        139    ANNUAL
-#&gt; 5              51         00                        165    ANNUAL
-#&gt; 6              51         00                        171    ANNUAL
-#&gt;   reference_period_desc  group_desc commodity_desc end_code county_name
-#&gt; 1                  YEAR FIELD CROPS         BARLEY       00    CULPEPER
-#&gt; 2                  YEAR FIELD CROPS         BARLEY       00    FAUQUIER
-#&gt; 3                  YEAR FIELD CROPS         BARLEY       00     MADISON
-#&gt; 4                  YEAR FIELD CROPS         BARLEY       00        PAGE
-#&gt; 5                  YEAR FIELD CROPS         BARLEY       00  ROCKINGHAM
-#&gt; 6                  YEAR FIELD CROPS         BARLEY       00  SHENANDOAH
-#&gt;   watershed_code domaincat_desc country_code asd_code state_ansi CV (%)
-#&gt; 1       00000000  NOT SPECIFIED         9000       20         51       
-#&gt; 2       00000000  NOT SPECIFIED         9000       20         51       
-#&gt; 3       00000000  NOT SPECIFIED         9000       20         51       
-#&gt; 4       00000000  NOT SPECIFIED         9000       20         51       
-#&gt; 5       00000000  NOT SPECIFIED         9000       20         51       
-#&gt; 6       00000000  NOT SPECIFIED         9000       20         51       
-#&gt;   agg_level_desc  class_desc county_ansi                            short_desc
-#&gt; 1         COUNTY ALL CLASSES         047 BARLEY - YIELD, MEASURED IN BU / ACRE
-#&gt; 2         COUNTY ALL CLASSES         061 BARLEY - YIELD, MEASURED IN BU / ACRE
-#&gt; 3         COUNTY ALL CLASSES         113 BARLEY - YIELD, MEASURED IN BU / ACRE
-#&gt; 4         COUNTY ALL CLASSES         139 BARLEY - YIELD, MEASURED IN BU / ACRE
-#&gt; 5         COUNTY ALL CLASSES         165 BARLEY - YIELD, MEASURED IN BU / ACRE
-#&gt; 6         COUNTY ALL CLASSES         171 BARLEY - YIELD, MEASURED IN BU / ACRE
-#&gt;   Value year congr_district_code        util_practice_desc  country_name
-#&gt; 1  87.1 2012                     ALL UTILIZATION PRACTICES UNITED STATES
-#&gt; 2  68.1 2012                     ALL UTILIZATION PRACTICES UNITED STATES
-#&gt; 3  71.8 2012                     ALL UTILIZATION PRACTICES UNITED STATES
-#&gt; 4    67 2012                     ALL UTILIZATION PRACTICES UNITED STATES
-#&gt; 5    76 2012                     ALL UTILIZATION PRACTICES UNITED STATES
-#&gt; 6    69 2012                     ALL UTILIZATION PRACTICES UNITED STATES
-#&gt;                    location_desc sector_desc asd_desc region_desc domain_desc
-#&gt; 1   VIRGINIA, NORTHERN, CULPEPER       CROPS NORTHERN                   TOTAL
-#&gt; 2   VIRGINIA, NORTHERN, FAUQUIER       CROPS NORTHERN                   TOTAL
-#&gt; 3    VIRGINIA, NORTHERN, MADISON       CROPS NORTHERN                   TOTAL
-#&gt; 4       VIRGINIA, NORTHERN, PAGE       CROPS NORTHERN                   TOTAL
-#&gt; 5 VIRGINIA, NORTHERN, ROCKINGHAM       CROPS NORTHERN                   TOTAL
-#&gt; 6 VIRGINIA, NORTHERN, SHENANDOAH       CROPS NORTHERN                   TOTAL
-#&gt;   zip_5 statisticcat_desc           load_time state_alpha
-#&gt; 1                   YIELD 2015-06-02 15:00:27          VA
-#&gt; 2                   YIELD 2015-06-02 15:00:27          VA
-#&gt; 3                   YIELD 2015-06-02 15:00:27          VA
-#&gt; 4                   YIELD 2015-06-02 15:00:27          VA
-#&gt; 5                   YIELD 2015-06-02 15:00:27          VA
-#&gt; 6                   YIELD 2015-06-02 15:00:27          VA</div></pre>
+  <span class='no'>yields</span> <span class='kw'>&lt;-</span> <span class='fu'>nassqs</span>(<span class='no'>params</span>)</div><div class='output co'>#&gt; <span class='error'>Error in parameter_is_valid(x): Parameter 'commodity_name' is not a valid parameter. Use `nassqs_params()` </span>
+#&gt; <span class='error'>            for a list of valid parameters.</span></div><div class='input'>  <span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span>(<span class='no'>yields</span>)</div><div class='output co'>#&gt; <span class='error'>Error in head(yields): object 'yields' not found</span></div><div class='input'># }
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-      
       <li><a href="#value">Value</a></li>
-
       <li><a href="#see-also">See also</a></li>
-      
       <li><a href="#examples">Examples</a></li>
     </ul>
 
   </div>
 </div>
+
 
       <footer>
       <div class="copyright">
@@ -239,13 +187,16 @@ form the query</p></td>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.3.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.</p>
 </div>
+
       </footer>
    </div>
 
   
 
+
   </body>
 </html>
+
 
