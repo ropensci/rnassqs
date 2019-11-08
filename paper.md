@@ -22,15 +22,30 @@ affiliations:
 
 # Summary
 
-The [rnassqs](https://github.com/ropensci/rnassqs) `R` package [@rnassqs] provides a simple interface for accessing the United States Department of Agriculture National Agricultural Statistics Service (USDA-NASS) '[Quick Stats](https://quickstats.nass.usda.gov/)' API [@quickstats]. The core functionality allows the user to query agricultural data from 'Quick Stats' in a reproducible and automated way. The primary benefit of `rnassqs` is that users need not download data through repeated use of the Quick Stats point-and-click interface, which reduces the chance of errors, eliminates the need for repeated manual downloads of new data over time or space, and allows for automated updates of web applications that rely on new releases of USDA-NASS data over time.
+The [rnassqs](https://github.com/ropensci/rnassqs) `R` package
+provides a simple interface for accessing the United States Department of
+Agriculture National Agricultural Statistics Service (USDA-NASS)
+'[Quick Stats](https://quickstats.nass.usda.gov/)' API. The
+core functionality allows the user to query agricultural data from 'Quick Stats'
+in a reproducible and automated way. The primary benefit of `rnassqs` is
+that users need not download data through repeated use of the Quick Stats
+point-and-click interface, which reduces the chance of errors, eliminates the
+need for repeated manual downloads of new data over time or space, and allows
+for automated updates of web applications that rely on new releases of USDA-NASS
+data over time.
 
-`rnassqs` manages API authentication by setting a system environmental variable for the duration of the `R` session. Convenience functions facilitate querying common data. Users can also use `rnassqs` to query the list of data parameters and available values for a given parameter (for example, to see the commodities available in a particular county and year). The query requests data as a JSON object and parses that data into a `data.frame` object. 
+`rnassqs` manages API authentication by setting a system environmental variable
+for the duration of the `R` session. Convenience functions facilitate querying
+common data. Users can also use `rnassqs` to query the list of data parameters
+and available values for a given parameter (for example, to see the commodities
+available in a particular county and year). The query requests data as a JSON
+object and parses that data into a `data.frame` object. 
 
 
 # About USDA-NASS data and 'Quick Stats'
 
 'Quick Stats' is a web interface to access data produced by USDA-NASS. The data 
-comes primarily from the Census of Agriculture [@agCensus], but also includes
+comes primarily from the Census of Agriculture, but also includes
 data from USDA-NASS surveys on a wide range of topics. The Census of Agriculture
 is conducted every five years in years ending in '2' and '7'. The earliest year
 available on Quick Stats is 1997. Surveys have different collection periods,
@@ -120,5 +135,3 @@ of Quick Stats data.
 Thank you to Jonathan Adams, Julia Piaskowski, and Joseph Stachelek for code
 contributions. A huge thanks to reviewers Adam H Sparks and Neal Richardson
 for their thoughtful feedback to improve the package and documentation.
-
-# References
