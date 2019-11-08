@@ -1,0 +1,27 @@
+{
+    "description": "Previous release JOSS submission included citations with errors. Citations were not needed so they are dropped in this release.",
+    "license": "MIT",
+    "title": "ropensci/rnassqs: Ag Land, Incl Buildings - Revised",
+    "version": "v0.6.1",
+    "upload_type": "software",
+    "publication_date": "2019-11-08",
+    "creators": [
+	{
+	    "affiliation": "Washington State University",
+	    "name": "Nicholas Potter"
+	}
+    ],
+    "access_right": "open",
+    "related_identifiers": [
+	{
+	    "scheme": "url",
+	    "identifier": "https://github.com/ropensci/rnassqs/tree/v0.6.1",
+	    "relation": "isSupplementTo"
+	},
+	{
+	    "scheme": "doi",
+	    "identifier": "10.5281/zenodo.825264",
+	    "relation": "isVersionOf"
+	}
+    ]
+}

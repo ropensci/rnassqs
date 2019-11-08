@@ -8,6 +8,7 @@ authors:
     orcid: 0000-0002-3410-3732
 date: "09 June 2019"
 output: pdf_document
+bibliography: paper.bib
 tags:
   - R
   - API
