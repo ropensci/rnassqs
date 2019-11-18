@@ -61,7 +61,7 @@ Development
 
 <td align="left">
 
-<a href="https://github.com/ropensci/rnassqs/commits/master"><img src="https://img.shields.io/badge/last%20change-2019--11--07-brightgreen.svg" alt="Last Change"></a>
+<a href="https://github.com/ropensci/rnassqs/commits/master"><img src="https://img.shields.io/badge/last%20change-2019--11--17-brightgreen.svg" alt="Last Change"></a>
 
 </td>
 
@@ -136,6 +136,10 @@ Development
 </td>
 
 <td align="left">
+
+<a style="border-width:0" href="https://doi.org/10.21105/joss.01880">
+<img src="https://joss.theoj.org/papers/10.21105/joss.01880/status.svg" alt="DOI:10.21105/joss.01880" >
+</a>
 
 </td>
 
