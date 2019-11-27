@@ -1,3 +1,7 @@
+# rnassqs 0.6.0
+
+- add option to see valid parameter values given a query of other values in `get_param_values()`.
+
 # rnassqs 0.5.0
 
 - approval for rOpensci inclusion!
