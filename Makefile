@@ -21,7 +21,7 @@ codemeta:
 	R -e 'codemetar::write_codemeta()'
 
 pkgdown:
-	R -e 'pkgdown::build_site()'
+	R -e 'pkgdown::build_site(override = list(template = tempalte)))'
 
 test:
 	R -e 'devtools::test()'
