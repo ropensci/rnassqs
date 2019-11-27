@@ -27,10 +27,9 @@ Development
 <tbody>
 
 <tr class="odd">
-<td rowspan="5" font-size="xx-small">
-  <img src="man/figures/logo.png" alt="rnassqs hexsticker" alight="right", height="139"/>
-  
-  (Wheat image from [here](https://www.flickr.com/photos/53018729@N00/2669034542))
+<td rowspan="5">
+<a href="https://docs.ropensci.org/rnassqs"><img src="man/figures/logo.png" alt="rnassqs" align="right" height="139"></a>
+<p style="font-size:xx-small;">(Wheat image from <a href="https://www.flickr.com/photos/53018729@N00/2669034542">here</a>.)</p>
 </td>
 <td align="left">
 <a href="http://choosealicense.com/licenses/mit/"><img src="https://img.shields.io/github/license/mashape/apistatus.svg" alt="License"></a>

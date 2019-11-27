@@ -38,13 +38,16 @@ Development
 
 <tr class="odd">
 
-<td rowspan="5" font-size="xx-small">
+<td rowspan="5">
 
-\<img src=“man/figures/logo.png” alt=“rnassqs hexsticker”
-alight=“right”, height=“139”/\>
+<a href="https://docs.ropensci.org/rnassqs"><img src="man/figures/logo.png" alt="rnassqs" align="right" height="139"></a>
+
+<p style="font-size:xx-small;">
 
 (Wheat image from
-[here](https://www.flickr.com/photos/53018729@N00/2669034542))
+<a href="https://www.flickr.com/photos/53018729@N00/2669034542">here</a>.)
+
+</p>
 
 </td>
 

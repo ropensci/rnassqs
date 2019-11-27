@@ -176,63 +176,14 @@ use in the query</p></td>
 
   <span class='co'># Returns a request object that must be parsed either manually or</span>
   <span class='co'># by using nassqs_parse()</span>
-  <span class='no'>response</span> <span class='kw'>&lt;-</span> <span class='fu'>nassqs_GET</span>(<span class='no'>params</span>)</div><div class='output co'>#&gt;   |                                                                              |                                                                      |   0%  |                                                                              |==                                                                    |   4%  |                                                                              |===                                                                   |   4%  |                                                                              |========                                                              |  11%  |                                                                              |===============                                                       |  21%  |                                                                              |======================                                                |  31%  |                                                                              |=======================                                               |  32%  |                                                                              |=======================                                               |  33%  |                                                                              |==============================                                        |  43%  |                                                                              |=====================================                                 |  53%  |                                                                              |======================================                                |  54%  |                                                                              |=======================================                               |  55%  |                                                                              |==============================================                        |  66%  |                                                                              |===============================================                       |  66%  |                                                                              |===============================================                       |  67%  |                                                                              |======================================================                |  78%  |                                                                              |=======================================================               |  78%  |                                                                              |========================================================              |  79%  |                                                                              |===============================================================       |  90%  |                                                                              |================================================================      |  91%  |                                                                              |======================================================================| 100%</div><div class='input'>  <span class='no'>yields</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='nassqs_parse.html'>nassqs_parse</a></span>(<span class='no'>response</span>)
-  <span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span>(<span class='no'>yields</span>)</div><div class='output co'>#&gt;   region_desc domaincat_desc state_ansi state_name  country_name
-#&gt; 1              NOT SPECIFIED         53 WASHINGTON UNITED STATES
-#&gt; 2              NOT SPECIFIED         53 WASHINGTON UNITED STATES
-#&gt; 3              NOT SPECIFIED         53 WASHINGTON UNITED STATES
-#&gt; 4              NOT SPECIFIED         53 WASHINGTON UNITED STATES
-#&gt; 5              NOT SPECIFIED         53 WASHINGTON UNITED STATES
-#&gt; 6              NOT SPECIFIED         53 WASHINGTON UNITED STATES
-#&gt;          util_practice_desc county_ansi agg_level_desc end_code  group_desc
-#&gt; 1 ALL UTILIZATION PRACTICES                      STATE       00 FIELD CROPS
-#&gt; 2 ALL UTILIZATION PRACTICES                      STATE       00 FIELD CROPS
-#&gt; 3 ALL UTILIZATION PRACTICES                      STATE       00 FIELD CROPS
-#&gt; 4 ALL UTILIZATION PRACTICES                      STATE       00 FIELD CROPS
-#&gt; 5 ALL UTILIZATION PRACTICES                      STATE       00 FIELD CROPS
-#&gt; 6 ALL UTILIZATION PRACTICES                      STATE       00 FIELD CROPS
-#&gt;   week_ending freq_desc           load_time zip_5 watershed_desc CV (%)
-#&gt; 1                ANNUAL 2012-12-31 00:00:00                         3.0
-#&gt; 2                ANNUAL 2012-12-31 00:00:00                         2.5
-#&gt; 3                ANNUAL 2012-12-31 00:00:00                         4.6
-#&gt; 4                ANNUAL 2012-12-31 00:00:00                         (D)
-#&gt; 5                ANNUAL 2012-12-31 00:00:00                         1.0
-#&gt; 6                ANNUAL 2012-12-31 00:00:00                         (D)
-#&gt;   asd_desc county_code domain_desc county_name source_desc
-#&gt; 1                            TOTAL                  CENSUS
-#&gt; 2                            TOTAL                  CENSUS
-#&gt; 3                            TOTAL                  CENSUS
-#&gt; 4                            TOTAL                  CENSUS
-#&gt; 5                            TOTAL                  CENSUS
-#&gt; 6                            TOTAL                  CENSUS
-#&gt;       prodn_practice_desc asd_code congr_district_code year statisticcat_desc
-#&gt; 1  IRRIGATED, ENTIRE CROP                              2012             YIELD
-#&gt; 2 IRRIGATED, NONE OF CROP                              2012             YIELD
-#&gt; 3 IRRIGATED, PART OF CROP                              2012             YIELD
-#&gt; 4  IRRIGATED, ENTIRE CROP                              2012             YIELD
-#&gt; 5 IRRIGATED, NONE OF CROP                              2012             YIELD
-#&gt; 6 IRRIGATED, PART OF CROP                              2012             YIELD
-#&gt;                                class_desc location_desc state_alpha
-#&gt; 1                             ALL CLASSES    WASHINGTON          WA
-#&gt; 2                             ALL CLASSES    WASHINGTON          WA
-#&gt; 3                             ALL CLASSES    WASHINGTON          WA
-#&gt; 4 DRY EDIBLE, (EXCL LIMA), INCL CHICKPEAS    WASHINGTON          WA
-#&gt; 5 DRY EDIBLE, (EXCL LIMA), INCL CHICKPEAS    WASHINGTON          WA
-#&gt; 6 DRY EDIBLE, (EXCL LIMA), INCL CHICKPEAS    WASHINGTON          WA
-#&gt;   commodity_desc sector_desc                Value country_code state_fips_code
-#&gt; 1         BARLEY       CROPS                 86.7         9000              53
-#&gt; 2         BARLEY       CROPS                 68.3         9000              53
-#&gt; 3         BARLEY       CROPS                 72.6         9000              53
-#&gt; 4          BEANS       CROPS                  (D)         9000              53
-#&gt; 5          BEANS       CROPS                 17.2         9000              53
-#&gt; 6          BEANS       CROPS                  (D)         9000              53
-#&gt;   begin_code watershed_code  unit_desc
-#&gt; 1         00       00000000  BU / ACRE
-#&gt; 2         00       00000000  BU / ACRE
-#&gt; 3         00       00000000  BU / ACRE
-#&gt; 4         00       00000000 CWT / ACRE
-#&gt; 5         00       00000000 CWT / ACRE
-#&gt; 6         00       00000000 CWT / ACRE
+  <span class='no'>response</span> <span class='kw'>&lt;-</span> <span class='fu'>nassqs_GET</span>(<span class='no'>params</span>)</div><div class='output co'>#&gt;   |                                                                              |                                                                      |   0%  |                                                                              |==                                                                    |   4%  |                                                                              |===                                                                   |   4%  |                                                                              |========                                                              |  11%  |                                                                              |=============                                                         |  19%  |                                                                              |=====================                                                 |  29%  |                                                                              |============================                                          |  40%  |                                                                              |============================                                          |  41%  |                                                                              |=============================                                         |  41%  |                                                                              |====================================                                  |  52%  |                                                                              |=====================================                                 |  53%  |                                                                              |=============================================                         |  64%  |                                                                              |====================================================                  |  74%  |                                                                              |====================================================                  |  75%  |                                                                              |=====================================================                 |  76%  |                                                                              |============================================================          |  86%  |                                                                              |=============================================================         |  87%  |                                                                              |=============================================================         |  88%  |                                                                              |===================================================================== |  98%  |                                                                              |===================================================================== |  99%  |                                                                              |======================================================================| 100%</div><div class='input'>  <span class='no'>yields</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='nassqs_parse.html'>nassqs_parse</a></span>(<span class='no'>response</span>)
+  <span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span>(<span class='no'>yields</span>)</div><div class='output co'>#&gt;   country_code
+#&gt; 1         9000
+#&gt; 2         9000
+#&gt; 3         9000
+#&gt; 4         9000
+#&gt; 5         9000
+#&gt; 6         9000
 #&gt;                                                                                                short_desc
 #&gt; 1                                           BARLEY, IRRIGATED, ENTIRE CROP - YIELD, MEASURED IN BU / ACRE
 #&gt; 2                                          BARLEY, IRRIGATED, NONE OF CROP - YIELD, MEASURED IN BU / ACRE
@@ -240,13 +191,62 @@ use in the query</p></td>
 #&gt; 4  BEANS, DRY EDIBLE, (EXCL LIMA), INCL CHICKPEAS, IRRIGATED, ENTIRE CROP - YIELD, MEASURED IN CWT / ACRE
 #&gt; 5 BEANS, DRY EDIBLE, (EXCL LIMA), INCL CHICKPEAS, IRRIGATED, NONE OF CROP - YIELD, MEASURED IN CWT / ACRE
 #&gt; 6 BEANS, DRY EDIBLE, (EXCL LIMA), INCL CHICKPEAS, IRRIGATED, PART OF CROP - YIELD, MEASURED IN CWT / ACRE
-#&gt;   reference_period_desc
-#&gt; 1                  YEAR
-#&gt; 2                  YEAR
-#&gt; 3                  YEAR
-#&gt; 4                  YEAR
-#&gt; 5                  YEAR
-#&gt; 6                  YEAR</div><div class='input'>
+#&gt;   end_code                Value county_code watershed_code domain_desc
+#&gt; 1       00                 86.7                   00000000       TOTAL
+#&gt; 2       00                 68.3                   00000000       TOTAL
+#&gt; 3       00                 72.6                   00000000       TOTAL
+#&gt; 4       00                  (D)                   00000000       TOTAL
+#&gt; 5       00                 17.2                   00000000       TOTAL
+#&gt; 6       00                  (D)                   00000000       TOTAL
+#&gt;   begin_code watershed_desc     prodn_practice_desc           load_time
+#&gt; 1         00                 IRRIGATED, ENTIRE CROP 2012-12-31 00:00:00
+#&gt; 2         00                IRRIGATED, NONE OF CROP 2012-12-31 00:00:00
+#&gt; 3         00                IRRIGATED, PART OF CROP 2012-12-31 00:00:00
+#&gt; 4         00                 IRRIGATED, ENTIRE CROP 2012-12-31 00:00:00
+#&gt; 5         00                IRRIGATED, NONE OF CROP 2012-12-31 00:00:00
+#&gt; 6         00                IRRIGATED, PART OF CROP 2012-12-31 00:00:00
+#&gt;   freq_desc        util_practice_desc  unit_desc state_fips_code asd_code
+#&gt; 1    ANNUAL ALL UTILIZATION PRACTICES  BU / ACRE              53         
+#&gt; 2    ANNUAL ALL UTILIZATION PRACTICES  BU / ACRE              53         
+#&gt; 3    ANNUAL ALL UTILIZATION PRACTICES  BU / ACRE              53         
+#&gt; 4    ANNUAL ALL UTILIZATION PRACTICES CWT / ACRE              53         
+#&gt; 5    ANNUAL ALL UTILIZATION PRACTICES CWT / ACRE              53         
+#&gt; 6    ANNUAL ALL UTILIZATION PRACTICES CWT / ACRE              53         
+#&gt;   region_desc statisticcat_desc state_ansi county_name CV (%) state_name
+#&gt; 1                         YIELD         53                3.0 WASHINGTON
+#&gt; 2                         YIELD         53                2.5 WASHINGTON
+#&gt; 3                         YIELD         53                4.6 WASHINGTON
+#&gt; 4                         YIELD         53                (D) WASHINGTON
+#&gt; 5                         YIELD         53                1.0 WASHINGTON
+#&gt; 6                         YIELD         53                (D) WASHINGTON
+#&gt;   location_desc county_ansi reference_period_desc domaincat_desc sector_desc
+#&gt; 1    WASHINGTON                              YEAR  NOT SPECIFIED       CROPS
+#&gt; 2    WASHINGTON                              YEAR  NOT SPECIFIED       CROPS
+#&gt; 3    WASHINGTON                              YEAR  NOT SPECIFIED       CROPS
+#&gt; 4    WASHINGTON                              YEAR  NOT SPECIFIED       CROPS
+#&gt; 5    WASHINGTON                              YEAR  NOT SPECIFIED       CROPS
+#&gt; 6    WASHINGTON                              YEAR  NOT SPECIFIED       CROPS
+#&gt;    country_name source_desc  group_desc year asd_desc
+#&gt; 1 UNITED STATES      CENSUS FIELD CROPS 2012         
+#&gt; 2 UNITED STATES      CENSUS FIELD CROPS 2012         
+#&gt; 3 UNITED STATES      CENSUS FIELD CROPS 2012         
+#&gt; 4 UNITED STATES      CENSUS FIELD CROPS 2012         
+#&gt; 5 UNITED STATES      CENSUS FIELD CROPS 2012         
+#&gt; 6 UNITED STATES      CENSUS FIELD CROPS 2012         
+#&gt;                                class_desc week_ending zip_5 congr_district_code
+#&gt; 1                             ALL CLASSES                                      
+#&gt; 2                             ALL CLASSES                                      
+#&gt; 3                             ALL CLASSES                                      
+#&gt; 4 DRY EDIBLE, (EXCL LIMA), INCL CHICKPEAS                                      
+#&gt; 5 DRY EDIBLE, (EXCL LIMA), INCL CHICKPEAS                                      
+#&gt; 6 DRY EDIBLE, (EXCL LIMA), INCL CHICKPEAS                                      
+#&gt;   commodity_desc state_alpha agg_level_desc
+#&gt; 1         BARLEY          WA          STATE
+#&gt; 2         BARLEY          WA          STATE
+#&gt; 3         BARLEY          WA          STATE
+#&gt; 4          BEANS          WA          STATE
+#&gt; 5          BEANS          WA          STATE
+#&gt; 6          BEANS          WA          STATE</div><div class='input'>
   <span class='co'># Get the number of records that would be returned for a given request</span>
   <span class='co'># Equivalent to 'nassqs_record_count(params)'</span>
   <span class='no'>response</span> <span class='kw'>&lt;-</span> <span class='fu'>nassqs_GET</span>(<span class='no'>params</span>, <span class='kw'>api_path</span> <span class='kw'>=</span> <span class='st'>"get_counts"</span>)</div><div class='output co'>#&gt;   |                                                                              |                                                                      |   0%  |                                                                              |======================================================================| 100%</div><div class='input'>  <span class='no'>records</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='nassqs_parse.html'>nassqs_parse</a></span>(<span class='no'>response</span>)

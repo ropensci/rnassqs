@@ -20,8 +20,10 @@ paper: paper.Rmd
 codemeta:
 	R -e 'codemetar::write_codemeta()'
 
-pkgdown:
-	R -e 'pkgdown::build_site(override = list(template = tempalte)))'
+pkgdown: .FORCE
+	R -e 'pkgdown::build_site(override = list(template = list(package = "rotemplate")))'
+
+.FORCE:
 
 test:
 	R -e 'devtools::test()'
