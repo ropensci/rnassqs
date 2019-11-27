@@ -27,8 +27,8 @@ Development
 <tbody>
 
 <tr class="odd">
-<td rowspan="5">
-  <img src="inst/figures/rnassqs.png" alt="rnassqs hexsticker" width="200"/>
+<td rowspan="5" font-size="xx-small">
+  <img src="man/figures/logo.png" alt="rnassqs hexsticker" alight="right", height="139"/>
   
   (Wheat image from [here](https://www.flickr.com/photos/53018729@N00/2669034542))
 </td>
@@ -99,7 +99,7 @@ Development
 
 `rnassqs` allows users to access the USDA's National Agricultural Statistics Service (NASS) 'Quick Stats' data through their API. It is simple and easy to use, and provides some functions to help navigate the bewildering complexity of some Quick Stats data.
 
-For docs and code examples, visit the package web page here: [https://ropensci.github.io/rnassqs/](https://ropensci.github.io/rnassqs/).
+For docs and code examples, visit the package web page here: [https://docs.ropensci.org/rnassqs/](https://docs.ropensci.org/rnassqs/).
 
 ## Installing
 
@@ -200,7 +200,7 @@ For example, to request corn yields in Virginia and Pennsylvania for all years s
     df <- nassqs(params) #returns data as a data frame.
 ```
 
-See the [vignette](https://ropensci.github.io/rnassqs/articles/rnassqs.html) for more examples and details on usage.
+See the [vignette](https://docs.ropensci.org/rnassqs/articles/rnassqs.html) for more examples and details on usage.
 
 ## Contributing
 

@@ -38,9 +38,10 @@ Development
 
 <tr class="odd">
 
-<td rowspan="5">
+<td rowspan="5" font-size="xx-small">
 
-<img src="inst/figures/rnassqs.png" alt="rnassqs hexsticker" width="200"/>
+\<img src=“man/figures/logo.png” alt=“rnassqs hexsticker”
+alight=“right”, height=“139”/\>
 
 (Wheat image from
 [here](https://www.flickr.com/photos/53018729@N00/2669034542))
@@ -61,7 +62,7 @@ Development
 
 <td align="left">
 
-<a href="https://github.com/ropensci/rnassqs/commits/master"><img src="https://img.shields.io/badge/last%20change-2019--11--17-brightgreen.svg" alt="Last Change"></a>
+<a href="https://github.com/ropensci/rnassqs/commits/master"><img src="https://img.shields.io/badge/last%20change-2019--11--27-brightgreen.svg" alt="Last Change"></a>
 
 </td>
 
@@ -165,7 +166,7 @@ simple and easy to use, and provides some functions to help navigate the
 bewildering complexity of some Quick Stats data.
 
 For docs and code examples, visit the package web page here:
-<https://ropensci.github.io/rnassqs/>.
+<https://docs.ropensci.org/rnassqs/>.
 
 ## Installing
 
@@ -285,7 +286,7 @@ years since 2000, you would use something like:
 ```
 
 See the
-[vignette](https://ropensci.github.io/rnassqs/articles/rnassqs.html) for
+[vignette](https://docs.ropensci.org/rnassqs/articles/rnassqs.html) for
 more examples and details on usage.
 
 ## Contributing
