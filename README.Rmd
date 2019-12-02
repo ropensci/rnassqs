@@ -94,6 +94,9 @@ Development
 <br>
 
 
+__As required by the NASS Terms of Use: This product uses the NASS API but is not endorsed or certified by NASS.__
+
+
 ## rnassqs (R NASS Quick Stats)
 
 `rnassqs` allows users to access the USDA's National Agricultural Statistics Service (NASS) 'Quick Stats' data through their API. It is simple and easy to use, and provides some functions to help navigate the bewildering complexity of some Quick Stats data.

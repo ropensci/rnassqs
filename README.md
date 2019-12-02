@@ -65,7 +65,7 @@ Development
 
 <td align="left">
 
-<a href="https://github.com/ropensci/rnassqs/commits/master"><img src="https://img.shields.io/badge/last%20change-2019--11--27-brightgreen.svg" alt="Last Change"></a>
+<a href="https://github.com/ropensci/rnassqs/commits/master"><img src="https://img.shields.io/badge/last%20change-2019--12--02-brightgreen.svg" alt="Last Change"></a>
 
 </td>
 
@@ -160,6 +160,9 @@ Development
 </table>
 
 <br>
+
+**As required by the NASS Terms of Use: This product uses the NASS API
+but is not endorsed or certified by NASS.**
 
 ## rnassqs (R NASS Quick Stats)
 

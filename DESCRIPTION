@@ -14,7 +14,7 @@ Description: Interface to access data via the United States Department of
   Agriculture's National Agricultural Statistical Service (NASS) 'Quick Stats' 
   web API <https://quickstats.nass.usda.gov/api>. Convenience functions 
   facilitate building queries based on available parameters and valid parameter 
-  values.
+  values. This product uses the NASS API but is not endorsed or certified by NASS.
 URL: https://docs.ropensci.org/rnassqs (website)
      https://github.com/ropensci/rnassqs
 BugReports: http://www.github.com/ropensci/rnassqs/issues
