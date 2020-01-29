@@ -4,10 +4,12 @@
 \alias{nassqs_acres}
 \title{Get NASS Area given a set of parameters.}
 \usage{
-nassqs_acres(..., area = c("AREA", "AREA PLANTED", "AREA BEARING",
-  "AREA BEARING & NON-BEARING", "AREA GROWN", "AREA HARVESTED",
-  "AREA IRRIGATED", "AREA NON-BEARING", "AREA PLANTED",
-  "AREA PLANTED, NET"))
+nassqs_acres(
+  ...,
+  area = c("AREA", "AREA PLANTED", "AREA BEARING", "AREA BEARING & NON-BEARING",
+    "AREA GROWN", "AREA HARVESTED", "AREA IRRIGATED", "AREA NON-BEARING", "AREA PLANTED",
+    "AREA PLANTED, NET")
+)
 }
 \arguments{
 \item{...}{either a named list of parameters or a series of parameters to
@@ -30,7 +32,7 @@ Get NASS Area given a set of parameters.
     state_name = "WASHINGTON",
     agg_level_desc = "STATE"
   )
-  area <- nassqs_area(params, area = "AREA BEARING")
+  area <- nassqs_acres(params, area = "AREA BEARING")
   head(area)
 }
 }

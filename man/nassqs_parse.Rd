@@ -27,7 +27,7 @@ information.
 \examples{
 \donttest{
   # Set parameters and make the request
-  params <- list(commodity_name = "CORN",
+  params <- list(commodity_desc = "CORN",
                  year = 2012,
                  agg_level_desc = "STATE",
                  state_alpha = "WA",

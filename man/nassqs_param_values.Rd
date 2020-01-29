@@ -34,6 +34,6 @@ including additional parameters
 
   # Valid values for a parameter given a specific set of additional
   # parameters
-  nassqs_param_values("commodity_desc", county_code = "53077", year = 2017, group_desc = "EXPENSES")
+  nassqs_param_values("commodity_desc", state_fips_code = "53", county_code = "077", year = 2017, group_desc = "EXPENSES")
 }
 }
