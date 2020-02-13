@@ -4,7 +4,28 @@
 \alias{nassqs}
 \title{Get data and return a data frame}
 \usage{
-nassqs(..., as = c("data.frame", "text", "list"))
+nassqs(
+  ...,
+  as = c("data.frame", "text", "list"),
+  source_desc = NULL,
+  sector_desc = NULL,
+  group_desc = NULL,
+  commodity_desc = NULL,
+  short_desc = NULL,
+  domain_desc = NULL,
+  domaincat_desc = NULL,
+  agg_level_desc = NULL,
+  statisticcat_desc = NULL,
+  state_name = NULL,
+  asd_desc = NULL,
+  county_name = NULL,
+  region_desc = NULL,
+  zip_5 = NULL,
+  watershed_desc = NULL,
+  year = NULL,
+  freq_desc = NULL,
+  reference_period_desc = NULL
+)
 }
 \arguments{
 \item{...}{either a named list of parameters or a series of parameters to
@@ -12,6 +33,73 @@ form the query}
 
 \item{as}{whether to return a data.frame, list, or text string
 \code{\link[=nassqs_GET]{nassqs_GET()}}}
+
+\item{source_desc}{"Program" - Source of data ("CENSUS" or "SURVEY"). Census
+program includes the Census of Ag as well as follow up projects. Survey
+program includes national, state, and county surveys.}
+
+\item{sector_desc}{"Sector" - Five high level, broad categories useful to
+narrow down choices. ("ANIMALS & PRODUCTS", "CROPS", "DEMOGRAPHICS",
+"ECONOMICS", or "ENVIRONMENTAL")}
+
+\item{group_desc}{"Group" - Subsets within sector (e.g., under sector_desc =
+"CROPS", the groups are "FIELD CROPS", "FRUIT & TREE NUTS", "HORTICULTURE",
+and "VEGETABLES").}
+
+\item{commodity_desc}{"Commodity" - The primary subject of interest (e.g.,
+"CORN", "CATTLE", "LABOR", "TRACTORS", "OPERATORS").}
+
+\item{short_desc}{"Data Item" - A concatenation of six columns:
+commodity_desc, class_desc, prodn_practice_desc, util_practice_desc,
+statisticcat_desc, and unit_desc.}
+
+\item{domain_desc}{"Domain" - Generally another characteristic of operations
+that produce a particular commodity (e.g., "ECONOMIC CLASS", "AREA
+OPERATED", "NAICS CLASSIFICATION", "SALES"). For chemical usage data, the
+domain describes the type of chemical applied to the commodity. The
+domain_desc = "TOTAL" will have no further breakouts; i.e., the data value
+pertains completely to the short_desc.}
+
+\item{domaincat_desc}{"Domain Category" - Categories or partitions within a
+domain (e.g., under domain_desc = "SALES", domain categories include $1,000
+TO $9,999, $10,000 TO $19,999, etc).}
+
+\item{agg_level_desc}{"Geographic Level" - Aggregation level or geographic
+granularity of the data. ("AGRICULTURAL DISTRICT", "COUNTY",
+"INTERNATIONAL", "NATIONAL", "REGION : MULTI-STATE", "REGION : SUB-STATE",
+"STATE", "WATERSHED", or "ZIP CODE")}
+
+\item{statisticcat_desc}{"Category" - The aspect of a commodity being
+measured (e.g., "AREA HARVESTED", "PRICE RECEIVED", "INVENTORY", "SALES").}
+
+\item{state_name}{"State" - State full name.}
+
+\item{asd_desc}{"Ag District" - Ag statistics district name.}
+
+\item{county_name}{"County" - County name.}
+
+\item{region_desc}{"Region" - NASS defined geographic entities not readily
+defined by other standard geographic levels. A region can be a less than a
+state (SUB-STATE) or a group of states (MULTI-STATE), and may be specific
+to a commodity.}
+
+\item{zip_5}{"Zip Code" - US Postal Service 5-digit zip code.}
+
+\item{watershed_desc}{"Watershed" - Name assigned to the HUC.}
+
+\item{year}{"Year" - The numeric year of the data and can be either a
+character or numeric vector. Conditional values are also possible, for
+example a character vector of ">=1999" of "1999<=" will give years greater
+than or equal to 1999. Right now the logical values can either be
+greater/less than or equal to with the logical at either the beginning or
+end of a string with the year.}
+
+\item{freq_desc}{"Period Type" - Length of time covered ("ANNUAL", "SEASON",
+"MONTHLY", "WEEKLY", "POINT IN TIME"). "MONTHLY" often covers more than one
+month. "POINT IN TIME" is as of a particular day.}
+
+\item{reference_period_desc}{"Period" - The specific time frame, within a
+freq_desc.}
 }
 \value{
 a data frame, list, or text string of requested data.
@@ -28,7 +116,7 @@ restrict the number of columns.
 \examples{
 \donttest{
   # Get corn yields in Virginia in 2012
-  params <- list(commodity_name = "CORN",
+  params <- list(commodity_desc = "CORN",
                  year = 2012,
                  agg_level_desc = "COUNTY",
                  state_alpha = "VA",

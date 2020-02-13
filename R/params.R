@@ -88,11 +88,11 @@ nassqs_params <- function(...) {
     zip_5 = "Zip code",
     format = "Format of the data request")
   
-  if(missing(...)) {
+  if (missing(...)) {
     return(names(param_list))
   } else {
     x <- list(...)
-    params <- if(length(nchar(x[[1]])) == 1) x else x[[1]]
+    params <- if (length(nchar(x[[1]])) == 1) x else x[[1]]
     p_desc <- sapply(params, function(p) { 
       paste0(p, ": ", param_list[[p]]) 
     }, USE.NAMES = FALSE)
@@ -126,13 +126,13 @@ nassqs_params <- function(...) {
 #'
 #'   # Valid values for a parameter given a specific set of additional
 #'   # parameters
-#'   nassqs_param_values("commodity_desc", county_code = "53077", year = 2017, group_desc = "EXPENSES")
+#'   nassqs_param_values("commodity_desc", state_fips_code = "53", county_code = "077", year = 2017, group_desc = "EXPENSES")
 #' }
 nassqs_param_values <- function(param, ...) {
   # Check if parameters are valid
   chk_param <- parameter_is_valid(param)
 
-  if(length(list(...)) == 0) {
+  if (length(list(...)) == 0) {
     params <- list(param = param) 
     res <- nassqs_parse(nassqs_GET(params, api_path = "get_param_values"), as = "list")[[1]]
   } else {

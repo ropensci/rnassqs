@@ -4,8 +4,7 @@
 \alias{nassqs_GET}
 \title{Issue a GET request to the NASS 'Quick Stats' API}
 \usage{
-nassqs_GET(..., api_path = c("api_GET", "get_param_values",
-  "get_counts"))
+nassqs_GET(..., api_path = c("api_GET", "get_param_values", "get_counts"))
 }
 \arguments{
 \item{...}{either a named list of parameters or a series of parameters to
@@ -30,7 +29,7 @@ that.
 \examples{
 \donttest{
   # Yields for corn in 2012 in Washington
-  params <- list(commodity_name = "CORN",
+  params <- list(commodity_desc = "CORN",
                  year = 2012,
                  agg_level_desc = "STATE",
                  state_alpha = "WA",
