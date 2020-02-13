@@ -14,11 +14,60 @@
 #'   form the query
 #' @param as whether to return a data.frame, list, or text string
 #'   [nassqs_GET()]
+#' @param source_desc "Program" - Source of data ("CENSUS" or "SURVEY"). Census
+#'   program includes the Census of Ag as well as follow up projects. Survey
+#'   program includes national, state, and county surveys.
+#' @param sector_desc "Sector" - Five high level, broad categories useful to
+#'   narrow down choices. ("ANIMALS & PRODUCTS", "CROPS", "DEMOGRAPHICS",
+#'   "ECONOMICS", or "ENVIRONMENTAL")
+#' @param group_desc "Group" - Subsets within sector (e.g., under sector_desc =
+#'   "CROPS", the groups are "FIELD CROPS", "FRUIT & TREE NUTS", "HORTICULTURE",
+#'   and "VEGETABLES").
+#' @param commodity_desc "Commodity" - The primary subject of interest (e.g.,
+#'   "CORN", "CATTLE", "LABOR", "TRACTORS", "OPERATORS").
+#' @param short_desc "Data Item" - A concatenation of six columns:
+#'   commodity_desc, class_desc, prodn_practice_desc, util_practice_desc,
+#'   statisticcat_desc, and unit_desc.
+#' @param domain_desc "Domain" - Generally another characteristic of operations
+#'   that produce a particular commodity (e.g., "ECONOMIC CLASS", "AREA
+#'   OPERATED", "NAICS CLASSIFICATION", "SALES"). For chemical usage data, the
+#'   domain describes the type of chemical applied to the commodity. The
+#'   domain_desc = "TOTAL" will have no further breakouts; i.e., the data value
+#'   pertains completely to the short_desc.
+#' @param domaincat_desc "Domain Category" - Categories or partitions within a
+#'   domain (e.g., under domain_desc = "SALES", domain categories include $1,000
+#'   TO $9,999, $10,000 TO $19,999, etc).
+#' @param agg_level_desc "Geographic Level" - Aggregation level or geographic
+#'   granularity of the data. ("AGRICULTURAL DISTRICT", "COUNTY",
+#'   "INTERNATIONAL", "NATIONAL", "REGION : MULTI-STATE", "REGION : SUB-STATE",
+#'   "STATE", "WATERSHED", or "ZIP CODE")
+#' @param statisticcat_desc "Category" - The aspect of a commodity being
+#'   measured (e.g., "AREA HARVESTED", "PRICE RECEIVED", "INVENTORY", "SALES").
+#' @param state_name "State" - State full name.
+#' @param asd_desc "Ag District" - Ag statistics district name.
+#' @param county_name "County" - County name.
+#' @param region_desc "Region" - NASS defined geographic entities not readily
+#'   defined by other standard geographic levels. A region can be a less than a
+#'   state (SUB-STATE) or a group of states (MULTI-STATE), and may be specific
+#'   to a commodity.
+#' @param zip_5 "Zip Code" - US Postal Service 5-digit zip code.
+#' @param watershed_desc "Watershed" - Name assigned to the HUC.
+#' @param year "Year" - The numeric year of the data and can be either a
+#'   character or numeric vector. Conditional values are also possible, for
+#'   example a character vector of ">=1999" of "1999<=" will give years greater
+#'   than or equal to 1999. Right now the logical values can either be
+#'   greater/less than or equal to with the logical at either the beginning or
+#'   end of a string with the year.
+#' @param freq_desc "Period Type" - Length of time covered ("ANNUAL", "SEASON",
+#'   "MONTHLY", "WEEKLY", "POINT IN TIME"). "MONTHLY" often covers more than one
+#'   month. "POINT IN TIME" is as of a particular day.
+#' @param reference_period_desc "Period" - The specific time frame, within a
+#'   freq_desc.
 #' @return a data frame, list, or text string of requested data.
 #' @seealso [nassqs_GET()], [nassqs_yields()], [nassqs_acres()]
 #' @examples \donttest{
 #'   # Get corn yields in Virginia in 2012
-#'   params <- list(commodity_name = "CORN",
+#'   params <- list(commodity_desc = "CORN",
 #'                  year = 2012,
 #'                  agg_level_desc = "COUNTY",
 #'                  state_alpha = "VA",
@@ -27,15 +76,38 @@
 #'   head(yields)
 #' }
 nassqs <- function(...,
-                   as = c("data.frame", "text", "list")) {
+                   as = c("data.frame", "text", "list"),
+                   source_desc = NULL,
+                   sector_desc = NULL,
+                   group_desc = NULL,
+                   commodity_desc = NULL,
+                   short_desc = NULL,
+                   domain_desc = NULL,
+                   domaincat_desc = NULL,
+                   agg_level_desc = NULL,
+                   statisticcat_desc = NULL,
+                   state_name = NULL,
+                   asd_desc = NULL,
+                   county_name = NULL,
+                   region_desc = NULL,
+                   zip_5 = NULL,
+                   watershed_desc = NULL,
+                   year = NULL,
+                   freq_desc = NULL,
+                   reference_period_desc = NULL) {
   as = match.arg(as)
-  params <- expand_list(...)
+  
+  # Gather all of the parameters and expand to a list
+  calls      <- match.call(expand.dots = TRUE)
+  calls$as   <- NULL
+  calls[[1]] <- as.name("expand_list")
+  params     <- eval.parent(calls)
   
   # Check that names of the parameters are in the valid parameter list
   chk_params <- lapply(names(params), function(x) { parameter_is_valid(x) })
 
   # Make the request
-  req <- nassqs_GET(..., api_path = "api_GET")
+  req <- nassqs_GET(params, api_path = "api_GET")
   nassqs_parse(req, as = as)
 }
 
@@ -60,7 +132,7 @@ nassqs <- function(...,
 #' @return a [httr::GET()] response object
 #' @examples \donttest{
 #'   # Yields for corn in 2012 in Washington
-#'   params <- list(commodity_name = "CORN",
+#'   params <- list(commodity_desc = "CORN",
 #'                  year = 2012,
 #'                  agg_level_desc = "STATE",
 #'                  state_alpha = "WA",
@@ -92,7 +164,7 @@ nassqs_GET <- function(...,
 
   # Check that the api key is set
   key <- Sys.getenv("NASSQS_TOKEN")
-  if(identical(key, "")) {
+  if (identical(key, "")) {
     stop("Please use 'nassqs_auth(key = <your api key>)' to set your api key",
          call. = FALSE)
   }
@@ -112,10 +184,10 @@ nassqs_GET <- function(...,
 
     # except 'format', which must be lower case and one of 'json', 'csv',
     # or 'xml'
-    if("format" %in% names(params)) {
+    if ("format" %in% names(params)) {
       format <- tolower(params$format)
       params[["format"]] <- format
-      if(!(format %in% c("json", "xml", "csv"))) {
+      if (!(format %in% c("json", "xml", "csv"))) {
         stop("Your query parameters include 'format' as ", format,
                     " but it should be one of 'json', 'xml', or 'csv'.")
       }
@@ -126,7 +198,7 @@ nassqs_GET <- function(...,
   query <- list(key = key)
   query <- append(query, params)
 
-  if(!("format" %in% names(query))) query['format'] <- "JSON"
+  if (!("format" %in% names(query))) query['format'] <- "JSON"
 
   # full url
   url <- paste0("https://quickstats.nass.usda.gov/api/", api_path)
@@ -163,8 +235,8 @@ nassqs_check <- function(response) {
          response$status_code,
          "\n",
          jsonlite::fromJSON(httr::content(response,
-                                          as="text",
-                                          type="text/json",
+                                          as = "text",
+                                          type = "text/json",
                                           encoding = "UTF-8")),
          call. = FALSE)
   }
@@ -188,7 +260,7 @@ nassqs_check <- function(response) {
 #' @return a data frame, list, or text string of the content from the response.
 #' @examples \donttest{
 #'   # Set parameters and make the request
-#'   params <- list(commodity_name = "CORN",
+#'   params <- list(commodity_desc = "CORN",
 #'                  year = 2012,
 #'                  agg_level_desc = "STATE",
 #'                  state_alpha = "WA",
@@ -216,9 +288,9 @@ nassqs_parse <- function(req, as = c("data.frame", "list", "text"), ...) {
   resp <- httr::content(req, as = "text", encoding = "UTF-8")
 
   # process the data depending on returned data type
-  if(as == "text") {
+  if (as == "text") {
     ret <- resp
-  } else if(type %in% c("application/json", "application/json; charset=UTF-8")) {
+  } else if (type %in% c("application/json", "application/json; charset=UTF-8")) {
     # format == JSON
     # Handle error where response is truncated if too long (only happens)
     # when making a call to the "get_param_values" api_path for 'domaincat_desc'
@@ -228,15 +300,15 @@ nassqs_parse <- function(req, as = c("data.frame", "list", "text"), ...) {
                            "the Quick Stats API, not the rnassqs ",
                            "package. \n",
                            e) })
-    if("data" %in% names(ret)) ret <- ret$data
+    if ("data" %in% names(ret)) ret <- ret$data
 
-  } else if(type %in% c("application/xml", "application/xml; charset=UTF-8")) {
+  } else if (type %in% c("application/xml", "application/xml; charset=UTF-8")) {
     # format == XML
     stop("XML not yet implemented. Use format = 'JSON' or format = ",
          "'CSV' instead.")
-  } else if(type %in% c("text/csv", "text/csv; charset=UTF-8")) {
+  } else if (type %in% c("text/csv", "text/csv; charset=UTF-8")) {
     # format == CSV
-    ret <- read.csv(text = resp, sep =",", header = TRUE, ...)
+    ret <- read.csv(text = resp, sep = ",", header = TRUE, ...)
     names(ret)[which(names(ret) == "CV....")] <- "CV (%)"
   } else {
     stop("Response is not in the expected json, xml, or csv format. ",

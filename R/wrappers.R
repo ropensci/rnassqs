@@ -43,7 +43,7 @@ nassqs_record_count <- function(...) {
 #'     agg_level_desc = "STATE",
 #'     state_alpha = "WA")
 #'     
-#'   yields <- nassqs_yield(params)
+#'   yields <- nassqs_yields(params)
 #'   head(yields)
 #' }
 nassqs_yields <- function(...) {
@@ -68,7 +68,7 @@ nassqs_yields <- function(...) {
 #'     state_name = "WASHINGTON",
 #'     agg_level_desc = "STATE"
 #'   )
-#'   area <- nassqs_area(params, area = "AREA BEARING")
+#'   area <- nassqs_acres(params, area = "AREA BEARING")
 #'   head(area)
 #' }
 nassqs_acres <- function(...,

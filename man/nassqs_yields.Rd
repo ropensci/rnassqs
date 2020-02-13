@@ -26,7 +26,7 @@ simplify common requests.
     agg_level_desc = "STATE",
     state_alpha = "WA")
     
-  yields <- nassqs_yield(params)
+  yields <- nassqs_yields(params)
   head(yields)
 }
 }

@@ -16,7 +16,7 @@ your API key in four ways:
 \details{
 \enumerate{
 \item directly or as a variable from your \code{R}
-program: \code{nassqs_auth(key = "<your api key>"}
+program: \verb{nassqs_auth(key = "<your api key>"}
 \item by setting \code{NASSQS_TOKEN} in your \code{R} environment file (you'll never have
 to enter it again).
 \item by entering it into the console when asked (it will be stored for the
