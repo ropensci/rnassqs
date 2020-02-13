@@ -41,7 +41,7 @@ with_mock_api({
     p2$year <- 2013
     expect_error(
       nassqs(p2),
-      "Request was too large. NASS requires that an API call returns a max"
+      "Request was too large. NASS requires that an API call returns a max",
     )
   })
 
@@ -120,13 +120,13 @@ test_that("nassqs_GET returns error if no authentication provided in non-interac
 
 test_that("nassqs_GET returns error if a parameter is invalid", {
   expect_error(nassqs(year_GE = 2017),
-               "Parameter 'year_GE' is not a valid parameter. Use `nassqs_params()` \
-            for a list of valid parameters",
+               "Parameter 'year_GE' is not a valid parameter. Use `nassqs_params()`
+    for a list of valid parameters",
             fixed = TRUE)
 
   expect_error(nassqs(county_fips = 2017),
-               "Parameter 'county_fips' is not a valid parameter. Use `nassqs_params()` \
-            for a list of valid parameters",
+               "Parameter 'county_fips' is not a valid parameter. Use `nassqs_params()`
+    for a list of valid parameters",
             fixed = TRUE)
 })
 

@@ -65,7 +65,7 @@ Development
 
 <td align="left">
 
-<a href="https://github.com/ropensci/rnassqs/commits/master"><img src="https://img.shields.io/badge/last%20change-2019--12--02-brightgreen.svg" alt="Last Change"></a>
+<a href="https://github.com/ropensci/rnassqs/commits/master"><img src="https://img.shields.io/badge/last%20change-2020--02--13-brightgreen.svg" alt="Last Change"></a>
 
 </td>
 

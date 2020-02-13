@@ -76,7 +76,6 @@
 #'   head(yields)
 #' }
 nassqs <- function(...,
-                   as = c("data.frame", "text", "list"),
                    source_desc = NULL,
                    sector_desc = NULL,
                    group_desc = NULL,
@@ -94,15 +93,18 @@ nassqs <- function(...,
                    watershed_desc = NULL,
                    year = NULL,
                    freq_desc = NULL,
-                   reference_period_desc = NULL) {
-  as = match.arg(as)
+                   reference_period_desc = NULL,
+                   as = c("data.frame", "text", "list")
+) {
+  
+  as <- match.arg(as)
   
   # Gather all of the parameters and expand to a list
-  calls      <- match.call(expand.dots = TRUE)
-  calls$as   <- NULL
+  calls <- match.call(expand.dots = TRUE)
+  calls$as <- NULL
   calls[[1]] <- as.name("expand_list")
-  params     <- eval.parent(calls)
-  
+  params <- eval.parent(calls)
+
   # Check that names of the parameters are in the valid parameter list
   chk_params <- lapply(names(params), function(x) { parameter_is_valid(x) })
 
@@ -164,7 +166,7 @@ nassqs_GET <- function(...,
 
   # Check that the api key is set
   key <- Sys.getenv("NASSQS_TOKEN")
-  if (identical(key, "")) {
+  if(identical(key, "")) {
     stop("Please use 'nassqs_auth(key = <your api key>)' to set your api key",
          call. = FALSE)
   }
@@ -175,7 +177,7 @@ nassqs_GET <- function(...,
   # get the full param list and make sure all arguments are in capital letters
   params <- expand_list(...)
 
-  if (api_path == "get_param_values") {
+  if(api_path == "get_param_values") {
     # parameter names are lower case, so the query requires lower case terms
     params <- lapply(params, tolower)
   } else {
@@ -184,10 +186,10 @@ nassqs_GET <- function(...,
 
     # except 'format', which must be lower case and one of 'json', 'csv',
     # or 'xml'
-    if ("format" %in% names(params)) {
+    if("format" %in% names(params)) {
       format <- tolower(params$format)
       params[["format"]] <- format
-      if (!(format %in% c("json", "xml", "csv"))) {
+      if(!(format %in% c("json", "xml", "csv"))) {
         stop("Your query parameters include 'format' as ", format,
                     " but it should be one of 'json', 'xml', or 'csv'.")
       }
@@ -198,7 +200,7 @@ nassqs_GET <- function(...,
   query <- list(key = key)
   query <- append(query, params)
 
-  if (!("format" %in% names(query))) query['format'] <- "JSON"
+  if(!("format" %in% names(query))) query['format'] <- "JSON"
 
   # full url
   url <- paste0("https://quickstats.nass.usda.gov/api/", api_path)
@@ -221,10 +223,10 @@ nassqs_GET <- function(...,
 #' @param response a [httr::GET()] request result returned from the API.
 #' @return nothing if check is passed, or an informative error if not passed.
 nassqs_check <- function(response) {
-  if (response$status_code < 400) {
+  if(response$status_code < 400) {
     return(TRUE) #all good!
   }
-  else if (response$status_code == 413) {
+  else if(response$status_code == 413) {
     stop("Request was too large. NASS requires that an API call ",
          "returns a maximum of 50,000 records. Consider subsetting ",
          "your request by geography or year to reduce the size of ",
@@ -288,9 +290,9 @@ nassqs_parse <- function(req, as = c("data.frame", "list", "text"), ...) {
   resp <- httr::content(req, as = "text", encoding = "UTF-8")
 
   # process the data depending on returned data type
-  if (as == "text") {
+  if(as == "text") {
     ret <- resp
-  } else if (type %in% c("application/json", "application/json; charset=UTF-8")) {
+  } else if(type %in% c("application/json", "application/json; charset=UTF-8")) {
     # format == JSON
     # Handle error where response is truncated if too long (only happens)
     # when making a call to the "get_param_values" api_path for 'domaincat_desc'
@@ -300,13 +302,13 @@ nassqs_parse <- function(req, as = c("data.frame", "list", "text"), ...) {
                            "the Quick Stats API, not the rnassqs ",
                            "package. \n",
                            e) })
-    if ("data" %in% names(ret)) ret <- ret$data
+    if("data" %in% names(ret)) ret <- ret$data
 
-  } else if (type %in% c("application/xml", "application/xml; charset=UTF-8")) {
+  } else if(type %in% c("application/xml", "application/xml; charset=UTF-8")) {
     # format == XML
     stop("XML not yet implemented. Use format = 'JSON' or format = ",
          "'CSV' instead.")
-  } else if (type %in% c("text/csv", "text/csv; charset=UTF-8")) {
+  } else if(type %in% c("text/csv", "text/csv; charset=UTF-8")) {
     # format == CSV
     ret <- read.csv(text = resp, sep = ",", header = TRUE, ...)
     names(ret)[which(names(ret) == "CV....")] <- "CV (%)"

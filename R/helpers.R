@@ -17,6 +17,7 @@ expand_list <- function(...){
   as.list(setNames(res$values, res$ind))
 }
 
+
 #' Check that a parameter is a valid API parameter.
 #'
 #' Takes a string and checks against the list of valid parameters.
@@ -30,8 +31,8 @@ parameter_is_valid <- function(param) {
   param2 <- gsub("__LE|__LT|__GT|__GE|__LIKE|__NOT_LIKE|__NE", "", toupper(param))
   
   if(!param2 %in% valid_params) {
-    stop("Parameter '", param, "' is not a valid parameter. Use `nassqs_params()` \
-            for a list of valid parameters.")
+    stop("Parameter '", param, "' is not a valid parameter. Use `nassqs_params()`
+    for a list of valid parameters.")
   }
   return(TRUE)
 }

@@ -6,7 +6,6 @@
 \usage{
 nassqs(
   ...,
-  as = c("data.frame", "text", "list"),
   source_desc = NULL,
   sector_desc = NULL,
   group_desc = NULL,
@@ -24,15 +23,13 @@ nassqs(
   watershed_desc = NULL,
   year = NULL,
   freq_desc = NULL,
-  reference_period_desc = NULL
+  reference_period_desc = NULL,
+  as = c("data.frame", "text", "list")
 )
 }
 \arguments{
 \item{...}{either a named list of parameters or a series of parameters to
 form the query}
-
-\item{as}{whether to return a data.frame, list, or text string
-\code{\link[=nassqs_GET]{nassqs_GET()}}}
 
 \item{source_desc}{"Program" - Source of data ("CENSUS" or "SURVEY"). Census
 program includes the Census of Ag as well as follow up projects. Survey
@@ -100,6 +97,9 @@ month. "POINT IN TIME" is as of a particular day.}
 
 \item{reference_period_desc}{"Period" - The specific time frame, within a
 freq_desc.}
+
+\item{as}{whether to return a data.frame, list, or text string
+\code{\link[=nassqs_GET]{nassqs_GET()}}}
 }
 \value{
 a data frame, list, or text string of requested data.

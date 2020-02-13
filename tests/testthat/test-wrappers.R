@@ -6,8 +6,13 @@ params <- list(
   year = "2012",
   statisticcat_desc = "YIELD",
   agg_level_desc = "STATE",
-  state_alpha = c("VA", "WA")
-)
+  state_alpha = c("VA", "WA"))
+
+### Tests with no authentication required
+test_that("nassqs_record_count performs parameter validation", {
+  expect_error(nassqs_record_count(setor_desc = "TEST SECTOR"), "Parameter 'setor_desc' is not a valid parameter. Use `nassqs_params()`\n    for a list of valid parameters.", fixed = TRUE)
+})
+
 
 ### Test API URLs with mock APIs ----
 
@@ -44,6 +49,16 @@ with_mock_api({
 with_authentication({
   test_that("nassqs_record_count returns a numeric", {
     v <- nassqs_record_count(params)
+    expect_equal(is.numeric(v$count), TRUE)
+  })
+
+  test_that("nassqs_record_count takes a list of parameters", {
+    v <- nassqs_record_count(params)
+    expect_equal(is.numeric(v$count), TRUE)
+  })
+
+  test_that("nassqs_record_count takes parameters", {
+    v <- nassqs_record_count(sector_desc = "SECTOR")
     expect_equal(is.numeric(v$count), TRUE)
   })
 })

@@ -1,5 +1,7 @@
 # rnassqs 0.6.0
 
+- `nassqs_record_count()` now validates parameters. 
+- add defined parameters for common parameters in function call (thanks rdinter!).
 - add option to see valid parameter values given a query of other values in `get_param_values()`.
 
 # rnassqs 0.5.0

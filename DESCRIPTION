@@ -1,9 +1,10 @@
 Package: rnassqs
 Type: Package
 Title: Access data from the NASS 'Quick Stats' API
-Version: 0.6.1
+Version: 0.5.2
 Authors@R: c(
   person('Nicholas', 'Potter', email='potter.nicholas@gmail.com', role = c('aut', 'cre')),
+  person('Robert', 'Dinterman', email='', role = c('aut')),
   person('Jonathan', 'Adams', email='', role = c('ctb')),
   person('Joseph', 'Stachelek', email='', role = c('ctb')),
   person('Julia', 'Piaskowski', email='', role = c('ctb')),
