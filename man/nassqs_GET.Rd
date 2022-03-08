@@ -4,13 +4,22 @@
 \alias{nassqs_GET}
 \title{Issue a GET request to the NASS 'Quick Stats' API}
 \usage{
-nassqs_GET(..., api_path = c("api_GET", "get_param_values", "get_counts"))
+nassqs_GET(
+  ...,
+  api_path = c("api_GET", "get_param_values", "get_counts"),
+  progress_bar = TRUE,
+  format = c("json", "xml", "csv")
+)
 }
 \arguments{
 \item{...}{either a named list of parameters or a series of parameters to
 use in the query}
 
-\item{api_path}{the API path that determines the type of request being made}
+\item{api_path}{the API path that determines the type of request being made.}
+
+\item{progress_bar}{whether to display the project bar or not.}
+
+\item{format}{The format to return the query in. Only useful if as = "text".}
 }
 \value{
 a \code{\link[httr:GET]{httr::GET()}} response object

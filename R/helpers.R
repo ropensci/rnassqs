@@ -36,3 +36,15 @@ parameter_is_valid <- function(param) {
   }
   return(TRUE)
 }
+
+#' Convert Quick Stats "Value" to numeric
+#' 
+#' @keywords internal
+#' @noRd
+#'
+#' @param x an array of values in character format.
+#' @return numeric
+char_to_num <- function(x) {
+  regex_str <- ",|NA|\\(D\\)|\\(Z\\)"
+  as.numeric(gsub(regex_str, "", x)) 
+}

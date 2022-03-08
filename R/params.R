@@ -39,8 +39,8 @@ nassqs_params <- function(...) {
     county_code = paste0("County FIPS code. Includes USDA-NASS specific codes ",
                          "like '098' and '099'"),
     county_name = "County name",
-    CV = paste0("Coefficient of variation, an estimate of the reliability of ",
-                "the data"),
+#    CV = paste0("Coefficient of variation, an estimate of the reliability of ",
+#                "the data"),
     domaincat_desc = "Domain category.",
     domain_desc = paste0("Domain of the commodity. Includes values like ",
                          "'PRODUCER', 'ORGANIC STATUS', and many others"),
@@ -79,14 +79,13 @@ nassqs_params <- function(...) {
                                 "use, end use location, end market, ",
                                 "processing or fresh, crop type, or other ",
                                 "category"),
-    Value = paste0("Value of data. Can include character entries '(D)' and ",
-                   "'(Z)' for missing data"),
+#    Value = paste0("Value of data. Can include character entries '(D)' and ",
+#                   "'(Z)' for missing data"),
     watershed_code = "Watershed Code",
     watershed_desc = "Watershed Name",
     week_ending = "Date of end of week in format 'YYYY-MM-DD'",
     year = "Year",
-    zip_5 = "Zip code",
-    format = "Format of the data request")
+    zip_5 = "Zip code")
   
   if (missing(...)) {
     return(names(param_list))

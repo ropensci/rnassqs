@@ -40,5 +40,15 @@ test_that("expand_list() accepts separate arguments", {
   expect_equal(expected_list, l1)
 })
 
+## Test value_as_numeric() ----
+test_that("char_to_num() correctly converts an array of character values to numbers", {
+  c_str <- c("43,345", "1", "(D)", "(Z)", "", "NA")
+  c_expected <- c(43345, 1, NA, NA, NA, NA)
+  expect_equal(char_to_num(c_str), c_expected)
+})
 
+test_that("char_to_num() warnings ensue when not parsed correctly", {
+  c_str <- c("43,345", "1", "(D)", "(Z)", "", "NA", "(A)")
+  expect_warning(char_to_num(c_str), "NAs introduced by coercion")
+})
 

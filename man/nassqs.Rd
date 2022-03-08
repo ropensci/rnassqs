@@ -6,100 +6,26 @@
 \usage{
 nassqs(
   ...,
-  source_desc = NULL,
-  sector_desc = NULL,
-  group_desc = NULL,
-  commodity_desc = NULL,
-  short_desc = NULL,
-  domain_desc = NULL,
-  domaincat_desc = NULL,
-  agg_level_desc = NULL,
-  statisticcat_desc = NULL,
-  state_name = NULL,
-  asd_desc = NULL,
-  county_name = NULL,
-  region_desc = NULL,
-  zip_5 = NULL,
-  watershed_desc = NULL,
-  year = NULL,
-  freq_desc = NULL,
-  reference_period_desc = NULL,
+  as_numeric = TRUE,
+  progress_bar = TRUE,
+  format = c("json", "xml", "csv"),
   as = c("data.frame", "text", "list")
 )
 }
 \arguments{
 \item{...}{either a named list of parameters or a series of parameters to
-form the query}
+form the query. See \code{details} for information on available parameters.}
 
-\item{source_desc}{"Program" - Source of data ("CENSUS" or "SURVEY"). Census
-program includes the Census of Ag as well as follow up projects. Survey
-program includes national, state, and county surveys.}
+\item{as_numeric}{Whether to convert data to numeric format. Conversion will
+replace missing notation such as "(D)" or "(Z)" with NA, but removes the
+need to convert to numeric format after querying.}
 
-\item{sector_desc}{"Sector" - Five high level, broad categories useful to
-narrow down choices. ("ANIMALS & PRODUCTS", "CROPS", "DEMOGRAPHICS",
-"ECONOMICS", or "ENVIRONMENTAL")}
+\item{progress_bar}{Wether or not to display the progress bar.}
 
-\item{group_desc}{"Group" - Subsets within sector (e.g., under sector_desc =
-"CROPS", the groups are "FIELD CROPS", "FRUIT & TREE NUTS", "HORTICULTURE",
-and "VEGETABLES").}
+\item{format}{The format to return the query in. Only useful if as = "text".}
 
-\item{commodity_desc}{"Commodity" - The primary subject of interest (e.g.,
-"CORN", "CATTLE", "LABOR", "TRACTORS", "OPERATORS").}
-
-\item{short_desc}{"Data Item" - A concatenation of six columns:
-commodity_desc, class_desc, prodn_practice_desc, util_practice_desc,
-statisticcat_desc, and unit_desc.}
-
-\item{domain_desc}{"Domain" - Generally another characteristic of operations
-that produce a particular commodity (e.g., "ECONOMIC CLASS", "AREA
-OPERATED", "NAICS CLASSIFICATION", "SALES"). For chemical usage data, the
-domain describes the type of chemical applied to the commodity. The
-domain_desc = "TOTAL" will have no further breakouts; i.e., the data value
-pertains completely to the short_desc.}
-
-\item{domaincat_desc}{"Domain Category" - Categories or partitions within a
-domain (e.g., under domain_desc = "SALES", domain categories include $1,000
-TO $9,999, $10,000 TO $19,999, etc).}
-
-\item{agg_level_desc}{"Geographic Level" - Aggregation level or geographic
-granularity of the data. ("AGRICULTURAL DISTRICT", "COUNTY",
-"INTERNATIONAL", "NATIONAL", "REGION : MULTI-STATE", "REGION : SUB-STATE",
-"STATE", "WATERSHED", or "ZIP CODE")}
-
-\item{statisticcat_desc}{"Category" - The aspect of a commodity being
-measured (e.g., "AREA HARVESTED", "PRICE RECEIVED", "INVENTORY", "SALES").}
-
-\item{state_name}{"State" - State full name.}
-
-\item{asd_desc}{"Ag District" - Ag statistics district name.}
-
-\item{county_name}{"County" - County name.}
-
-\item{region_desc}{"Region" - NASS defined geographic entities not readily
-defined by other standard geographic levels. A region can be a less than a
-state (SUB-STATE) or a group of states (MULTI-STATE), and may be specific
-to a commodity.}
-
-\item{zip_5}{"Zip Code" - US Postal Service 5-digit zip code.}
-
-\item{watershed_desc}{"Watershed" - Name assigned to the HUC.}
-
-\item{year}{"Year" - The numeric year of the data and can be either a
-character or numeric vector. Conditional values are also possible, for
-example a character vector of ">=1999" of "1999<=" will give years greater
-than or equal to 1999. Right now the logical values can either be
-greater/less than or equal to with the logical at either the beginning or
-end of a string with the year.}
-
-\item{freq_desc}{"Period Type" - Length of time covered ("ANNUAL", "SEASON",
-"MONTHLY", "WEEKLY", "POINT IN TIME"). "MONTHLY" often covers more than one
-month. "POINT IN TIME" is as of a particular day.}
-
-\item{reference_period_desc}{"Period" - The specific time frame, within a
-freq_desc.}
-
-\item{as}{whether to return a data.frame, list, or text string
-\code{\link[=nassqs_GET]{nassqs_GET()}}}
+\item{as}{whether to return a data.frame, list, or text string. See
+\code{\link[=nassqs_parse]{nassqs_parse()}}.}
 }
 \value{
 a data frame, list, or text string of requested data.
@@ -112,6 +38,94 @@ to make specific queries. For a data request the Quick Stats API returns
 JSON that when parsed to a data.frame contains 39 columns and a varying
 number of rows depending on the query. Unfortunately there is not a way to
 restrict the number of columns.
+}
+\details{
+\code{nassqs()} accepts all parameters that are accepted by the USDA-NASS Quick
+Stats. These parameters are listed in \code{\link[=nassqs_params]{nassqs_params()}}, and are used to form
+the data query.
+
+Parameters can be modified by operations, which are appended to the paramter
+name. For example, "year__GE = 2020" will fetch data in 2020 and after.
+Operations can take the following form:
+\itemize{
+\item __LE: less than or equal (<=)
+\item __LT: less than (<)
+\item __GT: greather than (>)
+\item __GE: = >=
+\item __LIKE = like
+\item __NOT_LIKE = not like
+\item __NE = not equal
+}
+
+To see available specific values for a given parameter, use
+\code{nassqs_param_values("<parameter>")}. Possible parameters are:
+\itemize{
+\item \code{agg_level_desc}: Geographic level ("AGRICULTURAL DISTRICT", "COUNTY",
+"INTERNATIONAL", "NATIONAL", "REGION : MULTI-STATE", "REGION : SUB-STATE",
+"STATE", "WATERSHED", or "ZIP CODE").
+\item \code{asd_code}: Agriculture statistical district code.
+\item \code{asd_desc}: Agriculture statistical district name / description.
+\item \code{begin_code}: Week number indicating when the data series begins.
+\item \code{class_desc}: Commodity class.
+\item \code{county_name}: County name.
+\item \code{commodity_desc}: Commodity, the primary subject of interest (e.g.,
+"CORN", "CATTLE", "LABOR", "TRACTORS", "OPERATORS").
+\item \code{congr_district_code}: COngressional District codes.
+\item \code{country_code}: Country code.
+\item \code{country_name}: Country name.
+\item \code{county_ansi}: County ANSI code.
+\item \code{county_code}: County FIPS code.
+\item \code{county_name}: County name.
+\item \code{domaincat_desc}: Domain category within a domain (e.g., under domain_desc = "SALES", domain categories include $1,000
+TO $9,999, $10,000 TO $19,999, etc).
+\item \code{domain_desc}: Domain, a characteristic of operations that produce a
+particular commodity (e.g., "ECONOMIC CLASS", "AREA OPERATED", "NAICS
+CLASSIFICATION", "SALES"). For chemical usage data, the domain describes
+the type of chemical applied to the commodity. The domain_desc: = "TOTAL"
+will have no further breakouts; i.e., the data value pertains completely
+to the short_desc.
+\item \code{end_code}: = Week number that the data series ends.
+\item \code{freq_desc}: Time period type covered by the data ("ANNUAL", "SEASON",
+"MONTHLY", "WEEKLY", "POINT IN TIME"). "MONTHLY" often covers more than one
+month. "POINT IN TIME" is for a particular day.
+\item \code{group_desc}: Commodity group within a sector (e.g., under sector_desc =
+"CROPS", the groups are "FIELD CROPS", "FRUIT & TREE NUTS", "HORTICULTURE",
+and "VEGETABLES").
+\item \code{load_time}: Date and time of the data load, e.g. "2015-02-17 16:05:20".
+\item \code{location_desc}: Location code, e.g. 5-digit fips code for counties.
+\item \code{prodn_practice_desc}: Production practice, (e.g. "UNDER PROTECTION",
+"OWNED, RIGHTS, LEASED", "ORGANIC, TRANSITIONING", "HIRED MANAGER").
+\item \code{reference_period_desc}: Reference period of the data (e.g. "JUN",
+"MID SEP", "WEEK #32").
+\item \code{region_desc}: Region name (e.g. "TEXAS", "WA & OR", "WEST COAST",
+"UMATILLA").
+\item \code{sector_desc}: Sector, the five high level, broad categories useful to
+narrow down choices. ("ANIMALS & PRODUCTS", "CROPS", "DEMOGRAPHICS",
+"ECONOMICS", or "ENVIRONMENTAL").
+\item \code{short_desc}: A concatenation of six columns: commodity_desc, class_desc,
+prodn_practice_desc, util_practice_desc, statisticcat_desc, and unit_desc.
+\item \code{source_desc}: Source of data ("CENSUS" or "SURVEY"). Census program
+includes the Census of Ag as well as follow up projects. Survey program
+includes national, state, and county surveys.
+\item \code{state_alpha}: 2-character state abbreviation, e.g. "NM".
+\item \code{state_ansi}: State ANSI code.
+\item \code{state_fips_code}: State FIPS code.
+\item \code{state_name}: Full name of the state, e.g. "ALABAMA".
+\item \code{statisticcat_desc}: Statistical category of the data (e.g.,
+"AREA HARVESTED", "PRICE RECEIVED", "INVENTORY", "SALES").
+\item \code{source_desc}: Either "CENSUS" or "SOURCE".
+\item \code{unit_desc}: The units of the data (e.g. "TONS / ACRE", "TREES",
+"OPERATIONS", "NUMBER", "LB / ACRE", "BU / PLANTED ACRE").
+\item \code{util_practice_desc}: Utilization practice (e.g. "WIND", "SUGAR", "SILAGE",
+"ONCE REFINED", "FEED", "ANIMAL FEED").
+\item \code{watershed_code}: Watershed code as 8-digit HUC (e.g. "13020100").
+\item \code{watershed_desc}: Watershed/HUC name (e.g. "UPPER COLORADO").
+\item \code{week_ending}: Date of ending week (e.g. "1975-11-22").
+\item \code{year}: Year of the data. Conditional values are possible by appending an
+operation to the parameter, e.g. "year__GE = 2020" will return all records
+with year >= 2020. See \code{details} for more on operations.
+\item \code{zip_5}: 5-digit zip code.
+}
 }
 \examples{
 \donttest{
@@ -126,5 +140,5 @@ restrict the number of columns.
 }
 }
 \seealso{
-\code{\link[=nassqs_GET]{nassqs_GET()}}, \code{\link[=nassqs_yields]{nassqs_yields()}}, \code{\link[=nassqs_acres]{nassqs_acres()}}
+\code{\link[=nassqs_GET]{nassqs_GET()}}, \code{\link[=nassqs_parse]{nassqs_parse()}}, \code{\link[=nassqs_yields]{nassqs_yields()}}, \code{\link[=nassqs_acres]{nassqs_acres()}}
 }

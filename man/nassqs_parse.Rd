@@ -4,7 +4,7 @@
 \alias{nassqs_parse}
 \title{Parse a response object from \code{nassqs_GET()}.}
 \usage{
-nassqs_parse(req, as = c("data.frame", "list", "text"), ...)
+nassqs_parse(req, as_numeric = TRUE, as = c("data.frame", "list", "text"), ...)
 }
 \arguments{
 \item{req}{the GET response from \code{\link[=nassqs_GET]{nassqs_GET()}}}
@@ -12,7 +12,7 @@ nassqs_parse(req, as = c("data.frame", "list", "text"), ...)
 \item{as}{whether to return a data.frame, list, or text string}
 
 \item{...}{additional parameters passed to \code{\link[jsonlite:fromJSON]{jsonlite::fromJSON()}} or
-\code{\link[utils:read.csv]{utils::read.csv()}}}
+\code{\link[utils:read.table]{utils::read.csv()}}}
 }
 \value{
 a data frame, list, or text string of the content from the response.
