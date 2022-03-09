@@ -1,14 +1,5 @@
 context("test parameter functions")
 
-# First resolve API KEY
-if(!(Sys.getenv("NASSQS_TOKEN") %in% c("", "API_KEY"))) {
-  api_key <- Sys.getenv("NASSQS_TOKEN")
-} else if(file.exists("api-key.txt")) { 
-  api_key <- readLines("api-key.txt") 
-} else {
-  api_key <- ""
-}
-
 ### API tests with mock API calls ----
 
 # First set the API KEY to a static value
@@ -52,12 +43,6 @@ with_authentication({
       c("001", "005"))
    }) 
 })
-
-
-d <- nassqs(year = 2012, 
-            state_alpha = "WA", agg_level_desc = "COUNTY",
-            group_desc = "EXPENSES", 
-            sector_desc = "DEMOGRAPHICS")
 
 
 ### Tests not involving the API ----
