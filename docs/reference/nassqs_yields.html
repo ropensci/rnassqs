@@ -12,7 +12,7 @@ simplify common requests."><meta property="og:image" content="/logo.png"><!--[if
     <a href="https://ropensci.org" class="external-link"><img src="https://ropensci.org/img/icon_short_white.svg" id="hexlogo" alt="rOpenSci"></a>
     <a class="navbar-brand me-2" href="../index.html">rnassqs</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.6</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.6.0</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -73,7 +73,7 @@ form the query</p></dd>
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="co"># \donttest{</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span>
 <span class="r-in">  <span class="co"># Get yields for wheat in 2012, all geographies</span></span>
 <span class="r-in">  <span class="va">params</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span>
 <span class="r-in">    commodity_desc <span class="op">=</span> <span class="st">"WHEAT"</span>, </span>
@@ -82,12 +82,8 @@ form the query</p></dd>
 <span class="r-in">    state_alpha <span class="op">=</span> <span class="st">"WA"</span><span class="op">)</span></span>
 <span class="r-in">    </span>
 <span class="r-in">  <span class="va">yields</span> <span class="op">&lt;-</span> <span class="fu">nassqs_yields</span><span class="op">(</span><span class="va">params</span><span class="op">)</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   |                                                                              |                                                                      |   0%  |                                                                              |======================================================================| 100%</span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error:</span> HTTP Failure: 401</span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> unauthorized</span>
 <span class="r-in">  <span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">yields</span><span class="op">)</span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in head(yields):</span> object 'yields' not found</span>
-<span class="r-in"><span class="co"># }</span></span>
+<span class="r-in"><span class="op">}</span></span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>

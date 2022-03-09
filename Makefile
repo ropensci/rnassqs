@@ -31,13 +31,16 @@ test:
 doc:
 	R -e 'devtools::document()'
 
+spell_check:
+	R -e 'devtools::spell_check()'
+
 check:
 	R -e 'devtools::check()'
 
 check_all:
 	R -e 'devtools::check()'
 	R -e 'devtools::check_win_release()'
-	R -e 'rhub::check()'
+	R -e 'devtools::check_rhub()'
 	R -e 'usethis::use_revdep()'
 
 build:

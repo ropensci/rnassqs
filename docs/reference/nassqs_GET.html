@@ -26,7 +26,7 @@ that."><meta property="og:image" content="/logo.png"><!--[if lt IE 9]>
     <a href="https://ropensci.org" class="external-link"><img src="https://ropensci.org/img/icon_short_white.svg" id="hexlogo" alt="rOpenSci"></a>
     <a class="navbar-brand me-2" href="../index.html">rnassqs</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.6</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.6.0</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -105,7 +105,7 @@ use in the query</p></dd>
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="co"># \donttest{</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span>
 <span class="r-in">  <span class="co"># Yields for corn in 2012 in Washington</span></span>
 <span class="r-in">  <span class="va">params</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>commodity_desc <span class="op">=</span> <span class="st">"CORN"</span>,</span>
 <span class="r-in">                 year <span class="op">=</span> <span class="fl">2012</span>,</span>
@@ -116,362 +116,22 @@ use in the query</p></dd>
 <span class="r-in">  <span class="co"># Returns a request object that must be parsed either manually or</span></span>
 <span class="r-in">  <span class="co"># by using nassqs_parse()</span></span>
 <span class="r-in">  <span class="va">response</span> <span class="op">&lt;-</span> <span class="fu">nassqs_GET</span><span class="op">(</span><span class="va">params</span><span class="op">)</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   |                                                                              |                                                                      |   0%  |                                                                              |===================================================================   |  96%  |                                                                              |======================================================================| 100%</span>
 <span class="r-in">  <span class="va">yields</span> <span class="op">&lt;-</span> <span class="fu"><a href="nassqs_parse.html">nassqs_parse</a></span><span class="op">(</span><span class="va">response</span><span class="op">)</span></span>
 <span class="r-in">  <span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">yields</span><span class="op">)</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   source_desc sector_desc  group_desc commodity_desc  class_desc</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1      CENSUS       CROPS FIELD CROPS           CORN ALL CLASSES</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2      CENSUS       CROPS FIELD CROPS           CORN ALL CLASSES</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3      CENSUS       CROPS FIELD CROPS           CORN ALL CLASSES</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4      CENSUS       CROPS FIELD CROPS           CORN ALL CLASSES</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5      CENSUS       CROPS FIELD CROPS           CORN ALL CLASSES</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 6      CENSUS       CROPS FIELD CROPS           CORN ALL CLASSES</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       prodn_practice_desc util_practice_desc statisticcat_desc   unit_desc</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1  IRRIGATED, ENTIRE CROP              GRAIN             YIELD   BU / ACRE</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2  IRRIGATED, ENTIRE CROP             SILAGE             YIELD TONS / ACRE</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3 IRRIGATED, NONE OF CROP              GRAIN             YIELD   BU / ACRE</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4 IRRIGATED, NONE OF CROP             SILAGE             YIELD TONS / ACRE</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5 IRRIGATED, PART OF CROP              GRAIN             YIELD   BU / ACRE</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 6 IRRIGATED, PART OF CROP             SILAGE             YIELD TONS / ACRE</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                                                               short_desc</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1     CORN, GRAIN, IRRIGATED, ENTIRE CROP - YIELD, MEASURED IN BU / ACRE</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2  CORN, SILAGE, IRRIGATED, ENTIRE CROP - YIELD, MEASURED IN TONS / ACRE</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3    CORN, GRAIN, IRRIGATED, NONE OF CROP - YIELD, MEASURED IN BU / ACRE</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4 CORN, SILAGE, IRRIGATED, NONE OF CROP - YIELD, MEASURED IN TONS / ACRE</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5    CORN, GRAIN, IRRIGATED, PART OF CROP - YIELD, MEASURED IN BU / ACRE</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 6 CORN, SILAGE, IRRIGATED, PART OF CROP - YIELD, MEASURED IN TONS / ACRE</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   domain_desc domaincat_desc agg_level_desc state_ansi state_fips_code</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1       TOTAL  NOT SPECIFIED          STATE         53              53</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2       TOTAL  NOT SPECIFIED          STATE         53              53</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3       TOTAL  NOT SPECIFIED          STATE         53              53</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4       TOTAL  NOT SPECIFIED          STATE         53              53</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5       TOTAL  NOT SPECIFIED          STATE         53              53</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 6       TOTAL  NOT SPECIFIED          STATE         53              53</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   state_alpha state_name asd_code asd_desc county_ansi county_code county_name</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1          WA WASHINGTON                                                      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2          WA WASHINGTON                                                      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3          WA WASHINGTON                                                      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4          WA WASHINGTON                                                      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5          WA WASHINGTON                                                      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 6          WA WASHINGTON                                                      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   region_desc zip_5 watershed_code watershed_desc congr_district_code</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1                         00000000                                   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2                         00000000                                   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3                         00000000                                   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4                         00000000                                   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5                         00000000                                   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 6                         00000000                                   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   country_code  country_name location_desc year freq_desc begin_code end_code</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1         9000 UNITED STATES    WASHINGTON 2012    ANNUAL         00       00</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2         9000 UNITED STATES    WASHINGTON 2012    ANNUAL         00       00</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3         9000 UNITED STATES    WASHINGTON 2012    ANNUAL         00       00</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4         9000 UNITED STATES    WASHINGTON 2012    ANNUAL         00       00</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5         9000 UNITED STATES    WASHINGTON 2012    ANNUAL         00       00</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 6         9000 UNITED STATES    WASHINGTON 2012    ANNUAL         00       00</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   reference_period_desc week_ending           load_time Value CV (%)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1                  YEAR             2012-12-31 00:00:00    NA    (D)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2                  YEAR             2012-12-31 00:00:00  26.3    0.9</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3                  YEAR             2012-12-31 00:00:00    NA    (D)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4                  YEAR             2012-12-31 00:00:00  21.9    0.7</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5                  YEAR             2012-12-31 00:00:00    NA    (D)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 6                  YEAR             2012-12-31 00:00:00  20.7    0.7</span>
 <span class="r-in"></span>
 <span class="r-in">  <span class="co"># Get the number of records that would be returned for a given request</span></span>
 <span class="r-in">  <span class="co"># Equivalent to 'nassqs_record_count(params)'</span></span>
 <span class="r-in">  <span class="va">response</span> <span class="op">&lt;-</span> <span class="fu">nassqs_GET</span><span class="op">(</span><span class="va">params</span>, api_path <span class="op">=</span> <span class="st">"get_counts"</span><span class="op">)</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   |                                                                              |                                                                      |   0%  |                                                                              |======================================================================| 100%</span>
 <span class="r-in">  <span class="va">records</span> <span class="op">&lt;-</span> <span class="fu"><a href="nassqs_parse.html">nassqs_parse</a></span><span class="op">(</span><span class="va">response</span><span class="op">)</span></span>
 <span class="r-in">  <span class="va">records</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $count</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 12</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $Value</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> numeric(0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"></span>
 <span class="r-in">  <span class="co"># Get the list of allowable values for the parameters 'statisticcat_desc'</span></span>
 <span class="r-in">  <span class="co"># Equivalent to 'nassqs_param_values("statisticcat_desc")'</span></span>
 <span class="r-in">  <span class="va">req</span> <span class="op">&lt;-</span> <span class="fu">nassqs_GET</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>param <span class="op">=</span> <span class="st">"statisticcat_desc"</span><span class="op">)</span>,</span>
 <span class="r-in">                    api_path <span class="op">=</span> <span class="st">"get_param_values"</span><span class="op">)</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   |                                                                              |                                                                      |   0%  |                                                                              |=================================================================     |  93%  |                                                                              |======================================================================| 100%</span>
 <span class="r-in">  <span class="va">statisticcat_desc_values</span> <span class="op">&lt;-</span> <span class="fu"><a href="nassqs_parse.html">nassqs_parse</a></span><span class="op">(</span><span class="va">req</span>, as <span class="op">=</span> <span class="st">"list"</span><span class="op">)</span></span>
 <span class="r-in">  <span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">statisticcat_desc_values</span><span class="op">)</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $statisticcat_desc</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   [1] "ACCESSIBILITY"                                    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   [2] "ACCESSIBILITY, 5 YEAR AVG"                        </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   [3] "ACCESSIBILITY, PREVIOUS YEAR"                     </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   [4] "ACTIVE GINS"                                      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   [5] "ACTIVITY"                                         </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   [6] "ACTIVITY, 5 YEAR AVG"                             </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   [7] "ACTIVITY, PREVIOUS YEAR"                          </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   [8] "ADDED &amp; REPLACED"                                 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   [9] "AGE, AVG"                                         </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [10] "APPLICATIONS"                                     </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [11] "AREA"                                             </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [12] "AREA BEARING"                                     </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [13] "AREA BEARING &amp; NON-BEARING"                       </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [14] "AREA BEARING &amp; NONBEARING"                        </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [15] "AREA CERTIFIED"                                   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [16] "AREA CROPLAND"                                    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [17] "AREA FILLED"                                      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [18] "AREA FLOODED"                                     </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [19] "AREA GRAZED"                                      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [20] "AREA GROWN"                                       </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [21] "AREA HARVESTED"                                   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [22] "AREA IN PRODUCTION"                               </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [23] "AREA IN PRODUCTION PREVIOUS CENSUS YEAR"          </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [24] "AREA IRRIGATED"                                   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [25] "AREA IRRIGATED PREVIOUS CENSUS YEAR"              </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [26] "AREA NON-BEARING"                                 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [27] "AREA NOT HARVESTED"                               </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [28] "AREA OF WATER"                                    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [29] "AREA OPERATED"                                    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [30] "AREA PLANTED"                                     </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [31] "AREA PLANTED, NET"                                </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [32] "AREA POLLINATED, PAID BASIS"                      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [33] "AREA REMAINING TO BE PLANTED"                     </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [34] "AREA RENTED"                                      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [35] "ASSET VALUE"                                      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [36] "AVAILABILITY"                                     </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [37] "AVAILABILITY, 5 YEAR AVG"                         </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [38] "AVAILABILITY, PREVIOUS YEAR"                      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [39] "BEING MOLTED"                                     </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [40] "BLOOM DATE"                                       </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [41] "BOLL COUNT"                                       </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [42] "BRED"                                             </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [43] "BROKEN"                                           </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [44] "CAGES"                                            </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [45] "CALF CROP"                                        </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [46] "CAPACITY"                                         </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [47] "CAPTURED"                                         </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [48] "CLIPPED"                                          </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [49] "CONDEMNED, ANTE-MORTEM"                           </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [50] "CONDEMNED, POST-MORTEM"                           </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [51] "CONDEMNED, POST-MORTEM, AIRSACCULITIS"            </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [52] "CONDEMNED, POST-MORTEM, ALL CAUSES"               </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [53] "CONDEMNED, POST-MORTEM, BRUISES"                  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [54] "CONDEMNED, POST-MORTEM, CADAVER"                  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [55] "CONDEMNED, POST-MORTEM, CONTAMINATION"            </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [56] "CONDEMNED, POST-MORTEM, LEUKOSIS"                 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [57] "CONDEMNED, POST-MORTEM, OTHER REASONS"            </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [58] "CONDEMNED, POST-MORTEM, OVERSCALD"                </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [59] "CONDEMNED, POST-MORTEM, SEPTICAEMIA"              </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [60] "CONDEMNED, POST-MORTEM, SYNOVITIS"                </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [61] "CONDEMNED, POST-MORTEM, TUBERCULOSIS"             </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [62] "CONDEMNED, POST-MORTEM, TUMORS"                   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [63] "CONDEMNED, POST-MORTEM, UNKNOWN CAUSES"           </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [64] "CONDITION"                                        </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [65] "CONDITION, 5 YEAR AVG"                            </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [66] "CONDITION, PREVIOUS YEAR"                         </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [67] "CONDUCT BUSINESS"                                 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [68] "COVER"                                            </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [69] "COVER, PREVIOUS YEAR"                             </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [70] "CRUSHED"                                          </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [71] "DAMAGE"                                           </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [72] "DAMAGE, 5 YEAR AVG"                               </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [73] "DAMAGE, PREVIOUS YEAR"                            </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [74] "DAYS SUITABLE"                                    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [75] "DAYS SUITABLE, PREVIOUS YEAR"                     </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [76] "DEBT"                                             </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [77] "DELIVERED VALUE"                                  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [78] "DEPTH TO BOWLS"                                   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [79] "DEPTH TO WATER"                                   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [80] "DEPTH, AVG"                                       </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [81] "DEPTH, AVG, PREVIOUS YEAR"                        </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [82] "DEVICES"                                          </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [83] "DISAPPEARANCE"                                    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [84] "DISAPPEARANCE, OTHER"                             </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [85] "DISTRIBUTION"                                     </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [86] "EAR COUNT"                                        </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [87] "EGGS IN INCUBATORS"                               </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [88] "EGGS SET"                                         </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [89] "END DATE, AVG"                                    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [90] "END DATE, MAX"                                    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [91] "ENGINE SIZE"                                      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [92] "EXPENSE"                                          </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [93] "FACILITIES"                                       </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [94] "FAMILIES"                                         </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [95] "FARM OPERATIONS SERVICED"                         </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [96] "FARM USE"                                         </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [97] "FARROWED"                                         </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [98] "FAT TEST"                                         </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [99] "FEEDLOTS"                                         </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [100] "FRUIT SIZE"                                       </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [101] "FRUIT SIZE, 5 YEAR AVG"                           </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [102] "FRUIT SIZE, PREVIOUS YEAR"                        </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [103] "GAIN"                                             </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [104] "GINNED BALES"                                     </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [105] "GROSS INCOME"                                     </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [106] "HARVEST LOSS"                                     </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [107] "HATCHED"                                          </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [108] "HEAD COUNT"                                       </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [109] "HEIGHT, AVG"                                      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [110] "HEIGHT, AVG, 5 YEAR AVG"                          </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [111] "HEIGHT, AVG, PREVIOUS YEAR"                       </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [112] "HOURS OF OPERATION"                               </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [113] "HOUSEHOLD USE"                                    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [114] "INDEX FOR PRICE PAID, 1910 - 1914"                </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [115] "INDEX FOR PRICE PAID, 1964 - 1968 OVERALL DERIVED"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [116] "INDEX FOR PRICE PAID, 1990 - 1992"                </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [117] "INDEX FOR PRICE PAID, 2011"                       </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [118] "INDEX FOR PRICE RECEIVED, 1910 - 1914"            </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [119] "INDEX FOR PRICE RECEIVED, 1990 - 1992"            </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [120] "INDEX FOR PRICE RECEIVED, 2011"                   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [121] "INFESTATION"                                      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [122] "INFESTATION, PREVIOUS YEAR"                       </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [123] "INVENTORY"                                        </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [124] "INVENTORY, AVG"                                   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [125] "INVENTORY, MAX"                                   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [126] "INVENTORY, PEAK"                                  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [127] "KID CROP"                                         </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [128] "LAMB CROP"                                        </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [129] "LAMBING RATE"                                     </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [130] "LANDLORDS"                                        </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [131] "LENGTH OF SEASON, AVG"                            </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [132] "LITTER RATE"                                      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [133] "LOSS"                                             </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [134] "LOSS, COLONY COLLAPSE DISORDER"                   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [135] "LOSS, DEADOUT"                                    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [136] "LOSS, DEATH"                                      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [137] "LOSS, DEATH &amp; RENDERED"                           </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [138] "LOSS, DEATH, 5 YEAR AVG"                          </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [139] "LOSS, DEATH, PREVIOUS YEAR"                       </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [140] "MILKFAT"                                          </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [141] "MILL SALE"                                        </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [142] "MILLED"                                           </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [143] "MILLING CAPACITY"                                 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [144] "MOISTURE"                                         </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [145] "MOISTURE CONTENT"                                 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [146] "MOISTURE, 5 YEAR AVG"                             </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [147] "MOISTURE, PREVIOUS YEAR"                          </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [148] "MOLT COMPLETED"                                   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [149] "MOVEMENT"                                         </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [150] "MOVEMENT, 5 YEAR AVG"                             </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [151] "MOVEMENT, PREVIOUS YEAR"                          </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [152] "NET INCOME"                                       </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [153] "NET WEIGHT"                                       </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [154] "NUT SET"                                          </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [155] "NUT SET, 5 YEAR AVG"                              </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [156] "NUT SET, PREVIOUS YEAR"                           </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [157] "OCEAN HARVESTED"                                  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [158] "OPERATING PRESSURE"                               </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [159] "OPERATIONS"                                       </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [160] "OPERATORS"                                        </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [161] "ORGANIZATIONS"                                    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [162] "OTHER SALE"                                       </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [163] "PARTNERS, AVG"                                    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [164] "PENS"                                             </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [165] "PERSONS IN HOUSEHOLD"                             </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [166] "PEST MGMT"                                        </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [167] "PIG CROP"                                         </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [168] "PLACEMENTS"                                       </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [169] "PLACEMENTS, INTENDED"                             </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [170] "PLACEMENTS, NET"                                  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [171] "PLANT POPULATION"                                 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [172] "POD COUNT"                                        </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [173] "POLLINATION"                                      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [174] "PONDS"                                            </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [175] "PONDS &amp; TANKS"                                    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [176] "PRICE PAID"                                       </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [177] "PRICE REACTION"                                   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [178] "PRICE REACTION, DECREASE"                         </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [179] "PRICE REACTION, INCREASE"                         </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [180] "PRICE REACTION, NO CHANGE"                        </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [181] "PRICE RECEIVED"                                   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [182] "PRICE RECEIVED AFTER REPORT"                      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [183] "PRICE RECEIVED PRIOR TO CLOSING"                  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [184] "PRICE RECEIVED, 3 YEAR AVG"                       </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [185] "PRICE RECEIVED, ADJUSTED BASE"                    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [186] "PRICE RECEIVED, PARITY"                           </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [187] "PRICE RECEIVED, PREMIUM"                          </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [188] "PRICE RECEIVED, SEASONALLY ADJUSTED"              </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [189] "PROCESSED IN LAB"                                 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [190] "PRODUCERS"                                        </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [191] "PRODUCTION"                                       </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [192] "PRODUCTION NOT SOLD"                              </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [193] "PROGRESS"                                         </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [194] "PROGRESS, 5 YEAR AVG"                             </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [195] "PROGRESS, PREVIOUS YEAR"                          </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [196] "PUMPING CAPACITY"                                 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [197] "PUMPING LIFT"                                     </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [198] "PUMPS"                                            </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [199] "RACEWAYS"                                         </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [200] "RATE OF LAY"                                      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [201] "RATIO"                                            </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [202] "RECEIPTS"                                         </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [203] "RECEIVING"                                        </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [204] "RECEIVING, 5 YEAR AVG"                            </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [205] "RECEIVING, PREVIOUS YEAR"                         </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [206] "RELATIVE WEIGHT"                                  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [207] "RELATIVE WEIGHT, 5 YEAR MOVING AVERAGE"           </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [208] "REMOVAL FOR PROCESSING"                           </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [209] "REMOVAL FOR PROCESSING, EDIBLE USE"               </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [210] "REMOVAL FOR PROCESSING, INEDIBLE USE"             </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [211] "REPAYMENTS"                                       </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [212] "ROW WIDTH"                                        </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [213] "SALES"                                            </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [214] "SALES &amp; DISTRIBUTION"                             </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [215] "SALES FOR SLAUGHTER"                              </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [216] "SALES IN CONVENTIONAL MARKETS"                    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [217] "SALES IN ORGANIC MARKETS"                         </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [218] "SAMPLES"                                          </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [219] "SAVINGS"                                          </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [220] "SEASONAL ADJUSTMENT FACTOR FOR PRICE RECEIVED"    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [221] "SEED FOR PLANTING"                                </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [222] "SHIPMENTS"                                        </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [223] "SHIPMENTS IN"                                     </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [224] "SHORN"                                            </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [225] "SHRINK"                                           </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [226] "SLAUGHTERED"                                      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [227] "SOURCE"                                           </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [228] "SOURCE, 5 YEAR AVG"                               </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [229] "SOURCE, PREVIOUS YEAR"                            </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [230] "SPINDLES"                                         </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [231] "START DATE"                                       </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [232] "START DATE, 5 YEAR AVG"                           </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [233] "START DATE, AVG"                                  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [234] "START DATE, MIN"                                  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [235] "START DATE, PREVIOUS YEAR"                        </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [236] "STOCKS"                                           </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [237] "STOCKS, CURRENT YEAR"                             </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [238] "STOCKS, PREVIOUS YEAR"                            </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [239] "SUCROSE"                                          </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [240] "SUPPLIES"                                         </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [241] "SUPPLIES, 5 YEAR AVG"                             </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [242] "SUPPLIES, PREVIOUS YEAR"                          </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [243] "TANKS"                                            </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [244] "TAPS"                                             </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [245] "TENANTS"                                          </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [246] "TIME OPERATED"                                    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [247] "TIME WORKED"                                      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [248] "TIME WORKED, BASE"                                </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [249] "TOTAL AREA"                                       </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [250] "TREATED"                                          </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [251] "USAGE"                                            </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [252] "VALUE"                                            </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [253] "VALUE OF POLLINATION"                             </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [254] "VOLUME"                                           </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [255] "VOLUME HANDLED"                                   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [256] "WAGE RATE"                                        </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [257] "WAGE RATE, BASE"                                  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [258] "WAREHOUSES"                                       </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [259] "WATER APPLIED"                                    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [260] "WATER DELIVERED"                                  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [261] "WATER RECEIVED"                                   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [262] "WELL DEPTH"                                       </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [263] "WELLS"                                            </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [264] "WORKERS"                                          </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [265] "WORKERS, AVG"                                     </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [266] "WORKERS, PEAK"                                    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [267] "YEARS ON ANY OPERATION, AVG"                      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [268] "YEARS ON PRESENT OPERATION, AVG"                  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [269] "YEARS RENTED TO TENANT, AVG"                      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [270] "YIELD"                                            </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $Value</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> numeric(0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-in"><span class="co"># }</span></span>
+<span class="r-in"><span class="op">}</span></span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>

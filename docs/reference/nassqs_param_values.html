@@ -20,7 +20,7 @@ including additional parameters"><meta property="og:image" content="/logo.png"><
     <a href="https://ropensci.org" class="external-link"><img src="https://ropensci.org/img/icon_short_white.svg" id="hexlogo" alt="rOpenSci"></a>
     <a class="navbar-brand me-2" href="../index.html">rnassqs</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.6</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.6.0</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -86,7 +86,7 @@ including additional parameters</p>
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="co"># \donttest{</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span>
 <span class="r-in">  <span class="co"># See all values available for the statisticcat_desc field. Values may not</span></span>
 <span class="r-in">  <span class="co"># be available in the context of other parameters you set, for example</span></span>
 <span class="r-in">  <span class="co"># a given state may not have any 'YIELD' in blueberries if they don't grow</span></span>
@@ -94,17 +94,13 @@ including additional parameters</p>
 <span class="r-in">  <span class="co"># Requires an API key:</span></span>
 <span class="r-in">  </span>
 <span class="r-in">  <span class="fu">nassqs_param_values</span><span class="op">(</span><span class="st">"source_desc"</span><span class="op">)</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   |                                                                              |                                                                      |   0%  |                                                                              |======================================================================| 100%</span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error:</span> HTTP Failure: 401</span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> unauthorized</span>
 <span class="r-in"></span>
 <span class="r-in">  <span class="co"># Valid values for a parameter given a specific set of additional</span></span>
 <span class="r-in">  <span class="co"># parameters</span></span>
-<span class="r-in">  <span class="fu">nassqs_param_values</span><span class="op">(</span><span class="st">"commodity_desc"</span>, state_fips_code <span class="op">=</span> <span class="st">"53"</span>, county_code <span class="op">=</span> <span class="st">"077"</span>, year <span class="op">=</span> <span class="fl">2017</span>, group_desc <span class="op">=</span> <span class="st">"EXPENSES"</span><span class="op">)</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   |                                                                              |                                                                      |   0%  |                                                                              |======================================================================| 100%</span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error:</span> HTTP Failure: 401</span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> unauthorized</span>
-<span class="r-in"><span class="co"># }</span></span>
+<span class="r-in">  <span class="fu">nassqs_param_values</span><span class="op">(</span><span class="st">"commodity_desc"</span>, state_fips_code <span class="op">=</span> <span class="st">"53"</span>, </span>
+<span class="r-in">                      county_code <span class="op">=</span> <span class="st">"077"</span>, year <span class="op">=</span> <span class="fl">2017</span>, </span>
+<span class="r-in">                      group_desc <span class="op">=</span> <span class="st">"EXPENSES"</span><span class="op">)</span></span>
+<span class="r-in"><span class="op">}</span></span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>

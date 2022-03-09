@@ -32,7 +32,7 @@
     <a href="https://ropensci.org" class="external-link"><img src="https://ropensci.org/img/icon_short_white.svg" id="hexlogo" alt="rOpenSci"></a>
     <a class="navbar-brand me-2" href="../index.html">rnassqs</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.6</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.6.0</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -294,7 +294,7 @@ valid before attempting to access the data:</p>
 <pre><code><span class="co"># Check that the number of returned records will be less than 50000</span>
 <span class="va">params</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>commodity_desc <span class="op">=</span> <span class="st">"CORN"</span>, year__GE <span class="op">=</span> <span class="fl">2012</span>, state_alpha <span class="op">=</span> <span class="st">"VA"</span><span class="op">)</span>
 <span class="va">records</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/nassqs_record_count.html">nassqs_record_count</a></span><span class="op">(</span><span class="va">params</span><span class="op">)</span>
-<span class="fu">assertthat</span><span class="fu">::</span><span class="fu">assert_that</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/integer.html" class="external-link">as.integer</a></span><span class="op">(</span><span class="va">records</span><span class="op">$</span><span class="va">count</span><span class="op">)</span> <span class="op">&lt;=</span> <span class="fl">50000</span><span class="op">)</span></code></pre>
+<span class="fu">assertthat</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/assertthat/man/assert_that.html" class="external-link">assert_that</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/integer.html" class="external-link">as.integer</a></span><span class="op">(</span><span class="va">records</span><span class="op">$</span><span class="va">count</span><span class="op">)</span> <span class="op">&lt;=</span> <span class="fl">50000</span><span class="op">)</span></code></pre>
 </div>
 </div>
 <div class="section level3">
@@ -327,7 +327,7 @@ like:</p>
 
 <span class="co"># Check that the number of returned records will be less than 50000</span>
 <span class="va">records</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/nassqs_record_count.html">nassqs_record_count</a></span><span class="op">(</span><span class="va">params</span><span class="op">)</span>
-<span class="fu">assert_that</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/integer.html" class="external-link">as.integer</a></span><span class="op">(</span><span class="va">records</span><span class="op">$</span><span class="va">count</span><span class="op">)</span> <span class="op">&lt;=</span> <span class="fl">50000</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/pkg/assertthat/man/assert_that.html" class="external-link">assert_that</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/integer.html" class="external-link">as.integer</a></span><span class="op">(</span><span class="va">records</span><span class="op">$</span><span class="va">count</span><span class="op">)</span> <span class="op">&lt;=</span> <span class="fl">50000</span><span class="op">)</span>
 
 <span class="co"># Run a query given a set of parameters and an API key</span>
 <span class="va">d</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/nassqs.html">nassqs</a></span><span class="op">(</span>params <span class="op">=</span> <span class="va">params</span>, key <span class="op">=</span> <span class="va">api_key</span><span class="op">)</span>

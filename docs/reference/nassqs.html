@@ -22,7 +22,7 @@ restrict the number of columns."><meta property="og:image" content="/logo.png"><
     <a href="https://ropensci.org" class="external-link"><img src="https://ropensci.org/img/icon_short_white.svg" id="hexlogo" alt="rOpenSci"></a>
     <a class="navbar-brand me-2" href="../index.html">rnassqs</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.6</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.6.0</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -74,6 +74,43 @@ restrict the number of columns.</p>
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">nassqs</span><span class="op">(</span>
   <span class="va">...</span>,
+  agg_level_desc <span class="op">=</span> <span class="cn">NULL</span>,
+  asd_code <span class="op">=</span> <span class="cn">NULL</span>,
+  asd_desc <span class="op">=</span> <span class="cn">NULL</span>,
+  begin_code <span class="op">=</span> <span class="cn">NULL</span>,
+  class_desc <span class="op">=</span> <span class="cn">NULL</span>,
+  commodity_desc <span class="op">=</span> <span class="cn">NULL</span>,
+  congr_district_code <span class="op">=</span> <span class="cn">NULL</span>,
+  country_code <span class="op">=</span> <span class="cn">NULL</span>,
+  country_name <span class="op">=</span> <span class="cn">NULL</span>,
+  county_ansi <span class="op">=</span> <span class="cn">NULL</span>,
+  county_code <span class="op">=</span> <span class="cn">NULL</span>,
+  county_name <span class="op">=</span> <span class="cn">NULL</span>,
+  domaincat_desc <span class="op">=</span> <span class="cn">NULL</span>,
+  domain_desc <span class="op">=</span> <span class="cn">NULL</span>,
+  end_code <span class="op">=</span> <span class="cn">NULL</span>,
+  freq_desc <span class="op">=</span> <span class="cn">NULL</span>,
+  group_desc <span class="op">=</span> <span class="cn">NULL</span>,
+  load_time <span class="op">=</span> <span class="cn">NULL</span>,
+  location_desc <span class="op">=</span> <span class="cn">NULL</span>,
+  prodn_practice_desc <span class="op">=</span> <span class="cn">NULL</span>,
+  reference_period_desc <span class="op">=</span> <span class="cn">NULL</span>,
+  region_desc <span class="op">=</span> <span class="cn">NULL</span>,
+  sector_desc <span class="op">=</span> <span class="cn">NULL</span>,
+  short_desc <span class="op">=</span> <span class="cn">NULL</span>,
+  source_desc <span class="op">=</span> <span class="cn">NULL</span>,
+  state_alpha <span class="op">=</span> <span class="cn">NULL</span>,
+  state_ansi <span class="op">=</span> <span class="cn">NULL</span>,
+  state_fips_code <span class="op">=</span> <span class="cn">NULL</span>,
+  state_name <span class="op">=</span> <span class="cn">NULL</span>,
+  statisticcat_desc <span class="op">=</span> <span class="cn">NULL</span>,
+  unit_desc <span class="op">=</span> <span class="cn">NULL</span>,
+  util_practice_desc <span class="op">=</span> <span class="cn">NULL</span>,
+  watershed_code <span class="op">=</span> <span class="cn">NULL</span>,
+  watershed_desc <span class="op">=</span> <span class="cn">NULL</span>,
+  week_ending <span class="op">=</span> <span class="cn">NULL</span>,
+  year <span class="op">=</span> <span class="cn">NULL</span>,
+  zip_5 <span class="op">=</span> <span class="cn">NULL</span>,
   as_numeric <span class="op">=</span> <span class="cn">TRUE</span>,
   progress_bar <span class="op">=</span> <span class="cn">TRUE</span>,
   format <span class="op">=</span> <span class="st">"csv"</span>,
@@ -84,8 +121,111 @@ restrict the number of columns.</p>
     <div class="section level2">
     <h2 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h2>
     <dl><dt>...</dt>
-<dd><p>either a named list of parameters or a series of parameters to
-form the query. See <code>details</code> for information on available parameters.</p></dd>
+<dd><p>either a named list of parameters or a series of additional
+parameters that include operations, i.e. <code>year__GE = 2010</code> for all
+records in 2010 and later. See <code>details</code> for information on available
+parameters.</p></dd>
+<dt>agg_level_desc</dt>
+<dd><p>Geographic level ("AGRICULTURAL DISTRICT", "COUNTY",
+"INTERNATIONAL", "NATIONAL", "REGION : MULTI-STATE", "REGION : SUB-STATE",
+"STATE", "WATERSHED", or "ZIP CODE").</p></dd>
+<dt>asd_code</dt>
+<dd><p>Agriculture statistical district code.</p></dd>
+<dt>asd_desc</dt>
+<dd><p>Agriculture statistical district name / description.</p></dd>
+<dt>begin_code</dt>
+<dd><p>Week number indicating when the data series begins.</p></dd>
+<dt>class_desc</dt>
+<dd><p>Commodity class.</p></dd>
+<dt>commodity_desc</dt>
+<dd><p>Commodity, the primary subject of interest (e.g.,
+"CORN", "CATTLE", "LABOR", "TRACTORS", "OPERATORS").</p></dd>
+<dt>congr_district_code</dt>
+<dd><p>Congressional District codes.</p></dd>
+<dt>country_code</dt>
+<dd><p>Country code.</p></dd>
+<dt>country_name</dt>
+<dd><p>Country name.</p></dd>
+<dt>county_ansi</dt>
+<dd><p>County ANSI code.</p></dd>
+<dt>county_code</dt>
+<dd><p>County FIPS code.</p></dd>
+<dt>county_name</dt>
+<dd><p>County name.</p></dd>
+<dt>domaincat_desc</dt>
+<dd><p>Domain category within a domain (e.g.,
+under domain_desc = "SALES", domain categories include $1,000 TO $9,999,
+$10,000 TO $19,999, etc).</p></dd>
+<dt>domain_desc</dt>
+<dd><p>Domain, a characteristic of operations that produce a
+particular commodity (e.g., "ECONOMIC CLASS", "AREA OPERATED", "NAICS
+CLASSIFICATION", "SALES"). For chemical usage data, the domain describes
+the type of chemical applied to the commodity. The domain_desc: = "TOTAL"
+will have no further breakouts; i.e., the data value pertains completely
+to the short_desc.</p></dd>
+<dt>end_code</dt>
+<dd><p>= Week number that the data series ends.</p></dd>
+<dt>freq_desc</dt>
+<dd><p>Time period type covered by the data ("ANNUAL", "SEASON",
+"MONTHLY", "WEEKLY", "POINT IN TIME"). "MONTHLY" often covers more than one
+month. "POINT IN TIME" is for a particular day.</p></dd>
+<dt>group_desc</dt>
+<dd><p>Commodity group within a sector (e.g., under sector_desc =
+"CROPS", the groups are "FIELD CROPS", "FRUIT &amp; TREE NUTS", "HORTICULTURE",
+and "VEGETABLES").</p></dd>
+<dt>load_time</dt>
+<dd><p>Date and time of the data load, e.g. "2015-02-17 16:05:20".</p></dd>
+<dt>location_desc</dt>
+<dd><p>Location code, e.g. 5-digit fips code for counties.</p></dd>
+<dt>prodn_practice_desc</dt>
+<dd><p>Production practice, (e.g. "UNDER PROTECTION",
+"OWNED, RIGHTS, LEASED", "ORGANIC, TRANSITIONING", "HIRED MANAGER").</p></dd>
+<dt>reference_period_desc</dt>
+<dd><p>Reference period of the data (e.g. "JUN",
+"MID SEP", "WEEK #32").</p></dd>
+<dt>region_desc</dt>
+<dd><p>Region name (e.g. "TEXAS", "WA &amp; OR", "WEST COAST",
+"UMATILLA").</p></dd>
+<dt>sector_desc</dt>
+<dd><p>Sector, the five high level, broad categories useful to
+narrow down choices. ("ANIMALS &amp; PRODUCTS", "CROPS", "DEMOGRAPHICS",
+"ECONOMICS", or "ENVIRONMENTAL").</p></dd>
+<dt>short_desc</dt>
+<dd><p>A concatenation of six columns: commodity_desc, class_desc,
+prodn_practice_desc, util_practice_desc, statisticcat_desc, and unit_desc.</p></dd>
+<dt>source_desc</dt>
+<dd><p>Source of data ("CENSUS" or "SURVEY"). Census program
+includes the Census of Ag as well as follow up projects. Survey program
+includes national, state, and county surveys.</p></dd>
+<dt>state_alpha</dt>
+<dd><p>2-character state abbreviation, e.g. "NM".</p></dd>
+<dt>state_ansi</dt>
+<dd><p>State ANSI code.</p></dd>
+<dt>state_fips_code</dt>
+<dd><p>State FIPS code.</p></dd>
+<dt>state_name</dt>
+<dd><p>Full name of the state, e.g. "ALABAMA".</p></dd>
+<dt>statisticcat_desc</dt>
+<dd><p>Statistical category of the data (e.g.,
+"AREA HARVESTED", "PRICE RECEIVED", "INVENTORY", "SALES").</p></dd>
+<dt>unit_desc</dt>
+<dd><p>The units of the data (e.g. "TONS / ACRE", "TREES",
+"OPERATIONS", "NUMBER", "LB / ACRE", "BU / PLANTED ACRE").</p></dd>
+<dt>util_practice_desc</dt>
+<dd><p>Utilization practice (e.g. "WIND", "SUGAR", "SILAGE",
+"ONCE REFINED", "FEED", "ANIMAL FEED").</p></dd>
+<dt>watershed_code</dt>
+<dd><p>Watershed code as 8-digit HUC (e.g. "13020100").</p></dd>
+<dt>watershed_desc</dt>
+<dd><p>Watershed/HUC name (e.g. "UPPER COLORADO").</p></dd>
+<dt>week_ending</dt>
+<dd><p>Date of ending week (e.g. "1975-11-22").</p></dd>
+<dt>year</dt>
+<dd><p>Year of the data. Conditional values are possible by appending an
+operation to the parameter, e.g. "year__GE = 2020" will return all records
+with year &gt;= 2020. See <code>details</code> for more on operations.</p></dd>
+<dt>zip_5</dt>
+<dd><p>5-digit zip code.</p></dd>
 <dt>as_numeric</dt>
 <dd><p>Whether to convert data to numeric format. Conversion will
 replace missing notation such as "(D)" or "(Z)" with NA, but removes the
@@ -116,72 +256,6 @@ Operations can take the following form:</p><ul><li><p>__LE: less than or equal (
 <li><p>__LIKE = like</p></li>
 <li><p>__NOT_LIKE = not like</p></li>
 <li><p>__NE = not equal</p></li>
-</ul><p>To see available specific values for a given parameter, use
-<code>nassqs_param_values("&lt;parameter&gt;")</code>. Possible parameters are:</p><ul><li><p><code>agg_level_desc</code>: Geographic level ("AGRICULTURAL DISTRICT", "COUNTY",
-"INTERNATIONAL", "NATIONAL", "REGION : MULTI-STATE", "REGION : SUB-STATE",
-"STATE", "WATERSHED", or "ZIP CODE").</p></li>
-<li><p><code>asd_code</code>: Agriculture statistical district code.</p></li>
-<li><p><code>asd_desc</code>: Agriculture statistical district name / description.</p></li>
-<li><p><code>begin_code</code>: Week number indicating when the data series begins.</p></li>
-<li><p><code>class_desc</code>: Commodity class.</p></li>
-<li><p><code>county_name</code>: County name.</p></li>
-<li><p><code>commodity_desc</code>: Commodity, the primary subject of interest (e.g.,
-"CORN", "CATTLE", "LABOR", "TRACTORS", "OPERATORS").</p></li>
-<li><p><code>congr_district_code</code>: COngressional District codes.</p></li>
-<li><p><code>country_code</code>: Country code.</p></li>
-<li><p><code>country_name</code>: Country name.</p></li>
-<li><p><code>county_ansi</code>: County ANSI code.</p></li>
-<li><p><code>county_code</code>: County FIPS code.</p></li>
-<li><p><code>county_name</code>: County name.</p></li>
-<li><p><code>domaincat_desc</code>: Domain category within a domain (e.g., under domain_desc = "SALES", domain categories include $1,000
-TO $9,999, $10,000 TO $19,999, etc).</p></li>
-<li><p><code>domain_desc</code>: Domain, a characteristic of operations that produce a
-particular commodity (e.g., "ECONOMIC CLASS", "AREA OPERATED", "NAICS
-CLASSIFICATION", "SALES"). For chemical usage data, the domain describes
-the type of chemical applied to the commodity. The domain_desc: = "TOTAL"
-will have no further breakouts; i.e., the data value pertains completely
-to the short_desc.</p></li>
-<li><p><code>end_code</code>: = Week number that the data series ends.</p></li>
-<li><p><code>freq_desc</code>: Time period type covered by the data ("ANNUAL", "SEASON",
-"MONTHLY", "WEEKLY", "POINT IN TIME"). "MONTHLY" often covers more than one
-month. "POINT IN TIME" is for a particular day.</p></li>
-<li><p><code>group_desc</code>: Commodity group within a sector (e.g., under sector_desc =
-"CROPS", the groups are "FIELD CROPS", "FRUIT &amp; TREE NUTS", "HORTICULTURE",
-and "VEGETABLES").</p></li>
-<li><p><code>load_time</code>: Date and time of the data load, e.g. "2015-02-17 16:05:20".</p></li>
-<li><p><code>location_desc</code>: Location code, e.g. 5-digit fips code for counties.</p></li>
-<li><p><code>prodn_practice_desc</code>: Production practice, (e.g. "UNDER PROTECTION",
-"OWNED, RIGHTS, LEASED", "ORGANIC, TRANSITIONING", "HIRED MANAGER").</p></li>
-<li><p><code>reference_period_desc</code>: Reference period of the data (e.g. "JUN",
-"MID SEP", "WEEK #32").</p></li>
-<li><p><code>region_desc</code>: Region name (e.g. "TEXAS", "WA &amp; OR", "WEST COAST",
-"UMATILLA").</p></li>
-<li><p><code>sector_desc</code>: Sector, the five high level, broad categories useful to
-narrow down choices. ("ANIMALS &amp; PRODUCTS", "CROPS", "DEMOGRAPHICS",
-"ECONOMICS", or "ENVIRONMENTAL").</p></li>
-<li><p><code>short_desc</code>: A concatenation of six columns: commodity_desc, class_desc,
-prodn_practice_desc, util_practice_desc, statisticcat_desc, and unit_desc.</p></li>
-<li><p><code>source_desc</code>: Source of data ("CENSUS" or "SURVEY"). Census program
-includes the Census of Ag as well as follow up projects. Survey program
-includes national, state, and county surveys.</p></li>
-<li><p><code>state_alpha</code>: 2-character state abbreviation, e.g. "NM".</p></li>
-<li><p><code>state_ansi</code>: State ANSI code.</p></li>
-<li><p><code>state_fips_code</code>: State FIPS code.</p></li>
-<li><p><code>state_name</code>: Full name of the state, e.g. "ALABAMA".</p></li>
-<li><p><code>statisticcat_desc</code>: Statistical category of the data (e.g.,
-"AREA HARVESTED", "PRICE RECEIVED", "INVENTORY", "SALES").</p></li>
-<li><p><code>source_desc</code>: Either "CENSUS" or "SOURCE".</p></li>
-<li><p><code>unit_desc</code>: The units of the data (e.g. "TONS / ACRE", "TREES",
-"OPERATIONS", "NUMBER", "LB / ACRE", "BU / PLANTED ACRE").</p></li>
-<li><p><code>util_practice_desc</code>: Utilization practice (e.g. "WIND", "SUGAR", "SILAGE",
-"ONCE REFINED", "FEED", "ANIMAL FEED").</p></li>
-<li><p><code>watershed_code</code>: Watershed code as 8-digit HUC (e.g. "13020100").</p></li>
-<li><p><code>watershed_desc</code>: Watershed/HUC name (e.g. "UPPER COLORADO").</p></li>
-<li><p><code>week_ending</code>: Date of ending week (e.g. "1975-11-22").</p></li>
-<li><p><code>year</code>: Year of the data. Conditional values are possible by appending an
-operation to the parameter, e.g. "year__GE = 2020" will return all records
-with year &gt;= 2020. See <code>details</code> for more on operations.</p></li>
-<li><p><code>zip_5</code>: 5-digit zip code.</p></li>
 </ul></div>
     <div class="section level2">
     <h2 id="see-also">See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>
@@ -190,7 +264,7 @@ with year &gt;= 2020. See <code>details</code> for more on operations.</p></li>
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="co"># \donttest{</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span>
 <span class="r-in">  <span class="co"># Get corn yields in Virginia in 2012</span></span>
 <span class="r-in">  <span class="va">params</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>commodity_desc <span class="op">=</span> <span class="st">"CORN"</span>,</span>
 <span class="r-in">                 year <span class="op">=</span> <span class="fl">2012</span>,</span>
@@ -198,10 +272,8 @@ with year &gt;= 2020. See <code>details</code> for more on operations.</p></li>
 <span class="r-in">                 state_alpha <span class="op">=</span> <span class="st">"VA"</span>,</span>
 <span class="r-in">                 statisticcat_desc <span class="op">=</span> <span class="st">"YIELD"</span><span class="op">)</span></span>
 <span class="r-in">  <span class="va">yields</span> <span class="op">&lt;-</span> <span class="fu">nassqs</span><span class="op">(</span><span class="va">params</span><span class="op">)</span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in expand_list(params):</span> could not find function "expand_list"</span>
 <span class="r-in">  <span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">yields</span><span class="op">)</span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in head(yields):</span> object 'yields' not found</span>
-<span class="r-in"><span class="co"># }</span></span>
+<span class="r-in"><span class="op">}</span></span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>

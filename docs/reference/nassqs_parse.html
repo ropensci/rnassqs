@@ -18,7 +18,7 @@ information."><meta property="og:image" content="/logo.png"><!--[if lt IE 9]>
     <a href="https://ropensci.org" class="external-link"><img src="https://ropensci.org/img/icon_short_white.svg" id="hexlogo" alt="rOpenSci"></a>
     <a class="navbar-brand me-2" href="../index.html">rnassqs</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.6</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.6.0</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -88,7 +88,7 @@ information.</p>
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="co"># \donttest{</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span>
 <span class="r-in">  <span class="co"># Set parameters and make the request</span></span>
 <span class="r-in">  <span class="va">params</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>commodity_desc <span class="op">=</span> <span class="st">"CORN"</span>,</span>
 <span class="r-in">                 year <span class="op">=</span> <span class="fl">2012</span>,</span>
@@ -96,33 +96,21 @@ information.</p>
 <span class="r-in">                 state_alpha <span class="op">=</span> <span class="st">"WA"</span>,</span>
 <span class="r-in">                 statisticcat_desc <span class="op">=</span> <span class="st">"YIELD"</span><span class="op">)</span></span>
 <span class="r-in">  <span class="va">response</span> <span class="op">&lt;-</span> <span class="fu"><a href="nassqs_GET.html">nassqs_GET</a></span><span class="op">(</span><span class="va">params</span><span class="op">)</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   |                                                                              |                                                                      |   0%  |                                                                              |======================================================================| 100%</span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error:</span> HTTP Failure: 401</span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> unauthorized</span>
 <span class="r-in"></span>
 <span class="r-in">  <span class="co"># Parse the response to a data frame</span></span>
 <span class="r-in">  <span class="va">corn</span> <span class="op">&lt;-</span> <span class="fu">nassqs_parse</span><span class="op">(</span><span class="va">response</span>, as <span class="op">=</span> <span class="st">"data.frame"</span><span class="op">)</span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in nassqs_parse(response, as = "data.frame"):</span> object 'response' not found</span>
 <span class="r-in">  <span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">corn</span><span class="op">)</span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in head(corn):</span> object 'corn' not found</span>
 <span class="r-in"></span>
 <span class="r-in">  <span class="co"># Parse the response into a raw character string.</span></span>
 <span class="r-in">  <span class="va">corn_text</span><span class="op">&lt;-</span> <span class="fu">nassqs_parse</span><span class="op">(</span><span class="va">response</span>, as <span class="op">=</span> <span class="st">"text"</span><span class="op">)</span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in nassqs_parse(response, as = "text"):</span> object 'response' not found</span>
 <span class="r-in">  <span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">corn_text</span><span class="op">)</span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in head(corn_text):</span> object 'corn_text' not found</span>
 <span class="r-in"></span>
 <span class="r-in">  <span class="co"># Get a list of parameter values and parse as a list</span></span>
 <span class="r-in">  <span class="va">response</span> <span class="op">&lt;-</span> <span class="fu"><a href="nassqs_GET.html">nassqs_GET</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>param <span class="op">=</span> <span class="st">"statisticcat_desc"</span><span class="op">)</span>,</span>
 <span class="r-in">                    api_path <span class="op">=</span> <span class="st">"get_param_values"</span><span class="op">)</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   |                                                                              |                                                                      |   0%  |                                                                              |======================================================================| 100%</span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error:</span> HTTP Failure: 401</span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> unauthorized</span>
 <span class="r-in">  <span class="va">statisticcat_desc_values</span> <span class="op">&lt;-</span> <span class="fu">nassqs_parse</span><span class="op">(</span><span class="va">response</span>, as <span class="op">=</span> <span class="st">"list"</span><span class="op">)</span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in nassqs_parse(response, as = "list"):</span> object 'response' not found</span>
 <span class="r-in">  <span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">statisticcat_desc_values</span><span class="op">)</span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in head(statisticcat_desc_values):</span> object 'statisticcat_desc_values' not found</span>
-<span class="r-in"><span class="co"># }</span></span>
+<span class="r-in"><span class="op">}</span></span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
