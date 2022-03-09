@@ -33,6 +33,7 @@ doc:
 
 check:
 	R -e 'devtools::check()'
+	R -e 'usethis::use_revdep()'
 
 build:
 	R -e 'devtools::build()'

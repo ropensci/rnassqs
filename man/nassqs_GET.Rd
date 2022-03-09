@@ -8,7 +8,7 @@ nassqs_GET(
   ...,
   api_path = c("api_GET", "get_param_values", "get_counts"),
   progress_bar = TRUE,
-  format = c("json", "xml", "csv")
+  format = c("csv", "json", "xml")
 )
 }
 \arguments{

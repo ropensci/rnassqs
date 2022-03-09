@@ -283,6 +283,7 @@ nassqs_check <- function(response) {
 #' @importFrom utils read.csv
 #'
 #' @param req the GET response from [nassqs_GET()]
+#' @param as_numeric whether to convert values to numeric format.
 #' @param as whether to return a data.frame, list, or text string
 #' @param ... additional parameters passed to [jsonlite::fromJSON()] or
 #'   [utils::read.csv()]

@@ -3,7 +3,7 @@ Type: Package
 Title: Access data from the NASS 'Quick Stats' API
 Version: 0.6
 Authors@R: c(
-  person('Nicholas', 'Potter', email='potter.nicholas@gmail.com', role = c('aut', 'cre', 'mtn')),
+  person('Nicholas', 'Potter', email='potter.nicholas@gmail.com', role = c('aut', 'cre')),
   person('Robert', 'Dinterman', email='', role = c('ctb')),
   person('Jonathan', 'Adams', email='', role = c('ctb')),
   person('Joseph', 'Stachelek', email='', role = c('ctb')),
@@ -28,12 +28,11 @@ Imports:
   stats,
   utils
 Suggests: 
-  assertthat,
   httptest,
   knitr,
   rmarkdown,
   testthat
-RoxygenNote: 7.1.1
+RoxygenNote: 7.1.2
 Roxygen: list(markdown = TRUE)
 Encoding: UTF-8
 VignetteBuilder: knitr

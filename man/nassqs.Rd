@@ -8,8 +8,8 @@ nassqs(
   ...,
   as_numeric = TRUE,
   progress_bar = TRUE,
-  format = c("json", "xml", "csv"),
-  as = c("data.frame", "text", "list")
+  format = "csv",
+  as = "data.frame"
 )
 }
 \arguments{

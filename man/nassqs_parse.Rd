@@ -9,6 +9,8 @@ nassqs_parse(req, as_numeric = TRUE, as = c("data.frame", "list", "text"), ...)
 \arguments{
 \item{req}{the GET response from \code{\link[=nassqs_GET]{nassqs_GET()}}}
 
+\item{as_numeric}{whether to convert values to numeric format.}
+
 \item{as}{whether to return a data.frame, list, or text string}
 
 \item{...}{additional parameters passed to \code{\link[jsonlite:fromJSON]{jsonlite::fromJSON()}} or

@@ -6,6 +6,10 @@ output:
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
+<!-- badges: start -->
+[![R-CMD-check](https://github.com/ropensci/rnassqs/workflows/R-CMD-check/badge.svg)](https://github.com/ropensci/rnassqs/actions)
+<!-- badges: end -->
+
 
 <table class="table">
 <thead>

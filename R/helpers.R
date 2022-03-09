@@ -2,9 +2,10 @@
 #' 
 #' This function takes an ellipsis list of the form `...` and returns an 
 #' expanded list
-#' @keywords internal
+#'
 #' @importFrom stats setNames
 #' @importFrom utils stack
+#' @keywords internal
 #' @noRd
 #' 
 #' @param ... either a list or a series of strings to be expanded
@@ -21,6 +22,7 @@ expand_list <- function(...){
 #' Check that a parameter is a valid API parameter.
 #'
 #' Takes a string and checks against the list of valid parameters.
+#'
 #' @keywords internal
 #' @noRd
 #'
