@@ -11,12 +11,12 @@ if(!(Sys.getenv("NASSQS_TOKEN") %in% c("", "API_KEY"))) {
 
 # Parameters
 params <- list(
-  commodity_desc = "CORN",
-  year = "2012",
   agg_level_desc = "STATE",
-  statisticcat_desc = "AREA HARVESTED",
+  commodity_desc = "CORN",
   domaincat_desc = "NOT SPECIFIED",
-  state_alpha = "VA"
+  state_alpha = "VA",
+  statisticcat_desc = "AREA HARVESTED",
+  year = "2012"
 )
 
 ### Test API URLs with mock APIs ----
@@ -25,7 +25,7 @@ params <- list(
 nassqs_auth(key = "API_KEY")
 
 with_mock_api({
-  expected_url <- "https://quickstats.nass.usda.gov/api/api_GET?key=API_KEY&commodity_desc=CORN&year=2012&agg_level_desc=STATE&statisticcat_desc=AREA%20HARVESTED&domaincat_desc=NOT%20SPECIFIED&state_alpha=VA&format=CSV"
+  expected_url <- "https://quickstats.nass.usda.gov/api/api_GET?key=API_KEY&agg_level_desc=STATE&commodity_desc=CORN&domaincat_desc=NOT%20SPECIFIED&state_alpha=VA&statisticcat_desc=AREA%20HARVESTED&year=2012&format=CSV"
 
   test_that("nassqs forms a correct URL when using specific parameters", {
     expect_GET(
