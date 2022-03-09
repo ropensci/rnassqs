@@ -1,3 +1,6 @@
+#' @include helpers.R
+NULL
+
 #' Get data and return a data frame
 #'
 #' The primary function in the `rnassqs` package, `nassqs` makes a HTTP GET
@@ -8,6 +11,7 @@
 #' number of rows depending on the query. Unfortunately there is not a way to
 #' restrict the number of columns.
 #'
+#' @details
 #' `nassqs()` accepts all parameters that are accepted by the USDA-NASS Quick 
 #' Stats. These parameters are listed in [nassqs_params()], and are used to form
 #' the data query.
@@ -92,6 +96,7 @@
 #' - `zip_5`: 5-digit zip code.
 #'   
 #' @export
+#' @include helpers.R
 #'
 #' @param ... either a named list of parameters or a series of parameters to
 #'   form the query. See `details` for information on available parameters.
@@ -104,7 +109,7 @@
 #'   [nassqs_parse()].
 #' @return a data frame, list, or text string of requested data.
 #' @seealso [nassqs_GET()], [nassqs_parse()], [nassqs_yields()], [nassqs_acres()]
-#' @examples \donttest{
+#' @examples \dontrun{
 #'   # Get corn yields in Virginia in 2012
 #'   params <- list(commodity_desc = "CORN",
 #'                  year = 2012,
@@ -118,15 +123,14 @@ nassqs <- function(...,
                    as_numeric = TRUE,
                    progress_bar = TRUE,
                    format = "csv", 
-                   as = "data.frame"
-) {
+                   as = "data.frame") {
   
   # Gather all of the parameters and expand to a list
   calls <- match.call(expand.dots = TRUE)
-  calls$as <- NULL
   calls$as_numeric <- NULL
   calls$progress_bar <- NULL
   calls$format <- NULL
+  calls$as <- NULL
   calls[[1]] <- as.name("expand_list")
   params <- eval.parent(calls)
 
@@ -160,7 +164,7 @@ nassqs <- function(...,
 #' @param progress_bar whether to display the project bar or not.
 #' @param format The format to return the query in. Only useful if as = "text".
 #' @return a [httr::GET()] response object
-#' @examples \donttest{
+#' @examples \dontrun{
 #'   # Yields for corn in 2012 in Washington
 #'   params <- list(commodity_desc = "CORN",
 #'                  year = 2012,
@@ -288,7 +292,7 @@ nassqs_check <- function(response) {
 #' @param ... additional parameters passed to [jsonlite::fromJSON()] or
 #'   [utils::read.csv()]
 #' @return a data frame, list, or text string of the content from the response.
-#' @examples \donttest{
+#' @examples \dontrun{
 #'   # Set parameters and make the request
 #'   params <- list(commodity_desc = "CORN",
 #'                  year = 2012,

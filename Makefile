@@ -33,6 +33,11 @@ doc:
 
 check:
 	R -e 'devtools::check()'
+
+check_all:
+	R -e 'devtools::check()'
+	R -e 'devtools::check_win_release()'
+	R -e 'rhub::check()'
 	R -e 'usethis::use_revdep()'
 
 build:

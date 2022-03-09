@@ -114,7 +114,7 @@ nassqs_params <- function(...) {
 #' @param param the name of a NASS quickstats parameter
 #' @param ... additional parameters for which to filter the valid responses.
 #' @return a list containing all valid values for that parameter
-#' @examples \donttest{
+#' @examples \dontrun{
 #'   # See all values available for the statisticcat_desc field. Values may not
 #'   # be available in the context of other parameters you set, for example
 #'   # a given state may not have any 'YIELD' in blueberries if they don't grow
@@ -125,7 +125,9 @@ nassqs_params <- function(...) {
 #'
 #'   # Valid values for a parameter given a specific set of additional
 #'   # parameters
-#'   nassqs_param_values("commodity_desc", state_fips_code = "53", county_code = "077", year = 2017, group_desc = "EXPENSES")
+#'   nassqs_param_values("commodity_desc", state_fips_code = "53", 
+#'                       county_code = "077", year = 2017, 
+#'                       group_desc = "EXPENSES")
 #' }
 nassqs_param_values <- function(param, ...) {
   # Check if parameters are valid

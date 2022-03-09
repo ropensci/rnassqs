@@ -1,11 +1,13 @@
 ## Test environments
-* local Arch Linux Install, kernel 4.20.3-arch1-1-ARCH, R 3.6.1
-* ubuntu 14.04.5 LTS (on travis-ci), R 3.5.3
+* local Arch Linux Install, kernel 5.16.10-arch1-1, R 4.1.2
 * win-builder (devel and release)
 * r-hub builder
 
 ## R CMD check results
-There were no ERRORs, no WARNINGs, and no NOTEs
+There were no ERRORs, no WARNINGs, and no NOTEs.
+
+I use \dontrun{} for examples in this package that make calls to an API that requires an API key, making running on CRAN impossible.
+
 
 ## Downstream dependencies
 There are no downstream dependencies

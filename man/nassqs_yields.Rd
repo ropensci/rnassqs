@@ -18,7 +18,7 @@ Returns yields for other specified parameters. This function is intended to
 simplify common requests.
 }
 \examples{
-\donttest{
+\dontrun{
   # Get yields for wheat in 2012, all geographies
   params <- list(
     commodity_desc = "WHEAT", 

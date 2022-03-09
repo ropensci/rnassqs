@@ -128,7 +128,7 @@ with year >= 2020. See \code{details} for more on operations.
 }
 }
 \examples{
-\donttest{
+\dontrun{
   # Get corn yields in Virginia in 2012
   params <- list(commodity_desc = "CORN",
                  year = 2012,

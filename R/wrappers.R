@@ -9,7 +9,7 @@
 #'   form the query
 #' @return integer that is the number of records that are returned from the 
 #'   API in response to the query
-#' @examples \donttest{
+#' @examples \dontrun{
 #'   # Check the number of records returned for corn in 1995, Washington state
 #'   params <- list(
 #'     commodity_desc = "CORN",
@@ -42,7 +42,7 @@ nassqs_record_count <- function(...) {
 #' @param ... either a named list of parameters or a series of parameters to 
 #'   form the query
 #' @return a data.frame of yields data
-#' @examples \donttest{
+#' @examples \dontrun{
 #'   # Get yields for wheat in 2012, all geographies
 #'   params <- list(
 #'     commodity_desc = "WHEAT", 
@@ -67,7 +67,7 @@ nassqs_yields <- function(...) {
 #'   form the query
 #' @param area the type of area to return. Default is all types.
 #' @return a data.frame of acres data
-#' @examples \donttest{
+#' @examples \dontrun{
 #'   # Get Area bearing for Apples in Washington, 2012.
 #'   params <- list(
 #'     commodity_desc = "APPLES",

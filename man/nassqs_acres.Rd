@@ -24,7 +24,7 @@ a data.frame of acres data
 Get NASS Area given a set of parameters.
 }
 \examples{
-\donttest{
+\dontrun{
   # Get Area bearing for Apples in Washington, 2012.
   params <- list(
     commodity_desc = "APPLES",

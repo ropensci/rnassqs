@@ -36,7 +36,7 @@ if you need access to the request object directly, \code{nassqs_GET()} provides
 that.
 }
 \examples{
-\donttest{
+\dontrun{
   # Yields for corn in 2012 in Washington
   params <- list(commodity_desc = "CORN",
                  year = 2012,

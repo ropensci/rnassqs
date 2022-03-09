@@ -27,7 +27,7 @@ Converting the value to a numerical results in NA, which loses that
 information.
 }
 \examples{
-\donttest{
+\dontrun{
   # Set parameters and make the request
   params <- list(commodity_desc = "CORN",
                  year = 2012,

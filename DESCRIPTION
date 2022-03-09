@@ -36,3 +36,10 @@ RoxygenNote: 7.1.2
 Roxygen: list(markdown = TRUE)
 Encoding: UTF-8
 VignetteBuilder: knitr
+Collate: 
+    'auth.R'
+    'helpers.R'
+    'nassqs.R'
+    'params.R'
+    'request.R'
+    'wrappers.R'

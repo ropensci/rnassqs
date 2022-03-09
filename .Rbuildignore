@@ -14,6 +14,7 @@ data-raw
 paper.bib
 paper.md
 paper.pdf
+^pkgdown$
 rnassqs.Rcheck
 rnassqs_.*.tar.gz
 CONDUCT.md
@@ -21,3 +22,4 @@ CONTRIBUTING.md
 ^profile.xcf$
 ^profile.png$
 ^\.github$
+.zenodo.json
