@@ -117,15 +117,16 @@
 nassqs <- function(...,
                    as_numeric = TRUE,
                    progress_bar = TRUE,
-                   format = c("json", "xml", "csv"),
-                   as = c("data.frame", "text", "list")
+                   format = "csv", 
+                   as = "data.frame"
 ) {
-  
-  as <- match.arg(as)
   
   # Gather all of the parameters and expand to a list
   calls <- match.call(expand.dots = TRUE)
   calls$as <- NULL
+  calls$as_numeric <- NULL
+  calls$progress_bar <- NULL
+  calls$format <- NULL
   calls[[1]] <- as.name("expand_list")
   params <- eval.parent(calls)
 
@@ -191,8 +192,7 @@ nassqs_GET <- function(...,
                                     "get_param_values",
                                     "get_counts"),
                        progress_bar = TRUE,
-                       format = c("json", "xml", "csv")) {
-  format <- match.arg(format)
+                       format = c("csv", "json", "xml")) {
   
   # Check that the api key is set
   key <- Sys.getenv("NASSQS_TOKEN")
@@ -203,7 +203,8 @@ nassqs_GET <- function(...,
 
   # match args
   api_path <- match.arg(api_path)
-
+  format <- match.arg(format)
+  
   # get the full param list and make sure all arguments are in capital letters
   params <- expand_list(...)
 
@@ -340,7 +341,8 @@ nassqs_parse <- function(req,
          "'CSV' instead.")
   } else if(type %in% c("text/csv", "text/csv; charset=UTF-8")) {
     # format == CSV
-    ret <- read.csv(text = resp, sep = ",", header = TRUE, ...)
+    ret <- read.csv(text = resp, sep = ",", header = TRUE, 
+                    colClasses = "character", ...)
     names(ret)[which(names(ret) == "CV....")] <- "CV (%)"
   } else {
     stop("Response is not in the expected json, xml, or csv format. ",
@@ -348,8 +350,7 @@ nassqs_parse <- function(req,
          "modify your parameters to include `format = 'json'` to ",
          "make the request in json.")
   }
-  message(class(ret))
-  
+
   # Convert "Value" to numeric
   if(as_numeric & as != "text") { ret$Value <- char_to_num(ret$Value) }
   

@@ -1,25 +1,34 @@
 context("test parameter functions")
 
+# First resolve API KEY
+if(!(Sys.getenv("NASSQS_TOKEN") %in% c("", "API_KEY"))) {
+  api_key <- Sys.getenv("NASSQS_TOKEN")
+} else if(file.exists("api-key.txt")) { 
+  api_key <- readLines("api-key.txt") 
+} else {
+  api_key <- ""
+}
 
 ### API tests with mock API calls ----
 
 # First set the API KEY to a static value
-key <- Sys.getenv("NASSQS_TOKEN")
 nassqs_auth(key = "API_KEY")
 
 # Tests
 with_mock_api({
   test_that("nassqs_param_values forms a correct URL", {
     expect_GET(nassqs_param_values("source_desc"),
-               "https://quickstats.nass.usda.gov/api/get_param_values?key=API_KEY&param=source_desc&format=JSON")
+               "https://quickstats.nass.usda.gov/api/get_param_values?key=API_KEY&param=source_desc&format=CSV")
   })
 })
 
-# Set the key after finishing mock tests
-nassqs_auth(key = key)
 
 
 ### Tests with real API calls ----
+
+# Set the key after finishing mock tests
+nassqs_auth(key = api_key)
+
 with_authentication({
   test_that("nassqs_param_values returns parameter values", {
     v = nassqs_param_values("source_desc")
@@ -36,12 +45,20 @@ with_authentication({
     expect_equal(v, c("CENSUS"))
 
     expect_equal(
-      nassqs_param_values(param = "county_code",
-                          year = 2012, state_alpha = "WA", agg_level_desc = "COUNTY",
-                          group_desc = "EXPENSES", sector_desc = "DEMOGRAPHICS")[1:2],
+      nassqs_param_values(param = "county_code", year = 2012, 
+                          state_alpha = "WA", agg_level_desc = "COUNTY",
+                          group_desc = "EXPENSES", 
+                          sector_desc = "DEMOGRAPHICS")[1:2],
       c("001", "005"))
    }) 
 })
+
+
+d <- nassqs(year = 2012, 
+            state_alpha = "WA", agg_level_desc = "COUNTY",
+            group_desc = "EXPENSES", 
+            sector_desc = "DEMOGRAPHICS")
+
 
 ### Tests not involving the API ----
 test_that("nassqs_params() returns a list of parameters", {

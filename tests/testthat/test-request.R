@@ -1,5 +1,14 @@
 context("test HTTP GET related functions")
 
+# First resolve API KEY
+if(!(Sys.getenv("NASSQS_TOKEN") %in% c("", "API_KEY"))) {
+  api_key <- Sys.getenv("NASSQS_TOKEN")
+} else if(file.exists("api-key.txt")) { 
+  api_key <- readLines("api-key.txt") 
+} else {
+  api_key <- ""
+}
+
 # Parameters
 params <- list(
   commodity_desc = "CORN",
@@ -13,11 +22,10 @@ params <- list(
 ### Test API URLs with mock APIs ----
 
 # First set the API KEY to a static value
-key <- Sys.getenv("NASSQS_TOKEN")
 nassqs_auth(key = "API_KEY")
 
 with_mock_api({
-  expected_url <- "https://quickstats.nass.usda.gov/api/api_GET?key=API_KEY&commodity_desc=CORN&year=2012&agg_level_desc=STATE&statisticcat_desc=AREA%20HARVESTED&domaincat_desc=NOT%20SPECIFIED&state_alpha=VA&format=JSON"
+  expected_url <- "https://quickstats.nass.usda.gov/api/api_GET?key=API_KEY&commodity_desc=CORN&year=2012&agg_level_desc=STATE&statisticcat_desc=AREA%20HARVESTED&domaincat_desc=NOT%20SPECIFIED&state_alpha=VA&format=CSV"
 
   test_that("nassqs forms a correct URL when using specific parameters", {
     expect_GET(
@@ -42,30 +50,14 @@ with_mock_api({
   test_that("nassqs_GET() works with lower case values", {
     expect_GET(nassqs(lower_params), url = expected_url)
   })
-
-  test_that("Too-large request error is handled", {
-    p2 <- params
-    p2$year <- 2013
-    expect_error(
-      nassqs(p2),
-      "Request was too large. NASS requires that an API call returns a max",
-    )
-  })
-
-  test_that("Other server error is handled", {
-    p3 <- params
-    p3$year <- 2102
-    expect_error(
-      nassqs(p3),
-      "HTTP Failure: 404"
-    )
-  })
 })
-
-nassqs_auth(key = key)
 
 
 ### API tests that make real API calls if local and have an API key ----
+
+# Set the key after finishing mock tests
+nassqs_auth(key = api_key)
+
 with_authentication({
   test_that("nassqs_GET successfully makes a request to the Quick Stats API", {
     req <- nassqs_GET(params)
@@ -98,6 +90,21 @@ with_authentication({
     d <- nassqs_parse(req)
     expect_is(d, "data.frame")
     expect_equal(ncol(d), 39)
+  })
+  
+  test_that("Too-large request error is handled", {
+    expect_error(
+      nassqs(year__GE = 2000),
+      "Request was too large. NASS requires that an API call returns a maximum")
+  })
+
+  test_that("Other server error is handled", {
+    p3 <- params
+    p3$year <- 2102
+    expect_error(
+      nassqs(p3),
+      "HTTP Failure: 400"
+    )
   })
 })
 

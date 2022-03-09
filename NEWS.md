@@ -1,5 +1,6 @@
 # rnassqs 0.6.0
 
+- The default download is CSV format instead of JSON to reduce download sizes.
 - Additional tests have been added.
 - Parameters have been clarified so that only the parameters usable in a query are returned by `nassqs_params()` and `format` is a specific argument to `nassqs()`. Although `CV` and `Value` are returned columns from Quick Stats, they are not queriable parameters.
 - By default, `nassqs()` now converts the character `Value` to numeric. Raw character `Value` can be obtained by `as_numeric = FALSE`.

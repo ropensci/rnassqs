@@ -133,9 +133,11 @@ nassqs_param_values <- function(param, ...) {
 
   if (length(list(...)) == 0) {
     params <- list(param = param) 
-    res <- nassqs_parse(nassqs_GET(params, api_path = "get_param_values"), as = "list")[[1]]
+    res <- nassqs_parse(nassqs_GET(params, api_path = "get_param_values"), 
+                        as = "list", 
+                        as_numeric = FALSE)[[1]]
   } else {
-    d <- nassqs(...)
+    d <- nassqs(..., as_numeric = FALSE)
     res <- sort(unique(d[[param]]))
   }
   res

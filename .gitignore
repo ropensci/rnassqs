@@ -8,6 +8,7 @@ doc
 CRAN-RELEASE
 .secret
 inst/doc
+tests/testthat/api-key.txt
 *.pdf
 rnassqs.Rcheck
 rnassqs_*.tar.gz
