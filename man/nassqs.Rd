@@ -120,8 +120,9 @@ and "VEGETABLES").}
 narrow down choices. ("ANIMALS & PRODUCTS", "CROPS", "DEMOGRAPHICS",
 "ECONOMICS", or "ENVIRONMENTAL").}
 
-\item{short_desc}{A concatenation of six columns: commodity_desc, class_desc,
-prodn_practice_desc, util_practice_desc, statisticcat_desc, and unit_desc.}
+\item{short_desc}{A concatenation of six columns: \code{commodity_desc},
+\code{class_desc}, \code{prodn_practice_desc}, \code{util_practice_desc},
+\code{statisticcat_desc}, and \code{unit_desc}.}
 
 \item{source_desc}{Source of data ("CENSUS" or "SURVEY"). Census program
 includes the Census of Ag as well as follow up projects. Survey program
@@ -160,7 +161,7 @@ with year >= 2020. See \code{details} for more on operations.}
 replace missing notation such as "(D)" or "(Z)" with NA, but removes the
 need to convert to numeric format after querying.}
 
-\item{progress_bar}{Wether or not to display the progress bar.}
+\item{progress_bar}{Whether or not to display the progress bar.}
 
 \item{format}{The format to return the query in. Only useful if as = "text".}
 
@@ -190,7 +191,7 @@ Operations can take the following form:
 \itemize{
 \item __LE: less than or equal (<=)
 \item __LT: less than (<)
-\item __GT: greather than (>)
+\item __GT: greater than (>)
 \item __GE: = >=
 \item __LIKE = like
 \item __NOT_LIKE = not like

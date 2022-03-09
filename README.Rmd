@@ -103,7 +103,7 @@ __As required by the NASS Terms of Use: This product uses the NASS API but is no
 
 ## rnassqs (R NASS Quick Stats)
 
-`rnassqs` allows users to access the USDA's National Agricultural Statistics Service (NASS) 'Quick Stats' data through their API. It is simple and easy to use, and provides some functions to help navigate the bewildering complexity of some Quick Stats data.
+`rnassqs` allows users to access the USDA's National Agricultural Statistics Service (NASS) Quick Stats data through their API. It is simple and easy to use, and provides some functions to help navigate the bewildering complexity of some Quick Stats data.
 
 For docs and code examples, visit the package web page here: [https://docs.ropensci.org/rnassqs/](https://docs.ropensci.org/rnassqs/).
 
@@ -229,7 +229,7 @@ The FTP link also contains builds for: NASS census (every 5 years ending with 2 
 
 
 
-### Acknowledgements
+### Acknowledgments
 
 Thank you to rOpensci reviewers Adam Sparks and Neal Richardson and editor Lincoln Mullen, for their fantastic feedback and assistance. User feedback and use case contributions have been a huge help to make `rnassqs` more accessible and user-friendly. More use cases or feature requests are always welcome!
 

@@ -1,12 +1,5 @@
 context("tests wrappers and ease of use functions.")
 
-### Setup
-params <- list(
-  commodity_desc = "CORN",
-  year = "2012",
-  statisticcat_desc = "YIELD",
-  agg_level_desc = "STATE",
-  state_alpha = c("VA", "WA"))
 
 ### Tests with no authentication required
 test_that("nassqs_record_count performs parameter validation", {
@@ -18,29 +11,29 @@ test_that("nassqs_record_count performs parameter validation", {
 
 with_mock_api({
   test_that("nassqs_record_count forms a correct URL", {
-    expect_GET(nassqs_record_count(params),
-                 "https://quickstats.nass.usda.gov/api/get_counts?key=API_KEY&commodity_desc=CORN&year=2012&statisticcat_desc=YIELD&agg_level_desc=STATE&state_alpha=VA&state_alpha=WA&format=CSV")
+    expected_url <- "https://quickstats.nass.usda.gov/api/get_counts?key=API_KEY&agg_level_desc=STATE&commodity_desc=CORN&domaincat_desc=NOT%20SPECIFIED&state_alpha=VA&statisticcat_desc=AREA%20HARVESTED&year=2012&format=CSV"
+    expect_GET(nassqs_record_count(params), expected_url)
   })
 
   test_that("nassqs_yield returns a correct URL", {
-    expect_GET(nassqs_yields(params),
-               "https://quickstats.nass.usda.gov/api/api_GET?key=API_KEY&commodity_desc=CORN&year=2012&statisticcat_desc=YIELD&agg_level_desc=STATE&state_alpha=VA&state_alpha=WA&format=CSV")
+    expected_url <- "https://quickstats.nass.usda.gov/api/api_GET?key=API_KEY&agg_level_desc=STATE&commodity_desc=CORN&domaincat_desc=NOT%20SPECIFIED&state_alpha=VA&statisticcat_desc=YIELD&year=2012&format=CSV"
+    expect_GET(nassqs_yields(params), expected_url)
   })
 
   test_that("nassqs_yield returns a correct URL even if statisticcat_desc parameter is set to a different value", {
+    expected_url <- "https://quickstats.nass.usda.gov/api/api_GET?key=API_KEY&agg_level_desc=STATE&commodity_desc=CORN&domaincat_desc=NOT%20SPECIFIED&state_alpha=VA&statisticcat_desc=YIELD&year=2012&format=CSV"
     params[['statisticcat_desc']] <- "AREA HARVESTED"
-    expect_GET(nassqs_yields(params),
-               "https://quickstats.nass.usda.gov/api/api_GET?key=API_KEY&commodity_desc=CORN&year=2012&statisticcat_desc=YIELD&agg_level_desc=STATE&state_alpha=VA&state_alpha=WA&format=CSV")
+    expect_GET(nassqs_yields(params), expected_url)
   })
 
   test_that("nassqs_area returns a correct URL", {
-    expect_GET(nassqs_acres(params, area = "AREA BEARING"),
-               "https://quickstats.nass.usda.gov/api/api_GET?key=API_KEY&commodity_desc=CORN&year=2012&statisticcat_desc=AREA%20BEARING&agg_level_desc=STATE&state_alpha=VA&state_alpha=WA&unit_desc=ACRES&format=CSV")
+    expected_url <- "https://quickstats.nass.usda.gov/api/api_GET?key=API_KEY&agg_level_desc=STATE&commodity_desc=CORN&domaincat_desc=NOT%20SPECIFIED&state_alpha=VA&statisticcat_desc=AREA%20BEARING&year=2012&unit_desc=ACRES&format=CSV"
+    expect_GET(nassqs_acres(params, area = "AREA BEARING"), expected_url)
   })
 
   test_that("nassqs_area returns a correct URL when multiple areas are specified", {
-    expect_GET(nassqs_acres(params, area = c("AREA HARVESTED", "AREA PLANTED")),
-                 "https://quickstats.nass.usda.gov/api/api_GET?key=API_KEY&commodity_desc=CORN&year=2012&statisticcat_desc=AREA%20HARVESTED&statisticcat_desc=AREA%20PLANTED&agg_level_desc=STATE&state_alpha=VA&state_alpha=WA&unit_desc=ACRES&format=CSV")
+    expected_url <- "https://quickstats.nass.usda.gov/api/api_GET?key=API_KEY&agg_level_desc=STATE&commodity_desc=CORN&domaincat_desc=NOT%20SPECIFIED&state_alpha=VA&statisticcat_desc=AREA%20HARVESTED&statisticcat_desc=AREA%20PLANTED&year=2012&unit_desc=ACRES&format=CSV"
+    expect_GET(nassqs_acres(params, area = c("AREA HARVESTED", "AREA PLANTED")), expected_url)
   })
 })
 

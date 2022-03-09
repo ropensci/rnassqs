@@ -17,10 +17,10 @@ It handles the API key checking and storage, authorization, and fetching of
 data.
 }
 \references{
-\url{http://quickstats.nass.usda.gov}
+\url{https://quickstats.nass.usda.gov}
 }
 \seealso{
-\url{http://quickstats.nass.usda.gov/api}
+\url{https://quickstats.nass.usda.gov/api}
 }
 \author{
 Nicholas Potter

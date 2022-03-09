@@ -38,10 +38,8 @@ check:
 	R -e 'devtools::check()'
 
 check_all:
-	R -e 'devtools::check()'
-	R -e 'devtools::check_win_release()'
-	R -e 'devtools::check_rhub()'
-	R -e 'usethis::use_revdep()'
+	R -e 'devtools::spell_check(); devtools::check(); devtools::check_rhub(); usethis::use_revdep()'
+#	R -e 'devtools::check_win_release()'
 
 build:
 	R -e 'devtools::build()'

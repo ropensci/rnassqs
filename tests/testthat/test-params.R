@@ -2,9 +2,6 @@ context("test parameter functions")
 
 ### API tests with mock API calls ----
 
-# First set the API KEY to a static value
-nassqs_auth(key = "API_KEY")
-
 # Tests
 with_mock_api({
   test_that("nassqs_param_values forms a correct URL", {
@@ -16,9 +13,6 @@ with_mock_api({
 
 
 ### Tests with real API calls ----
-
-# Set the key after finishing mock tests
-nassqs_auth(key = api_key)
 
 with_authentication({
   test_that("nassqs_param_values returns parameter values", {

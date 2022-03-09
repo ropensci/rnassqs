@@ -1,10 +1,6 @@
 context("test HTTP GET related functions")
 
 ### Test API URLs with mock APIs ----
-
-# First set the API KEY to a static value
-nassqs_auth(key = "API_KEY")
-
 with_mock_api({
   expected_url <- "https://quickstats.nass.usda.gov/api/api_GET?key=API_KEY&agg_level_desc=STATE&commodity_desc=CORN&domaincat_desc=NOT%20SPECIFIED&state_alpha=VA&statisticcat_desc=AREA%20HARVESTED&year=2012&format=CSV"
 
@@ -35,10 +31,6 @@ with_mock_api({
 
 
 ### API tests that make real API calls if local and have an API key ----
-
-# Set the key after finishing mock tests
-nassqs_auth(key = api_key)
-
 with_authentication({
   test_that("nassqs_GET successfully makes a request to the Quick Stats API", {
     req <- nassqs_GET(params)

@@ -6,8 +6,9 @@
 ## R CMD check results
 There were no ERRORs, no WARNINGs, and no NOTEs.
 
-I use \dontrun{} for examples in this package that make calls to an API that requires an API key, making running on CRAN impossible.
+I am the same maintainer, but my email has changed, so checks on CRAN may show a note on a changed maintainer.
 
+I use \dontrun{} for examples in this package that make calls to an API that requires an API key, making running as part of tests on CRAN impossible.
 
 ## Downstream dependencies
 There are no downstream dependencies

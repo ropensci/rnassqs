@@ -12,7 +12,7 @@
 #' @docType package
 #' @title rnassqs-package: Access the NASS 'Quick Stats' API
 #' @keywords package rnassqs-package
-#' @references \url{http://quickstats.nass.usda.gov}
-#' @seealso \url{http://quickstats.nass.usda.gov/api}
+#' @references \url{https://quickstats.nass.usda.gov}
+#' @seealso \url{https://quickstats.nass.usda.gov/api}
 NULL
 

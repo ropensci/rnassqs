@@ -1,12 +1,26 @@
 library(httptest)
+library(here)
 
-# First resolve API KEY
-if(!(Sys.getenv("NASSQS_TOKEN") %in% c("", "API_KEY"))) {
-  api_key <- Sys.getenv("NASSQS_TOKEN")
-} else if(file.exists("api-key.txt")) { 
-  api_key <- readLines("api-key.txt") 
-} else {
-  api_key <- ""
+# First evaluate the API KEY if available
+api_key <- Sys.getenv("NASSQS_TOKEN") 
+api_file <- here::here("tests/testthat/api-key.txt")
+if(nchar(api_key) != 36 & file.exists(api_file)) api_key <- readLines(api_file)
+
+
+with_mock_api <- function(expr) {
+  # Set a fake token just in this context
+  old_token <- Sys.getenv("NASSQS_TOKEN")
+  Sys.setenv(NASSQS_TOKEN = "API_KEY")
+  on.exit(Sys.setenv(NASSQS_TOKEN = old_token))
+  
+  httptest::with_mock_api(expr)
+}
+
+with_authentication <- function(expr) {
+  if (nchar(Sys.getenv("NASSQS_TOKEN")) == 36) {
+    # Only evaluate if a token is set
+    expr
+  }
 }
 
 

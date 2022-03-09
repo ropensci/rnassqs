@@ -21,7 +21,7 @@ NULL
 #' Operations can take the following form:
 #' - __LE: less than or equal (<=)
 #' - __LT: less than (<)
-#' - __GT: greather than (>)
+#' - __GT: greater than (>)
 #' - __GE: = >=
 #' - __LIKE = like
 #' - __NOT_LIKE = not like
@@ -76,8 +76,9 @@ NULL
 #' @param sector_desc Sector, the five high level, broad categories useful to
 #'   narrow down choices. ("ANIMALS & PRODUCTS", "CROPS", "DEMOGRAPHICS",
 #'   "ECONOMICS", or "ENVIRONMENTAL").
-#' @param short_desc A concatenation of six columns: commodity_desc, class_desc, 
-#'   prodn_practice_desc, util_practice_desc, statisticcat_desc, and unit_desc.
+#' @param short_desc A concatenation of six columns: `commodity_desc`, 
+#'   `class_desc`, `prodn_practice_desc`, `util_practice_desc`, 
+#'   `statisticcat_desc`, and `unit_desc`.
 #' @param source_desc Source of data ("CENSUS" or "SURVEY"). Census program 
 #'   includes the Census of Ag as well as follow up projects. Survey program 
 #'   includes national, state, and county surveys.
@@ -101,7 +102,7 @@ NULL
 #' @param as_numeric Whether to convert data to numeric format. Conversion will
 #'   replace missing notation such as "(D)" or "(Z)" with NA, but removes the 
 #'   need to convert to numeric format after querying.
-#' @param progress_bar Wether or not to display the progress bar.
+#' @param progress_bar Whether or not to display the progress bar.
 #' @param format The format to return the query in. Only useful if as = "text".
 #' @param as whether to return a data.frame, list, or text string. See 
 #'   [nassqs_parse()].

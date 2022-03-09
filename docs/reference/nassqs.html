@@ -191,8 +191,9 @@ and "VEGETABLES").</p></dd>
 narrow down choices. ("ANIMALS &amp; PRODUCTS", "CROPS", "DEMOGRAPHICS",
 "ECONOMICS", or "ENVIRONMENTAL").</p></dd>
 <dt>short_desc</dt>
-<dd><p>A concatenation of six columns: commodity_desc, class_desc,
-prodn_practice_desc, util_practice_desc, statisticcat_desc, and unit_desc.</p></dd>
+<dd><p>A concatenation of six columns: <code>commodity_desc</code>,
+<code>class_desc</code>, <code>prodn_practice_desc</code>, <code>util_practice_desc</code>,
+<code>statisticcat_desc</code>, and <code>unit_desc</code>.</p></dd>
 <dt>source_desc</dt>
 <dd><p>Source of data ("CENSUS" or "SURVEY"). Census program
 includes the Census of Ag as well as follow up projects. Survey program
@@ -231,7 +232,7 @@ with year &gt;= 2020. See <code>details</code> for more on operations.</p></dd>
 replace missing notation such as "(D)" or "(Z)" with NA, but removes the
 need to convert to numeric format after querying.</p></dd>
 <dt>progress_bar</dt>
-<dd><p>Wether or not to display the progress bar.</p></dd>
+<dd><p>Whether or not to display the progress bar.</p></dd>
 <dt>format</dt>
 <dd><p>The format to return the query in. Only useful if as = "text".</p></dd>
 <dt>as</dt>
@@ -251,7 +252,7 @@ the data query.</p>
 name. For example, "year__GE = 2020" will fetch data in 2020 and after.
 Operations can take the following form:</p><ul><li><p>__LE: less than or equal (&lt;=)</p></li>
 <li><p>__LT: less than (&lt;)</p></li>
-<li><p>__GT: greather than (&gt;)</p></li>
+<li><p>__GT: greater than (&gt;)</p></li>
 <li><p>__GE: = &gt;=</p></li>
 <li><p>__LIKE = like</p></li>
 <li><p>__NOT_LIKE = not like</p></li>

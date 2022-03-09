@@ -1,16 +1,16 @@
 Package: rnassqs
 Type: Package
-Title: Access data from the NASS 'Quick Stats' API
+Title: Access Data from the NASS 'Quick Stats' API
 Version: 0.6.0
 Authors@R: c(
-  person('Nicholas', 'Potter', email='potter.nicholas@gmail.com', role = c('aut', 'cre')),
+  person('Nicholas', 'Potter', email='econpotter@gmail.com', role = c('aut', 'cre')),
   person('Robert', 'Dinterman', email='', role = c('ctb')),
   person('Jonathan', 'Adams', email='', role = c('ctb')),
   person('Joseph', 'Stachelek', email='', role = c('ctb')),
   person('Julia', 'Piaskowski', email='', role = c('ctb')),
   person('Adam', 'Sparks', email='', role = c('rev')),
   person('Neal', 'Richardson', email='', role = c('ctb', 'rev'))) 
-Maintainer: Nicholas Potter <potter.nicholas@gmail.com>
+Maintainer: Nicholas Potter <econpotter@gmail.com>
 Description: Interface to access data via the United States Department of 
   Agriculture's National Agricultural Statistical Service (NASS) 'Quick Stats' 
   web API <https://quickstats.nass.usda.gov/api>. Convenience functions 
@@ -18,9 +18,8 @@ Description: Interface to access data via the United States Department of
   values. This product uses the NASS API but is not endorsed or certified by NASS.
 URL: https://docs.ropensci.org/rnassqs (website)
      https://github.com/ropensci/rnassqs
-BugReports: http://www.github.com/ropensci/rnassqs/issues
+BugReports: https://www.github.com/ropensci/rnassqs/issues
 License: MIT + file LICENSE
-LazyData: true
 Language: en-US
 Imports: 
   httr,
@@ -28,6 +27,7 @@ Imports:
   stats,
   utils
 Suggests: 
+  here,
   httptest,
   knitr,
   rmarkdown,
