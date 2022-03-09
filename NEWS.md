@@ -4,7 +4,7 @@
 - Additional tests have been added.
 - Parameters have been clarified so that only the parameters usable in a query are returned by `nassqs_params()` and `format` is a specific argument to `nassqs()`. Although `CV` and `Value` are returned columns from Quick Stats, they are not queriable parameters.
 - By default, `nassqs()` now converts the character `Value` to numeric. Raw character `Value` can be obtained by `as_numeric = FALSE`.
-- Documentation for query parameters has been improved. Thanks to Robert Dinterman for the initial contribution.
+- Documentation for query parameters has been improved and available query parameters are explicit in `nassqs()` now. Functionality is unchanged but parameter names are listed and available in help. Thanks to Robert Dinterman for the initial contribution.
 - An option to see valid parameter values given a query of other values in `nassqs_param_values()` has been added.
 - `nassqs_record_count()` now validates parameters. 
 

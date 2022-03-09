@@ -1,9 +1,6 @@
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 <!-- badges: start -->
-
-[![R-CMD-check](https://github.com/ropensci/rnassqs/workflows/R-CMD-check/badge.svg)](https://github.com/ropensci/rnassqs/actions)
 <!-- badges: end -->
-
 <table class="table">
 <thead>
 <tr class="header">
@@ -37,7 +34,7 @@ Development
 <a href="https://cran.r-project.org/package=rnassqs"><img src="http://www.r-pkg.org/badges/version-last-release/rnassqs" alt="CRAN"></a>
 </td>
 <td align="left">
-<a href="https://github.com/ropensci/rnassqs/commits/master"><img src="https://img.shields.io/badge/last%20change-2022--03--08-brightgreen.svg" alt="Last Change"></a>
+<a href="https://github.com/ropensci/rnassqs/commits/master"><img src="https://img.shields.io/badge/last%20change-2022--03--09-brightgreen.svg" alt="Last Change"></a>
 </td>
 </tr>
 <tr class="even">
@@ -48,7 +45,7 @@ Development
 <a href="https://zenodo.org/badge/latestdoi/37335585"><img src="https://zenodo.org/badge/37335585.svg" alt="Zenodo"></a>
 </td>
 <td align="left">
-<a href="https://travis-ci.org/ropensci/rnassqs"><img src="https://travis-ci.org/ropensci/rnassqs.svg?branch=master" alt="Build Status"></a>
+[![R-CMD-check](https://github.com/ropensci/rnassqs/workflows/R-CMD-check/badge.svg)](https://github.com/ropensci/rnassqs/actions)
 </td>
 </tr>
 <tr class="odd">
@@ -58,7 +55,7 @@ Development
 <a href="https://github.com/ropensci/onboarding/issues/298" alt="rOpensci reviewed!"><img src="https://badges.ropensci.org/298_status.svg"></a>
 </td>
 <td align="left">
-<a href="https://codecov.io/gh/ropensci/rnassqs"><img src="https://codecov.io/gh/ropensci/rnassqs/branch/master/graph/badge.svg" alt="Coverage Status"></a>
+<a href="https://travis-ci.org/ropensci/rnassqs"><img src="https://travis-ci.org/ropensci/rnassqs.svg?branch=master" alt="Build Status"></a>
 </td>
 </tr>
 <tr class="even">
@@ -68,7 +65,7 @@ Development
 <a href="https://orcid.org/0000-0002-3410-3732"><img src="https://img.shields.io/badge/ORCiD-0000--0002--3410--3732-green.svg" alt="ORCID"></a>
 </td>
 <td align="left">
-<a href="https://www.repostatus.org/#active"><img src="https://www.repostatus.org/badges/latest/active.svg" alt="Project Status: Active – The project has reached a stable, usable state and is being actively developed." /></a>
+<a href="https://codecov.io/gh/ropensci/rnassqs"><img src="https://codecov.io/gh/ropensci/rnassqs/branch/master/graph/badge.svg" alt="Coverage Status"></a>
 </td>
 </tr>
 <tr class="even">
@@ -78,6 +75,15 @@ Development
 <a style="border-width:0" href="https://doi.org/10.21105/joss.01880">
 <img src="https://joss.theoj.org/papers/10.21105/joss.01880/status.svg" alt="DOI:10.21105/joss.01880" >
 </a>
+</td>
+<td align="left">
+<a href="https://www.repostatus.org/#active"><img src="https://www.repostatus.org/badges/latest/active.svg" alt="Project Status: Active – The project has reached a stable, usable state and is being actively developed." /></a>
+</td>
+</tr>
+<tr class="odd">
+<td align="left">
+</td>
+<td align="left">
 </td>
 <td align="left">
 <a href="https://www.tidyverse.org/lifecycle/#maturing"><img src="https://img.shields.io/badge/lifecycle-maturing-blue.svg" alt="Project Status: Maturing." /></a>
@@ -94,7 +100,7 @@ but is not endorsed or certified by NASS.**
 ## rnassqs (R NASS Quick Stats)
 
 `rnassqs` allows users to access the USDA’s National Agricultural
-Statistics Service (NASS) ‘Quick Stats’ data through their API. It is
+Statistics Service (NASS) Quick Stats data through their API. It is
 simple and easy to use, and provides some functions to help navigate the
 bewildering complexity of some Quick Stats data.
 
@@ -268,7 +274,7 @@ with 2 and 7), or data for one of their specific sectors (CROPS,
 ECONOMICS, ANIMALS & PRODUCTS). At the time of this writing, specific
 files for the ENVIRONMENTAL and DEMOGRAPHICS sectors are not available.
 
-### Acknowledgements
+### Acknowledgments
 
 Thank you to rOpensci reviewers Adam Sparks and Neal Richardson and
 editor Lincoln Mullen, for their fantastic feedback and assistance. User
