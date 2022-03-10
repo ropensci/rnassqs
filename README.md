@@ -72,7 +72,7 @@ Development
 <td align="left">
 </td>
 <td align="left">
-<a style="border-width:0" href="https://doi.org/10.21105/joss.01880">
+<a style="border-width:0" href="https://joss.theoj.org/papers/10.21105/joss.01880">
 <img src="https://joss.theoj.org/papers/10.21105/joss.01880/status.svg" alt="DOI:10.21105/joss.01880" >
 </a>
 </td>
@@ -86,7 +86,7 @@ Development
 <td align="left">
 </td>
 <td align="left">
-<a href="https://www.tidyverse.org/lifecycle/#maturing"><img src="https://img.shields.io/badge/lifecycle-maturing-blue.svg" alt="Project Status: Maturing." /></a>
+<a href="https://lifecycle.r-lib.org/articles/stages.html#maturing"><img src="https://img.shields.io/badge/lifecycle-maturing-blue.svg" alt="Project Status: Maturing." /></a>
 </td>
 </tr>
 </tbody>
