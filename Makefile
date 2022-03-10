@@ -1,4 +1,5 @@
-all: clean_all doc test readme
+SHELL := /bin/bash
+
 
 #CLEANING
 #remove any intermediate files
@@ -23,27 +24,44 @@ codemeta:
 pkgdown: .FORCE
 	R -e 'pkgdown::build_site(override = list(template = list(package = "rotemplate")))'
 
-.FORCE:
-
-test:
-	R -e 'devtools::test()'
+spell_check:
+	R -e 'devtools::spell_check()'
 
 doc:
 	R -e 'devtools::document()'
 
-spell_check:
-	R -e 'devtools::spell_check()'
-
 check:
 	R -e 'devtools::check()'
 
-check_all:
-	R -e 'devtools::spell_check(); devtools::check(); devtools::check_rhub(); usethis::use_revdep()'
-#	R -e 'devtools::check_win_release()'
+check_cmd:
+	R CMD build . && R CMD check $$(ls -t . | head -n1)
+
+check_rhub:
+	R -e 'devtools::check_rhub()'
+
+check_revdep:
+	R -e 'usethis::use_revdep()'
+
+check_win:
+	R -e 'devtools::check_win_release()'
+
+test:
+	R -e 'devtools::test()'
+
+
+.FORCE:
+
+
+docs: readme doc pkgdown
+
+checks: spell_check check check_cmd check_rhub check_revdep
 
 build:
 	R -e 'devtools::build()'
 
-install: doc readme
-	R -e 'devtools::check()'
+install: docs check
 	R -e 'devtools::install()'
+	
+
+all: clean_all docs test checks build install
+

@@ -4,8 +4,9 @@ library(here)
 # First evaluate the API KEY if available
 api_key <- Sys.getenv("NASSQS_TOKEN") 
 api_file <- here::here("tests/testthat/api-key.txt")
-if(nchar(api_key) != 36 & file.exists(api_file)) api_key <- readLines(api_file)
-
+if(nchar(Sys.getenv("NASSQS_TOKEN") ) != 36 & file.exists(api_file)) {
+  Sys.setenv(NASSQS_TOKEN = readLines(api_file))
+}
 
 with_mock_api <- function(expr) {
   # Set a fake token just in this context

@@ -1,4 +1,5 @@
 Meta
+CRAN-SUBMISSION
 doc
 .Rproj.user
 .Rhistory
@@ -8,6 +9,7 @@ doc
 CRAN-RELEASE
 .secret
 inst/doc
+revdep/
 tests/testthat/api-key.txt
 *.pdf
 rnassqs.Rcheck

@@ -23,3 +23,5 @@ CONTRIBUTING.md
 ^profile.png$
 ^\.github$
 .zenodo.json
+^CRAN-SUBMISSION$
+^revdep$

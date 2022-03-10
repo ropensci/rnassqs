@@ -21,17 +21,17 @@ Development
 <tbody>
 <tr class="odd">
 <td rowspan="5">
-<a href="https://docs.ropensci.org/rnassqs"><img src="man/figures/logo.png" alt="rnassqs" align="right" height="139"></a>
+<a href="https://docs.ropensci.org/rnassqs/"><img src="man/figures/logo.png" alt="rnassqs" align="right" height="139"></a>
 <p style="font-size:xx-small;">
 (Wheat image from
 <a href="https://www.flickr.com/photos/53018729@N00/2669034542">here</a>.)
 </p>
 </td>
 <td align="left">
-<a href="http://choosealicense.com/licenses/mit/"><img src="https://img.shields.io/github/license/mashape/apistatus.svg" alt="License"></a>
+<a href="https://choosealicense.com/licenses/mit/"><img src="https://img.shields.io/github/license/mashape/apistatus.svg" alt="License"></a>
 </td>
 <td align="left">
-<a href="https://cran.r-project.org/package=rnassqs"><img src="http://www.r-pkg.org/badges/version-last-release/rnassqs" alt="CRAN"></a>
+<a href="https://cran.r-project.org/package=rnassqs"><img src="https://www.r-pkg.org/badges/version-last-release/rnassqs" alt="CRAN"></a>
 </td>
 <td align="left">
 <a href="https://github.com/ropensci/rnassqs/commits/master"><img src="https://img.shields.io/badge/last%20change-2022--03--09-brightgreen.svg" alt="Last Change"></a>
@@ -52,7 +52,7 @@ Development
 <td align="left">
 </td>
 <td align="left">
-<a href="https://github.com/ropensci/onboarding/issues/298" alt="rOpensci reviewed!"><img src="https://badges.ropensci.org/298_status.svg"></a>
+<a href="https://github.com/ropensci/software-review/issues/298" alt="rOpensci reviewed!"><img src="https://badges.ropensci.org/298_status.svg"></a>
 </td>
 <td align="left">
 <a href="https://travis-ci.org/ropensci/rnassqs"><img src="https://travis-ci.org/ropensci/rnassqs.svg?branch=master" alt="Build Status"></a>
@@ -65,7 +65,7 @@ Development
 <a href="https://orcid.org/0000-0002-3410-3732"><img src="https://img.shields.io/badge/ORCiD-0000--0002--3410--3732-green.svg" alt="ORCID"></a>
 </td>
 <td align="left">
-<a href="https://codecov.io/gh/ropensci/rnassqs"><img src="https://codecov.io/gh/ropensci/rnassqs/branch/master/graph/badge.svg" alt="Coverage Status"></a>
+<a href="https://app.codecov.io/gh/ropensci/rnassqs"><img src="https://app.codecov.io/gh/ropensci/rnassqs/branch/master/graph/badge.svg" alt="Coverage Status"></a>
 </td>
 </tr>
 <tr class="even">
@@ -123,12 +123,12 @@ Install the package via `devtools` or CRAN:
 ## API Key
 
 To use the NASS Quick Stats API you need an [API
-key](http://quickstats.nass.usda.gov/api). The API key should in general
-not be included in scripts. One way of making the key available without
-defining it in a script is by setting it in your `.Renviron` file, which
-is usually located in your home directory. If you are an `rstudio` user,
-you can use `usethis::edit_r_environ()` to open your `.Renviron` file
-and add a line that looks like:
+key](https://quickstats.nass.usda.gov/api). The API key should in
+general not be included in scripts. One way of making the key available
+without defining it in a script is by setting it in your `.Renviron`
+file, which is usually located in your home directory. If you are an
+`rstudio` user, you can use `usethis::edit_r_environ()` to open your
+`.Renviron` file and add a line that looks like:
 
 ``` r
     NASSQS_TOKEN="<your api key here>"
@@ -146,7 +146,7 @@ download data.
 
 The primary function is `nassqs()`, with which you can make any query of
 variables. For example, to mirror the request that is on the [NASS API
-documentation](http://quickstats.nass.usda.gov/api), you can use:
+documentation](https://quickstats.nass.usda.gov/api), you can use:
 
 ``` r
     library(rnassqs)
@@ -255,8 +255,8 @@ contribute:
     Begin by filing a new issue to discuss the proposed change, and then
     submit a pull request to address the issue. `rnassqs` follows the
     style outlined in Hadley Wickham’s [R
-    Packages](http://r-pkgs.had.co.nz/style.html). Following this style
-    makes the pull request and review go more smoothly.
+    Packages](https://r-pkgs.org/r.html#code-style). Following this
+    style makes the pull request and review go more smoothly.
 
 ## Alternatives
 
@@ -267,7 +267,7 @@ available to install via [github](https://github.com/rdinter/usdarnass).
 
 NASS also provides a daily tarred and gzipped file of their entire
 dataset. At the time of writing it is approaching 1 GB. You can download
-that file via their [FTP site](ftp://ftp.nass.usda.gov/quickstats).
+that file via their [FTP site](ftp://ftp.nass.usda.gov/quickstats/).
 
 The FTP link also contains builds for: NASS census (every 5 years ending
 with 2 and 7), or data for one of their specific sectors (CROPS,

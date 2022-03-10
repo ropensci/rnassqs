@@ -4,11 +4,11 @@
 * r-hub builder
 
 ## R CMD check results
-There were no ERRORs, no WARNINGs, and no NOTEs.
+There were no ERRORs, no WARNINGs, and 1 NOTEs.
 
-I am the same maintainer, but my email has changed, so checks on CRAN may show a note on a changed maintainer.
+The note is because the maintainer email has changed. I am the same maintainer but my email has changed.
 
-I use \dontrun{} for examples in this package that make calls to an API that requires an API key, making running as part of tests on CRAN impossible.
+Note that I use \dontrun{} for examples in this package that make calls to an API that requires an API key, making running as part of tests on CRAN impossible.
 
 ## Downstream dependencies
 There are no downstream dependencies
