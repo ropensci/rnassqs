@@ -1,29 +1,23 @@
 context("test helper functions")
 
-single_params <- list(
-  commodity_desc = "CORN",
-  year__GE = "2012",
-  state_alpha = "VA"
-)
-multi_params <- list(
-  commodity_desc = "CORN",
-  year__GE = "2012",
-  state_alpha = c("VA", "WA")
-)
-multi_expected_list <- list(commodity_desc = "CORN",
-                      year__GE = "2012",
-                      state_alpha = "VA",
-                      state_alpha = "WA")
 
 ## Test expand_list() ----
 test_that("expand_list() accepts a list of arguments with no multiple values", {
-  l1 <- expand_list(single_params)
-  expect_equal(single_params, l1)
+  single_params <- list(
+    commodity_desc = "CORN",
+    year__GE = "2012",
+    state_alpha = "VA"
+  )
+  expect_equal(single_params, expand_list(single_params))
 })
 
 test_that("expand_list() accepts a list of arguments with multiple values", {
-  l1 <- expand_list(multi_params)
-  expect_equal(multi_expected_list, l1)
+  multi_params <- list(
+    commodity_desc = "CORN",
+    year__GE = "2012",
+    state_alpha = c("VA", "WA")
+  )
+  expect_equal(multi_params, expand_list(multi_params))
 })
 
 
@@ -31,16 +25,14 @@ test_that("expand_list() accepts separate arguments", {
   expected_list <- list(
     commodity_desc = "CORN",
     year__GE = "2012",
-    state_alpha = "VA",
-    state_alpha = "WA"
-  )
+    state_alpha = c("VA", "WA"))
   l1 <- expand_list(commodity_desc = "CORN", 
                     year__GE = "2012", 
                     state_alpha = c("VA", "WA"))
   expect_equal(expected_list, l1)
 })
 
-## Test value_as_numeric() ----
+## Test char_to_num() ----
 test_that("char_to_num() correctly converts an array of character values to numbers", {
   c_str <- c("43,345", "1", "(D)", "(Z)", "", "NA")
   c_expected <- c(43345, 1, NA, NA, NA, NA)

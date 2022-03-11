@@ -5,6 +5,8 @@ SHELL := /bin/bash
 #remove any intermediate files
 clean:
 	rm -f README.md
+	rm rnassqs_*.tar.gz
+	rm -r rnassqs.Rcheck
 
 clean_all: clean
 
@@ -48,18 +50,20 @@ check_win:
 test:
 	R -e 'devtools::test()'
 
+release:
+	R -e 'devtools::release()'
 
 .FORCE:
 
 
-docs: readme doc pkgdown
+docs: readme doc pkgdown codemeta
 
 checks: spell_check check check_cmd check_rhub check_revdep
 
 build:
 	R -e 'devtools::build()'
 
-install: docs check
+install: docs check_cmd
 	R -e 'devtools::install()'
 	
 

@@ -12,10 +12,7 @@
 #' @return a named list.
 expand_list <- function(...){
   x <- list(...)
-  if(length(x) == 0) { stop("No parameters were supplied.")}
-  listx <- if(is.null(names(x))) x[[1]] else x
-  res <- stack(listx)  
-  as.list(setNames(res$values, res$ind))
+  if(length(x) == 0) { NULL } else { if(is.null(names(x))) x[[1]] else x }
 }
 
 
@@ -29,14 +26,14 @@ expand_list <- function(...){
 #' @param param the parameter to check
 #' @return logical
 parameter_is_valid <- function(param) {
-  valid_params <- toupper(nassqs_params())
+  valid_params <- toupper(c(nassqs_params(), "param"))
   param2 <- gsub("__LE|__LT|__GT|__GE|__LIKE|__NOT_LIKE|__NE", "", toupper(param))
   
   if(!param2 %in% valid_params) {
     stop("Parameter '", param, "' is not a valid parameter. Use `nassqs_params()`
     for a list of valid parameters.")
   }
-  return(TRUE)
+  return(invisible())
 }
 
 #' Convert Quick Stats "Value" to numeric
@@ -50,3 +47,17 @@ char_to_num <- function(x) {
   regex_str <- ",|NA|\\(D\\)|\\(Z\\)"
   as.numeric(gsub(regex_str, "", x)) 
 }
+
+#' Flatten a list without adding numbers to the names
+#' 
+#' @keywords internal
+#' @noRd
+#' 
+#' @param x a named list that may have multiple values
+#' @return list
+flatten <- function(x) {
+  x2 <- unlist(x)
+  names(x2) <- gsub("\\d+", "", names(unlist(x2)))
+  x2
+}
+

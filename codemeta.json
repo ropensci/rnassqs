@@ -4,11 +4,11 @@
   "identifier": "rnassqs",
   "description": "Interface to access data via the United States Department of Agriculture's National Agricultural Statistical Service (NASS) 'Quick Stats' web API <https://quickstats.nass.usda.gov/api>. Convenience functions facilitate building queries based on available parameters and valid parameter values. This product uses the NASS API but is not endorsed or certified by NASS.",
   "name": "rnassqs: Access Data from the NASS 'Quick Stats' API",
-  "relatedLink": ["https://docs.ropensci.org/rnassqs", "https://CRAN.R-project.org/package=rnassqs"],
-  "codeRepository": "https://github.com/ropensci/rnassqs",
-  "issueTracker": "https://www.github.com/ropensci/rnassqs/issues",
+  "relatedLink": ["https://docs.ropensci.org/rnassqs/", "https://CRAN.R-project.org/package=rnassqs"],
+  "codeRepository": "https://github.com/ropensci/rnassqs/",
+  "issueTracker": "https://github.com/ropensci/rnassqs/issues",
   "license": "https://spdx.org/licenses/MIT",
-  "version": "0.6.0",
+  "version": "0.6.1",
   "programmingLanguage": {
     "@type": "ComputerLanguage",
     "name": "R",
@@ -163,7 +163,7 @@
     },
     "SystemRequirements": null
   },
-  "fileSize": "2688.972KB",
+  "fileSize": "2689.714KB",
   "citation": [
     {
       "@type": "ScholarlyArticle",
@@ -196,13 +196,13 @@
       ],
       "name": "{rnassqs}: Access the NASS 'Quick Stats' API",
       "url": "https://CRAN.R-project.org/package=rnassqs",
-      "description": "R package version 0.6.0"
+      "description": "R package version 0.6.1"
     }
   ],
   "releaseNotes": "https://github.com/ropensci/rnassqs/blob/master/NEWS.md",
   "readme": "https://github.com/ropensci/rnassqs/blob/master/README.md",
-  "contIntegration": ["https://github.com/ropensci/rnassqs/actions", "https://travis-ci.org/ropensci/rnassqs", "https://codecov.io/gh/ropensci/rnassqs"],
-  "developmentStatus": ["https://www.repostatus.org/#active", "https://www.tidyverse.org/lifecycle/#maturing"],
+  "contIntegration": ["https://travis-ci.org/ropensci/rnassqs", "https://app.codecov.io/gh/ropensci/rnassqs"],
+  "developmentStatus": ["https://www.repostatus.org/#active", "https://lifecycle.r-lib.org/articles/stages.html#maturing"],
   "review": {
     "@type": "Review",
     "url": "https://github.com/ropensci/software-review/issues/298",

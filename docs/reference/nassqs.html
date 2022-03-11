@@ -22,7 +22,7 @@ restrict the number of columns."><meta property="og:image" content="/logo.png"><
     <a href="https://ropensci.org" class="external-link"><img src="https://ropensci.org/img/icon_short_white.svg" id="hexlogo" alt="rOpenSci"></a>
     <a class="navbar-brand me-2" href="../index.html">rnassqs</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.6.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.6.1</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -122,9 +122,9 @@ restrict the number of columns.</p>
     <h2 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h2>
     <dl><dt>...</dt>
 <dd><p>either a named list of parameters or a series of additional
-parameters that include operations, i.e. <code>year__GE = 2010</code> for all
+parameters that include operations, e.g. <code>year__GE = 2010</code> for all
 records in 2010 and later. See <code>details</code> for information on available
-parameters.</p></dd>
+operators.</p></dd>
 <dt>agg_level_desc</dt>
 <dd><p>Geographic level ("AGRICULTURAL DISTRICT", "COUNTY",
 "INTERNATIONAL", "NATIONAL", "REGION : MULTI-STATE", "REGION : SUB-STATE",
@@ -248,7 +248,7 @@ need to convert to numeric format after querying.</p></dd>
     <p><code>nassqs()</code> accepts all parameters that are accepted by the USDA-NASS Quick
 Stats. These parameters are listed in <code><a href="nassqs_params.html">nassqs_params()</a></code>, and are used to form
 the data query.</p>
-<p>Parameters can be modified by operations, which are appended to the paramter
+<p>Parameters can be modified by operations, which are appended to the parameter
 name. For example, "year__GE = 2020" will fetch data in 2020 and after.
 Operations can take the following form:</p><ul><li><p>__LE: less than or equal (&lt;=)</p></li>
 <li><p>__LT: less than (&lt;)</p></li>

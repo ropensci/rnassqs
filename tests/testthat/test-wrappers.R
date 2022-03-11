@@ -3,7 +3,9 @@ context("tests wrappers and ease of use functions.")
 
 ### Tests with no authentication required
 test_that("nassqs_record_count performs parameter validation", {
-  expect_error(nassqs_record_count(setor_desc = "TEST SECTOR"), "Parameter 'setor_desc' is not a valid parameter. Use `nassqs_params()`\n    for a list of valid parameters.", fixed = TRUE)
+  expect_error(
+    nassqs_record_count(setor_desc = "TEST SECTOR"), 
+    "Parameter 'setor_desc' is not a valid parameter. Use `nassqs_params()`\n    for a list of valid parameters.", fixed = TRUE)
 })
 
 

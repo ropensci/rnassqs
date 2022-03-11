@@ -1,6 +1,3 @@
-#' @include helpers.R
-NULL
-
 #' Get data and return a data frame
 #'
 #' The primary function in the `rnassqs` package, `nassqs` makes a HTTP GET
@@ -16,7 +13,7 @@ NULL
 #' Stats. These parameters are listed in [nassqs_params()], and are used to form
 #' the data query.
 #' 
-#' Parameters can be modified by operations, which are appended to the paramter
+#' Parameters can be modified by operations, which are appended to the parameter
 #' name. For example, "year__GE = 2020" will fetch data in 2020 and after. 
 #' Operations can take the following form:
 #' - __LE: less than or equal (<=)
@@ -31,9 +28,9 @@ NULL
 #' @export
 #'
 #' @param ... either a named list of parameters or a series of additional
-#'   parameters that include operations, i.e. `year__GE = 2010` for all
+#'   parameters that include operations, e.g. `year__GE = 2010` for all
 #'   records in 2010 and later. See `details` for information on available 
-#'   parameters.
+#'   operators.
 #' @param agg_level_desc Geographic level ("AGRICULTURAL DISTRICT", "COUNTY",
 #'   "INTERNATIONAL", "NATIONAL", "REGION : MULTI-STATE", "REGION : SUB-STATE",
 #'   "STATE", "WATERSHED", or "ZIP CODE").
@@ -160,18 +157,15 @@ nassqs <- function(...,
                    progress_bar = TRUE,
                    format = "csv", 
                    as = "data.frame") {
-  
-  # Gather all of the parameters and expand to a list
-  calls <- match.call(expand.dots = TRUE)
-  calls$as_numeric <- NULL
-  calls$progress_bar <- NULL
-  calls$format <- NULL
-  calls$as <- NULL
-  calls[[1]] <- as.name("expand_list")
-  params <- eval.parent(calls)
 
-  # Check that names of the parameters are in the valid parameter list
-  chk_params <- lapply(names(params), function(x) { parameter_is_valid(x) })
+  # Get a list of parameters, named ones and from the dots
+  env_params <- as.list(environment())
+  for(v in c("params", "as_numeric", "progress_bar", "format", "as")) { 
+    env_params[[v]] <- NULL 
+  }
+  
+  dot_params <- expand_list(...)
+  params <- if(length(dot_params) > 0) c(env_params, dot_params) else env_params
 
   # Make the request
   req <- nassqs_GET(params, api_path = "api_GET", 
@@ -234,20 +228,22 @@ nassqs_GET <- function(...,
                        progress_bar = TRUE,
                        format = c("csv", "json", "xml")) {
   
+  # match args
+  api_path <- match.arg(api_path)
+  format <- match.arg(format)
+
+  params <- expand_list(...)
+
+  # Check that names of the parameters are in the valid parameter list
+  for(x in names(params)) { parameter_is_valid(x) }
+  
   # Check that the api key is set
   key <- Sys.getenv("NASSQS_TOKEN")
   if(identical(key, "")) {
     stop("Please use 'nassqs_auth(key = <your api key>)' to set your api key",
          call. = FALSE)
   }
-
-  # match args
-  api_path <- match.arg(api_path)
-  format <- match.arg(format)
   
-  # get the full param list and make sure all arguments are in capital letters
-  params <- expand_list(...)
-
   if(api_path == "get_param_values") {
     # parameter names are lower case, so the query requires lower case terms
     params <- lapply(params, tolower)
@@ -256,8 +252,13 @@ nassqs_GET <- function(...,
     params <- lapply(params, toupper)
   }
   
+  
+  
   # Add the format
   params[["format"]] <- toupper(format)
+
+  # Flatten multiple values before using httr
+  params <- flatten(params)
   
 
   # Create the query

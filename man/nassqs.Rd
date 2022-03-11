@@ -51,9 +51,9 @@ nassqs(
 }
 \arguments{
 \item{...}{either a named list of parameters or a series of additional
-parameters that include operations, i.e. \code{year__GE = 2010} for all
+parameters that include operations, e.g. \code{year__GE = 2010} for all
 records in 2010 and later. See \code{details} for information on available
-parameters.}
+operators.}
 
 \item{agg_level_desc}{Geographic level ("AGRICULTURAL DISTRICT", "COUNTY",
 "INTERNATIONAL", "NATIONAL", "REGION : MULTI-STATE", "REGION : SUB-STATE",
@@ -185,7 +185,7 @@ restrict the number of columns.
 Stats. These parameters are listed in \code{\link[=nassqs_params]{nassqs_params()}}, and are used to form
 the data query.
 
-Parameters can be modified by operations, which are appended to the paramter
+Parameters can be modified by operations, which are appended to the parameter
 name. For example, "year__GE = 2020" will fetch data in 2020 and after.
 Operations can take the following form:
 \itemize{

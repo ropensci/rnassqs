@@ -22,14 +22,8 @@
 #'   records  # returns 17
 #' }
 nassqs_record_count <- function(...) {
-
-  # Get parameters
   params <- expand_list(...)
-
-  # Check that names of the parameters are in the valid parameter list
-  chk_params <- lapply(names(params), function(x) { parameter_is_valid(x) })
-
-  nassqs_parse(nassqs_GET(..., api_path = "get_counts"))
+  nassqs_parse(nassqs_GET(params, api_path = "get_counts"))
 }
 
 #' Get yield records for a specified crop.
@@ -85,10 +79,10 @@ nassqs_acres <- function(...,
                                  "AREA IRRIGATED", "AREA NON-BEARING",
                                  "AREA PLANTED", "AREA PLANTED, NET")) {
   area <- match.arg(area, several.ok = TRUE)
-  
+
   params <- expand_list(...)
   params[['unit_desc']] <- "ACRES"
   params[['statisticcat_desc']] <- area
-  
+
   nassqs(params)
 }

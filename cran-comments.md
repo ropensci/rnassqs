@@ -6,9 +6,7 @@
 ## R CMD check results
 There were no ERRORs, no WARNINGs, and 1 NOTEs.
 
-The note is because the maintainer email has changed. I am the same maintainer but my email has changed.
-
-Note that I use \dontrun{} for examples in this package that make calls to an API that requires an API key, making running as part of tests on CRAN impossible.
+The note is due to resubmitting after a single day. I'm very embarrassed to have to submit this again so quickly. There was a bug that for some reason testthat wasn't picking up due to differences in the environment(). I fixed that, no other changes. My deep apologies for taking up unnecessary time, I thought I had triple-checked everything.
 
 ## Downstream dependencies
 There are no downstream dependencies
