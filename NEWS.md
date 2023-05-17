@@ -1,3 +1,7 @@
+# rnassqs 0.6.1
+
+- Explicit handling for error code 429 has been added.
+
 # rnassqs 0.6.0
 
 - The default download is CSV format instead of JSON to reduce download sizes.
