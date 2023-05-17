@@ -298,9 +298,13 @@ nassqs_check <- function(response) {
     stop("Request was too large. NASS requires that an API call ",
          "returns a maximum of 50,000 records. Consider subsetting ",
          "your request by geography or year to reduce the size of ",
-         "your query.", call. = FALSE)
-  }
-  else {
+         "your query.", 
+         call. = FALSE)
+  } else if(response$status_code == 429) {
+    stop("Too many requests are being made. Consider slowing the ",
+         "pace of your requests or try again later.", 
+         call. = FALSE)
+  } else {
     stop("HTTP Failure: ",
          response$status_code,
          "\n",
