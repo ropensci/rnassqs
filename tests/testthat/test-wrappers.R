@@ -6,6 +6,7 @@ test_that("nassqs_record_count performs parameter validation", {
   expect_error(
     nassqs_record_count(setor_desc = "TEST SECTOR"), 
     "Parameter 'setor_desc' is not a valid parameter. Use `nassqs_params()`\n    for a list of valid parameters.", fixed = TRUE)
+  Sys.sleep(1)
 })
 
 
@@ -45,15 +46,18 @@ with_authentication({
   test_that("nassqs_record_count returns a numeric", {
     v <- nassqs_record_count(params)
     expect_equal(is.numeric(v$count), TRUE)
+    Sys.sleep(1)
   })
 
   test_that("nassqs_record_count takes a list of parameters", {
     v <- nassqs_record_count(params)
     expect_equal(is.numeric(v$count), TRUE)
+    Sys.sleep(1)
   })
 
   test_that("nassqs_record_count takes parameters", {
     v <- nassqs_record_count(sector_desc = "SECTOR")
     expect_equal(is.numeric(v$count), TRUE)
+    Sys.sleep(1)
   })
 })

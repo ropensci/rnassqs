@@ -34,7 +34,7 @@ Development
 <a href="https://cran.r-project.org/package=rnassqs"><img src="https://www.r-pkg.org/badges/version-last-release/rnassqs" alt="CRAN"></a>
 </td>
 <td align="left">
-<a href="https://github.com/ropensci/rnassqs/commits/master"><img src="https://img.shields.io/badge/last%20change-2022--03--10-brightgreen.svg" alt="Last Change"></a>
+<a href="https://github.com/ropensci/rnassqs/commits/master"><img src="https://img.shields.io/badge/last%20change-2023--08--21-brightgreen.svg" alt="Last Change"></a>
 </td>
 </tr>
 <tr class="even">
@@ -55,7 +55,7 @@ Development
 <a href="https://github.com/ropensci/software-review/issues/298" alt="rOpensci reviewed!"><img src="https://badges.ropensci.org/298_status.svg"></a>
 </td>
 <td align="left">
-<a href="https://travis-ci.org/ropensci/rnassqs"><img src="https://travis-ci.org/ropensci/rnassqs.svg?branch=master" alt="Build Status"></a>
+<a href="https://app.travis-ci.com/ropensci/rnassqs"><img src="https://app.travis-ci.com/ropensci/rnassqs.svg?branch=master" alt="Build Status"></a>
 </td>
 </tr>
 <tr class="even">
@@ -205,13 +205,13 @@ Other useful functions include:
 The NASS API handles other operators by modifying the variable name. The
 API can accept the following modifications:
 
--   \_\_LE: \<=
--   \_\_LT: \<
--   \_\_GT: \>
--   \_\_GE: \>=
--   \_\_LIKE: like
--   \_\_NOT_LIKE: not like
--   \_\_NE: not equal
+- \_\_LE: \<=
+- \_\_LT: \<
+- \_\_GT: \>
+- \_\_GE: \>=
+- \_\_LIKE: like
+- \_\_NOT_LIKE: not like
+- \_\_NE: not equal
 
 For example, to request corn yields in Virginia and Pennsylvania for all
 years since 2000, you would use something like:
@@ -233,30 +233,28 @@ more examples and details on usage.
 Contributions are more than welcome, and there are several ways to
 contribute:
 
--   Examples: More examples are always helpful. If you use `rnassqs` to
-    query data from ‘Quick Stats’ and would like to contribute your
-    query, consider submitting a pull request adding your query as a
-    file in
-    [inst/examples/](https://github.com/ropensci/rnassqs/tree/master/inst/examples).
--   File an issue: If there is functionality you’d like to see added or
-    something that is confusing, consider [creating an
-    issue](https://github.com/ropensci/rnassqs/issues/new). The best
-    issue contains an example of the problem or feature. Consider the
-    excellent package [reprex](https://github.com/tidyverse/reprex) in
-    creating a reproducible example.
--   Contributing documentation: Clarifying and expanding the
-    documentation is always appreciated, especially if you find an area
-    that is lacking and would like to improve it. `rnassqs` uses
-    roxygen2, which means the documentation is at the top of each
-    function definition. Please submit any improvements as a pull
-    request.
--   Contributing code: if you see something that needs improving and
-    you’d like to make the changes, contributed code is very welcome.
-    Begin by filing a new issue to discuss the proposed change, and then
-    submit a pull request to address the issue. `rnassqs` follows the
-    style outlined in Hadley Wickham’s [R
-    Packages](https://r-pkgs.org/r.html#code-style). Following this
-    style makes the pull request and review go more smoothly.
+- Examples: More examples are always helpful. If you use `rnassqs` to
+  query data from ‘Quick Stats’ and would like to contribute your query,
+  consider submitting a pull request adding your query as a file in
+  [inst/examples/](https://github.com/ropensci/rnassqs/tree/master/inst/examples).
+- File an issue: If there is functionality you’d like to see added or
+  something that is confusing, consider [creating an
+  issue](https://github.com/ropensci/rnassqs/issues/new). The best issue
+  contains an example of the problem or feature. Consider the excellent
+  package [reprex](https://github.com/tidyverse/reprex) in creating a
+  reproducible example.
+- Contributing documentation: Clarifying and expanding the documentation
+  is always appreciated, especially if you find an area that is lacking
+  and would like to improve it. `rnassqs` uses roxygen2, which means the
+  documentation is at the top of each function definition. Please submit
+  any improvements as a pull request.
+- Contributing code: if you see something that needs improving and you’d
+  like to make the changes, contributed code is very welcome. Begin by
+  filing a new issue to discuss the proposed change, and then submit a
+  pull request to address the issue. `rnassqs` follows the style
+  outlined in Hadley Wickham’s [R
+  Packages](https://r-pkgs.org/r.html#code-style). Following this style
+  makes the pull request and review go more smoothly.
 
 ## Alternatives
 
@@ -267,7 +265,7 @@ available to install via [github](https://github.com/rdinter/usdarnass).
 
 NASS also provides a daily tarred and gzipped file of their entire
 dataset. At the time of writing it is approaching 1 GB. You can download
-that file via their [FTP site](ftp://ftp.nass.usda.gov/quickstats/).
+that file via their [data site](https://www.nass.usda.gov/datasets/).
 
 The FTP link also contains builds for: NASS census (every 5 years ending
 with 2 and 7), or data for one of their specific sectors (CROPS,

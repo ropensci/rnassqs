@@ -64,7 +64,7 @@ Development
 <a href="https://github.com/ropensci/software-review/issues/298" alt="rOpensci reviewed!"><img src="https://badges.ropensci.org/298_status.svg"></a>
 </td>
 <td align="left">
-<a href="https://travis-ci.org/ropensci/rnassqs"><img src="https://travis-ci.org/ropensci/rnassqs.svg?branch=master" alt="Build Status"></a>
+<a href="https://app.travis-ci.com/ropensci/rnassqs"><img src="https://app.travis-ci.com/ropensci/rnassqs.svg?branch=master" alt="Build Status"></a>
 </td>
 </tr>
 
@@ -231,7 +231,7 @@ Contributions are more than welcome, and there are several ways to contribute:
 
 In June 2019 the `usdarnass` package was released on [CRAN](https://cran.r-project.org/package=usdarnass) and is also available to install via [github](https://github.com/rdinter/usdarnass). `usdarnass` has similar functionality to this package.
 
-NASS also provides a daily tarred and gzipped file of their entire dataset. At the time of writing it is approaching 1 GB. You can download that file via their [FTP site](ftp://ftp.nass.usda.gov/quickstats/).
+NASS also provides a daily tarred and gzipped file of their entire dataset. At the time of writing it is approaching 1 GB. You can download that file via their [data site](https://www.nass.usda.gov/datasets/).
 
 The FTP link also contains builds for: NASS census (every 5 years ending with 2 and 7), or data for one of their specific sectors (CROPS, ECONOMICS, ANIMALS & PRODUCTS). At the time of this writing, specific files for the ENVIRONMENTAL and DEMOGRAPHICS sectors are not available.
 

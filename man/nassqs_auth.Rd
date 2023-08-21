@@ -7,7 +7,7 @@
 nassqs_auth(key)
 }
 \arguments{
-\item{key}{the API key (obtained from \url{https://quickstats.nass.usda.gov/api})}
+\item{key}{the API key (obtained from \url{https://quickstats.nass.usda.gov/api/})}
 }
 \description{
 If the API key is provided, sets the environmental variable. You can set

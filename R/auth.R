@@ -12,7 +12,7 @@
 #'
 #' @export
 #'
-#' @param key the API key (obtained from [https://quickstats.nass.usda.gov/api](https://quickstats.nass.usda.gov/api))
+#' @param key the API key (obtained from [https://quickstats.nass.usda.gov/api/](https://quickstats.nass.usda.gov/api/))
 #' @examples
 #' # Set the API key
 #' nassqs_auth(key = "<your api key>")

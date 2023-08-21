@@ -20,7 +20,7 @@ data.
 \url{https://quickstats.nass.usda.gov}
 }
 \seealso{
-\url{https://quickstats.nass.usda.gov/api}
+\url{https://quickstats.nass.usda.gov/api/}
 }
 \author{
 Nicholas Potter

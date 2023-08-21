@@ -178,7 +178,7 @@ nassqs <- function(...,
 #'
 #' This is the workhorse of the package that provides the core request
 #' functionality to the NASS 'Quick Stats' API:
-#' [https://quickstats.nass.usda.gov/api](https://quickstats.nass.usda.gov/api).
+#' [https://quickstats.nass.usda.gov/api/](https://quickstats.nass.usda.gov/api/).
 #' In most cases [nassqs()] or other high-level functions should be used.
 #' `nassqs_GET()` uses [httr::GET()] to make a HTTP GET request, which returns a
 #' request object which must then be parsed to a data.frame, list, or other `R`
@@ -293,8 +293,7 @@ nassqs_GET <- function(...,
 nassqs_check <- function(response) {
   if(response$status_code < 400) {
     return(TRUE) #all good!
-  }
-  else if(response$status_code == 413) {
+  } else if(response$status_code == 413) {
     stop("Request was too large. NASS requires that an API call ",
          "returns a maximum of 50,000 records. Consider subsetting ",
          "your request by geography or year to reduce the size of ",

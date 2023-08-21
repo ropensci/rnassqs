@@ -49,11 +49,13 @@ with_authentication({
   test_that("nassqs_GET successfully makes a request to the Quick Stats API", {
     req <- nassqs_GET(params)
     expect_is(req, "response")
+    Sys.sleep(1)
   })
 
   test_that("nassqs_GET with api_path = 'api_GET' successfully makes a request to the Quick Stats API", {
     req <- nassqs_GET(params, api_path = 'api_GET')
     expect_is(req, "response")
+    Sys.sleep(1)
   })
 
   test_that("nassqs_GET with api_path = 'get_param_values' successfully makes a request to the Quick Stats API", {
@@ -62,6 +64,7 @@ with_authentication({
 
     values <- nassqs_parse(req)
     expect_is(values, "list")
+    Sys.sleep(1)
   })
 
   test_that("nassqs_GET with api_path = 'get_counts' successfully makes a request to the Quick Stats API", {
@@ -70,6 +73,7 @@ with_authentication({
 
     n <- nassqs_parse(req)
     expect_is(n$count, "integer")
+    Sys.sleep(1)
   })
 
   test_that("nassqs_parse successfully parses a request to the Quick Stats API", {
@@ -77,6 +81,7 @@ with_authentication({
     d <- nassqs_parse(req)
     expect_is(d, "data.frame")
     expect_equal(ncol(d), 39)
+    Sys.sleep(1)
   })
   
   test_that("Too-large request error is handled", {
@@ -115,6 +120,20 @@ test_that("nassqs_GET returns error if a parameter is invalid", {
                "Parameter 'county_fips' is not a valid parameter. Use `nassqs_params()`
     for a list of valid parameters",
             fixed = TRUE)
+})
+
+test_that("nassqs_check returns error if response has a 413 error code", {
+  r <- list(status_code = 413)
+  expect_error(nassqs_check(r),
+               "Request was too large. NASS requires that an API call returns a maximum of 50,000 records. Consider subsetting your request by geography or year to reduce the size of your query.",
+               fixed = TRUE)
+})
+
+test_that("nassqs_check returns error if response has a 429 error code", {
+  r <- list(status_code = 429)
+  expect_error(nassqs_check(r),
+               "Too many requests are being made. Consider slowing the pace of your requests or try again later.",
+               fixed = TRUE)
 })
 
 ## Test for data type processing and response parsing

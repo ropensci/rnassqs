@@ -3,7 +3,7 @@
 #' Contains a simple hard-coded list of all available parameters. If no 
 #' parameter name is provided, returns a list of all parameters. More 
 #' information can be found in the API documentation on parameters found at
-#' [https://quickstats.nass.usda.gov/api#param_define](https://quickstats.nass.usda.gov/api#param_define).
+#' [https://quickstats.nass.usda.gov/api/#param_define](https://quickstats.nass.usda.gov/api/#param_define).
 #' 
 #' @export
 #' 

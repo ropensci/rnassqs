@@ -27,7 +27,7 @@ a \code{\link[httr:GET]{httr::GET()}} response object
 \description{
 This is the workhorse of the package that provides the core request
 functionality to the NASS 'Quick Stats' API:
-\url{https://quickstats.nass.usda.gov/api}.
+\url{https://quickstats.nass.usda.gov/api/}.
 In most cases \code{\link[=nassqs]{nassqs()}} or other high-level functions should be used.
 \code{nassqs_GET()} uses \code{\link[httr:GET]{httr::GET()}} to make a HTTP GET request, which returns a
 request object which must then be parsed to a data.frame, list, or other \code{R}

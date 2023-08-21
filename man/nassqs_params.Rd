@@ -18,7 +18,7 @@ a list of all available parameters or a description of a subset
 Contains a simple hard-coded list of all available parameters. If no
 parameter name is provided, returns a list of all parameters. More
 information can be found in the API documentation on parameters found at
-\url{https://quickstats.nass.usda.gov/api#param_define}.
+\url{https://quickstats.nass.usda.gov/api/#param_define}.
 }
 \examples{
 # Get a list of all available parameters
