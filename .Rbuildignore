@@ -25,3 +25,4 @@ CONTRIBUTING.md
 .zenodo.json
 ^CRAN-SUBMISSION$
 ^revdep$
+^codecov\.yml$

@@ -1,6 +1,4 @@
 <!-- README.md is generated from README.Rmd. Please edit that file -->
-<!-- badges: start -->
-<!-- badges: end -->
 <table class="table">
 <thead>
 <tr class="header">
@@ -34,7 +32,7 @@ Development
 <a href="https://cran.r-project.org/package=rnassqs"><img src="https://www.r-pkg.org/badges/version-last-release/rnassqs" alt="CRAN"></a>
 </td>
 <td align="left">
-<a href="https://github.com/ropensci/rnassqs/commits/master"><img src="https://img.shields.io/badge/last%20change-2023--08--21-brightgreen.svg" alt="Last Change"></a>
+<a href="https://github.com/ropensci/rnassqs/commits/master"><img src="https://img.shields.io/badge/last%20change-2023--08--29-brightgreen.svg" alt="Last Change"></a>
 </td>
 </tr>
 <tr class="even">
@@ -45,7 +43,7 @@ Development
 <a href="https://zenodo.org/badge/latestdoi/37335585"><img src="https://zenodo.org/badge/37335585.svg" alt="Zenodo"></a>
 </td>
 <td align="left">
-[![R-CMD-check](https://github.com/ropensci/rnassqs/workflows/R-CMD-check/badge.svg)](https://github.com/ropensci/rnassqs/actions)
+<a href="https://github.com/ropensci/rnassqs/actions/workflows/R-CMD-check.yaml"><img src="https://github.com/ropensci/rnassqs/actions/workflows/R-CMD-check.yaml/badge.svg" alt="R CMD Check"></a>
 </td>
 </tr>
 <tr class="odd">
@@ -55,7 +53,7 @@ Development
 <a href="https://github.com/ropensci/software-review/issues/298" alt="rOpensci reviewed!"><img src="https://badges.ropensci.org/298_status.svg"></a>
 </td>
 <td align="left">
-<a href="https://app.travis-ci.com/ropensci/rnassqs"><img src="https://app.travis-ci.com/ropensci/rnassqs.svg?branch=master" alt="Build Status"></a>
+<a href="https://app.codecov.io/gh/ropensci/rnassqs?branch=master"><img src="https://codecov.io/gh/ropensci/rnassqs/branch/master/graph/badge.svg" alt="Codecov test status"></a>
 </td>
 </tr>
 <tr class="even">
@@ -65,7 +63,7 @@ Development
 <a href="https://orcid.org/0000-0002-3410-3732"><img src="https://img.shields.io/badge/ORCiD-0000--0002--3410--3732-green.svg" alt="ORCID"></a>
 </td>
 <td align="left">
-<a href="https://app.codecov.io/gh/ropensci/rnassqs"><img src="https://app.codecov.io/gh/ropensci/rnassqs/branch/master/graph/badge.svg" alt="Coverage Status"></a>
+<a href="https://www.repostatus.org/#active"><img src="https://www.repostatus.org/badges/latest/active.svg" alt="Project Status: Active – The project has reached a stable, usable state and is being actively developed." /></a>
 </td>
 </tr>
 <tr class="even">
@@ -77,7 +75,9 @@ Development
 </a>
 </td>
 <td align="left">
-<a href="https://www.repostatus.org/#active"><img src="https://www.repostatus.org/badges/latest/active.svg" alt="Project Status: Active – The project has reached a stable, usable state and is being actively developed." /></a>
+<a href="https://lifecycle.r-lib.org/articles/stages.html#maturing"><img src="https://img.shields.io/badge/lifecycle-maturing-blue.svg" alt="Project Status: Maturing." /></a>
+</td>
+<td align="left">
 </td>
 </tr>
 <tr class="odd">
@@ -86,7 +86,6 @@ Development
 <td align="left">
 </td>
 <td align="left">
-<a href="https://lifecycle.r-lib.org/articles/stages.html#maturing"><img src="https://img.shields.io/badge/lifecycle-maturing-blue.svg" alt="Project Status: Maturing." /></a>
 </td>
 </tr>
 </tbody>

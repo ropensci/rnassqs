@@ -2,25 +2,19 @@
   "@context": "https://doi.org/10.5063/schema/codemeta-2.0",
   "@type": "SoftwareSourceCode",
   "identifier": "rnassqs",
-  "description": "Interface to access data via the United States Department of Agriculture's National Agricultural Statistical Service (NASS) 'Quick Stats' web API <https://quickstats.nass.usda.gov/api>. Convenience functions facilitate building queries based on available parameters and valid parameter values. This product uses the NASS API but is not endorsed or certified by NASS.",
+  "description": "Interface to access data via the United States Department of Agriculture's National Agricultural Statistical Service (NASS) 'Quick Stats' web API <https://quickstats.nass.usda.gov/api/>. Convenience functions facilitate building queries based on available parameters and valid parameter values. This product uses the NASS API but is not endorsed or certified by NASS.",
   "name": "rnassqs: Access Data from the NASS 'Quick Stats' API",
-  "relatedLink": "https://docs.ropensci.org/rnassqs/",
+  "relatedLink": ["https://docs.ropensci.org/rnassqs/", "https://CRAN.R-project.org/package=rnassqs"],
   "codeRepository": "https://github.com/ropensci/rnassqs/",
   "issueTracker": "https://github.com/ropensci/rnassqs/issues",
   "license": "https://spdx.org/licenses/MIT",
-  "version": "0.6.1",
+  "version": "0.6.2",
   "programmingLanguage": {
     "@type": "ComputerLanguage",
     "name": "R",
     "url": "https://r-project.org"
   },
-  "runtimePlatform": "R version 4.2.2 (2022-10-31 ucrt)",
-  "provider": {
-    "@id": "https://cran.r-project.org",
-    "@type": "Organization",
-    "name": "Comprehensive R Archive Network (CRAN)",
-    "url": "https://cran.r-project.org"
-  },
+  "runtimePlatform": "R version 4.3.1 (2023-06-16 ucrt)",
   "author": [
     {
       "@type": "Person",
@@ -52,6 +46,11 @@
     },
     {
       "@type": "Person",
+      "givenName": "Branden",
+      "familyName": "Collingsworth"
+    },
+    {
+      "@type": "Person",
       "givenName": "Neal",
       "familyName": "Richardson"
     }
@@ -68,88 +67,39 @@
     {
       "@type": "SoftwareApplication",
       "identifier": "here",
-      "name": "here",
-      "provider": {
-        "@id": "https://cran.r-project.org",
-        "@type": "Organization",
-        "name": "Comprehensive R Archive Network (CRAN)",
-        "url": "https://cran.r-project.org"
-      },
-      "sameAs": "https://CRAN.R-project.org/package=here"
+      "name": "here"
     },
     {
       "@type": "SoftwareApplication",
       "identifier": "httptest",
-      "name": "httptest",
-      "provider": {
-        "@id": "https://cran.r-project.org",
-        "@type": "Organization",
-        "name": "Comprehensive R Archive Network (CRAN)",
-        "url": "https://cran.r-project.org"
-      },
-      "sameAs": "https://CRAN.R-project.org/package=httptest"
+      "name": "httptest"
     },
     {
       "@type": "SoftwareApplication",
       "identifier": "knitr",
-      "name": "knitr",
-      "provider": {
-        "@id": "https://cran.r-project.org",
-        "@type": "Organization",
-        "name": "Comprehensive R Archive Network (CRAN)",
-        "url": "https://cran.r-project.org"
-      },
-      "sameAs": "https://CRAN.R-project.org/package=knitr"
+      "name": "knitr"
     },
     {
       "@type": "SoftwareApplication",
       "identifier": "rmarkdown",
-      "name": "rmarkdown",
-      "provider": {
-        "@id": "https://cran.r-project.org",
-        "@type": "Organization",
-        "name": "Comprehensive R Archive Network (CRAN)",
-        "url": "https://cran.r-project.org"
-      },
-      "sameAs": "https://CRAN.R-project.org/package=rmarkdown"
+      "name": "rmarkdown"
     },
     {
       "@type": "SoftwareApplication",
       "identifier": "testthat",
-      "name": "testthat",
-      "provider": {
-        "@id": "https://cran.r-project.org",
-        "@type": "Organization",
-        "name": "Comprehensive R Archive Network (CRAN)",
-        "url": "https://cran.r-project.org"
-      },
-      "sameAs": "https://CRAN.R-project.org/package=testthat"
+      "name": "testthat"
     }
   ],
   "softwareRequirements": {
     "1": {
       "@type": "SoftwareApplication",
       "identifier": "httr",
-      "name": "httr",
-      "provider": {
-        "@id": "https://cran.r-project.org",
-        "@type": "Organization",
-        "name": "Comprehensive R Archive Network (CRAN)",
-        "url": "https://cran.r-project.org"
-      },
-      "sameAs": "https://CRAN.R-project.org/package=httr"
+      "name": "httr"
     },
     "2": {
       "@type": "SoftwareApplication",
       "identifier": "jsonlite",
-      "name": "jsonlite",
-      "provider": {
-        "@id": "https://cran.r-project.org",
-        "@type": "Organization",
-        "name": "Comprehensive R Archive Network (CRAN)",
-        "url": "https://cran.r-project.org"
-      },
-      "sameAs": "https://CRAN.R-project.org/package=jsonlite"
+      "name": "jsonlite"
     },
     "3": {
       "@type": "SoftwareApplication",
@@ -163,7 +113,7 @@
     },
     "SystemRequirements": null
   },
-  "fileSize": "2695.956KB",
+  "fileSize": "2713.931KB",
   "citation": [
     {
       "@type": "ScholarlyArticle",
@@ -196,7 +146,16 @@
       ],
       "name": "{rnassqs}: Access the NASS 'Quick Stats' API",
       "url": "https://CRAN.R-project.org/package=rnassqs",
-      "description": "R package version 0.6.1"
+      "description": "R package version 0.6.2"
     }
-  ]
+  ],
+  "releaseNotes": "https://github.com/ropensci/rnassqs/blob/master/NEWS.md",
+  "readme": "https://github.com/ropensci/rnassqs/blob/master/README.md",
+  "contIntegration": ["https://app.travis-ci.com/ropensci/rnassqs", "https://app.codecov.io/gh/ropensci/rnassqs"],
+  "developmentStatus": ["https://www.repostatus.org/#active", "https://lifecycle.r-lib.org/articles/stages.html#maturing"],
+  "review": {
+    "@type": "Review",
+    "url": "https://github.com/ropensci/software-review/issues/298",
+    "provider": "https://ropensci.org"
+  }
 }

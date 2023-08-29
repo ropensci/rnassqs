@@ -189,7 +189,7 @@ test_that("nassqs_check returns error if response has a 429 error code", {
 
 # JSON
 test_that("nassqs_parse parses JSON to data.frame", {
-  test_file <- system.file("testdata", "request_json.rds", package = "rnassqs")
+  test_file <- test_path("testdata", "request_json.rds")
   req <- readRDS(test_file)
   d <- nassqs_parse(req)
   expect_equal(class(d), "data.frame")
@@ -198,7 +198,7 @@ test_that("nassqs_parse parses JSON to data.frame", {
 
 # CSV
 test_that("nassqs_parse parses CSV to data.frame", {
-  test_file <- system.file("testdata", "request_csv.rds", package = "rnassqs")
+  test_file <- test_path("testdata", "request_csv.rds")
   req <- readRDS(test_file)
   d <- nassqs_parse(req)
   expect_equal(class(d), "data.frame")
@@ -207,21 +207,21 @@ test_that("nassqs_parse parses CSV to data.frame", {
 })
 
 
-# Text
+# Test parsing of different types of responses
 test_that("nassqs_parse parses a csv response to text", {
-  test_file <- system.file("testdata", "request_csv.rds", package = "rnassqs")
+  test_file <- test_path("testdata", "request_csv.rds")
   req <- readRDS(test_file)
   d <- nassqs_parse(req, as = "text")
   expect_equal(class(d), "character")
 })
 test_that("nassqs_parse parses a json response to text", {
-  test_file <- system.file("testdata", "request_json.rds", package = "rnassqs")
+  test_file <- test_path("testdata", "request_json.rds")
   req <- readRDS(test_file)
   d <- nassqs_parse(req, as = "text")
   expect_equal(class(d), "character")
 })
 test_that("nassqs_parse parses a xml response to text", {
-  test_file <- system.file("testdata", "request_xml.rds", package = "rnassqs")
+  test_file <- test_path("testdata", "request_xml.rds")
   req <- readRDS(test_file)
   d <- nassqs_parse(req, as = "text")
   expect_equal(class(d), "character")
