@@ -267,8 +267,6 @@ nassqs_GET <- function(...,
 
   # full url
   url <- paste0("https://quickstats.nass.usda.gov/api/", api_path)
-  u <- httr::parse_url(url)
-  u$query <- query
 
   if(progress_bar) {
     resp <- httr::GET(url, query = query, httr::progress())    
@@ -303,14 +301,11 @@ nassqs_check <- function(response) {
     stop("Too many requests are being made. Consider slowing the ",
          "pace of your requests or try again later.", 
          call. = FALSE)
-  } else {
-    stop("HTTP Failure: ",
+  } else if(httr::http_error(response)) {
+    stop("HTTP error code: ",
          response$status_code,
          "\n",
-         jsonlite::fromJSON(httr::content(response,
-                                          as = "text",
-                                          type = "text/json",
-                                          encoding = "UTF-8")),
+         httr::content(response, as = "text", encoding = "UTF-8"),
          call. = FALSE)
   }
 }

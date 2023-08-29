@@ -16,6 +16,7 @@ with_mock_api({
 
 with_authentication({
   test_that("nassqs_param_values returns parameter values", {
+    Sys.sleep(1)
     v = nassqs_param_values("source_desc")
     expect_is(v, "character")
     expect_is(v[[1]], "character")
@@ -27,6 +28,7 @@ with_authentication({
   })
 
   test_that("nassqs_param_values returns parameter values filtered for other parameters", {
+    Sys.sleep(1)
     v = nassqs_param_values(param = "source_desc", year = 2012, county_name = "YAKIMA",
                             group_desc = "EXPENSES", sector_desc = "DEMOGRAPHICS")
     expect_equal(v, c("CENSUS"))
