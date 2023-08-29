@@ -1,31 +1,25 @@
 citHeader("To cite rnassqs in publications, please use:")
 
-citEntry(
-  entry = "Article",
-  author = as.person("Nicholas A Potter"),
-  title = "rnassqs: An `R` package to access agricultural data via the USDA National Agricultural Statistics Service (USDA-NASS) 'Quick Stats' API",
-  doi = "",
-  year = "2019",
-  month = "aug",
-  publisher = "The Open Journal",
-  volume = "",
-  number = "",
-  pages = "",
-  journal = "The Journal of Open Source Software",
+bibentry(
+  bibtype  = "Article",
+  title    = "rnassqs: An `R` package to access agricultural data via the USDA National Agricultural Statistics Service (USDA-NASS) 'Quick Stats' API",
+  author   = "Nicholas A. Potter",
+  journal  = "The Journal of Open Source Software",
+  year     = "2019"
+)
 
-  textVersion = paste("Potter, Nicholas A (2019). rnassqs: An `R` package to access agricultural data via the USDA National Agricultural Statistics Service (USDA-NASS) 'Quick Stats' API. Journal of Open Source Software, Vol(Num), Page, DOI"))
 
 year <- sub("-.*", "", meta$Date)
 note <- sprintf("R package version %s", meta$Version)
 
 bibentry(bibtype = "Manual",
          title = "{rnassqs}: Access the NASS 'Quick Stats' API",
-         author = c(person("Nicholas", "Potter")),
-         year = year,
+         author = c(person("Nicholas A.", "Potter")),
+         year = 2023,
          note = note,
 	 url = "https://CRAN.R-project.org/package=rnassqs")
 
- textVersion = paste0("Nicholas A Potter, (", year, ").",
+textVersion = paste0("Nicholas A Potter, (", year, ").",
   " rnassqs: An `R` package to access agricultural data via the USDA National Agricultural Statistics Service (USDA-NASS) 'Quick Stats' API. ",
   note, ".",
   " https://CRAN.R-project.org/package=rnassqs")

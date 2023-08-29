@@ -1,7 +1,8 @@
 ## Test environments
 * local windows 11 install, R 4.3.1
 * github action R-CMD-CHECK: macos-latest (release), ubuntu-latest (devel), ubuntu-latest (oldrel-1), ubuntu-latest (release), windows-latest (release)
-de
+* win-builder.r-project.org (devel)
+
 ## R CMD check results
 There were no ERRORs, no WARNINGs, and 1 NOTEs.
 
