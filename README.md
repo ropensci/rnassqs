@@ -32,7 +32,7 @@ Development
 <a href="https://cran.r-project.org/package=rnassqs"><img src="https://www.r-pkg.org/badges/version-last-release/rnassqs" alt="CRAN"></a>
 </td>
 <td align="left">
-<a href="https://github.com/ropensci/rnassqs/commits/master"><img src="https://img.shields.io/badge/last%20change-2023--08--29-brightgreen.svg" alt="Last Change"></a>
+<a href="https://github.com/ropensci/rnassqs/commits/master"><img src="https://img.shields.io/badge/last%20change-2023--09--01-brightgreen.svg" alt="Last Change"></a>
 </td>
 </tr>
 <tr class="even">
@@ -122,7 +122,7 @@ Install the package via `devtools` or CRAN:
 ## API Key
 
 To use the NASS Quick Stats API you need an [API
-key](https://quickstats.nass.usda.gov/api). The API key should in
+key](https://quickstats.nass.usda.gov/api/). The API key should in
 general not be included in scripts. One way of making the key available
 without defining it in a script is by setting it in your `.Renviron`
 file, which is usually located in your home directory. If you are an
@@ -145,7 +145,7 @@ download data.
 
 The primary function is `nassqs()`, with which you can make any query of
 variables. For example, to mirror the request that is on the [NASS API
-documentation](https://quickstats.nass.usda.gov/api), you can use:
+documentation](https://quickstats.nass.usda.gov/api/), you can use:
 
 ``` r
     library(rnassqs)
@@ -252,8 +252,8 @@ contribute:
   filing a new issue to discuss the proposed change, and then submit a
   pull request to address the issue. `rnassqs` follows the style
   outlined in Hadley Wickham’s [R
-  Packages](https://r-pkgs.org/r.html#code-style). Following this style
-  makes the pull request and review go more smoothly.
+  Packages](https://r-pkgs.org/code.html#code-style). Following this
+  style makes the pull request and review go more smoothly.
 
 ## Alternatives
 

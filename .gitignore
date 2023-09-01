@@ -17,3 +17,5 @@ rnassqs_*.tar.gz
 *~
 \#*\#
 .\#*
+/doc/
+/Meta/

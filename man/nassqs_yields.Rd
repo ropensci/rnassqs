@@ -14,8 +14,8 @@ form the query}
 a data.frame of yields data
 }
 \description{
-Returns yields for other specified parameters. This function is intended to
-simplify common requests.
+Returns yields for other specified parameters.
+This function is intended to simplify common requests.
 }
 \examples{
 \dontrun{

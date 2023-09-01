@@ -22,6 +22,8 @@ URL: https://docs.ropensci.org/rnassqs/ (website)
 BugReports: https://github.com/ropensci/rnassqs/issues
 License: MIT + file LICENSE
 Language: en-US
+Depends:
+  R (>= 3.5.0)
 Imports: 
   httr,
   jsonlite,

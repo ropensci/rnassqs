@@ -1,7 +1,8 @@
 #' Get a count of number of records for given parameters.
 #'
-#' Returns the number of records that fit a set of parameters. Useful if your
-#' current parameter set returns more than the 50,000 record limit.
+#' Returns the number of records that fit a set of parameters. 
+#' Useful if your current parameter set returns more than the 50,000 
+#' record limit.
 #'
 #' @export
 #'
@@ -28,8 +29,8 @@ nassqs_record_count <- function(...) {
 
 #' Get yield records for a specified crop.
 #'
-#' Returns yields for other specified parameters. This function is intended to
-#' simplify common requests.
+#' Returns yields for other specified parameters. 
+#' This function is intended to simplify common requests.
 #'
 #' @export
 #'
@@ -52,6 +53,7 @@ nassqs_yields <- function(...) {
   params[['statisticcat_desc']] <- "YIELD"
   nassqs(params)
 }
+
 
 #' Get NASS Area given a set of parameters.
 #'
@@ -85,4 +87,36 @@ nassqs_acres <- function(...,
   params[['statisticcat_desc']] <- area
 
   nassqs(params)
+}
+
+
+#' Allow querying for a given set of counties based on FIPS.
+#' 
+#' This wrapper allows specifying a list of counties by FIPS code.
+#' It iterates over each state in the list of FIPS, downloading for each
+#' separately and then concatenating.
+#'
+#' @export
+#'
+#' @param fips a list of 5-digit fips codes
+#' @param ... either a named list of parameters or a series of parameters to 
+#'   form the query
+#' @return a data.frame of data for each fips code
+#' @examples \dontrun{
+#' nassqs_byfips(
+#'   fips = c("19001", "17005", "17001"),
+#'   commodity_desc = "CORN",
+#'   year = 2019,
+#'   statisticcat_desc = "YIELD")
+#' }
+nassqs_byfips <- function(fips, ...) {
+  states <- unique(substr(fips, 1, 2))
+  r <- lapply(states, function(st) {
+    Sys.sleep(1)
+    nassqs(
+      state_fips_code = st,
+      county_code = substr(grep(st, fips, value = TRUE), 3, 5),
+      ...)
+  })
+  do.call("rbind", r)
 }

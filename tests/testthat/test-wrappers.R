@@ -60,4 +60,19 @@ with_authentication({
     expect_equal(is.numeric(v$count), TRUE)
     Sys.sleep(1)
   })
+  
+  test_that("nassqs_byfips returns correct data", {
+    fips <- c("19001", "17005", "17001")
+    r <- nassqs_byfips(
+      fips = fips,
+      commodity_desc = "CORN",
+      util_practice_desc = "GRAIN",
+      year = 2019,
+      statisticcat_desc = "YIELD")
+    
+    expect_equal(unique(r$year), "2019")
+    expect_equal(sort(r$county_name), c("ADAIR", "ADAMS", "BOND"))
+    expect_equal(sort(r$state_name), c("ILLINOIS", "ILLINOIS", "IOWA"))
+  })
+  
 })

@@ -27,11 +27,11 @@ In the beginning it can be more confusing, and potentially take more time, but a
 ## API Information
 
 The USDA-NASS Quick Stats API has a graphic interface here: [https://quickstats.nass.usda.gov](https://quickstats.nass.usda.gov). 
-Information on the query parameters is found at [https://quickstats.nass.usda.gov/api#param_define](https://quickstats.nass.usda.gov/api#param_define).
+Information on the query parameters is found at [https://quickstats.nass.usda.gov/api/#param_define](https://quickstats.nass.usda.gov/api/#param_define).
 
 ## A quick example
 
-First, obtain an API key from the 'Quick Stats' service: [https://quickstats.nass.usda.gov/api](https://quickstats.nass.usda.gov/api). Then we can make a query. Here we request the number of farm operators by operation acreage in Oregon in 2012.
+First, obtain an API key from the 'Quick Stats' service: [https://quickstats.nass.usda.gov/api/](https://quickstats.nass.usda.gov/api/). Then we can make a query. Here we request the number of farm operators by operation acreage in Oregon in 2012.
 
     library(rnassqs)
     
@@ -77,6 +77,13 @@ A growing list of convenience functions makes querying simpler. For example, you
     yields <- nassqs_yields(params)
     acres <- nassqs_acres(params)
 
+You can also query by a list of fips codes:
+
+    nassqs_byfips(
+      fips = c("19001", "17005", "17001"),
+      commodity_desc = "CORN",
+      year = 2019,
+      statisticcat_desc = "YIELD")
 
 
 ## Detailed usage
@@ -84,7 +91,7 @@ A growing list of convenience functions makes querying simpler. For example, you
 
 ### Step 1: Authentication
 
-the QuickStats API requires authentication. You can get an API Key [here](https://quickstats.nass.usda.gov/api). Once you have a key, you can use it in any of the following ways:
+the QuickStats API requires authentication. You can get an API Key [here](https://quickstats.nass.usda.gov/api/). Once you have a key, you can use it in any of the following ways:
 
 
 #### Add it to your .Renviron file
@@ -127,7 +134,7 @@ Including parameter names in `nassqs_params` will return a description of the pa
 nassqs_params("agg_level_desc", "source_desc")
 ```
 
-Documentation on all of the parameters is available at [https://quickstats.nass.usda.gov/api#param_define](https://quickstats.nass.usda.gov/api#param_define).
+Documentation on all of the parameters is available at [https://quickstats.nass.usda.gov/api/#param_define](https://quickstats.nass.usda.gov/api/#param_define).
 
 A list of the valid values for a given field is available via `nassqs_param_values(param = <parameter name>)`. For example, 
 
