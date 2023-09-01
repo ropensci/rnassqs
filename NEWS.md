@@ -2,6 +2,8 @@
 # rnassqs 0.6.2
 
 - Add more testing for http errors, explicit handling of error messages other than 413 and 429.
+- Add querying by fips code with `nassqs_fips()` [Issue #30]
+- Depends on R(>= 3.5.0) since some test objects are saved in RDS format.
 
 # rnassqs 0.6.1
 

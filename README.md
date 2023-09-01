@@ -32,7 +32,7 @@ Development
 <a href="https://cran.r-project.org/package=rnassqs"><img src="https://www.r-pkg.org/badges/version-last-release/rnassqs" alt="CRAN"></a>
 </td>
 <td align="left">
-<a href="https://github.com/ropensci/rnassqs/commits/master"><img src="https://img.shields.io/badge/last%20change-2023--08--29-brightgreen.svg" alt="Last Change"></a>
+<a href="https://github.com/ropensci/rnassqs/commits/master"><img src="https://img.shields.io/badge/last%20change-2023--09--01-brightgreen.svg" alt="Last Change"></a>
 </td>
 </tr>
 <tr class="even">

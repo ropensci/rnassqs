@@ -15,8 +15,9 @@ integer that is the number of records that are returned from the
 API in response to the query
 }
 \description{
-Returns the number of records that fit a set of parameters. Useful if your
-current parameter set returns more than the 50,000 record limit.
+Returns the number of records that fit a set of parameters.
+Useful if your current parameter set returns more than the 50,000
+record limit.
 }
 \examples{
 \dontrun{
