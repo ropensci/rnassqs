@@ -149,8 +149,8 @@
       "description": "R package version 0.6.2"
     }
   ],
-  "releaseNotes": "https://github.com/ropensci/rnassqs/blob/master/NEWS.md",
-  "readme": "https://github.com/ropensci/rnassqs/blob/master/README.md",
+  "releaseNotes": "https://github.com/ropensci/rnassqs/blob/main/NEWS.md",
+  "readme": "https://github.com/ropensci/rnassqs/blob/main/README.md",
   "contIntegration": ["https://app.travis-ci.com/ropensci/rnassqs", "https://app.codecov.io/gh/ropensci/rnassqs"],
   "developmentStatus": ["https://www.repostatus.org/#active", "https://lifecycle.r-lib.org/articles/stages.html#maturing"],
   "review": {
