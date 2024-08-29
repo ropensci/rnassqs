@@ -1,3 +1,6 @@
+# rnassqs 0.6.3
+
+- Update to work with R 4.4.0
 
 # rnassqs 0.6.2
 

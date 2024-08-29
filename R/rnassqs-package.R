@@ -7,12 +7,14 @@
 #' It handles the API key checking and storage, authorization, and fetching of 
 #' data.
 #' @author Nicholas Potter
-#' @name rnassqs-package
-#' @aliases rnassqs
-#' @docType package
-#' @title rnassqs-package: Access the NASS 'Quick Stats' API
-#' @keywords package rnassqs-package
+#' @name rnassqs
+#' @aliases rnassqs-package
+#' @title rnassqs: Access the NASS 'Quick Stats' API
 #' @references \url{https://quickstats.nass.usda.gov}
 #' @seealso \url{https://quickstats.nass.usda.gov/api/}
-NULL
+#' @keywords internal rnassqs rnassqs-package
+"_PACKAGE"
 
+## usethis namespace: start
+## usethis namespace: end
+NULL
