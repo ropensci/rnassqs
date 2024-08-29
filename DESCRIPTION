@@ -23,7 +23,7 @@ BugReports: https://github.com/ropensci/rnassqs/issues
 License: MIT + file LICENSE
 Language: en-US
 Depends:
-  R (>= 4.4.0)
+  R (>= 3.5.0)
 Imports: 
   httr,
   jsonlite,
