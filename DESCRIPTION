@@ -1,7 +1,7 @@
 Package: rnassqs
 Type: Package
 Title: Access Data from the NASS 'Quick Stats' API
-Version: 0.6.2
+Version: 0.6.3
 Authors@R: c(
   person('Nicholas', 'Potter', email='econpotter@gmail.com', role = c('aut', 'cre')),
   person('Robert', 'Dinterman', email='', role = c('ctb')),
@@ -35,14 +35,14 @@ Suggests:
   knitr,
   rmarkdown,
   testthat
-RoxygenNote: 7.2.3
+RoxygenNote: 7.3.2
 Roxygen: list(markdown = TRUE)
 Encoding: UTF-8
 VignetteBuilder: knitr
 Collate: 
   'auth.R'
   'helpers.R'
-  'nassqs.R'
+  'rnassqs-package.R'
   'params.R'
   'request.R'
   'wrappers.R'
