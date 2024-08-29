@@ -32,7 +32,7 @@ Development
 <a href="https://cran.r-project.org/package=rnassqs"><img src="https://www.r-pkg.org/badges/version-last-release/rnassqs" alt="CRAN"></a>
 </td>
 <td align="left">
-<a href="https://github.com/ropensci/rnassqs/commits/master"><img src="https://img.shields.io/badge/last%20change-2023--09--01-brightgreen.svg" alt="Last Change"></a>
+<a href="https://github.com/ropensci/rnassqs/commits/main"><img src="https://img.shields.io/badge/last%20change-2023--09--01-brightgreen.svg" alt="Last Change"></a>
 </td>
 </tr>
 <tr class="even">
@@ -53,7 +53,7 @@ Development
 <a href="https://github.com/ropensci/software-review/issues/298" alt="rOpensci reviewed!"><img src="https://badges.ropensci.org/298_status.svg"></a>
 </td>
 <td align="left">
-<a href="https://app.codecov.io/gh/ropensci/rnassqs?branch=master"><img src="https://codecov.io/gh/ropensci/rnassqs/branch/master/graph/badge.svg" alt="Codecov test status"></a>
+<a href="https://app.codecov.io/gh/ropensci/rnassqs?branch=main"><img src="https://codecov.io/gh/ropensci/rnassqs/branch/main/graph/badge.svg" alt="Codecov test status"></a>
 </td>
 </tr>
 <tr class="even">
@@ -235,7 +235,7 @@ contribute:
 - Examples: More examples are always helpful. If you use `rnassqs` to
   query data from ‘Quick Stats’ and would like to contribute your query,
   consider submitting a pull request adding your query as a file in
-  [inst/examples/](https://github.com/ropensci/rnassqs/tree/master/inst/examples).
+  [inst/examples/](https://github.com/ropensci/rnassqs/tree/main/inst/examples).
 - File an issue: If there is functionality you’d like to see added or
   something that is confusing, consider [creating an
   issue](https://github.com/ropensci/rnassqs/issues/new). The best issue

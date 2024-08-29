@@ -38,7 +38,7 @@ Development
 <a href="https://cran.r-project.org/package=rnassqs"><img src="https://www.r-pkg.org/badges/version-last-release/rnassqs" alt="CRAN"></a>
 </td>
 <td align="left">
-<a href="https://github.com/ropensci/rnassqs/commits/master"><img src="https://img.shields.io/badge/last%20change-`r gsub('-', '--', Sys.Date())`-brightgreen.svg" alt="Last Change"></a>
+<a href="https://github.com/ropensci/rnassqs/commits/main"><img src="https://img.shields.io/badge/last%20change-`r gsub('-', '--', Sys.Date())`-brightgreen.svg" alt="Last Change"></a>
 </td>
 </tr>
 
@@ -61,7 +61,7 @@ Development
 <a href="https://github.com/ropensci/software-review/issues/298" alt="rOpensci reviewed!"><img src="https://badges.ropensci.org/298_status.svg"></a>
 </td>
 <td align="left">
-<a href="https://app.codecov.io/gh/ropensci/rnassqs?branch=master"><img src="https://codecov.io/gh/ropensci/rnassqs/branch/master/graph/badge.svg" alt="Codecov test status"></a>
+<a href="https://app.codecov.io/gh/ropensci/rnassqs?branch=main"><img src="https://codecov.io/gh/ropensci/rnassqs/branch/main/graph/badge.svg" alt="Codecov test status"></a>
 </td>
 </tr>
 
@@ -219,7 +219,7 @@ See the [vignette](https://docs.ropensci.org/rnassqs/articles/rnassqs.html) for 
 
 Contributions are more than welcome, and there are several ways to contribute:
 
-- Examples: More examples are always helpful. If you use `rnassqs` to query data from 'Quick Stats' and would like to contribute your query, consider submitting a pull request adding your query as a file in [inst/examples/](https://github.com/ropensci/rnassqs/tree/master/inst/examples).
+- Examples: More examples are always helpful. If you use `rnassqs` to query data from 'Quick Stats' and would like to contribute your query, consider submitting a pull request adding your query as a file in [inst/examples/](https://github.com/ropensci/rnassqs/tree/main/inst/examples).
 - File an issue: If there is functionality you'd like to see added or something that is confusing, consider [creating an issue](https://github.com/ropensci/rnassqs/issues/new). The best issue contains an example of the problem or feature. Consider the excellent package [reprex](https://github.com/tidyverse/reprex) in creating a reproducible example.
 - Contributing documentation: Clarifying and expanding the documentation is always appreciated, especially if you find an area that is lacking and would like to improve it. `rnassqs` uses roxygen2, which means the documentation is at the top of each function definition. Please submit any improvements as a pull request.
 - Contributing code: if you see something that needs improving and you'd like to make the changes, contributed code is very welcome. Begin by filing a new issue to discuss the proposed change, and then submit a pull request to address the issue. `rnassqs` follows the style outlined in Hadley Wickham's [R Packages](https://r-pkgs.org/code.html#code-style). Following this style makes the pull request and review go more smoothly.
