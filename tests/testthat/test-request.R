@@ -19,11 +19,11 @@ test_that("HTTP errors are handled by nassqs_check()", {
   
   # Error 429: too many requests - we only text the httpbin version here
   # because reproducing this error with the API is unreliable
-  #r <- httr::GET("http://httpbin.org/status/429")
+  #r <- httr::GET("http://httpbin.org/status/429")  
   r <- readRDS(test_path("testdata", "response_429.rds"))
   expect_error(
     nassqs_check(r),
-    "Too many requests are being made. Consider slowing the pace of your requests or try again later."
+    "Requests sent too quickly. Error \\(429\\) persists despite retries."
   )
   
   #r <- httr::GET("http://httpbin.org/status/400")
@@ -180,9 +180,10 @@ test_that("nassqs_check returns error if response has a 413 error code", {
 
 test_that("nassqs_check returns error if response has a 429 error code", {
   r <- list(status_code = 429)
-  expect_error(nassqs_check(r),
-               "Too many requests are being made. Consider slowing the pace of your requests or try again later.",
-               fixed = TRUE)
+  expect_error(
+    nassqs_check(r),
+    "Requests sent too quickly. Error \\(429\\) persists despite retries."
+  )
 })
 
 ## Test for data type processing and response parsing
@@ -225,4 +226,50 @@ test_that("nassqs_parse parses a xml response to text", {
   req <- readRDS(test_file)
   d <- nassqs_parse(req, as = "text")
   expect_equal(class(d), "character")
+})
+
+test_that("nassqs_GET applies rate limiting", {
+  skip_if_not(Sys.getenv("NASSQS_TOKEN") != "", 
+              "No API key found. Set env var NASSQS_TOKEN to run this test.")
+  
+  # Save original settings
+  old_settings <- list(
+    rate_seconds = getOption("nassqs.rate_seconds", 3),
+    override = getOption("nassqs.override_rate_limit", FALSE),
+    last_request_time = getOption("nassqs.last_request_time", NULL)
+  )
+  
+  # Clean up after test
+  on.exit({
+    options(nassqs.rate_seconds = old_settings$rate_seconds)
+    options(nassqs.override_rate_limit = old_settings$override)
+    if (is.null(old_settings$last_request_time)) {
+      options(nassqs.last_request_time = NULL)
+    } else {
+      options(nassqs.last_request_time = old_settings$last_request_time)
+    }
+  })
+  
+  # Set rate limiting parameters for testing
+  options(nassqs.rate_seconds = 1)  # 1 second for faster tests
+  options(nassqs.override_rate_limit = FALSE)
+  options(nassqs.last_request_time = NULL)
+  
+  # Make two consecutive API calls with GET
+  # First call should be fast
+  params <- list(param = "source_desc")
+  start_time <- Sys.time()
+  resp1 <- nassqs_GET(params, api_path = "get_param_values", 
+                      progress_bar = FALSE)
+  elapsed1 <- as.numeric(difftime(Sys.time(), start_time, units = "secs"))
+  expect_lt(elapsed1, 1)  # First call should be fast
+  
+  # Second call should respect rate limit (wait ~1 second)
+  start_time <- Sys.time()
+  resp2 <- nassqs_GET(params, api_path = "get_param_values", 
+                      progress_bar = FALSE)
+  elapsed2 <- as.numeric(difftime(Sys.time(), start_time, units = "secs"))
+  
+  # Should respect the rate limit (1 second)
+  expect_gte(elapsed2, 0.9)  # Allow slight timing differences
 })

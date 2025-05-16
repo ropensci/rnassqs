@@ -173,6 +173,114 @@ nassqs <- function(...,
   nassqs_parse(req, as_numeric = as_numeric, as = as)
 }
 
+#' Manage adaptive API rate limiting 
+#'
+#' The NASS Quick Stats API has rate limits to prevent abuse. This function
+#' helps manage those rate limits by tracking the time between requests and
+#' sleeping as needed to avoid exceeding the rate limit. It uses an adaptive
+#' approach that starts with faster requests and slows down if rate limits
+#' are encountered.
+#'
+#' @param rate_seconds The minimum time in seconds between API requests.
+#'   Default is 0.2 seconds (5 requests per second).
+#' @param throttled_rate_seconds The time to wait between requests when throttled.
+#'   Default is 3 seconds.
+#' @param override Whether to override the rate limiting. Default is FALSE.
+#'   Set to TRUE to bypass rate limiting (not recommended for normal use).
+#' @return Invisibly returns the time waited in seconds.
+#' @keywords internal
+rate_limit <- function(rate_seconds = getOption("nassqs.rate_seconds", 0.2),
+                       throttled_rate_seconds = getOption("nassqs.throttled_rate_seconds", 3),
+                       override = getOption("nassqs.override_rate_limit", FALSE)) {
+  
+  # Check if rate limiting is disabled
+  if (override) {
+    return(invisible(0))
+  }
+  
+  # Check if we're in throttled mode
+  is_throttled <- getOption("nassqs.is_throttled", FALSE)
+  current_rate <- if(is_throttled) throttled_rate_seconds else rate_seconds
+  
+  # Get the last request time
+  last_request_time <- getOption("nassqs.last_request_time", NULL)
+  
+  # If this is the first request, set the time and return
+  if (is.null(last_request_time)) {
+    options(nassqs.last_request_time = Sys.time())
+    return(invisible(0))
+  }
+  
+  # Calculate time since last request
+  current_time <- Sys.time()
+  time_diff <- difftime(current_time, last_request_time, units = "secs")
+  
+  # If less than current_rate have passed, sleep for the remaining time
+  wait_time <- current_rate - as.numeric(time_diff)
+  if (wait_time > 0) {
+    Sys.sleep(wait_time)
+  } else {
+    wait_time <- 0
+  }
+  
+  # Update the last request time
+  options(nassqs.last_request_time = Sys.time())
+  
+  # Return the wait time invisibly
+  invisible(wait_time)
+}
+
+#' Set rate limiting options for the NASS Quick Stats API
+#'
+#' Use this function to configure the rate limiting behavior for API requests
+#' to prevent 429 errors (too many requests). By default, the package will
+#' attempt to make faster requests (5 per second), but will throttle to 1
+#' request every 3 seconds if Error 429 is encountered.
+#'
+#' @export
+#'
+#' @param rate_seconds The minimum time in seconds between API requests.
+#'   Default is 0.2 seconds (5 requests per second).
+#' @param throttled_rate_seconds The time to wait between requests when throttled.
+#'   Default is 3 seconds.
+#' @param override Whether to override the rate limiting. Default is FALSE.
+#'   Only set to TRUE for testing or when you know you won't exceed API limits.
+#' @param reset_throttling Whether to reset the throttling state to normal speed.
+#'   Default is FALSE.
+#' @return Invisibly returns the previous settings as a list.
+#' @examples
+#' # Set custom rate limits
+#' nassqs_rate_limit(rate_seconds = 0.5, throttled_rate_seconds = 1)
+#'
+#' # Reset to normal speed after being throttled
+#' nassqs_rate_limit(reset_throttling = TRUE)
+#'
+#' # Disable rate limiting (not recommended for production use)
+#' nassqs_rate_limit(override = TRUE)
+#'
+#' # Restore default settings
+#' nassqs_rate_limit(rate_seconds = 0.2, throttled_rate_seconds = 3, override = FALSE)
+nassqs_rate_limit <- function(rate_seconds = 0.2, 
+                              throttled_rate_seconds = 3, 
+                              override = FALSE,
+                              reset_throttling = FALSE) {
+  old_settings <- list(
+    rate_seconds = getOption("nassqs.rate_seconds", 0.2),
+    throttled_rate_seconds = getOption("nassqs.throttled_rate_seconds", 3),
+    override = getOption("nassqs.override_rate_limit", FALSE),
+    is_throttled = getOption("nassqs.is_throttled", FALSE)
+  )
+  
+  options(nassqs.rate_seconds = rate_seconds)
+  options(nassqs.throttled_rate_seconds = throttled_rate_seconds)
+  options(nassqs.override_rate_limit = override)
+  
+  if (reset_throttling) {
+    options(nassqs.is_throttled = FALSE)
+  }
+  
+  invisible(old_settings)
+}
 
 #' Issue a GET request to the NASS 'Quick Stats' API
 #'
@@ -192,6 +300,7 @@ nassqs <- function(...,
 #'   use in the query
 #' @param api_path the API path that determines the type of request being made.
 #' @param progress_bar whether to display the project bar or not.
+#' @param max_retries maximum number of retries if a 429 error occurs
 #' @param format The format to return the query in. Only useful if as = "text".
 #' @return a [httr::GET()] response object
 #' @examples \dontrun{
@@ -226,14 +335,15 @@ nassqs_GET <- function(...,
                                     "get_param_values",
                                     "get_counts"),
                        progress_bar = TRUE,
+                       max_retries = 2,
                        format = c("csv", "json", "xml")) {
   
   # match args
   api_path <- match.arg(api_path)
   format <- match.arg(format)
-
+  
   params <- expand_list(...)
-
+  
   # Check that names of the parameters are in the valid parameter list
   for(x in names(params)) { parameter_is_valid(x) }
   
@@ -252,28 +362,53 @@ nassqs_GET <- function(...,
     params <- lapply(params, toupper)
   }
   
-  
-  
   # Add the format
   params[["format"]] <- toupper(format)
-
+  
   # Flatten multiple values before using httr
   params <- flatten(params)
   
-
   # Create the query
   query <- list(key = key)
   query <- append(query, params)
-
+  
   # full url
   url <- paste0("https://quickstats.nass.usda.gov/api/", api_path)
-
-  if(progress_bar) {
-    resp <- httr::GET(url, query = query, httr::progress())    
-  } else {
-    resp <- httr::GET(url, query = query)    
+  
+  retry_count <- 0
+  while (retry_count <= max_retries) {
+    # Apply rate limiting to avoid 429 errors
+    rate_limit()
+    
+    if(progress_bar) {
+      resp <- httr::GET(url, query = query, httr::progress())    
+    } else {
+      resp <- httr::GET(url, query = query)    
+    }
+    
+    # Check for 429 error (too many requests)
+    if (resp$status_code == 429) {
+      # Set throttled mode
+      options(nassqs.is_throttled = TRUE)
+      
+      if (retry_count < max_retries) {
+        # Wait a little longer before retrying
+        throttled_rate <- getOption("nassqs.throttled_rate_seconds", 3)
+        message(sprintf("Rate limit exceeded. Retrying in %s seconds... (Attempt %d of %d)", 
+                        throttled_rate, retry_count + 1, max_retries))
+        Sys.sleep(throttled_rate)
+        retry_count <- retry_count + 1
+      } else {
+        # Max retries reached, check will throw the error
+        break
+      }
+    } else {
+      # No 429 error, proceed with response
+      break
+    }
   }
-
+  
+  # Check for other errors
   nassqs_check(resp)
   
   resp
@@ -298,8 +433,11 @@ nassqs_check <- function(response) {
          "your query.", 
          call. = FALSE)
   } else if(response$status_code == 429) {
-    stop("Too many requests are being made. Consider slowing the ",
-         "pace of your requests or try again later.", 
+    # Provide a clear error message
+    stop("Requests sent too quickly. Error (429) persists despite retries. ",
+         "The API is may limit requests to 1 every 3 seconds. ",
+         "The package has automatically slowed down future requests to comply. ",
+         "Please wait a few minutes before trying again.", 
          call. = FALSE)
   } else if(httr::http_error(response)) {
     stop("HTTP error code: ",
