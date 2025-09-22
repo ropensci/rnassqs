@@ -164,15 +164,32 @@ In the above parameter list, `year__GE` is the `year` field with the `__GE` modi
 
 Multiple values can be queried at once by including them in a simple list with `c()`. For example, if you'd like data from both Washington and Oregon, you can write `state_alpha = c('WA', 'OR')`.
 
-#### Query limits
+#### Query Limits: Total records per query
 
 The API only returns queries that return 50,000 or less records, so it's a good idea to check that before running a query. Do do so, you can use `nassqs_record_count()`. Combined with an assert from the `assertthat` package, you can ensure that your queries are valid before attempting to access the data:
 
-    # Check that the number of returned records will be less than 50000
-    params <- list(commodity_desc = "CORN", year__GE = 2012, state_alpha = "VA")
-    records <- nassqs_record_count(params)
-    assertthat::assert_that(as.integer(records$count) <= 50000)
+```         
+# Check that the number of returned records will be less than 50000
+params <- list(commodity_desc = "CORN", year__GE = 2012, state_alpha = "VA")
+records <- nassqs_record_count(params)
+assertthat::assert_that(as.integer(records$count) <= 50000)
+```
 
+#### Query Limits: Total queries per second
+
+The API may return a 429 error ("Too Many Requests") if the rate at which requests are sent is too high[^1]. `rnassqs` implements adaptive rate limiting to ensure API calls are made at a reasonable pace. By default, rate limits are five requests per second (i.e., 0.2 seconds per request). If Error 429 is encountered, functionality in `nassqs_GET()` will retry at a slower rate based on `throttled_rate_seconds` (default = 3 seconds per request).
+
+[^1]: According to communication shared at 2025 NASS Spring Users Meeting, that is more than "100 calls per 5 minutes".
+
+You can configure the rate limiting behavior using the `nassqs_rate_limit()` function:
+
+``` r
+# Slow slightly the rate of request to 2 queries per second, or 0.5 seconds between queries
+nassqs_rate_limit(rate_seconds = 0.5, throttled_rate_seconds = 2)
+
+# Restore default settings
+nassqs_rate_limit(rate_seconds = 0.2, override = FALSE)
+```
 
 ### Step 3: Running Queries
 

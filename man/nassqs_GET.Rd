@@ -8,6 +8,7 @@ nassqs_GET(
   ...,
   api_path = c("api_GET", "get_param_values", "get_counts"),
   progress_bar = TRUE,
+  max_retries = 2,
   format = c("csv", "json", "xml")
 )
 }
@@ -18,6 +19,8 @@ use in the query}
 \item{api_path}{the API path that determines the type of request being made.}
 
 \item{progress_bar}{whether to display the project bar or not.}
+
+\item{max_retries}{maximum number of retries if a 429 error occurs}
 
 \item{format}{The format to return the query in. Only useful if as = "text".}
 }

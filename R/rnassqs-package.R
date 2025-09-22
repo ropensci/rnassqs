@@ -4,8 +4,13 @@
 #' package guide.
 #'
 #' The functions in this package facilitate getting data from NASS 'Quick Stats'.
-#' It handles the API key checking and storage, authorization, and fetching of 
-#' data.
+#' It handles the API key checking and storage, authorization, rate limiting, and 
+#' fetching of data.
+#'
+#' To avoid 429 ("Too Many Requests") errors from the API, this package 
+#' implements rate limiting that ensures API calls are made at a reasonable pace
+#' (default: 1 call every 3 seconds). Rate limiting can be configured using the 
+#' `nassqs_rate_limit()` function.
 #' @author Nicholas Potter
 #' @name rnassqs
 #' @aliases rnassqs-package
