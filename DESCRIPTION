@@ -5,7 +5,7 @@ Version: 0.6.4
 Authors@R: c(
   person('Nicholas', 'Potter', email='econpotter@gmail.com', role = c('aut', 'cre')),
   person('Robert', 'Dinterman', email='', role = c('ctb')),
-  person('Austin', 'Pearce, email='', role = c('ctb')),
+  person('Austin', 'Pearce', email='', role = c('ctb')),
   person('Jonathan', 'Adams', email='', role = c('ctb')),
   person('Joseph', 'Stachelek', email='', role = c('ctb')),
   person('Julia', 'Piaskowski', email='', role = c('ctb')),
