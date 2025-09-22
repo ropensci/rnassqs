@@ -168,7 +168,7 @@ You can request data for multiple values of the same parameter by using a simple
     d <- nassqs(params)
 ```
 
-NASS does not allow GET requests that pull more than 50,000 records in one request. The function will inform you if you try to do that. It will also inform you if you've requested a set of parameters for which there are no records.
+NASS does not allow GET requests that pull more than 50,000 records in one request. The function will inform you if you try to do that. It will also inform you if you've requested a set of parameters for which there are no records. NASS also limits the rate of requests. `rnassqs` will automatically adjust requests to limit the rate it needed, and return an error if the adjustment fails.
 
 Other useful functions include:
 

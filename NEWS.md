@@ -1,3 +1,7 @@
+# rnassqs 0.6.4
+
+- incorporate PR from austinwpearce that auto-adjusts call time to meet QuickStats rate limiters
+
 # rnassqs 0.6.3
 
 - Update to work with R 4.4.0
